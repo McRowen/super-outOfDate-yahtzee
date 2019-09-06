@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
-        Title="GameView" Height="600" Width="800">
+        Title="GameView" Height="800" Width="1500">
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -13,69 +13,68 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+
 
         </Grid.RowDefinitions>
-        <Label Content="Spelare" Grid.Row="0" Grid.Column="0" Background="LightCyan"/>
-        <Label Grid.Row="0" Grid.Column="1" Background="LightCyan"/>
-        <Label Grid.Row="0" Grid.Column="2" Background="LightCyan"/>
-        <Label Grid.Row="0" Grid.Column="3" Background="LightCyan"/>
-        <Label Grid.Row="0" Grid.Column="4" Background="LightCyan"/>
 
-        <Label Content="Ettor" Grid.Row="1" Grid.Column="0"/>
-        <Label Content="Tvåor" Grid.Row="2" Grid.Column="0"/>
-        <Label Content="Treor" Grid.Row="3" Grid.Column="0"/>
-        <Label Content="Fyror" Grid.Row="4" Grid.Column="0"/>
-        <Label Content="Femmor" Grid.Row="5" Grid.Column="0"/>
-        <Label Content="Sexor" Grid.Row="6" Grid.Column="0"/>
-        
-        <Label Content="Summa" Grid.Row="7" Grid.Column="0" Background="LightCyan"/>
-        <Label Grid.Row="7" Grid.Column="1" Background="LightCyan"/>
-        <Label Grid.Row="7" Grid.Column="2" Background="LightCyan"/>
-        <Label Grid.Row="7" Grid.Column="3" Background="LightCyan"/>
-        <Label Grid.Row="7" Grid.Column="4" Background="LightCyan"/>
+        <Label Content="YATZY klubben" Grid.Row="0" Grid.Column="0" FontSize="25" Grid.ColumnSpan="2"/>
+        <Label Content="Namn: Jompis" Grid.Row="0" Grid.Column="6" FontSize="25" Grid.ColumnSpan="2"/>
 
-        <Label Content="Bonus" Grid.Row="8" Grid.Column="0" Background="LightCyan"/>
-        <Label Grid.Row="8" Grid.Column="1" Background="LightCyan"/>
-        <Label Grid.Row="8" Grid.Column="2" Background="LightCyan"/>
-        <Label Grid.Row="8" Grid.Column="3" Background="LightCyan"/>
-        <Label Grid.Row="8" Grid.Column="4" Background="LightCyan"/>
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <Label Content="Spelare"  Background="LightCyan" FontSize="15"/>
+            <Label Content="Ettor" FontSize="15"/>
+            <Label Content="Tvåor" FontSize="15"/>
+            <Label Content="Treor" FontSize="15"/>
+            <Label Content="Fyror" FontSize="15"/>
+            <Label Content="Femmor" FontSize="15"/>
+            <Label Content="Sexor"  FontSize="15"/>
+            <Label Content="Summa"  Background="LightCyan" FontSize="15"/>
+            <Label Content="Bonus"  Background="LightCyan" FontSize="15"/>
+            <Label Content="Par"  FontSize="15"/>
+            <Label Content="Två Par"  FontSize="15"/>
+            <Label Content="Tretal"  FontSize="15"/>
+            <Label Content="Fyrtal"  FontSize="15"/>
+            <Label Content="Liten Stege"  FontSize="15"/>
+            <Label Content="Stor Stege"  FontSize="15"/>
+            <Label Content="Kåk"  FontSize="15"/>
+            <Label Content="Chans"  FontSize="15"/>
+            <Label Content="Yatzy"  FontSize="15"/>
+            <Label Content="Total" Background="LightCyan" FontSize="15"/>
+        </StackPanel>
 
-        <Label Content="Par" Grid.Row="9" Grid.Column="0"/>
-        <Label Content="Två Par" Grid.Row="10" Grid.Column="0"/>
-        <Label Content="Tretal" Grid.Row="11" Grid.Column="0"/>
-        <Label Content="Fyrtal" Grid.Row="12" Grid.Column="0"/>
-        <Label Content="Liten Stege" Grid.Row="13" Grid.Column="0"/>
-        <Label Content="Stor Stege" Grid.Row="14" Grid.Column="0"/>
-        <Label Content="Kåk" Grid.Row="15" Grid.Column="0"/>
-        <Label Content="Chans" Grid.Row="16" Grid.Column="0"/>
-        <Label Content="Yatzy" Grid.Row="17" Grid.Column="0"/>
-        
-        <Label Content="Total" Grid.Row="18" Grid.Column="0" Background="LightCyan"/>
-        <Label Grid.Row="18" Grid.Column="1" Background="LightCyan"/>
-        <Label Grid.Row="18" Grid.Column="2" Background="LightCyan"/>
-        <Label Grid.Row="18" Grid.Column="3" Background="LightCyan"/>
-        <Label Grid.Row="18" Grid.Column="4" Background="LightCyan"/>
+        <!--<Label Grid.Row="3" Grid.Column="1" Background="LightCyan"/>
+        <Label Grid.Row="3" Grid.Column="2" Background="LightCyan"/>
+        <Label Grid.Row="3" Grid.Column="3" Background="LightCyan"/>
+        <Label Grid.Row="3" Grid.Column="4" Background="LightCyan"/>-->
+
+
+
+
+
+
+        <!--<Label Grid.Row="11" Grid.Column="1" Background="LightCyan"/>
+        <Label Grid.Row="11" Grid.Column="2" Background="LightCyan"/>
+        <Label Grid.Row="11" Grid.Column="3" Background="LightCyan"/>
+        <Label Grid.Row="11" Grid.Column="4" Background="LightCyan"/>-->
+
+
+
+
+        <!--<Label Grid.Row="21" Grid.Column="1" Background="LightCyan"/>
+        <Label Grid.Row="21" Grid.Column="2" Background="LightCyan"/>
+        <Label Grid.Row="21" Grid.Column="3" Background="LightCyan"/>
+        <Label Grid.Row="21" Grid.Column="4" Background="LightCyan"/>-->
 
     </Grid>
 </Window>
