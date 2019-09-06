@@ -9,10 +9,10 @@
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
@@ -20,7 +20,6 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
@@ -30,51 +29,121 @@
 
         <Label Content="YATZY klubben" Grid.Row="0" Grid.Column="0" FontSize="25" Grid.ColumnSpan="2"/>
         <Label Content="Namn: Jompis" Grid.Row="0" Grid.Column="6" FontSize="25" Grid.ColumnSpan="2"/>
-
+        <!-- Column 1 med alla typer av slag-->
         <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Spelare"  Background="LightCyan" FontSize="15"/>
-            <Label Content="Ettor" FontSize="15"/>
-            <Label Content="Tvåor" FontSize="15"/>
-            <Label Content="Treor" FontSize="15"/>
-            <Label Content="Fyror" FontSize="15"/>
-            <Label Content="Femmor" FontSize="15"/>
-            <Label Content="Sexor"  FontSize="15"/>
-            <Label Content="Summa"  Background="LightCyan" FontSize="15"/>
-            <Label Content="Bonus"  Background="LightCyan" FontSize="15"/>
-            <Label Content="Par"  FontSize="15"/>
-            <Label Content="Två Par"  FontSize="15"/>
-            <Label Content="Tretal"  FontSize="15"/>
-            <Label Content="Fyrtal"  FontSize="15"/>
-            <Label Content="Liten Stege"  FontSize="15"/>
-            <Label Content="Stor Stege"  FontSize="15"/>
-            <Label Content="Kåk"  FontSize="15"/>
-            <Label Content="Chans"  FontSize="15"/>
-            <Label Content="Yatzy"  FontSize="15"/>
-            <Label Content="Total" Background="LightCyan" FontSize="15"/>
+            <Label Content="Spelare"  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Ettor" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Tvåor" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Treor" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Fyror" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Femmor" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Sexor"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Summa"  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Bonus"  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Par"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Två Par"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Tretal"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Fyrtal"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Liten Stege"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Stor Stege"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Kåk"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Chans"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Yatzy"  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="Total" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
 
-        <!--<Label Grid.Row="3" Grid.Column="1" Background="LightCyan"/>
-        <Label Grid.Row="3" Grid.Column="2" Background="LightCyan"/>
-        <Label Grid.Row="3" Grid.Column="3" Background="LightCyan"/>
-        <Label Grid.Row="3" Grid.Column="4" Background="LightCyan"/>-->
+        <!--Column 2, FÖRSTA SPELARE-->
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+        </StackPanel>
+        
+        <!--Column 2, ANDRA SPELARE-->
+        <StackPanel Grid.Row="3" Grid.Column="2">
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+        </StackPanel>
+        
+        <!--Column 3, TREDJE SPELARE-->
+        <StackPanel Grid.Row="3" Grid.Column="3">
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+        </StackPanel>
+        
+        <!--Column 4, FJÄRDE SPELARE-->
+        <StackPanel Grid.Row="3" Grid.Column="4">
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+        </StackPanel>
 
-
-
-
-
-
-        <!--<Label Grid.Row="11" Grid.Column="1" Background="LightCyan"/>
-        <Label Grid.Row="11" Grid.Column="2" Background="LightCyan"/>
-        <Label Grid.Row="11" Grid.Column="3" Background="LightCyan"/>
-        <Label Grid.Row="11" Grid.Column="4" Background="LightCyan"/>-->
-
-
-
-
-        <!--<Label Grid.Row="21" Grid.Column="1" Background="LightCyan"/>
-        <Label Grid.Row="21" Grid.Column="2" Background="LightCyan"/>
-        <Label Grid.Row="21" Grid.Column="3" Background="LightCyan"/>
-        <Label Grid.Row="21" Grid.Column="4" Background="LightCyan"/>-->
 
     </Grid>
 </Window>
