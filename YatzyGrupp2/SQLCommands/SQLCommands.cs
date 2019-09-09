@@ -8,5 +8,6 @@ namespace YatzyGrupp2.SQLCommands
 {
     class SQLCommands
     {
+       
     }
 }
