@@ -19,6 +19,7 @@ namespace YatzyGrupp2.Test
     /// </summary>
     public partial class Listview : Window
     {
+        
         public Listview()
         {
             InitializeComponent();
@@ -37,6 +38,19 @@ namespace YatzyGrupp2.Test
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void listView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            List<DataTest> dataTests;
+            dataTests = new List<DataTest>();
+            dataTests.Add(new DataTest("Spelare", 1, 2, 3, 4));
+            listView.ItemsSource = dataTests;
         }
     }
 }
