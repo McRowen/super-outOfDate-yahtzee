@@ -23,17 +23,61 @@ namespace YatzyGrupp2.View
         {
             InitializeComponent();
         }
-
+        bool[] diceThrow = new bool[] { false, false, false, false, false };
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
             int[] dice = new int[5];
+             
             dice = gamelogic.GetRandomDice();
-            Dice1.Content = Convert.ToString(dice[0]);
-            Dice2.Content = Convert.ToString(dice[1]);
-            Dice3.Content = Convert.ToString(dice[2]);
-            Dice4.Content = Convert.ToString(dice[3]);
-            Dice5.Content = Convert.ToString(dice[4]);
+            if(diceThrow[0] != true)
+            {
+                Dice1.Content = Convert.ToString(dice[0]);
+            }
+            if(diceThrow[1] != true)
+            {
+                Dice2.Content = Convert.ToString(dice[1]);
+            }
+            if(diceThrow[2] != true)
+            {
+                Dice3.Content = Convert.ToString(dice[2]);
+            }
+            if(diceThrow[3] != true)
+            {
+                Dice4.Content = Convert.ToString(dice[3]);
+            }
+            if(diceThrow[4] != true)
+            {
+                Dice5.Content = Convert.ToString(dice[4]);
+            }
+            
+        }
+
+        private void Dice1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            diceThrow[0] = true;
+            
+        }
+
+        private void Dice2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            diceThrow[1] = true;
+        }
+
+        private void Dice3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            diceThrow[2] = true;
+        }
+
+        private void Dice4_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            diceThrow[3] = true;
+        }
+
+        private void Dice5_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            diceThrow[4] = true;
         }
     }
 }
