@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Gamelogic\Gamelogic.cs" />
+    <Compile Include="Player\Player.cs" />
     <Compile Include="Test\DataTest.cs" />
     <Compile Include="Test\Listview.xaml.cs">
       <DependentUpon>Listview.xaml</DependentUpon>
