@@ -35,5 +35,16 @@ namespace YatzyGrupp2.View
             Dice4.Content = Convert.ToString(dice[3]);
             Dice5.Content = Convert.ToString(dice[4]);
         }
+
+        private void btn_test_Click(object sender, RoutedEventArgs e)
+        {
+            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+            MessageBox.Show(sql.GetAllPlayer().ToString());
+        }
+
+
+
+
+
     }
 }

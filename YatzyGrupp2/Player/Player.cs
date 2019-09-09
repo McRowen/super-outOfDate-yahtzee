@@ -12,5 +12,10 @@ namespace YatzyGrupp2.Player
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Nickname { get; set; }
+
+        public override string ToString()
+        {
+            return Firstname + " " + Lastname + " " + Nickname;
+        }
     }
 }

@@ -74,7 +74,7 @@
             <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
-        
+
         <!--Column 2, ANDRA SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="2">
             <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
@@ -97,7 +97,7 @@
             <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
-        
+
         <!--Column 3, TREDJE SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="3">
             <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
@@ -120,7 +120,7 @@
             <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
-        
+
         <!--Column 4, FJÄRDE SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="4">
             <Label Content="." Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
@@ -143,14 +143,14 @@
             <Label Content="."  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content="."  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
-        
+
         <!--Spara kast, vad som är markerat och avsluta spel-->
         <StackPanel Grid.Row="3" Grid.Column="5">
             <Label Content="Ettor markerat" FontSize="25" Margin="10, 250,0,0"/>
             <Button Content="Spara kast" FontSize="20" Margin="10,0,5,0" HorizontalAlignment="Right" Width="150"/>
             <Button Content="Avsluta Spel" FontSize="20" Margin="10,250,10,0"/>
         </StackPanel>
-        
+
         <!--Tärningar-->
         <StackPanel Grid.Row="3" Grid.Column="6" Orientation="Horizontal">
             <Label x:Name="Dice1" Content="Dice1" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
@@ -159,11 +159,12 @@
             <Label x:Name="Dice4" Content="Dice4" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
             <Label x:Name="Dice5" Content="Dice5" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
         </StackPanel>
-        
+
         <!--Kasta tärningar-->
         <StackPanel Grid.Row="3" Grid.Column="6">
             <Button Content="Kasta Tärningar" FontSize="20" Height="50" Width="200"  HorizontalAlignment="Right" Margin="0,150,5,0" Click="Button_Click"/>
         </StackPanel>
+        <Button x:Name="btn_test" Content="TEST" Grid.Column="7" HorizontalAlignment="Left" Margin="45,373.5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="137" Height="87" Click="btn_test_Click"/>
 
 
     </Grid>
