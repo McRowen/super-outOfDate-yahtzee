@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace YatzyGrupp2.Test
 {
     /// <summary>
@@ -47,10 +48,17 @@ namespace YatzyGrupp2.Test
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            //string testsak = "lable";
+            //testsak.Text = "test";
             List<DataTest> dataTests;
             dataTests = new List<DataTest>();
             dataTests.Add(new DataTest("Spelare", 1, 2, 3, 4));
             listView.ItemsSource = dataTests;
+
+            Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
+            int[] dice = new int[5];
+            dice = gamelogic.GetRandomDice();
+           
         }
     }
 }
