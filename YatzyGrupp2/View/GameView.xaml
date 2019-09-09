@@ -153,16 +153,16 @@
         
         <!--Tärningar-->
         <StackPanel Grid.Row="3" Grid.Column="6" Orientation="Horizontal">
-            <Label Content="Dice1" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label Content="Dice2" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label Content="Dice3" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label Content="Dice4" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label Content="Dice5" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
+            <Label x:Name="Dice1" Content="Dice1" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
+            <Label x:Name="Dice2" Content="Dice2" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
+            <Label x:Name="Dice3" Content="Dice3" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
+            <Label x:Name="Dice4" Content="Dice4" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
+            <Label x:Name="Dice5" Content="Dice5" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
         </StackPanel>
         
         <!--Kasta tärningar-->
         <StackPanel Grid.Row="3" Grid.Column="6">
-            <Button Content="Kasta Tärningar" FontSize="20" Height="50" Width="200"  HorizontalAlignment="Right" Margin="0,150,5,0"/>
+            <Button Content="Kasta Tärningar" FontSize="20" Height="50" Width="200"  HorizontalAlignment="Right" Margin="0,150,5,0" Click="Button_Click"/>
         </StackPanel>
 
 

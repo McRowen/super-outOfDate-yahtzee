@@ -23,5 +23,17 @@ namespace YatzyGrupp2.View
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
+            int[] dice = new int[5];
+            dice = gamelogic.GetRandomDice();
+            Dice1.Content = Convert.ToString(dice[0]);
+            Dice2.Content = Convert.ToString(dice[1]);
+            Dice3.Content = Convert.ToString(dice[2]);
+            Dice4.Content = Convert.ToString(dice[3]);
+            Dice5.Content = Convert.ToString(dice[4]);
+        }
     }
 }
