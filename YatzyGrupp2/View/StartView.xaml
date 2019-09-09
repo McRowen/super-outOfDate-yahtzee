@@ -33,17 +33,23 @@
             </ListView.View>
         </ListView>
         <Label Content="Skapa nytt konto" FontFamily="Times New Roman" VerticalAlignment="Bottom" FontSize="20" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0"></Label>
-        <Label Content="Förnamn" FontFamily="Times New Roman" FontSize="16" Grid.Column="3" Grid.Row="1"></Label>
-        <Label Content="Efternamn" FontFamily="Times New Roman" FontSize="16" Grid.Column="4" Grid.Row="1"></Label>
-        <Label Content="Nickname" FontFamily="Times New Roman" FontSize="16" Grid.Column="5" Grid.Row="1"></Label>
-        <TextBox Name="txtFirstName" FontFamily="Times New Roman" Grid.Column="3" Grid.Row="2"></TextBox>
-        <TextBox Name="txtLastName" FontFamily="Times New Roman" Grid.Column="3" Grid.Row="2"></TextBox>
-        <TextBox Name="txtNickName" FontFamily="Times New Roman" Grid.Column="3" Grid.Row="2"></TextBox>
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <Button Content="Starta vanligt spel" Margin="1" Height="30" BorderThickness="1" FontFamily="Times New Roman"  BorderBrush="Black"  Background="SkyBlue" FontSize="14"  Grid.Column="1" Grid.Row="0"></Button>
-            <Button Content="Starta skit spel"  Margin="1" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.Column="1" Grid.Row="1"></Button>
-            <Button Content="Checka highscore"  Margin="1" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.Column="1" Grid.Row="2"></Button>
+        <StackPanel Grid.Column="3" Grid.Row="1">
+            <Label Content="Förnamn" FontFamily="Times New Roman" FontSize="16" TabIndex="0"></Label>
+            <TextBox Name="txtFirstName" FontSize="16" FontFamily="Times New Roman" ></TextBox>
         </StackPanel>
-        <Button Content="Registrera spelare" VerticalAlignment="Top" Height="30" BorderThickness="1" FontFamily="Times New Roman"  BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.Column="4" Grid.Row="3"></Button>
+        <StackPanel Grid.Column="4" Grid.Row="1">
+            <Label Content="Efternamn" FontFamily="Times New Roman" FontSize="16"></Label>
+            <TextBox Name="txtLastName" FontSize="16" FontFamily="Times New Roman" TabIndex="1" ></TextBox>
+            <Button Content="Registrera spelare"  Height="30" BorderThickness="1" FontFamily="Times New Roman" TabIndex="4"  BorderBrush="Black"  Background="SkyBlue" FontSize="14" ></Button>
+        </StackPanel>
+        <StackPanel Grid.Column="5" Grid.Row="1">
+            <Label Content="Nickname" FontFamily="Times New Roman" FontSize="16" Grid.Column="3" Grid.Row="1"></Label>
+            <TextBox Name="txtNickName" FontSize="16" FontFamily="Times New Roman" Grid.Column="3" Grid.Row="2" TabIndex="3"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Button Content="Starta vanligt spel" TabIndex="5" Margin="1" Height="30" BorderThickness="1" FontFamily="Times New Roman"  BorderBrush="Black"  Background="SkyBlue" FontSize="14"  ></Button>
+            <Button Content="Starta skit spel" TabIndex="6" Margin="1" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14"></Button>
+            <Button Content="Checka highscore" TabIndex="7"  Margin="1" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14"></Button>
+        </StackPanel>
     </Grid>
 </Window>
