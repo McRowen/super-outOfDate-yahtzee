@@ -68,12 +68,18 @@
     <Compile Include="View\HighScoreView.xaml.cs">
       <DependentUpon>HighScoreView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MostGamesView.xaml.cs">
+      <DependentUpon>MostGamesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\WinsInRow.xaml.cs">
+      <DependentUpon>WinsInRow.xaml</DependentUpon>
     </Compile>
     <Page Include="Test\Listview.xaml">
       <SubType>Designer</SubType>
@@ -87,7 +93,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MostGamesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\StartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinsInRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

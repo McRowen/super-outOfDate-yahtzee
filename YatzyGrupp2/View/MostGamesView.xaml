@@ -1,12 +1,12 @@
-﻿<Window x:Class="YatzyGrupp2.View.HighScoreView"
+﻿<Window x:Class="YatzyGrupp2.View.MostGamesView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
-        Title="HighScoreView" Height="700" Width="800">
-    <Grid ShowGridLines="True">
+        Title="MostGamesView" Height="700" Width="800">
+    <Grid ShowGridLines="true">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -31,8 +31,8 @@
 
 
         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Totalpoäng" Height="50" Width="150" Margin="0,0,5,0" Background="DeepSkyBlue"/>
-            <Button Content="Mest matcher" Height="50" Width="150" Margin="5,0,5,0" Background="SkyBlue"/>
+            <Button Content="Totalpoäng" Height="50" Width="150" Margin="0,0,5,0" Background="SkyBlue"/>
+            <Button Content="Mest matcher" Height="50" Width="150" Margin="5,0,5,0" Background="DeepSkyBlue"/>
             <Button Content="Segrar i rad" Height="50" Width="150" Margin="5,0,0,0" Background="SkyBlue"/>
         </StackPanel>
 
@@ -43,9 +43,10 @@
                     <GridViewColumn Header="Användarnamn" Width="120"/>
                     <GridViewColumn Header="Förnamn" Width="120"/>
                     <GridViewColumn Header="Efternamn" Width="120"/>
-                    <GridViewColumn Header="Totalpoäng" Width="150"/>
+                    <GridViewColumn Header="Matcher" Width="150"/>
                 </GridView>
             </ListView.View>
         </ListView>
+
     </Grid>
 </Window>
