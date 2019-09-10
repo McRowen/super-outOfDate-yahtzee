@@ -33,8 +33,7 @@ namespace YatzyGrupp2.View
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {           
             int[] dice = new int[5];
              
             dice = gamelogic.GetRandomDice();
