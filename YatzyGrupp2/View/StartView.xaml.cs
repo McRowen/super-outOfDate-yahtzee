@@ -30,6 +30,9 @@ namespace YatzyGrupp2.View
 
             //MessageBox.Show(sql.GetAllPlayer().ToString());
             sql.AddPlayer(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtNickName.Clear();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
