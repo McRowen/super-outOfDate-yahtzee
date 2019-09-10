@@ -26,9 +26,9 @@ namespace YatzyGrupp2.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+            //SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
 
-            MessageBox.Show(sql.GetAllPlayer().ToString());
+            //MessageBox.Show(sql.GetAllPlayer().ToString());
         }
     }
 }
