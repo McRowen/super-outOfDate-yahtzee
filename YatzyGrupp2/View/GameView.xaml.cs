@@ -33,8 +33,7 @@ namespace YatzyGrupp2.View
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {           
             int[] dice = new int[5];
              
             dice = gamelogic.GetRandomDice();
@@ -184,13 +183,15 @@ namespace YatzyGrupp2.View
 
         private void btn_test_Click(object sender, RoutedEventArgs e)
         {
-            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-            //MessageBox.Show(sql.GetAllPlayer().ToString());
+            ////SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+            ////MessageBox.Show(sql.GetAllPlayer().ToString());
         }
 
-
-
-
-
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            StartView startview = new StartView();
+            startview.ShowDialog();
+        }
     }
 }
