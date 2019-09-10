@@ -27,7 +27,8 @@ namespace YatzyGrupp2.SQLCommands
                 conn.Open();
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
-                    cmd.Parameters.AddWithValue("player_Id", p.Player_id);
+                    cmd.Parameters.AddWithValue("firstname", p.Firstname);
+                    cmd.Parameters.AddWithValue("lastname", p.Lastname);
 
                     using (var reader = cmd.ExecuteReader())
                     {
