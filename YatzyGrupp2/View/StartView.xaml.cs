@@ -29,6 +29,7 @@ namespace YatzyGrupp2.View
             SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
 
             //MessageBox.Show(sql.GetAllPlayer().ToString());
+            sql.AddPlayer(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
