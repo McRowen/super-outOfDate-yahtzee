@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace YatzyGrupp2.View
 {
     /// <summary>
-    /// Interaction logic for StartView.xaml
+    /// Interaction logic for MostGamesView.xaml
     /// </summary>
-    public partial class StartView : Window
+    public partial class MostGamesView : Window
     {
-        public StartView()
+        public MostGamesView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-
-            MessageBox.Show(sql.GetAllPlayer().ToString());
         }
     }
 }
