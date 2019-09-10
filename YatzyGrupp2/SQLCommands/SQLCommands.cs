@@ -11,6 +11,6 @@ namespace YatzyGrupp2.SQLCommands
 {
     class SQLCommands
     {
-        Player.Player p = new Player.Player();
+        NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString);
     }
 }
