@@ -34,9 +34,9 @@ namespace YatzyGrupp2.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-                this.Hide();
-                HighScoreView highScore = new HighScoreView();
-                highScore.ShowDialog();
+            this.Hide();
+            HighScoreView highScore = new HighScoreView();
+            highScore.ShowDialog();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
 
-
+        //  Denna blir en error när man försöker gå in på highscore sidan. om man kommenterar bort den fungerar knapparna.
         public List<Player.Player> GetHighScore()
         {
             Player.Player pe;

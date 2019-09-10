@@ -24,7 +24,7 @@ namespace YatzyGrupp2.View
             SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
             InitializeComponent();
             HighScore.ItemsSource = null;
-            HighScore.ItemsSource = db.GetHighScore();
+            HighScore.ItemsSource = db.GetHighScore(); //Denna blir en error när man fösöker gå in på Highscore sidan. Om man kommenterar bort denna plus methoden fungerar knapparna.
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
