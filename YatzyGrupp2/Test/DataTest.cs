@@ -25,22 +25,23 @@ namespace YatzyGrupp2.Test
 
 
 
-        public void SystemLinkChildSchedule(int schedule_id, int child_id)
-        {
-            using (var conn = new
-                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
-            {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand())
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO child_schedule(child_id ,schedule_id, startdate) VALUES(@child_id, @schedule_id, NOW())";
-                    cmd.Parameters.AddWithValue("child_id", child_id);
-                    cmd.Parameters.AddWithValue("schedule_id", schedule_id);
+        //public void SystemLinkChildSchedule(int schedule_id, int child_id)
+        //{
+        //    using (var conn = new
+        //                    NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
+        //    {
+        //        conn.Open();
+        //        using (var cmd = new NpgsqlCommand())
+        //        {
+        //            cmd.Connection = conn;
+        //            cmd.CommandText = "INSERT INTO child_schedule(child_id ,schedule_id, startdate) VALUES(@child_id, @schedule_id, NOW())";
+        //            cmd.Parameters.AddWithValue("child_id", child_id);
+        //            cmd.Parameters.AddWithValue("schedule_id", schedule_id);
 
-                    cmd.ExecuteNonQuery();
-                }
-                conn.Close();
-            }
-        }
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //        conn.Close();
+        //    }
+        //}
+    }
 }
