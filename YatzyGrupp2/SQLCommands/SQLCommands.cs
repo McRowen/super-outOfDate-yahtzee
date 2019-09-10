@@ -15,13 +15,12 @@ namespace YatzyGrupp2.SQLCommands
 
         Player.Player p = new Player.Player();
 
-
-            public Player.Player AddPlayer(string first, string last, string nick)
-            {
-                //int id = 0;
-                //id++;
-                string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
-                              "VALUES(" /* +p.Player_id + "," */ + p.Firstname + "," + p.Lastname + "," + p.Nickname + ")";
+        public Player.Player AddPlayer(string first, string last, string nick)
+        {
+            //int id = 0;
+            //id++;
+            string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
+                          "VALUES(" /*+ p.Player_id + ","*/ + p.Firstname + "," + p.Lastname + "," + p.Nickname + ")";
 
                 using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
                 {
@@ -79,4 +78,3 @@ namespace YatzyGrupp2.SQLCommands
         }
     }
 
-}

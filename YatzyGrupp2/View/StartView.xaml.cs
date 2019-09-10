@@ -30,5 +30,12 @@ namespace YatzyGrupp2.View
 
             //MessageBox.Show(sql.GetAllPlayer().ToString());
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+                this.Hide();
+                HighScoreView highScore = new HighScoreView();
+                highScore.ShowDialog();
+        }
     }
 }
