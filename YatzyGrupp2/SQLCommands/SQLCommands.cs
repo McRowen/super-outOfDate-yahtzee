@@ -31,15 +31,15 @@ namespace YatzyGrupp2.SQLCommands
 
                         using (var reader = cmd.ExecuteReader())
                         {
-                            while (reader.Read())
-                            {
+                            //while (reader.Read())
+                            //{
                                 p = new Player.Player()
                                 {
                                     Firstname = first,
                                     Lastname = last,
                                     Nickname = nick
                                 };
-                            }
+                            //}
                             return p;
                         }
                     }
