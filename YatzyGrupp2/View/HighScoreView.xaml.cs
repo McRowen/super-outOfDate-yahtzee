@@ -26,5 +26,26 @@ namespace YatzyGrupp2.View
             HighScore.ItemsSource = null;
             //HighScore.ItemsSource = db.GetHighScore();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            MostGamesView mostgames = new MostGamesView();
+            mostgames.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            WinsInRow winsinrow = new WinsInRow();
+            winsinrow.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            StartView startview = new StartView();
+            startview.ShowDialog();
+        }
     }
 }
