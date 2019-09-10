@@ -27,13 +27,13 @@
         </Grid.RowDefinitions>
 
         <Label Content="Highscore" Grid.Row="0" Grid.Column="2" FontSize="70" HorizontalAlignment="Center"/>
-        <Button Content="Tillbaka" Grid.Row="5" Grid.Column="2" Height="50" Width="150" Background="SkyBlue"/>
+        <Button Content="Tillbaka" Grid.Row="5" Grid.Column="2" Height="50" Width="150" Background="SkyBlue" Click="Button_Click_2"/>
 
 
         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Totalpoäng" Height="50" Width="150" Margin="0,0,5,0" Background="SkyBlue"/>
+            <Button Content="Totalpoäng" Height="50" Width="150" Margin="0,0,5,0" Background="SkyBlue" Click="Button_Click"/>
             <Button Content="Mest matcher" Height="50" Width="150" Margin="5,0,5,0" Background="DeepSkyBlue"/>
-            <Button Content="Segrar i rad" Height="50" Width="150" Margin="5,0,0,0" Background="SkyBlue"/>
+            <Button Content="Segrar i rad" Height="50" Width="150" Margin="5,0,0,0" Background="SkyBlue" Click="Button_Click_1"/>
         </StackPanel>
 
         <ListView x:Name="HighScore" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3">
