@@ -11,36 +11,70 @@ namespace YatzyGrupp2.SQLCommands
 {
     class SQLCommands
     {
-//<<<<<<< HEAD
-        //Player.Player player = new Player.Player();
+        NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString);
 
-        //public List<Player.Player> GetAllPlayer()
-        //{
-        //    Player.Player p;
-        //    List<Player.Player> player = new List<Player.Player>();
-        //    string stmt = "SELECT * FROM player";
-        //    var conn = new
-        //        NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString);
-        //    conn.Open();
-        //    var cmd = new NpgsqlCommand(stmt, conn);
-        //    var reader = cmd.ExecuteReader();
+        Player.Player p = new Player.Player();
 
-        //    while (reader.Read())
-        //    {
-        //        p = new Player.Player()
-        //        {
-        //            Firstname = reader.GetString(1),
-        //            Lastname = reader.GetString(3),
-        //            Nickname = reader.GetString(2)
-        //        };
-        //        player.Add(p);
-        //    }
-        //    conn.Close(); 
-        //    return player; 
-        //}
+        public Player.Player AddPlayer(string first, string last, string nick)
+        {
+            //int id = 0;
+            //id++;
+            string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
+                          "VALUES(" /*+ p.Player_id + ","*/ + p.Firstname + "," + p.Lastname + "," + p.Nickname + ")";
 
-//=======
-        //Player.Player p = new Player.Player();
-//>>>>>>> 8e2e1016b2447efe6fcbc88d9bd713446eaa9e05
+                using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand(stmt, conn))
+                    {
+                        cmd.Parameters.AddWithValue("player_Id", p.Player_id);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                p = new Player.Player()
+                                {
+                                    Firstname = first,
+                                    Lastname = last,
+                                    Nickname = nick
+                                };
+                            }
+                            return p;
+                        }
+                    }
+                }
+            }
+
+
+            public List<Player.Player> GetHighScore()
+            {
+                Player.Player pe;
+                List<Player.Player> gamers = new List<Player.Player>();
+                using (var conn = new
+                   NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "SELECT player.nickname, player.firstname, player.lastname, game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            pe = new Player.Player()
+                            {
+                                Firstname = reader.GetString(0),
+                                Lastname = reader.GetString(1),
+                                Nickname = reader.GetString(2),
+                                Score = reader.GetInt32(3)
+                            };
+                            gamers.Add(pe);
+                        }
+                    }
+                    conn.Close();
+                }
+                return gamers;
+            }
+        }
     }
-}
+

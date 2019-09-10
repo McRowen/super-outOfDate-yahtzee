@@ -13,13 +13,14 @@ namespace YatzyGrupp2.Gamelogic
 
         ///*public Gamelogic1(int r1, int r2, int r3, int r4, int r5, int r6)
         //{
-            
+
         //}*/
         //public Gamelogic()
         //{
         //    Dices = new int[] {1, 2, 3, 4, 5, 6 };
         //}
 
+        public int Round { get; set; }
 
         public int[] GetRandomDice()
         {
@@ -31,6 +32,26 @@ namespace YatzyGrupp2.Gamelogic
                 num[i] = dice;
             }
             return num;
+        }
+
+        public bool TurnOver()
+        {
+            if (Round == 3)
+                return true;
+            else
+                return false;
+        }
+
+        public void IncrementRound()
+        {
+            if(Round > 3 || Round < 1)
+            {
+                Round = 1;
+            }
+            else
+            {
+                Round++;
+            }
         }
     }
 }
