@@ -147,7 +147,7 @@
         <StackPanel Grid.Row="3" Grid.Column="5">
             <Label Content="Ettor markerat" FontSize="25" Margin="10, 250,0,0"/>
             <Button Content="Spara kast" FontSize="20" Margin="10,0,5,0" HorizontalAlignment="Right" Width="150" Background="SkyBlue"/>
-            <Button Content="Avsluta Spel" FontSize="20" Margin="10,250,10,0" Click="Button_Click_1"/>
+            <Button Content="Avsluta Spel" FontSize="20" Margin="10,250,10,0"/>
         </StackPanel>
 
         <!--Tärningar-->

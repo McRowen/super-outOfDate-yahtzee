@@ -42,5 +42,5 @@ namespace YatzyGrupp2.SQLCommands
     //        }
     //        return gamers;
     //    }
-    //}
+    }
 }
