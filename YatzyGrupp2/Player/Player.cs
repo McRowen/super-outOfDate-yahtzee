@@ -15,7 +15,7 @@ namespace YatzyGrupp2.Player
 
         public override string ToString()
         {
-            return Firstname + " " + Lastname + " " + Nickname;
+            return $"Nu spelar: {Nickname}";
         }
     }
 }

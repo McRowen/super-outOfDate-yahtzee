@@ -152,11 +152,11 @@
 
         <!--Tärningar-->
         <StackPanel Grid.Row="3" Grid.Column="6" Orientation="Horizontal">
-            <Label x:Name="Dice1" Content="Dice1" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label x:Name="Dice2" Content="Dice2" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label x:Name="Dice3" Content="Dice3" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label x:Name="Dice4" Content="Dice4" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
-            <Label x:Name="Dice5" Content="Dice5" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400"/>
+            <Label x:Name="Dice1" Content="Dice1" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice1_MouseDown"/>
+            <Label x:Name="Dice2" Content="Dice2" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice2_MouseDown"/>
+            <Label x:Name="Dice3" Content="Dice3" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice3_MouseDown"/>
+            <Label x:Name="Dice4" Content="Dice4" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice4_MouseDown"/>
+            <Label x:Name="Dice5" Content="Dice5" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice5_MouseDown"/>
         </StackPanel>
 
         <!--Kasta tärningar-->
