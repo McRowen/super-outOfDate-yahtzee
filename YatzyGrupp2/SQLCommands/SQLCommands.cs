@@ -15,6 +15,7 @@ namespace YatzyGrupp2.SQLCommands
 
         Player.Player p = new Player.Player();
 
+
         public Player.Player AddPlayer(string first, string last, string nick)
         {
             //int id = 0;
