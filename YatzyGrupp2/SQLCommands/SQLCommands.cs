@@ -22,59 +22,59 @@ namespace YatzyGrupp2.SQLCommands
             string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
                           "VALUES(" /*+ p.Player_id + ","*/ + p.Firstname + "," + p.Lastname + "," + p.Nickname + ")";
 
-                using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-                {
-                    conn.Open();
-                    using (var cmd = new NpgsqlCommand(stmt, conn))
-                    {
-                        cmd.Parameters.AddWithValue("player_Id", p.Player_id);
-
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            //while (reader.Read())
-                            //{
-                                p = new Player.Player()
-                                {
-                                    Firstname = first,
-                                    Lastname = last,
-                                    Nickname = nick
-                                };
-                            //}
-                            return p;
-                        }
-                    }
-                }
-            }
-
-
-            public List<Player.Player> GetHighScore()
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
-                Player.Player pe;
-                List<Player.Player> gamers = new List<Player.Player>();
-                using (var conn = new
-                   NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
-                    conn.Open();
-                    using (var cmd = new NpgsqlCommand())
+                    cmd.Parameters.AddWithValue("player_Id", p.Player_id);
+
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.Connection = conn;
-                        cmd.CommandText = "SELECT player.nickname, player.firstname, player.lastname, game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            pe = new Player.Player()
+                        //while (reader.Read())
+                        //{
+                            p = new Player.Player()
                             {
-                                Firstname = reader.GetString(0),
-                                Lastname = reader.GetString(1),
-                                Nickname = reader.GetString(2),
-                                Score = reader.GetInt32(3)
+                                Firstname = first,
+                                Lastname = last,
+                                Nickname = nick
                             };
-                            gamers.Add(pe);
-                        }
+                        //}
+                        return p;
                     }
-                    conn.Close();
                 }
-                return gamers;
             }
         }
+
+
+        public List<Player.Player> GetHighScore()
+        {
+            Player.Player pe;
+            List<Player.Player> gamers = new List<Player.Player>();
+            using (var conn = new
+               NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT player.nickname, player.firstname, player.lastname, game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        pe = new Player.Player()
+                        {
+                            Firstname = reader.GetString(0),
+                            Lastname = reader.GetString(1),
+                            Nickname = reader.GetString(2),
+                            Score = reader.GetInt32(3)
+                        };
+                        gamers.Add(pe);
+                    }
+                }
+                conn.Close();
+            }
+            return gamers;
+        }
     }
+}
 
