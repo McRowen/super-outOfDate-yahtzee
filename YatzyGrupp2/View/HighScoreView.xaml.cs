@@ -21,7 +21,10 @@ namespace YatzyGrupp2.View
     {
         public HighScoreView()
         {
+            SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
             InitializeComponent();
+            HighScore.ItemsSource = null;
+            //HighScore.ItemsSource = db.GetHighScore();
         }
     }
 }

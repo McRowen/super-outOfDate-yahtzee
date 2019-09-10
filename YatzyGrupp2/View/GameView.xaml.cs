@@ -182,17 +182,15 @@ namespace YatzyGrupp2.View
             }
         }
 
-        //private void btn_test_Click(object sender, RoutedEventArgs e)
-        //{
-        //    SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-        //    MessageBox.Show(sql.GetAllPlayer().ToString());
-        //}
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btn_test_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            StartView startview = new StartView();
-            startview.ShowDialog();
+            ////SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+            ////MessageBox.Show(sql.GetAllPlayer().ToString());
         }
+
+
+
+
+
     }
 }
