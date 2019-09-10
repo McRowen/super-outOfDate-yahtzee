@@ -152,16 +152,16 @@
         
         <!--Tärningar-->
         <StackPanel Grid.Row="3" Grid.Column="6" Orientation="Horizontal">
-            <Label x:Name="Dice1" Content="Dice1" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice1_MouseDown"/>
-            <Label x:Name="Dice2" Content="Dice2" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice2_MouseDown"/>
-            <Label x:Name="Dice3" Content="Dice3" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice3_MouseDown"/>
-            <Label x:Name="Dice4" Content="Dice4" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice4_MouseDown"/>
-            <Label x:Name="Dice5" Content="Dice5" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice5_MouseDown"/>
+            <Label x:Name="Dice1" Content="Dice1" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice1_MouseDown" Background="White" MouseEnter="Dice1_MouseEnter" MouseLeave="Dice1_MouseLeave"/>
+            <Label x:Name="Dice2" Content="Dice2" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice2_MouseDown" MouseEnter="Dice2_MouseEnter" MouseLeave="Dice2_MouseLeave"/>
+            <Label x:Name="Dice3" Content="Dice3" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice3_MouseDown" MouseEnter="Dice3_MouseEnter" MouseLeave="Dice3_MouseLeave"/>
+            <Label x:Name="Dice4" Content="Dice4" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice4_MouseDown" MouseEnter="Dice4_MouseEnter" MouseLeave="Dice4_MouseLeave"/>
+            <Label x:Name="Dice5" Content="Dice5" FontSize="20" Height="75" Width="75" BorderBrush="Black" BorderThickness="2" Margin="5,0,5,400" MouseDown="Dice5_MouseDown" MouseEnter="Dice5_MouseEnter" MouseLeave="Dice5_MouseLeave"/>
         </StackPanel>
         
         <!--Kasta tärningar-->
         <StackPanel Grid.Row="3" Grid.Column="6">
-            <Button Content="Kasta Tärningar" FontSize="20" Height="50" Width="200"  HorizontalAlignment="Right" Margin="0,150,5,0" Click="Button_Click"/>
+            <Button x:Name="ThrowDice" Content="Kasta Tärningar" FontSize="20" Height="50" Width="200"  HorizontalAlignment="Right" Margin="0,150,5,0" Click="Button_Click"/>
         </StackPanel>
 
 
