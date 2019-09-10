@@ -185,7 +185,7 @@ namespace YatzyGrupp2.View
         private void btn_test_Click(object sender, RoutedEventArgs e)
         {
             SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-            MessageBox.Show(sql.GetAllPlayer().ToString());
+            //MessageBox.Show(sql.GetAllPlayer().ToString());
         }
 
 
