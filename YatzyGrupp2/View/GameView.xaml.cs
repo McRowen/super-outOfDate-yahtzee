@@ -79,5 +79,16 @@ namespace YatzyGrupp2.View
         {
             diceThrow[4] = true;
         }
+
+        private void btn_test_Click(object sender, RoutedEventArgs e)
+        {
+            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+            MessageBox.Show(sql.GetAllPlayer().ToString());
+        }
+
+
+
+
+
     }
 }
