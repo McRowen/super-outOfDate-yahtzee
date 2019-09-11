@@ -48,7 +48,7 @@
         <Button Content="Checka highscore" TabIndex="7"  Margin="122.2,131.4,141.2,31.4" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Click="Button_Click_1" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"></Button>
         <Button Content="Starta vanligt spel" TabIndex="5" Margin="95.8,96.4,25.2,65.6" Height="30" BorderThickness="1" FontFamily="Times New Roman"  BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2"  />
         <Label Grid.ColumnSpan="2" Content="Tillgängliga spelare" HorizontalAlignment="Left" Margin="73.6,153,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
-        <ListView x:Name="listViewChosenPlayers" Grid.Column="" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="95.8,190,70.6,110.6" Grid.RowSpan="3" Grid.Row="0" >
+        <ListView x:Name="listViewChosenPlayers" Grid.Column="3" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="95.8,190,70.6,110.6" Grid.RowSpan="3" Grid.Row="0" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Nickname}" Header="Nickname"/>
