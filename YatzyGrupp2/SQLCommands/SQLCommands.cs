@@ -67,9 +67,9 @@ namespace YatzyGrupp2.SQLCommands
 
         }
         // Metod för att få upp alla spelare
-        public List<Player.Player> GetAllPlayers()
+        public List<Player.Player> GetAllPlayers(Player.Player p)
         {
-            Player.Player p;
+            
             List<Player.Player> players = new List<Player.Player>();
             using (var conn = new
              NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
