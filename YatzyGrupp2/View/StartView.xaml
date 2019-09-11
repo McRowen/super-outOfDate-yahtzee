@@ -40,7 +40,7 @@
         <StackPanel Grid.Column="4" Grid.Row="1">
             <Label Content="Efternamn" FontFamily="Times New Roman" FontSize="16"></Label>
             <TextBox Name="txtLastName" FontSize="16" FontFamily="Times New Roman" TabIndex="1" ></TextBox>
-            <Button Content="Registrera spelare"  Height="30" BorderThickness="1" FontFamily="Times New Roman" TabIndex="4"  BorderBrush="Black"  Background="SkyBlue" FontSize="14" ></Button>
+            <Button Content="Registrera spelare"  Height="30" BorderThickness="1" FontFamily="Times New Roman" TabIndex="4"  BorderBrush="Black"  Background="SkyBlue" FontSize="14" Click="Button_Click_2" ></Button>
         </StackPanel>
         <StackPanel Grid.Column="5" Grid.Row="1">
             <Label Content="Nickname" FontFamily="Times New Roman" FontSize="16" Grid.Column="3" Grid.Row="1"></Label>

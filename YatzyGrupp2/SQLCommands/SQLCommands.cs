@@ -49,7 +49,6 @@ namespace YatzyGrupp2.SQLCommands
 
         public void AddPlayerTest(string first, string last, string nick)
         {
-            Player.Player p = new Player.Player();
             using (var conn = new
                             NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
             {

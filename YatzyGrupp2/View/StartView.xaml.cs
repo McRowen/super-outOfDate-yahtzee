@@ -29,7 +29,7 @@ namespace YatzyGrupp2.View
             SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
 
             //MessageBox.Show(sql.GetAllPlayer().ToString());
-            sql.AddPlayer(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
+            sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
             txtFirstName.Clear();
             txtLastName.Clear();
             txtNickName.Clear();
@@ -40,6 +40,17 @@ namespace YatzyGrupp2.View
             this.Hide();
             HighScoreView highScore = new HighScoreView();
             highScore.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+
+            //MessageBox.Show(sql.GetAllPlayer().ToString());
+            sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtNickName.Clear();
         }
     }
 }
