@@ -20,13 +20,13 @@ namespace YatzyGrupp2.View
     public partial class StartView : Window
     {
         SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-        Player.Player p = new Player.Player();
+        
         public StartView()
         {
             
             InitializeComponent();
             listViewDbPlayers.ItemsSource = null;
-            listViewDbPlayers.ItemsSource = sql.GetAllPlayers(p);
+            listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -60,15 +60,16 @@ namespace YatzyGrupp2.View
 
         private void BtnChoose_Click(object sender, RoutedEventArgs e)
         {
-            int chosenPlayers = 0;
+            sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem);
             listViewChosenPlayers.ItemsSource = null;
-            listViewChosenPlayers.ItemsSource = sql.GetAllPlayers((Player.Player)listViewDbPlayers.SelectedItem);
+            listViewChosenPlayers.Items.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+
         }
 
         private void ListViewChosenPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //listViewDbPlayers.ItemsSource = null;
-            //listViewDbPlayers.ItemsSource = 
+            //listViewDbPlayers.ItemsSource = sql.GetChosenPlayer();
         }
     }
 }

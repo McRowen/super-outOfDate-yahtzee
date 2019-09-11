@@ -66,8 +66,36 @@ namespace YatzyGrupp2.SQLCommands
             }
 
         }
+        public List<Player.Player> GetChosenPlayer(Player.Player player_Id)
+        {
+            List<Player.Player> ChosenPlayers = new List<Player.Player>();
+            using (var conn = new
+                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "select nickname from player where player_Id = @player_Id";
+                    cmd.Parameters.AddWithValue("player_Id", player_Id.Player_id);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            p = new Player.Player()
+                            {
+                                Nickname = reader.GetString(0)
+                            };
+                            ChosenPlayers.Add(p);
+                        }
+                    }
+                }
+                conn.Close();
+            }
+            return ChosenPlayers;
+        }
         // Metod för att få upp alla spelare
-        public List<Player.Player> GetAllPlayers(Player.Player p)
+        public List<Player.Player> GetAllPlayers()
         {
             
             List<Player.Player> players = new List<Player.Player>();
