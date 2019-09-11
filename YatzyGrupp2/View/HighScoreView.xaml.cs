@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
+using Npgsql;
 
 namespace YatzyGrupp2.View
 {
@@ -23,6 +25,15 @@ namespace YatzyGrupp2.View
         {
             SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
             InitializeComponent();
+            try
+            {
+                HighScore.ItemsSource = null;
+                HighScore.ItemsSource = db.GetHighScore();
+            }
+            catch (PostgresException ex)
+            {
+               MessageBox.Show(ex.Message);
+            }
             HighScore.ItemsSource = null;
             HighScore.ItemsSource = db.GetHighScore(); //Denna blir en error när man fösöker gå in på Highscore sidan. Om man kommenterar bort denna plus methoden fungerar knapparna.
         }

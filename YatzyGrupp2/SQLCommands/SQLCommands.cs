@@ -68,7 +68,7 @@ namespace YatzyGrupp2.SQLCommands
         }
 
 
-        //  Denna blir en error när man försöker gå in på highscore sidan. om man kommenterar bort den fungerar knapparna.
+        //  Metod för att se highscore
         public List<Player.Player> GetHighScore()
         {
             Player.Player pe;
@@ -80,17 +80,21 @@ namespace YatzyGrupp2.SQLCommands
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT player.nickname, player.firstname, player.lastname, game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
+                    cmd.CommandText = "SELECT player.player_id, player.nickname, player.firstname, player.lastname, game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
                     using (var reader = cmd.ExecuteReader())
                     {
-                        pe = new Player.Player()
+                        while (reader.Read())
                         {
-                            Firstname = reader.GetString(0),
-                            Lastname = reader.GetString(1),
-                            Nickname = reader.GetString(2),
-                            Score = reader.GetInt32(3)
-                        };
-                        gamers.Add(pe);
+                            pe = new Player.Player()
+                            {
+                                Player_id = reader.GetInt32(0),
+                                Firstname = reader.GetString(1),
+                                Lastname = reader.GetString(2),
+                                Nickname = reader.GetString(3),
+                                Score = reader.GetInt32(4)
+                            };
+                            gamers.Add(pe);
+                        }
                     }
                 }
                 conn.Close();

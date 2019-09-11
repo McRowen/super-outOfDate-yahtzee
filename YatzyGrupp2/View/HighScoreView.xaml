@@ -39,11 +39,11 @@
         <ListView x:Name="HighScore" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Plats" Width="50"/>
-                    <GridViewColumn Header="Användarnamn" Width="120"/>
-                    <GridViewColumn Header="Förnamn" Width="120"/>
-                    <GridViewColumn Header="Efternamn" Width="120"/>
-                    <GridViewColumn Header="Totalpoäng" Width="150"/>
+                    <GridViewColumn Header="Plats" Width="50" DisplayMemberBinding="{Binding player_id}"/>
+                    <GridViewColumn Header="Användarnamn" Width="120" DisplayMemberBinding="{Binding Nickname}"/>
+                    <GridViewColumn Header="Förnamn" Width="120" DisplayMemberBinding="{Binding Firstname}"/>
+                    <GridViewColumn Header="Efternamn" Width="120" DisplayMemberBinding="{Binding Lastname}"/>
+                    <GridViewColumn Header="Totalpoäng" Width="150" DisplayMemberBinding="{Binding Score}"/>
                 </GridView>
             </ListView.View>
         </ListView>
