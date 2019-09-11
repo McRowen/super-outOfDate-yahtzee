@@ -20,10 +20,9 @@ namespace YatzyGrupp2.View
     public partial class StartView : Window
     {
         SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-        
+        int click = 0;
         public StartView()
-        {
-            
+        {           
             InitializeComponent();
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
@@ -31,9 +30,6 @@ namespace YatzyGrupp2.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-
-            //MessageBox.Show(sql.GetAllPlayer().ToString());
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
             txtFirstName.Clear();
             txtLastName.Clear();
@@ -49,9 +45,6 @@ namespace YatzyGrupp2.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
-
-            //MessageBox.Show(sql.GetAllPlayer().ToString());
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
             txtFirstName.Clear();
             txtLastName.Clear();
@@ -63,13 +56,24 @@ namespace YatzyGrupp2.View
             sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem);
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.Items.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            click++;
 
+            for (int i = 0; i < click; i++)
+            {
+                if (click == 4)
+                {
+                    BtnChoose.IsEnabled = false;                   
+                }                
+            }           
         }
 
         private void ListViewChosenPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //listViewDbPlayers.ItemsSource = null;
-            //listViewDbPlayers.ItemsSource = sql.GetChosenPlayer();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
         }
     }
 }

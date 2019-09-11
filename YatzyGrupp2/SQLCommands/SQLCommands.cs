@@ -15,7 +15,7 @@ namespace YatzyGrupp2.SQLCommands
 
         Player.Player p = new Player.Player();
 
-        public Player.Player AddPlayer(string first, string last, string nick)
+        public Player.Player AddPlayer(string first, string last, string nick) // Metod som inte fungerade...
         {
             //int id = 0;
             //id++;
@@ -45,7 +45,7 @@ namespace YatzyGrupp2.SQLCommands
                     }
                 }
             }
-        }
+        } 
 
         public void AddPlayerTest(string first, string last, string nick)
         {
@@ -66,7 +66,7 @@ namespace YatzyGrupp2.SQLCommands
             }
 
         }
-        public List<Player.Player> GetChosenPlayer(Player.Player player_Id)
+        public List<Player.Player> GetChosenPlayer(Player.Player player_Id) //Metod för att lägga till spelare i spelet.
         {
             List<Player.Player> ChosenPlayers = new List<Player.Player>();
             using (var conn = new
