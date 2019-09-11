@@ -12,7 +12,6 @@ namespace YatzyGrupp2.SQLCommands
     class SQLCommands
     {
         NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString);
-
         Player.Player p = new Player.Player();
 
         public Player.Player AddPlayer(string first, string last, string nick) // Metod som inte fungerade...
