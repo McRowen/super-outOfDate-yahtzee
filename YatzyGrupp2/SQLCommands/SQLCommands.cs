@@ -47,6 +47,28 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
 
+        public void AddPlayerTest(string first, string last, string nick)
+        {
+            Player.Player p = new Player.Player();
+            using (var conn = new
+                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "INSERT INTO player(firstname, lastname, nickname) VALUES(@firstname, @lastname, @nickname)";
+                    cmd.Parameters.AddWithValue("firstname", first);
+                    cmd.Parameters.AddWithValue("lastname", last);
+                    cmd.Parameters.AddWithValue("nickname", nick);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+
+        }
+
+
         //  Denna blir en error när man försöker gå in på highscore sidan. om man kommenterar bort den fungerar knapparna.
         public List<Player.Player> GetHighScore()
         {
