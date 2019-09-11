@@ -21,7 +21,10 @@ namespace YatzyGrupp2.View
     {
         public StartView()
         {
+            SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
             InitializeComponent();
+            listViewDbPlayers.ItemsSource = null;
+            listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

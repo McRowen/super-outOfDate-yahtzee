@@ -66,7 +66,38 @@ namespace YatzyGrupp2.SQLCommands
             }
 
         }
-
+        // Metod för att få upp alla spelare
+        public List<Player.Player> GetAllPlayers()
+        {
+            Player.Player p;
+            List<Player.Player> players = new List<Player.Player>();
+            using (var conn = new
+             NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT player.player_id, player.firstname, player.lastname, player.nickname FROM player";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            p = new Player.Player()
+                            {
+                                Player_id = reader.GetInt32(0),
+                                Firstname = reader.GetString(1),
+                                Lastname = reader.GetString(2),
+                                Nickname = reader.GetString(3)
+                            };
+                            players.Add(p);
+                        }
+                    }
+                    conn.Close();
+                }
+                return players;
+            }
+        }
 
         //  Metod för att se highscore
         public List<Player.Player> GetHighScore()
