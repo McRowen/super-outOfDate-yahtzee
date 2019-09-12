@@ -19,9 +19,11 @@ namespace YatzyGrupp2.View
     /// </summary>
     public partial class GameView : Window
     {
+        List<Player.Player> gamePlayers = new List<Player.Player>();
         public GameView()
         {
             InitializeComponent();
+            gamePlayers = StartView.players;
         }
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
@@ -30,6 +32,9 @@ namespace YatzyGrupp2.View
         Color clickColor = Colors.Green;
         Color mouseNotOnColor = Colors.White;
         Color mouseOnColor = Colors.Gray;
+
+        
+
 
 
         private void Button_Click(object sender, RoutedEventArgs e)

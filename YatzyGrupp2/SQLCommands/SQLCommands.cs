@@ -65,9 +65,10 @@ namespace YatzyGrupp2.SQLCommands
             }
 
         }
-        public List<Player.Player> GetChosenPlayer(Player.Player player_Id) //Metod för att lägga till spelare i spelet.
+        public Player.Player GetChosenPlayer(Player.Player player_Id) //Metod för att lägga till spelare i spelet.
         {
-            List<Player.Player> ChosenPlayers = new List<Player.Player>();
+            //List<Player.Player> ChosenPlayers = new List<Player.Player>();
+            Player.Player ChosenPlayers = new Player.Player();
             using (var conn = new
                             NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
             {
@@ -85,7 +86,7 @@ namespace YatzyGrupp2.SQLCommands
                             {
                                 Nickname = reader.GetString(0)
                             };
-                            ChosenPlayers.Add(p);
+                            ChosenPlayers = p;
                         }
                     }
                 }

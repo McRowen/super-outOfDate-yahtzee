@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YatzyGrupp2.Player
 {
-    class Player
+    public class Player
     {
         public int Player_id { get;  set; }
         public int Score { get; set; }

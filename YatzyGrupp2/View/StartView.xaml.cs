@@ -21,13 +21,14 @@ namespace YatzyGrupp2.View
     {
         SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
         int click = 0;
+        public static List<Player.Player> players = new List<Player.Player>();
         public StartView()
         {           
             InitializeComponent();
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
@@ -53,9 +54,12 @@ namespace YatzyGrupp2.View
 
         private void BtnChoose_Click(object sender, RoutedEventArgs e)
         {
-            sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem);
+            
+            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            //sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem);
             listViewChosenPlayers.ItemsSource = null;
-            listViewChosenPlayers.Items.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            //listViewChosenPlayers.Items.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            listViewChosenPlayers.ItemsSource = players;
             click++;
 
             for (int i = 0; i < click; i++)
@@ -64,7 +68,8 @@ namespace YatzyGrupp2.View
                 {
                     BtnChoose.IsEnabled = false;                   
                 }                
-            }           
+            }
+            
         }
 
         private void ListViewChosenPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,6 +79,8 @@ namespace YatzyGrupp2.View
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
+            GameView gameView = new GameView();
+            gameView.Show();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)

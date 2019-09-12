@@ -21,6 +21,7 @@ namespace YatzyGrupp2.Gamelogic
         //}
 
         public int Round { get; set; }
+        public List<int> DiceValue { get; set; }
 
         public int[] GetRandomDice()
         {
