@@ -47,6 +47,8 @@ namespace YatzyGrupp2.View
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
+            listViewDbPlayers.ItemsSource = null;
+            listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
             txtFirstName.Clear();
             txtLastName.Clear();
             txtNickName.Clear();
