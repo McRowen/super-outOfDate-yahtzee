@@ -181,7 +181,7 @@ namespace YatzyGrupp2.SQLCommands
                                 Nickname = reader.GetString(0),
                                 Firstname = reader.GetString(1),
                                 Lastname = reader.GetString(2),
-                                ended_at = reader.GetInt32(3)
+                                Ended_At = reader.GetInt32(3)
                             };
                             wins.Add(p);
                         }
