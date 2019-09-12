@@ -19,11 +19,38 @@ namespace YatzyGrupp2.View
     /// </summary>
     public partial class GameView : Window
     {
+        GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
         List<Player.Player> gamePlayers = new List<Player.Player>();
         public GameView()
         {
             InitializeComponent();
             gamePlayers = StartView.players;
+            if (gamePlayers.Count <= 1)
+            {
+                MessageBox.Show("Du måste välja minst två spelare");                
+            }
+            else if (gamePlayers.Count == 2)
+            {
+                lblPlayer1.Content = gamePlayers[0].Nickname;
+                lblPlayer2.Content = gamePlayers[1].Nickname;
+                lblPlayer3.Content = "";
+                lblPlayer4.Content = "";
+            }
+            else if (gamePlayers.Count == 3)
+            {
+                lblPlayer1.Content = gamePlayers[0].Nickname;
+                lblPlayer2.Content = gamePlayers[1].Nickname;
+                lblPlayer3.Content = gamePlayers[2].Nickname;
+                lblPlayer4.Content = "";
+            }
+            else
+            {
+                lblPlayer1.Content = gamePlayers[0].Nickname;
+                lblPlayer2.Content = gamePlayers[1].Nickname;
+                lblPlayer3.Content = gamePlayers[2].Nickname;
+                lblPlayer4.Content = gamePlayers[3].Nickname;
+            }
+            
         }
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
@@ -31,11 +58,7 @@ namespace YatzyGrupp2.View
 
         Color clickColor = Colors.Green;
         Color mouseNotOnColor = Colors.White;
-        Color mouseOnColor = Colors.Gray;
-
-        
-
-
+        Color mouseOnColor = Colors.Gray;        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {           

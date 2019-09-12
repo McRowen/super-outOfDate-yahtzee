@@ -20,6 +20,7 @@ namespace YatzyGrupp2.View
     public partial class StartView : Window
     {
         SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+        GamePlayer.GamePlayer g = new GamePlayer.GamePlayer();
         int click = 0;
         public static List<Player.Player> players = new List<Player.Player>();
         public StartView()
@@ -70,8 +71,7 @@ namespace YatzyGrupp2.View
                 {
                     BtnChoose.IsEnabled = false;                   
                 }                
-            }
-            
+            }            
         }
 
         private void ListViewChosenPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -82,7 +82,7 @@ namespace YatzyGrupp2.View
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
             GameView gameView = new GameView();
-            gameView.Show();
+            gameView.Show(); 
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)

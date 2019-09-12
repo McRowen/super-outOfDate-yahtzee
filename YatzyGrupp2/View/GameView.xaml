@@ -53,7 +53,7 @@
 
         <!--Column 2, FÖRSTA SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblPlayer1" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
@@ -76,7 +76,7 @@
 
         <!--Column 2, ANDRA SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="2">
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblPlayer2" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
@@ -99,7 +99,7 @@
 
         <!--Column 3, TREDJE SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="3">
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblPlayer3" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
@@ -122,7 +122,7 @@
 
         <!--Column 4, FJÄRDE SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="4">
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblPlayer4" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
