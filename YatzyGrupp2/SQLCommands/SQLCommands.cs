@@ -146,9 +146,9 @@ namespace YatzyGrupp2.SQLCommands
                             pe = new Player.Player()
                             {
                                 Player_id = reader.GetInt32(0),
-                                Firstname = reader.GetString(1),
-                                Lastname = reader.GetString(2),
-                                Nickname = reader.GetString(3),
+                                Nickname = reader.GetString(1),
+                                Firstname = reader.GetString(2),
+                                Lastname = reader.GetString(3),
                                 Score = reader.GetInt32(4)
                             };
                             gamers.Add(pe);
