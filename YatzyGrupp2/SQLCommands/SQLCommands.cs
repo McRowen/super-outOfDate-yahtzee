@@ -129,7 +129,6 @@ namespace YatzyGrupp2.SQLCommands
         //  Metod för att se highscore
         public List<Player.Player> GetHighScore()
         {
-            Player.Player pe;
             List<Player.Player> gamers = new List<Player.Player>();
             using (var conn = new
                NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
@@ -138,20 +137,24 @@ namespace YatzyGrupp2.SQLCommands
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT player.player_id, player.nickname, player.firstname, player.lastname, game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
+                    //cmd.CommandText = "SELECT player.player_id, player.nickname, player.firstname, player.lastname," +
+                    //    " game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
+                    cmd.CommandText = "WITH rankscoreamount AS(SELECT player.nickname, player.firstname, player.lastname, SUM(game_player.score) FROM game_player " +
+                        "JOIN player ON player.player_id = game_player.player_id JOIN game ON game.game_id = game_player.game_id " +
+                        "WHERE game.started_at BETWEEN CURRENT_DATE -INTERVAL '7 days' AND CURRENT_DATE +INTERVAL '1 day' " +
+                        "GROUP BY player.nickname, player.firstname, player.lastname ORDER BY SUM DESC) SELECT* FROM rankscoreamount";
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            pe = new Player.Player()
-                            {
-                                Player_id = reader.GetInt32(0),
-                                Firstname = reader.GetString(1),
-                                Lastname = reader.GetString(2),
-                                Nickname = reader.GetString(3),
-                                Score = reader.GetInt32(4)
+                            p = new Player.Player()
+                            {                               
+                                Firstname = reader.GetString(0),
+                                Lastname = reader.GetString(1),
+                                Nickname = reader.GetString(2),
+                                Score = reader.GetInt32(3)
                             };
-                            gamers.Add(pe);
+                            gamers.Add(p);
                         }
                     }
                 }
