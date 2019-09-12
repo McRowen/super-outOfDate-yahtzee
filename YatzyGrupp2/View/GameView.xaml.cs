@@ -72,32 +72,87 @@ namespace YatzyGrupp2.View
 
         private void Dice1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            diceThrow[0] = true;
-            Dice1.Background = new SolidColorBrush(clickColor);
+            int i = 0;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice1.Background = new SolidColorBrush(clickColor);
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice1.Background = new SolidColorBrush(mouseNotOnColor);
+            }
+
         }
 
         private void Dice2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            diceThrow[1] = true;
-            Dice2.Background = new SolidColorBrush(clickColor);
+            int i = 1;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice2.Background = new SolidColorBrush(clickColor);
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice2.Background = new SolidColorBrush(mouseNotOnColor);
+            }
+
         }
 
         private void Dice3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            diceThrow[2] = true;
-            Dice3.Background = new SolidColorBrush(clickColor);
+            int i = 2;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice3.Background = new SolidColorBrush(clickColor);
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice3.Background = new SolidColorBrush(mouseNotOnColor);
+            }
+
         }
 
         private void Dice4_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            diceThrow[3] = true;
-            Dice4.Background = new SolidColorBrush(clickColor);
+            int i = 3;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice4.Background = new SolidColorBrush(clickColor);
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice4.Background = new SolidColorBrush(mouseNotOnColor);
+            }
+
         }
 
         private void Dice5_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            diceThrow[4] = true;
-            Dice5.Background = new SolidColorBrush(clickColor);
+            int i = 4;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice4.Background = new SolidColorBrush(clickColor);
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice4.Background = new SolidColorBrush(mouseNotOnColor);
+            }
+
         }
 
         private void Dice1_MouseEnter(object sender, MouseEventArgs e)
