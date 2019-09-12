@@ -43,6 +43,7 @@ namespace YatzyGrupp2.View
             this.Hide();
             MostGamesView mostgames = new MostGamesView();
             mostgames.ShowDialog();
+          
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

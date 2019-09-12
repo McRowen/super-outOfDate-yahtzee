@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace YatzyGrupp2.View
 {
@@ -21,7 +22,17 @@ namespace YatzyGrupp2.View
     {
         public MostGamesView()
         {
+            SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
             InitializeComponent();
+            try
+            {
+                HighScore.ItemsSource = null;
+                HighScore.ItemsSource = db.GetMostWins();
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
