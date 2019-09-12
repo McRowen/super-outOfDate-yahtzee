@@ -147,7 +147,7 @@ namespace YatzyGrupp2.SQLCommands
                     {
                         while (reader.Read())
                         {
-                            pe = new Player.Player()
+                            p = new Player.Player()
                             {
                                 Player_id = reader.GetInt32(0),
                                 Firstname = reader.GetString(1),
