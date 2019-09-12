@@ -147,12 +147,13 @@ namespace YatzyGrupp2.SQLCommands
                     {
                         while (reader.Read())
                         {
-                            p = new Player.Player()
-                            {                               
-                                Firstname = reader.GetString(0),
-                                Lastname = reader.GetString(1),
-                                Nickname = reader.GetString(2),
-                                Score = reader.GetInt32(3)
+                            pe = new Player.Player()
+                            {
+                                Player_id = reader.GetInt32(0),
+                                Firstname = reader.GetString(1),
+                                Lastname = reader.GetString(2),
+                                Nickname = reader.GetString(3),
+                                Score = reader.GetInt32(4)
                             };
                             gamers.Add(p);
                         }
