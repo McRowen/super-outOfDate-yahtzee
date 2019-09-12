@@ -149,11 +149,10 @@ namespace YatzyGrupp2.SQLCommands
                         {
                             p = new Player.Player()
                             {
-                                Player_id = reader.GetInt32(0),
+                                Nickname = reader.GetString(0),
                                 Firstname = reader.GetString(1),
                                 Lastname = reader.GetString(2),
-                                Nickname = reader.GetString(3),
-                                Score = reader.GetInt32(4)
+                                Score = reader.GetInt32(3)
                             };
                             gamers.Add(p);
                         }
