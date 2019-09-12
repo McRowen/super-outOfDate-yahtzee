@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace YatzyGrupp2.View
 {
@@ -25,11 +26,8 @@ namespace YatzyGrupp2.View
         {
             InitializeComponent();
             gamePlayers = StartView.players;
-            if (gamePlayers.Count <= 1)
-            {
-                MessageBox.Show("Du måste välja minst två spelare");                
-            }
-            else if (gamePlayers.Count == 2)
+
+            if (gamePlayers.Count == 2)
             {
                 lblPlayer1.Content = gamePlayers[0].Nickname;
                 lblPlayer2.Content = gamePlayers[1].Nickname;
@@ -50,7 +48,7 @@ namespace YatzyGrupp2.View
                 lblPlayer3.Content = gamePlayers[2].Nickname;
                 lblPlayer4.Content = gamePlayers[3].Nickname;
             }
-            
+                                 
         }
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();

@@ -28,6 +28,11 @@ namespace YatzyGrupp2.View
             InitializeComponent();
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
+            if (players.Count < 2)
+            {
+                btnStartGame.IsEnabled = false;
+            }
+
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,6 +52,7 @@ namespace YatzyGrupp2.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
@@ -57,7 +63,10 @@ namespace YatzyGrupp2.View
 
         private void BtnChoose_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (players.Count >= 1)
+            {
+                btnStartGame.IsEnabled = true;
+            }
             players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
             //sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem);
             listViewChosenPlayers.ItemsSource = null;
