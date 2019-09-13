@@ -1,0 +1,15 @@
+﻿<Window x:Class="YatzyGrupp2.View.HelpView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YatzyGrupp2.View"
+        mc:Ignorable="d"
+        Title="HelpView" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="label" Content="Starta nytt spel&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,54,0,0" FontFamily="Times New Roman" FontSize="24" Height="42"/>
+        <TextBlock x:Name="helpBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="72,101,0,0" Height="212" Width="641"/>
+        <Button x:Name="OK" Content="OK" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="352,344,0,0" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Height="28" Click="OK_Click"/>
+
+    </Grid>
+</Window>
