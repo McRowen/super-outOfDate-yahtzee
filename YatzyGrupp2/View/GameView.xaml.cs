@@ -171,12 +171,12 @@ namespace YatzyGrupp2.View
             if (diceThrow[i] != true)
             {
                 diceThrow[i] = true;
-                Dice4.Background = new SolidColorBrush(clickColor);
+                Dice5.Background = new SolidColorBrush(clickColor);
             }
             else
             {
                 diceThrow[i] = false;
-                Dice4.Background = new SolidColorBrush(mouseNotOnColor);
+                Dice5.Background = new SolidColorBrush(mouseNotOnColor);
             }
 
         }
@@ -273,6 +273,12 @@ namespace YatzyGrupp2.View
             this.Hide();
             StartView startview = new StartView();
             startview.ShowDialog();
+        }
+
+        private void HelpGame_Click(object sender, RoutedEventArgs e)
+        {
+            GameViewHelp gameViewHelp = new GameViewHelp();
+            gameViewHelp.ShowDialog();
         }
     }
 }

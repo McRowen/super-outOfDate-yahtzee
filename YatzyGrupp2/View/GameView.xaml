@@ -164,6 +164,7 @@
             <Button x:Name="ThrowDice" Content="Kasta Tärningar" FontSize="20" Height="50" Width="200"  HorizontalAlignment="Right" Margin="0,150,5,0" Click="Button_Click"/>
         </StackPanel>
         <!--<Button x:Name="btn_test" Content="TEST" Grid.Column="7" HorizontalAlignment="Left" Margin="45,373.5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="137" Height="87" Click="btn_test_Click"/>-->
+        <Button x:Name="HelpGame" Content="Hjälp/Regler" Grid.Column="7" Grid.Row="2" Height="50" VerticalAlignment="Bottom" Margin="5" Click="HelpGame_Click"/>
 
 
     </Grid>
