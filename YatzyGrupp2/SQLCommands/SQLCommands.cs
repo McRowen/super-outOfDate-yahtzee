@@ -171,7 +171,10 @@ namespace YatzyGrupp2.SQLCommands
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "WITH mostgames AS (SELECT player.nickname, player.firstname, player.lastname, COUNT(game.ended_at) FROM  player JOIN game_player ON player.player_id = game_player.player_id JOIN game ON game.game_id = game_player.game_id GROUP BY player.nickname, player.firstname, player.lastname ORDER BY COUNT DESC) SELECT * FROM mostgames";
+                    cmd.CommandText = "WITH mostgames AS (SELECT player.nickname, player.firstname, player.lastname, COUNT(game.ended_at) FROM" +
+                        " player JOIN game_player ON player.player_id" +
+                        " = game_player.player_id JOIN game ON game.game_id = game_player.game_id GROUP BY player.nickname, player.firstname," +
+                        " player.lastname ORDER BY COUNT DESC) SELECT * FROM mostgames";
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())

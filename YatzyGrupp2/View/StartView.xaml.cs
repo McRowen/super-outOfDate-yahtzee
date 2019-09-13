@@ -32,7 +32,6 @@ namespace YatzyGrupp2.View
             {
                 btnStartGame.IsEnabled = false;
             }
-
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +51,6 @@ namespace YatzyGrupp2.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
