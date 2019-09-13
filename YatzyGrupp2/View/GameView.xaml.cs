@@ -171,12 +171,12 @@ namespace YatzyGrupp2.View
             if (diceThrow[i] != true)
             {
                 diceThrow[i] = true;
-                Dice4.Background = new SolidColorBrush(clickColor);
+                Dice5.Background = new SolidColorBrush(clickColor);
             }
             else
             {
                 diceThrow[i] = false;
-                Dice4.Background = new SolidColorBrush(mouseNotOnColor);
+                Dice5.Background = new SolidColorBrush(mouseNotOnColor);
             }
 
         }
