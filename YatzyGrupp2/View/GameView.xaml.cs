@@ -274,5 +274,11 @@ namespace YatzyGrupp2.View
             StartView startview = new StartView();
             startview.ShowDialog();
         }
+
+        private void HelpGame_Click(object sender, RoutedEventArgs e)
+        {
+            GameViewHelp gameViewHelp = new GameViewHelp();
+            gameViewHelp.ShowDialog();
+        }
     }
 }
