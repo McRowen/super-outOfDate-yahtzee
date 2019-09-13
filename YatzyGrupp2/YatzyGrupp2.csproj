@@ -89,9 +89,6 @@
     <Compile Include="View\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\HelpView.xaml.cs">
-      <DependentUpon>HelpView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\HighScoreView.xaml.cs">
       <DependentUpon>HighScoreView.xaml</DependentUpon>
     </Compile>
@@ -113,10 +110,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GameView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\HelpView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

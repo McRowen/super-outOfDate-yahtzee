@@ -98,11 +98,5 @@ namespace YatzyGrupp2.View
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
         }
-
-        private void Help_Click(object sender, RoutedEventArgs e)
-        {
-            HelpView helpview = new HelpView();
-            helpview.ShowDialog(); 
-        }
     }
 }
