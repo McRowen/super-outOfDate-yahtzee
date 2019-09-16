@@ -193,7 +193,8 @@ namespace YatzyGrupp2.SQLCommands
                                 Nickname = reader.GetString(0),
                                 Firstname = reader.GetString(1),
                                 Lastname = reader.GetString(2),
-                                Ended_At = reader.GetInt32(3)
+                                Count = reader.GetInt32(3)
+                              
                             };
                         rank++;
                             wins.Add(pe);

@@ -43,7 +43,7 @@
                     <GridViewColumn Header="Användarnamn" Width="120" DisplayMemberBinding="{Binding Nickname}" />
                     <GridViewColumn Header="Förnamn" Width="120" DisplayMemberBinding="{Binding Firstname}"/>
                     <GridViewColumn Header="Efternamn" Width="120" DisplayMemberBinding="{Binding Lastname}"/>
-                    <GridViewColumn Header="Matcher" Width="150" DisplayMemberBinding="{Binding Ended_at}"/>
+                    <GridViewColumn Header="Matcher" Width="150" DisplayMemberBinding="{Binding Count}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -9,5 +9,6 @@ namespace YatzyGrupp2.Player
     class highscoreplayer : Player
     {
         public int Rank { get; set; }
+        public int Count { get; set; }
     }
 }
