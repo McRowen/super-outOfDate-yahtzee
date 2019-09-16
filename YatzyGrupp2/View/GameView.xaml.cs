@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Npgsql;
+using System.Configuration;
+using Npgsql; 
 
 namespace YatzyGrupp2.View
 {
