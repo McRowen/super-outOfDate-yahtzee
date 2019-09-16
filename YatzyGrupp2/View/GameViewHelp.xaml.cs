@@ -23,6 +23,7 @@ namespace YatzyGrupp2.View
         {
             InitializeComponent();
             GameRules();
+            GameExample();
         
         }
 
@@ -43,5 +44,16 @@ namespace YatzyGrupp2.View
 
 
         }
+
+        public string GameExample()
+        {
+            return gameExample.Text = "Första kastet ger: 6 - 6 - 3 - 6 - 6\n\n" +
+                "Du låter sexorna ligga kvar och kastar om trean. Trean blir en FYRA " +
+                "och du kastar det tredje och sista slaget blir en FEMMA.\n" +
+                "Resultatet blir FYRTAL eller SEXOR med poängsumma 24, som antecknas " +
+                "vid rubrikerna som väljs. \nSkulle det sista kastet blivit en SEXA hade du " +
+                "fått Yatzy.";
+        }
+
     }
 }
