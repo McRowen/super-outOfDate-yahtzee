@@ -34,9 +34,9 @@ namespace YatzyGrupp2.View
         public string GameRules()
         {
             return gameRules.Text = "På skärmen kommer det visas tydligt vems tur det är. " +
-                "Varje gång det blir din tur har du rätt till högst 3 tärningskast. " +
+                "Varje gång det blir din tur har du rätt till högst 3 tärningskast. \n " +
                 "För var slag avgör du vilka tärningar du vill spara till nästa kast och vilka " +
-                "tärningar du vill kasta om. Spara en tärning genom att klicka på den, tärningarna" +
+                "tärningar du vill kasta om. Spara en tärning genom att klicka på den,\n tärningarna" +
                 " blir grön när du har sparat dem. Efter alla kast förs poängsumman in intill en av rubrikerna.";
 
 
