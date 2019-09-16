@@ -52,6 +52,7 @@ namespace YatzyGrupp2.View
         }
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
+        int[] dice = new int[5];
         /*----Vilka Färger----*/
 
         Color clickColor = Colors.Green;
@@ -60,9 +61,9 @@ namespace YatzyGrupp2.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {           
-            int[] dice = new int[5];
+            
              
-            dice = gamelogic.GetRandomDice();
+            dice = gamelogic.GetRandomDice(diceThrow, dice);
             if(diceThrow[0] != true)
             {
                 Dice1.Content = Convert.ToString(dice[0]);

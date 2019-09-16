@@ -22,14 +22,24 @@ namespace YatzyGrupp2.Gamelogic
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
 
-        public int[] GetRandomDice()
+        public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
+
+            if(dice != null)
+            {
+                num = dice;
+            }
+
             Random rnd = new Random();
             for(int i = 0; i < 5; i++)
             {
-                int dice = rnd.Next(1, 7);
-                num[i] = dice;
+                if(randInarray[i] == false)
+                {
+                    int randValue = rnd.Next(1, 7);
+                    num[i] = randValue;
+                }
+                
             }
             return num;
         }

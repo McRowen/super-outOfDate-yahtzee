@@ -57,7 +57,7 @@ namespace YatzyGrupp2.Test
 
             Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
             int[] dice = new int[5];
-            dice = gamelogic.GetRandomDice();
+            //dice = gamelogic.GetRandomDice();
            
         }
     }
