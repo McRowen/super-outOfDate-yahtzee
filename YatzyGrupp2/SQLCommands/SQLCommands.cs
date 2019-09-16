@@ -127,9 +127,10 @@ namespace YatzyGrupp2.SQLCommands
         }
 
         //  Metod för att se highscore
-        public List<Player.Player> GetHighScore()
+        public List<Player.highscoreplayer> GetHighScore()
         {
-            List<Player.Player> gamers = new List<Player.Player>();
+            List<Player.highscoreplayer> gamers = new List<Player.highscoreplayer>();
+            Player.highscoreplayer pe = new Player.highscoreplayer();
             using (var conn = new
                NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -145,16 +146,19 @@ namespace YatzyGrupp2.SQLCommands
                         "GROUP BY player.nickname, player.firstname, player.lastname ORDER BY SUM DESC) SELECT* FROM rankscoreamount";
                     using (var reader = cmd.ExecuteReader())
                     {
+                        int rank = 1;
                         while (reader.Read())
                         {
-                            p = new Player.Player()
+                            pe = new Player.highscoreplayer()
                             {
+                                Rank = rank,
                                 Nickname = reader.GetString(0),
                                 Firstname = reader.GetString(1),
                                 Lastname = reader.GetString(2),
                                 Score = reader.GetInt32(3)
                             };
-                            gamers.Add(p);
+                            rank++;
+                            gamers.Add(pe);
                         }
                     }
                 }
@@ -162,8 +166,9 @@ namespace YatzyGrupp2.SQLCommands
             }
             return gamers;
         }
-        public List<Player.Player> GetMostWins(){
-                         List<Player.Player> wins = new List<Player.Player>();
+        public List<Player.highscoreplayer> GetMostWins(){
+                         List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
+            Player.highscoreplayer pe = new Player.highscoreplayer();
             using (var conn = new
                NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -177,16 +182,21 @@ namespace YatzyGrupp2.SQLCommands
                         " player.lastname ORDER BY COUNT DESC) SELECT * FROM mostgames";
                     using (var reader = cmd.ExecuteReader())
                     {
+                        int rank = 1;
+
                         while (reader.Read())
                         {
-                            p = new Player.Player()
+
+                            pe = new Player.highscoreplayer()
                             {
+                                Rank = rank,
                                 Nickname = reader.GetString(0),
                                 Firstname = reader.GetString(1),
                                 Lastname = reader.GetString(2),
                                 Ended_At = reader.GetInt32(3)
                             };
-                            wins.Add(p);
+                        rank++;
+                            wins.Add(pe);
                         }
                     }
                 }

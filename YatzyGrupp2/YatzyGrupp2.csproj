@@ -81,6 +81,7 @@
     <Compile Include="Gamelogic\Gamelogic.cs" />
     <Compile Include="GamePlayer\GamePlayer.cs" />
     <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\highscoreplayer.cs" />
     <Compile Include="SQLCommands\SQLCommands.cs" />
     <Compile Include="Test\DataTest.cs" />
     <Compile Include="Test\Listview.xaml.cs">
