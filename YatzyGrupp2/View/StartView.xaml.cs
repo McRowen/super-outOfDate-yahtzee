@@ -89,7 +89,8 @@ namespace YatzyGrupp2.View
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
             GameView gameView = new GameView();
-            gameView.Show(); 
+            gameView.Show();
+            this.Hide();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
