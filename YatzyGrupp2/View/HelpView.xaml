@@ -5,27 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
-        Title="HelpView" Height="700" Width="800">
+        Title="HelpView" Height="500" Width="1000">
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Content="Hjälp" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
-        <Button x:Name="OK" Content="OK" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Height="28" Click="OK_Click"/>
-        <Label Content="Steg 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Grid.Row="1"/>
-        <Label Content="Steg 2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Steg 3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Grid.Row="1" Grid.Column="2"/>
-        <TextBlock Grid.Row="2" FontSize="14">
+        <Label Content="Hjälp" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45"/>
+        <Button x:Name="OK" Content="OK" Grid.Column="3" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Height="50" Click="OK_Click"/>
+        <Label Content="Steg 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5"/>
+        <Label Content="Steg 2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Grid.Row="1" Grid.Column="3" Margin="0,0,0,5"/>
+        <Label Content="Steg 3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Grid.Row="1" Grid.Column="5" Margin="0,0,0,5"/>
+        <TextBlock Grid.Row="2" FontSize="15" Grid.Column="1" TextAlignment="Center">
             Om det är första gången du spelar spelet
             <LineBreak/>
             behöver du skapa en ny användare.
@@ -37,7 +41,7 @@
             och tryck på registrera spelare.
         </TextBlock>
 
-        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="14">
+        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="15" TextAlignment="Center">
             Nu när din användare är registrerad borde
             <LineBreak/>
             du finnas i tillgängliga spelare. Tryck
@@ -49,7 +53,7 @@
             det 2 till 4 valda spelare
         </TextBlock>
 
-        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="14">
+        <TextBlock Grid.Row="2" Grid.Column="5" FontSize="15" TextAlignment="Center">
             Efter att ni valt 2 till 4 spelare så är det
             <LineBreak/>
             dags att välja vanligt yatzy eller styrt yatzy.
@@ -58,7 +62,7 @@
             <LineBreak/>
             Efter detta börjar spelet. Regler finns att 
             <LineBreak/>
-            hitta på denna sida. Lycka till!
+            hitta på nästa sida. Lycka till!
         </TextBlock>
 
     </Grid>
