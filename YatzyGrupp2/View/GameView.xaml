@@ -54,93 +54,93 @@
         <!--Column 2, FÖRSTA SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Label x:Name="lblPlayer1" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblOnesP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTwosP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTreesP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFoursP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFivesP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSixesP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSumP1" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblBonusP1" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblParP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lbl2ParP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTripletP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFourofaKindP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSmallStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblLargeStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFullHouseP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblChansP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblYatzyP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTotalP1" Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
 
         <!--Column 2, ANDRA SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="2">
             <Label x:Name="lblPlayer2" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblOnesP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTwosP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTreesP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFoursP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFivesP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSixesP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSumP2" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblBonus" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblParP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lbl2ParP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTripletP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFourofaKindP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSmallStraightP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblLargeStraight" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFullHouseP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblChanseP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblYatzyP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTotalP2" Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
 
         <!--Column 3, TREDJE SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="3">
             <Label x:Name="lblPlayer3" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblOnesP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTwosP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTreesP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFoursP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFivesP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSixesP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSumP3" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblBonusP3" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblParP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lbl2ParP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTripletP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFourofaKindP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSmallStraightP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblLargeStraightP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFullHouseP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblChanseP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblYatzyP3" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTotalP3" Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
 
         <!--Column 4, FJÄRDE SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="4">
             <Label x:Name="lblPlayer4" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblOnesP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTwosP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTreesP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFoursP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFivesP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSixesP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSumP4" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblBonusP4" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblParP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lbl2ParP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTripletP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFourofaKindP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSmallStraightP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblLargeStraightP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFullHouseP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblChanseP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblYatzyP4" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblTotalP4" Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
 
         <!--Spara kast, vad som är markerat och avsluta spel-->
