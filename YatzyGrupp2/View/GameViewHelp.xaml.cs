@@ -25,7 +25,6 @@ namespace YatzyGrupp2.View
             GameRules();
             GameExample();
             LowerPart();
-        
         }
 
         private void BtnOK_Click(object sender, RoutedEventArgs e)
