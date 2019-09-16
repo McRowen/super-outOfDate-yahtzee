@@ -5,11 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
-        Title="HelpView" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="label" Content="Starta nytt spel&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,54,0,0" FontFamily="Times New Roman" FontSize="24" Height="42"/>
-        <TextBlock x:Name="helpBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="72,101,0,0" Height="212" Width="641"/>
-        <Button x:Name="OK" Content="OK" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="352,344,0,0" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Height="28" Click="OK_Click"/>
+        Title="HelpView" Height="700" Width="800">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Hjälp" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <Button x:Name="OK" Content="OK" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Height="28" Click="OK_Click"/>
+        <Label Content="Steg 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Grid.Row="1"/>
+        <Label Content="Steg 2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Steg 3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Grid.Row="1" Grid.Column="2"/>
+        <TextBlock Grid.Row="2" FontSize="14">
+            Om det är första gången du spelar spelet
+            <LineBreak/>
+            behöver du skapa en ny användare.
+            <LineBreak/>
+            Detta gör på på vänster sidan av spelet,
+            <LineBreak/>
+            Skriv in nickname, förnamn och efternamn
+            <LineBreak/>
+            och tryck på registrera spelare.
+        </TextBlock>
+
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="14">
+            Nu när din användare är registrerad borde
+            <LineBreak/>
+            du finnas i tillgängliga spelare. Tryck
+            <LineBreak/>
+            på den spelaren du vill välja och klicka
+            <LineBreak/>
+            på välj spelare. För att spela spelet krävs
+            <LineBreak/>
+            det 2 till 4 valda spelare
+        </TextBlock>
+
+        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="14">
+            Efter att ni valt 2 till 4 spelare så är det
+            <LineBreak/>
+            dags att välja vanligt yatzy eller styrt yatzy.
+            <LineBreak/>
+            Välj detta genom att klicka på knapparna
+            <LineBreak/>
+            Efter detta börjar spelet. Regler finns att 
+            <LineBreak/>
+            hitta på denna sida. Lycka till!
+        </TextBlock>
 
     </Grid>
 </Window>
