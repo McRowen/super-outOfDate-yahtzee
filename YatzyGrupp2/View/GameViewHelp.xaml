@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
-        Title="GameViewHelp" Height="800" Width="1400">
-    <Grid ShowGridLines="True" Margin="0,0,0,-27.5">
+        Title="GameViewHelp" Height="649.427" Width="1141.611">
+    <Grid ShowGridLines="True" Margin="0,0,2,-28">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -25,13 +25,13 @@
             <RowDefinition/>
 
         </Grid.RowDefinitions>
-        <Button x:Name="btnOK" Content="OK" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Height="50" VerticalAlignment="Bottom" Margin="10.5,0,0,104" Click="BtnOK_Click" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14"/>
+        <Button x:Name="btnOK" Content="OK" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Height="50" VerticalAlignment="Bottom" Margin="0,0,10,70" Click="BtnOK_Click" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14"/>
         <Label x:Name="label" Content="Spelets gång" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="138" FontFamily="Times New Roman" FontSize="24" Margin="38,97,0,0" Grid.ColumnSpan="2"/>
         <Label x:Name="label1" Content="REGLER" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="36" Grid.ColumnSpan="2" Grid.Column="3" Margin="97.5,10,0,0"/>
-        <TextBlock x:Name="gameRules" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="130" Width="704" Margin="38,141,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.RowSpan="2"/>
-        <Label x:Name="label_Copy" Content="Ett spelexempel" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="138" FontFamily="Times New Roman" FontSize="24" Margin="46,14.5,0,0" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <TextBlock x:Name="gameExample" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="94" Width="733" Margin="38,58.5,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.Row="1"/>
-        <Label x:Name="label_Copy1" Content="Nedre delen av protokollet" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="339" FontFamily="Times New Roman" FontSize="24" Margin="10,97,0,0" Grid.Column="5" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="lowerPart" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="337" Width="481" Margin="0,146,0,0" Grid.ColumnSpan="3" FontFamily="Times New Roman" FontSize="16" Grid.Column="5" Grid.RowSpan="2"/>
+        <TextBlock x:Name="gameRules" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="130" Width="570" Margin="38,141,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.RowSpan="2"/>
+        <Label x:Name="label_Copy" Content="Ett spelexempel" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="186" FontFamily="Times New Roman" FontSize="24" Margin="38,73,0,0" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <TextBlock x:Name="gameExample" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="94" Width="570" Margin="46,122,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.Row="1"/>
+        <Label x:Name="label_Copy1" Content="Nedre delen av protokollet" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="339" FontFamily="Times New Roman" FontSize="24" Margin="80,92,0,0" Grid.Column="4" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="lowerPart" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="337" Width="349" Margin="80,141,0,0" Grid.ColumnSpan="3" FontFamily="Times New Roman" FontSize="16" Grid.Column="4" Grid.RowSpan="2"/>
     </Grid>
 </Window>

@@ -64,41 +64,41 @@ namespace YatzyGrupp2.Gamelogic
             }
         }
 
-        public bool Par() 
+        public bool Par()
         {
             int[] d = new int[5];
             bool par = false;
 
             for (int i = 0; i < d.Length; i++)
-			{
+            {
                 for (int j = 0; j < d.Length; j++)
-			    {
+                {
                     if (d[i] == d[j])
-	                {
+                    {
                         par = true;
-	                }
-			    }
+                    }
+                }
                 return par;
-			}
+            }
         }
 
-        public bool SmallLadder() 
+        public bool SmallLadder()
         {
-            int[] smallLadder = new int {1,2,3,4,5};
+            int[] smallLadder = new int { 1, 2, 3, 4, 5 };
             int[] d = new int[5];
             bool ladder = false;
 
             for (int i = 0; i < d.Length; i++)
-			{
+            {
                 if (d[i] == smallLadder)
-	            {
+                {
                     ladder = true;
-	            }
-                else 
+                }
+                else
                 {
                     ladder = false;
                 }
-			}
+            }
             return ladder;
         }
     }

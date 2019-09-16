@@ -24,6 +24,7 @@ namespace YatzyGrupp2.View
             InitializeComponent();
             GameRules();
             GameExample();
+            LowerPart();
         
         }
 
@@ -59,7 +60,17 @@ namespace YatzyGrupp2.View
 
         public string LowerPart()
         {
-            return lowerPart.Text = "ETT PAR";
+            return lowerPart.Text = "ETT PAR: Ex. 5-3-3-2-1, 2st 3:or\n" +
+                "TVÅ PAR: Ex. 5-3-3-4-4, 2st 3:or, 2st 4:or\n"+
+                "TRETAL: Ex. 5-3-3-3-2, 3st 3:or\n"+
+                "FYRTAL: Ex. 5-4-4-4-4, 4st 4:or\n"+
+                "LITEN STRAIGHT: Ex. 1-2-3-4-5\n"+
+                "STOR STRAIGHT: Ex. 2-3-4-5-6\n" +
+                "KÅK: Ex. 3-5-5-3-3, 3st 3:or, 2st 5:or\n"+
+                "CHANS: Alla de fem tärningarnas ögontal räknas och summan av dessa förs in i protokollet.\n"+
+                "Den här rubriken används när ingen annan lämplig rubrik är ledig\n\n"+
+                "YATZY: Alla de fem tärningarna visar lika och då ger Yatzy alltid 50 poäng."
+                ;
         }
 
     }
