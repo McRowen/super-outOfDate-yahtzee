@@ -23,11 +23,12 @@ namespace YatzyGrupp2.View
     {
         GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
         List<Player.Player> gamePlayers = new List<Player.Player>();
+        int turn = 0;
         public GameView()
         {
             InitializeComponent();
             gamePlayers = StartView.players;
-
+            lablePlayer.Content = "Spelare: " + gamePlayers[0].Nickname;
             if (gamePlayers.Count == 2)
             {
                 lblPlayer1.Content = gamePlayers[0].Nickname;
@@ -281,6 +282,38 @@ namespace YatzyGrupp2.View
         {
             GameViewHelp gameViewHelp = new GameViewHelp();
             gameViewHelp.ShowDialog();
+        }
+
+        public void ResetDice()
+        {
+            Dice1.Content = "Dice";
+            Dice2.Content = "Dice";
+            Dice3.Content = "Dice";
+            Dice4.Content = "Dice";
+            Dice5.Content = "Dice";
+
+            Dice1.Background = new SolidColorBrush(mouseNotOnColor);
+            Dice2.Background = new SolidColorBrush(mouseNotOnColor);
+            Dice3.Background = new SolidColorBrush(mouseNotOnColor);
+            Dice4.Background = new SolidColorBrush(mouseNotOnColor);
+            Dice5.Background = new SolidColorBrush(mouseNotOnColor);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if(turn < gamePlayers.Count)
+            {
+                turn++;
+            }
+            if(turn == gamePlayers.Count)
+            {
+                turn = 0;
+            }
+            lablePlayer.Content = "Spelare: " + gamePlayers[turn].Nickname;
+            gamelogic.Round = 1; //Den här byter runda inte turn. Kolla i gamelogic för runda.
+            ThrowDice.IsEnabled = true;
+            diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
+            ResetDice();
         }
     }
 }
