@@ -26,6 +26,8 @@
 
         </Grid.RowDefinitions>
         <Button x:Name="btnOK" Content="OK" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Height="50" VerticalAlignment="Bottom" Margin="5" Click="BtnOK_Click" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14"/>
-        <Image Source="yatzy.jpg" Grid.ColumnSpan="4" Margin="111,0,113,79" Grid.RowSpan="3" Grid.Column="2"/>
+        <Label x:Name="label" Content="Spelets gång" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="174" FontFamily="Times New Roman" FontSize="24" Margin="0,93,0,0"/>
+        <Label x:Name="label1" Content="REGLER" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="36" Grid.ColumnSpan="2" Grid.Column="3" Margin="97.5,10,0,0"/>
+        <TextBlock x:Name="gameRules" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="209" Width="872" Margin="0,137,0,0" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
     </Grid>
 </Window>
