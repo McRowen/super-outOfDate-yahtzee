@@ -84,7 +84,7 @@
             <Label x:Name="lblFivesP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblFivesP2_MouseDown"/>
             <Label x:Name="lblSixesP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblSixesP2_MouseDown"/>
             <Label x:Name="lblSumP2" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblBonus" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblBonusP2" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblParP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lbl2ParP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblTripletP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>

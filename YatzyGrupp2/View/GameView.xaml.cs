@@ -297,6 +297,19 @@ namespace YatzyGrupp2.View
             Dice5.Background = new SolidColorBrush(mouseNotOnColor);
         }
 
+        public void ShowBonus()
+        {
+            if (sumP1 >= 63)
+            {
+                lblBonusP1.Content = "50";
+            }
+            if (sumP2 >= 63)
+            {
+                lblBonusP2.Content = "50";
+            }
+
+        }
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (turn < gamePlayers.Count)
@@ -312,6 +325,11 @@ namespace YatzyGrupp2.View
             ThrowDice.IsEnabled = true;
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
             ResetDice();
+
+            lblSumP1.Content = sumP1.ToString();
+            lblSumP2.Content = sumP2.ToString();
+            ShowBonus(); 
+
         }
 
         int sumP1 = 0;
