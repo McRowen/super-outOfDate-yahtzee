@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
         Title="GameView" Height="800" Width="1500">
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="True" Background="#FFF2FC">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="0.5*" />

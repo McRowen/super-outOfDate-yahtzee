@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
         Title="WinsInRow" Height="700" Width="800">
-    <Grid>
+    <Grid Background="#FFF2FC">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

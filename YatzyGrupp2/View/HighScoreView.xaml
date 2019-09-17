@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
         Title="HighScoreView" Height="700" Width="800">
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="True" Background="#FFF2FC">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
