@@ -64,9 +64,9 @@ namespace YatzyGrupp2.Gamelogic
             }
         }
 
-        public bool Par()
+        public bool Par(int[] d)
         {
-            int[] d = new int[5];
+            d = new int[5];
             bool par = false;
 
             for (int i = 0; i < d.Length; i++)
@@ -77,27 +77,57 @@ namespace YatzyGrupp2.Gamelogic
                     {
                         par = true;
                     }
-                }
-                
+                }                
             }
             return par;
         }
 
-        public bool SmallLadder()
+        public bool SmallLadder(int[] d)
         {
             int[] smallLadder = new int[] { 1, 2, 3, 4, 5 };
-            int[] d = new int[5];
+            d = new int[5];
             bool ladder = false;
+            int temp = 0;
 
-            for (int i = 0; i < d.Length; i++)
+            for (int i = 0; i < smallLadder.Length; i++)
             {
-                if (d[i] == smallLadder[i])
+                for (int j = 0; j < smallLadder.Length - 1; j++)
                 {
-                    ladder = true;
+                    if (smallLadder[j] > smallLadder[j] + 1)
+                    {
+                        temp = smallLadder[j + 1];
+                        smallLadder[j + 1] = smallLadder[j];
+                        smallLadder[j] = temp;
+                    }
+                    if (d[i] == smallLadder[j])
+                    {
+                        ladder = true;
+                    }
                 }
-                else
+            }
+            return ladder;
+        }
+        public bool BigLadder(int[] d)
+        {
+            int[] bigLadder = new int[] { 2, 3, 4, 5, 6 };
+            d = new int[5];
+            bool ladder = false;
+            int temp = 0;
+
+            for (int i = 0; i < bigLadder.Length; i++)
+            {
+                for (int j = 0; j < bigLadder.Length - 1; j++)
                 {
-                    ladder = false;
+                    if (bigLadder[j] > bigLadder[j] + 1)
+                    {
+                        temp = bigLadder[j + 1];
+                        bigLadder[j + 1] = bigLadder[j];
+                        bigLadder[j] = temp;
+                    }
+                    if (d[i] == bigLadder[j])
+                    {
+                        ladder = true;
+                    }
                 }
             }
             return ladder;
