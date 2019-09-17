@@ -21,7 +21,7 @@ namespace YatzyGrupp2.Gamelogic
         //}
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
-
+ 
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
@@ -88,8 +88,31 @@ namespace YatzyGrupp2.Gamelogic
             {
                 points += d[4];
             }
+
+
             return points;
         }
+
+        public int PointsExtra(int[] d, bool[] dt)
+        {
+            int points = 0;
+            if(ParTest(d, dt))
+            {
+                int temp = 0;
+                for(int i = 0; i < dt.Length; i++)
+                {
+                    if(dt[i] == true)
+                    {
+                        temp = d[i];
+                    }
+                }
+                points = temp * 2;
+            }
+
+
+            return points;
+        }
+
         public bool Par(int[] d)
         {
             d = new int[5];
@@ -156,6 +179,22 @@ namespace YatzyGrupp2.Gamelogic
                 }
             }
             return ladder;
+        }
+
+        public bool ParTest(int[] d, bool[] dt)
+        {
+            //int temp = 0;
+            for(int i = 0; i < d.Length; i++)
+            {
+                for(int l = i; l < d.Length-1; l++)
+                {
+                    if(d[i] == d[l] && dt[i] == true && dt[l] == true)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

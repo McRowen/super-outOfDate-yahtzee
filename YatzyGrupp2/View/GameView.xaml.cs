@@ -434,5 +434,12 @@ namespace YatzyGrupp2.View
             sumP2 += gamelogic.Points(dice, diceThrow, 6);
             lblSixesP2.IsEnabled = false;
         }
+
+        private void LblParP1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            lblParP1.Content = gamelogic.PointsExtra(dice, diceThrow);
+            sumP1 += gamelogic.PointsExtra(dice, diceThrow);
+            lblParP1.IsEnabled = false;
+        }
     }
 }
