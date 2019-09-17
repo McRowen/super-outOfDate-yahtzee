@@ -55,7 +55,6 @@ namespace YatzyGrupp2.View
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
         int[] dice = new int[5];
-        int points = 0;
         /*----Vilka Färger----*/
 
         Color clickColor = Colors.Green;
@@ -309,7 +308,7 @@ namespace YatzyGrupp2.View
                 turn = 0;
             }
             lablePlayer.Content = "Spelare: " + gamePlayers[turn].Nickname;
-            gamelogic.Round = 1; //Den här byter runda inte turn. Kolla i gamelogic för runda.
+            gamelogic.Round = 0; //Den här byter runda inte turn. Kolla i gamelogic för runda.
             ThrowDice.IsEnabled = true;
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
             ResetDice();
