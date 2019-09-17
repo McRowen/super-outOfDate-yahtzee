@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Configuration;
-using Npgsql; 
+using Npgsql;
 
 namespace YatzyGrupp2.View
 {
@@ -50,39 +50,39 @@ namespace YatzyGrupp2.View
                 lblPlayer3.Content = gamePlayers[2].Nickname;
                 lblPlayer4.Content = gamePlayers[3].Nickname;
             }
-                                 
+
         }
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
         int[] dice = new int[5];
+        int points = 0;
         /*----Vilka Färger----*/
 
         Color clickColor = Colors.Green;
         Color mouseNotOnColor = Colors.White;
-        Color mouseOnColor = Colors.Gray;        
+        Color mouseOnColor = Colors.Gray;
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {           
-            
-             
+        {
+
             dice = gamelogic.GetRandomDice(diceThrow, dice);
-            if(diceThrow[0] != true)
+            if (diceThrow[0] != true)
             {
                 Dice1.Content = Convert.ToString(dice[0]);
             }
-            if(diceThrow[1] != true)
+            if (diceThrow[1] != true)
             {
                 Dice2.Content = Convert.ToString(dice[1]);
             }
-            if(diceThrow[2] != true)
+            if (diceThrow[2] != true)
             {
                 Dice3.Content = Convert.ToString(dice[2]);
             }
-            if(diceThrow[3] != true)
+            if (diceThrow[3] != true)
             {
                 Dice4.Content = Convert.ToString(dice[3]);
             }
-            if(diceThrow[4] != true)
+            if (diceThrow[4] != true)
             {
                 Dice5.Content = Convert.ToString(dice[4]);
             }
@@ -113,7 +113,6 @@ namespace YatzyGrupp2.View
                 diceThrow[i] = false;
                 Dice1.Background = new SolidColorBrush(mouseNotOnColor);
             }
-
         }
 
         private void Dice2_MouseDown(object sender, MouseButtonEventArgs e)
@@ -190,7 +189,7 @@ namespace YatzyGrupp2.View
             {
                 Dice1.Background = new SolidColorBrush(mouseOnColor);
             }
-            
+
         }
 
         private void Dice1_MouseLeave(object sender, MouseEventArgs e)
@@ -301,11 +300,11 @@ namespace YatzyGrupp2.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if(turn < gamePlayers.Count)
+            if (turn < gamePlayers.Count)
             {
                 turn++;
             }
-            if(turn == gamePlayers.Count)
+            if (turn == gamePlayers.Count)
             {
                 turn = 0;
             }
@@ -314,6 +313,11 @@ namespace YatzyGrupp2.View
             ThrowDice.IsEnabled = true;
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
             ResetDice();
+        }
+
+        private void LblOnesP1_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            lblOnesP1.Content = gamelogic.Points(dice, diceThrow, 1);
         }
     }
 }
