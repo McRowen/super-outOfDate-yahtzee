@@ -301,13 +301,24 @@ namespace YatzyGrupp2.View
         {
             if (sumP1 >= 63)
             {
-                lblBonusP1.Content = "50";
+                lblBonusP1.Content = bonus;
             }
             if (sumP2 >= 63)
             {
-                lblBonusP2.Content = "50";
+                lblBonusP2.Content = bonus;
             }
 
+        }
+        public void ShowTotal()
+        {
+            if (sumP1 >= 63)
+            {
+                lblTotalP1.Content = sumP1 + bonus;
+            }
+            if (sumP2 >= 63)
+            {
+                lblTotalP2.Content = sumP2 + bonus;
+            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -328,10 +339,15 @@ namespace YatzyGrupp2.View
 
             lblSumP1.Content = sumP1.ToString();
             lblSumP2.Content = sumP2.ToString();
-            ShowBonus(); 
+            ShowBonus();
+
+            lblTotalP1.Content = sumP1;
+            ShowTotal();
+
 
         }
 
+        int bonus = 50;
         int sumP1 = 0;
         int sumP2 = 0;
 
