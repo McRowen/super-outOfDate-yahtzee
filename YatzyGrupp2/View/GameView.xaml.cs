@@ -55,7 +55,6 @@ namespace YatzyGrupp2.View
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
         int[] dice = new int[5];
-        int points = 0;
         /*----Vilka Färger----*/
 
         Color clickColor = Colors.Green;
