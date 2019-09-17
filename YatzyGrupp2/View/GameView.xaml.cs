@@ -308,7 +308,7 @@ namespace YatzyGrupp2.View
                 turn = 0;
             }
             lablePlayer.Content = "Spelare: " + gamePlayers[turn].Nickname;
-            gamelogic.Round = 1; //Den här byter runda inte turn. Kolla i gamelogic för runda.
+            gamelogic.Round = 0; //Den här byter runda inte turn. Kolla i gamelogic för runda.
             ThrowDice.IsEnabled = true;
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
             ResetDice();
