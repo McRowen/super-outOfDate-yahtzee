@@ -54,7 +54,7 @@
         <!--Column 2, FÖRSTA SPELARE-->
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Label x:Name="lblPlayer1" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblOnesP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblOnesP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblOnesP1_MouseDown_1"/>
             <Label x:Name="lblTwosP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblTreesP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblFoursP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>

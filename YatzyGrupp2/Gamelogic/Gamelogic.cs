@@ -64,6 +64,32 @@ namespace YatzyGrupp2.Gamelogic
             }
         }
 
+        public int Points(int[] d, bool[] dt, int number)
+        {
+            int points = 0;
+
+            if (dt[0] == true && d[0] == number)
+            {
+                points += d[0];
+            }
+            if (dt[1] == true && d[1] == number)
+            {
+                points += d[1]; 
+            }
+            if (dt[2] == true && d[2] == number)
+            {
+                points += d[2];
+            }
+            if (dt[3] == true && d[3] == number)
+            {
+                points += d[3];
+            }
+            if (dt[4] == true && d[4] == number)
+            {
+                points += d[4];
+            }
+            return points;
+        }
         public bool Par(int[] d)
         {
             d = new int[5];
@@ -81,7 +107,6 @@ namespace YatzyGrupp2.Gamelogic
             }
             return par;
         }
-
         public bool SmallLadder(int[] d)
         {
             int[] smallLadder = new int[] { 1, 2, 3, 4, 5 };
