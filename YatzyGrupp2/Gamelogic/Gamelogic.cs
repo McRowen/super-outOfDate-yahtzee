@@ -96,8 +96,9 @@ namespace YatzyGrupp2.Gamelogic
         public int PointsExtra(int[] d, bool[] dt)
         {
             int points = 0;
-            if(ParTest(d, dt))
+            if (ParTest(d, dt))
             {
+                
                 int temp = 0;
                 for(int i = 0; i < dt.Length; i++)
                 {
@@ -108,7 +109,19 @@ namespace YatzyGrupp2.Gamelogic
                 }
                 points = temp * 2;
             }
-
+            if (Triss(d, dt))
+            {
+                
+                int temp = 0;
+                for (int i = 0; i < dt.Length; i++)
+                {
+                    if (dt[i] != false)
+                    {
+                        temp = d[i];
+                    }
+                }
+                points = temp * 3;
+            }
 
             return points;
         }
@@ -194,6 +207,52 @@ namespace YatzyGrupp2.Gamelogic
                     }
                 }
             }
+            return false;
+        }
+
+        private bool Triss(int[] d, bool[] dt)
+        {
+            int temp = 0;
+            /*for (int i = 0; i < d.Length; i++)
+            {
+                for (int j = 0; j < d.Length - 1; j++)
+                {
+                    if (d[j] > d[j] + 1)
+                    {
+                        temp = d[j + 1];
+                        d[j + 1] = d[j];
+                        d[j] = temp;
+                    }
+                    if (d[i] == d[j])
+                    {
+                        if(d[0] == d[1] && d[1] == d[2])
+                        {
+                            return true;
+                        }
+                        else if(d[2] == d[3] && d[3] == d[4])
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            */
+
+            Array.Sort(d);
+            if (d[0] == d[1] && d[1] == d[2])
+            {
+                return true;
+            }
+            else if(d[1] == d[2] && d[2] == d[3])
+            {
+                return true;
+            }
+            else if (d[2] == d[3] && d[3] == d[4])
+            {
+                return true;
+            }
+
+
             return false;
         }
     }
