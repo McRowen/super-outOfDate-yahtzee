@@ -123,6 +123,19 @@ namespace YatzyGrupp2.Gamelogic
                 points = temp * 3;
             }
 
+            if(Tvapar(d, dt))
+            {
+                Array.Sort(d);
+                if (d[0] == d[1] && d[2] == d[3])
+                {
+                    points = d[0] * 2 + d[2] * 2;
+                }
+                else if (d[1] == d[2] && d[3] == d[4])
+                {
+                    points = d[1] * 2 + d[3] * 2;
+                }
+            }
+
             return points;
         }
 
@@ -213,30 +226,7 @@ namespace YatzyGrupp2.Gamelogic
         private bool Triss(int[] d, bool[] dt)
         {
             int temp = 0;
-            /*for (int i = 0; i < d.Length; i++)
-            {
-                for (int j = 0; j < d.Length - 1; j++)
-                {
-                    if (d[j] > d[j] + 1)
-                    {
-                        temp = d[j + 1];
-                        d[j + 1] = d[j];
-                        d[j] = temp;
-                    }
-                    if (d[i] == d[j])
-                    {
-                        if(d[0] == d[1] && d[1] == d[2])
-                        {
-                            return true;
-                        }
-                        else if(d[2] == d[3] && d[3] == d[4])
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            */
+            
 
             Array.Sort(d);
             if (d[0] == d[1] && d[1] == d[2])
@@ -248,6 +238,22 @@ namespace YatzyGrupp2.Gamelogic
                 return true;
             }
             else if (d[2] == d[3] && d[3] == d[4])
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+
+        public bool Tvapar(int[] d, bool[] dt)
+        {
+            Array.Sort(d);
+            if (d[0] == d[1] && d[2] == d[3])
+            {
+                return true;
+            }
+            else if(d[1] == d[2] && d[3] == d[4])
             {
                 return true;
             }

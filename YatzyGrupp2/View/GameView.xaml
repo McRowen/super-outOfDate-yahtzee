@@ -63,7 +63,7 @@
             <Label x:Name="lblSumP1" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblBonusP1" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblParP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblParP1_MouseDown"/>
-            <Label x:Name="lbl2ParP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lbl2ParP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lbl2ParP1_MouseDown"/>
             <Label x:Name="lblTripletP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblTripletP1_MouseDown"/>
             <Label x:Name="lblFourofaKindP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblSmallStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
