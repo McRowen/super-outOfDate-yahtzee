@@ -40,7 +40,7 @@ namespace YatzyGrupp2.View
                 "tärningar du vill kasta om. Spara en tärning genom att klicka på den, tärningarna" +
                 " blir grön när du har sparat dem. Efter alla kast förs poängsumman in intill en av rubrikerna.\n\n" +
                 "Spelar ni ett vanligt spel behöver ordningen i protokollet följas, spelar ni ett styrt spel " +
-                "behöver \nordningen på protokollet ej följas.";
+                "behöver ordningen på protokollet ej följas.";
 
 
         }

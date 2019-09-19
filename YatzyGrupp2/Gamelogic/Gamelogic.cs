@@ -93,9 +93,9 @@ namespace YatzyGrupp2.Gamelogic
             return points;
         }
 
-        public int PointsExtra(int[] d, bool[] dt)
-        {
-            int points = 0;
+        public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
+        {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
+            int points = 0;                        //ska ha fyrtal
             if (ParTest(d, dt))
             {
                 
@@ -121,6 +121,32 @@ namespace YatzyGrupp2.Gamelogic
                     }
                 }
                 points = temp * 3;
+            }
+
+            if(Tvapar(d, dt))
+            {
+                Array.Sort(d);
+                if (d[0] == d[1] && d[2] == d[3])
+                {
+                    points = d[0] * 2 + d[2] * 2;
+                }
+                else if (d[1] == d[2] && d[3] == d[4])
+                {
+                    points = d[1] * 2 + d[3] * 2;
+                }
+            }
+
+            if (Fyrtal(d, dt))
+            {
+                Array.Sort(d);
+                if (d[0] == d[1] && d[2] == d[3] && d[0] == d[3])
+                {
+                    points = d[0] * 4;
+                }
+                else if (d[1] == d[2] && d[3] == d[4] && d[1] == d[4])
+                {
+                    points = d[1] * 4;
+                }
             }
 
             return points;
@@ -213,30 +239,7 @@ namespace YatzyGrupp2.Gamelogic
         private bool Triss(int[] d, bool[] dt)
         {
             int temp = 0;
-            /*for (int i = 0; i < d.Length; i++)
-            {
-                for (int j = 0; j < d.Length - 1; j++)
-                {
-                    if (d[j] > d[j] + 1)
-                    {
-                        temp = d[j + 1];
-                        d[j + 1] = d[j];
-                        d[j] = temp;
-                    }
-                    if (d[i] == d[j])
-                    {
-                        if(d[0] == d[1] && d[1] == d[2])
-                        {
-                            return true;
-                        }
-                        else if(d[2] == d[3] && d[3] == d[4])
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            */
+            
 
             Array.Sort(d);
             if (d[0] == d[1] && d[1] == d[2])
@@ -248,6 +251,37 @@ namespace YatzyGrupp2.Gamelogic
                 return true;
             }
             else if (d[2] == d[3] && d[3] == d[4])
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+
+        public bool Tvapar(int[] d, bool[] dt)
+        {
+            Array.Sort(d);
+            if (d[0] == d[1] && d[2] == d[3])
+            {
+                return true;
+            }
+            else if(d[1] == d[2] && d[3] == d[4])
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+        public bool Fyrtal(int[] d, bool[] dt)
+        {
+            Array.Sort(d);
+            if (d[0] == d[1] && d[2] == d[3] && d[0] == d[3]) // 0=3 så att vi inte får ett falskt positivt med tvåpar
+            {
+                return true;
+            }
+            else if (d[1] == d[2] && d[3] == d[4] && d[1] == d[4])
             {
                 return true;
             }
