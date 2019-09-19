@@ -149,6 +149,11 @@ namespace YatzyGrupp2.Gamelogic
                 }
             }
 
+            if(yatzy(d, dt))
+            {
+                points = 50;
+            }
+
             return points;
         }
 
@@ -288,6 +293,19 @@ namespace YatzyGrupp2.Gamelogic
 
 
             return false;
+        }
+
+        public bool yatzy(int[] d, bool[] dt)
+        {
+            int temp = d[0];
+            for(int i = 0; i < d.Length; i++)
+            {
+                if(d[i] != temp)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
