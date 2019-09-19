@@ -166,7 +166,8 @@ namespace YatzyGrupp2.SQLCommands
             }
             return gamers;
         }
-        public List<Player.highscoreplayer> GetMostWins(){
+        public List<Player.highscoreplayer> GetMostWins()
+        {
                          List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
             Player.highscoreplayer pe = new Player.highscoreplayer();
             using (var conn = new
@@ -204,7 +205,7 @@ namespace YatzyGrupp2.SQLCommands
                 conn.Close();
             }
             return wins;
-                }
+        }
     }
 }
 

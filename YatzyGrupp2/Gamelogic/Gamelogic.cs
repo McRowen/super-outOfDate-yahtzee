@@ -96,9 +96,24 @@ namespace YatzyGrupp2.Gamelogic
         public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
         {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
             int points = 0;                        //ska ha fyrtal
-            if (ParTest(d, dt))
+            if (FullHouse(d, dt))
             {
-                
+                int temp = 0;
+                for (int i = 0; i < dt.Length; i++)
+                {
+                    for (int j = 0; j < d.Length; j++)
+                    {
+                        if (dt[i] == true)
+                        {
+                            temp = d[j];
+                        }
+                    }
+                    points = temp;
+                }
+                points = temp;
+            }
+            if (ParTest(d, dt))
+            {                
                 int temp = 0;
                 for(int i = 0; i < dt.Length; i++)
                 {
@@ -148,77 +163,94 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 4;
                 }
             }
-
             return points;
         }
-
-        public bool Par(int[] d)
+        public bool FullHouse(int[] d, bool[] dt)
         {
-            d = new int[5];
-            bool par = false;
+            int[] i = new int[5];
 
-            for (int i = 0; i < d.Length; i++)
-            {
-                for (int j = 0; j < d.Length; j++)
-                {
-                    if (d[i] == d[j])
-                    {
-                        par = true;
-                    }
-                }                
-            }
-            return par;
-        }
-        public bool SmallLadder(int[] d)
-        {
-            int[] smallLadder = new int[] { 1, 2, 3, 4, 5 };
-            d = new int[5];
-            bool ladder = false;
-            int temp = 0;
+            d[0] = d[0];
+            i[1] = d[1];
+            i[2] = d[2];
+            i[3] = d[3];
+            i[4] = d[4];
 
-            for (int i = 0; i < smallLadder.Length; i++)
-            {
-                for (int j = 0; j < smallLadder.Length - 1; j++)
-                {
-                    if (smallLadder[j] > smallLadder[j] + 1)
-                    {
-                        temp = smallLadder[j + 1];
-                        smallLadder[j + 1] = smallLadder[j];
-                        smallLadder[j] = temp;
-                    }
-                    if (d[i] == smallLadder[j])
-                    {
-                        ladder = true;
-                    }
-                }
-            }
-            return ladder;
-        }
-        public bool BigLadder(int[] d)
-        {
-            int[] bigLadder = new int[] { 2, 3, 4, 5, 6 };
-            d = new int[5];
-            bool ladder = false;
-            int temp = 0;
+            Array.Sort(i);
 
-            for (int i = 0; i < bigLadder.Length; i++)
+            if ((((i[0] == i[1]) && (i[1] == i[2])) && (i[3] == i[4]) && (i[2] != i[3])) || ((i[0] == i[1]) && ((i[2] == i[3]) && (i[3] == i[4])) && (i[1] != i[2])))
             {
-                for (int j = 0; j < bigLadder.Length - 1; j++)
-                {
-                    if (bigLadder[j] > bigLadder[j] + 1)
-                    {
-                        temp = bigLadder[j + 1];
-                        bigLadder[j + 1] = bigLadder[j];
-                        bigLadder[j] = temp;
-                    }
-                    if (d[i] == bigLadder[j])
-                    {
-                        ladder = true;
-                    }
-                }
+                
+                return true;
             }
-            return ladder;
+            return false;
         }
+        //public bool Par(int[] d)
+        //{
+        //    d = new int[5];
+        //    bool par = false;
+
+        //    for (int i = 0; i < d.Length; i++)
+        //    {
+        //        for (int j = 0; j < d.Length; j++)
+        //        {
+        //            if (d[i] == d[j])
+        //            {
+        //                par = true;
+        //            }
+        //        }                
+        //    }
+        //    return par;
+        //}
+        //public bool SmallLadder(int[] d)
+        //{
+        //    int[] smallLadder = new int[] { 1, 2, 3, 4, 5 };
+        //    d = new int[5];
+        //    bool ladder = false;
+        //    int temp = 0;
+
+        //    for (int i = 0; i < smallLadder.Length; i++)
+        //    {
+        //        for (int j = 0; j < smallLadder.Length - 1; j++)
+        //        {
+        //            if (smallLadder[j] > smallLadder[j] + 1)
+        //            {
+        //                temp = smallLadder[j + 1];
+        //                smallLadder[j + 1] = smallLadder[j];
+        //                smallLadder[j] = temp;
+        //            }
+        //            if (d[i] == smallLadder[j])
+        //            {
+        //                ladder = true;
+        //            }
+        //        }
+        //    }
+        //    return ladder;
+        //}
+        //public bool BigLadder(int[] d)
+        //{
+        //    int[] bigLadder = new int[] { 2, 3, 4, 5, 6 };
+        //    d = new int[5];
+        //    bool ladder = false;
+        //    int temp = 0;
+
+        //    for (int i = 0; i < bigLadder.Length; i++)
+        //    {
+        //        for (int j = 0; j < bigLadder.Length - 1; j++)
+        //        {
+        //            if (bigLadder[j] > bigLadder[j] + 1)
+        //            {
+        //                temp = bigLadder[j + 1];
+        //                bigLadder[j + 1] = bigLadder[j];
+        //                bigLadder[j] = temp;
+        //            }
+        //            if (d[i] == bigLadder[j])
+        //            {
+        //                ladder = true;
+        //            }
+        //        }
+        //    }
+        //    return ladder;
+        //}
 
         public bool ParTest(int[] d, bool[] dt)
         {
@@ -270,8 +302,6 @@ namespace YatzyGrupp2.Gamelogic
             {
                 return true;
             }
-
-
             return false;
         }
         public bool Fyrtal(int[] d, bool[] dt)
@@ -285,8 +315,6 @@ namespace YatzyGrupp2.Gamelogic
             {
                 return true;
             }
-
-
             return false;
         }
     }
