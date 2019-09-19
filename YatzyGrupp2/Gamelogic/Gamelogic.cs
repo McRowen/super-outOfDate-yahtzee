@@ -21,25 +21,25 @@ namespace YatzyGrupp2.Gamelogic
         //}
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
- 
+
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
 
-            if(dice != null)
+            if (dice != null)
             {
                 num = dice;
             }
 
             Random rnd = new Random();
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                if(randInarray[i] == false)
+                if (randInarray[i] == false)
                 {
                     int randValue = rnd.Next(1, 7);
                     num[i] = randValue;
                 }
-                
+
             }
             return num;
         }
@@ -54,7 +54,7 @@ namespace YatzyGrupp2.Gamelogic
 
         public void IncrementRound()
         {
-            if(Round > 3 || Round < 1)
+            if (Round > 3 || Round < 1)
             {
                 Round = 1;
             }
@@ -74,7 +74,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             if (dt[1] == true && d[1] == number)
             {
-                points += d[1]; 
+                points += d[1];
             }
             if (dt[2] == true && d[2] == number)
             {
@@ -92,13 +92,20 @@ namespace YatzyGrupp2.Gamelogic
 
             return points;
         }
-        public int FullHouseOnTheTable(int[]d, bool[] dt)
+        public int FullHouseOnTheTable(int[] d, bool[] dt)
         {
             int points = 0;
             if (FullHouse(d, dt))
             {
                 points = d[0] + d[1] + d[2] + d[3] + d[4];
             }
+            return points;
+        }
+
+        public int Chans(int[] d, bool[] dt)
+        {
+            int points = 0;
+            points = d[0] + d[1] + d[2] + d[3] + d[4];
             return points;
         }
         public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
