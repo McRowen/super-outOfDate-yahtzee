@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
         Title="GameViewHelp" Height="649.427" Width="1141.611">
-    <Grid ShowGridLines="True" Margin="0,0,2,-28" Background="#FFF2FC">
+    <Grid ShowGridLines="False" Margin="0,0,2,-28" Background="#FFF2FC">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
