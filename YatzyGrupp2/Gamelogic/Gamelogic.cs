@@ -92,26 +92,19 @@ namespace YatzyGrupp2.Gamelogic
 
             return points;
         }
-
+        public int FullHouseOnTheTable(int[]d, bool[] dt)
+        {
+            int points = 0;
+            if (FullHouse(d, dt))
+            {
+                points = d[0] + d[1] + d[2] + d[3] + d[4];
+            }
+            return points;
+        }
         public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
         {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
             int points = 0;                        //ska ha fyrtal
-            if (FullHouse(d, dt))
-            {
-                int temp = 0;
-                for (int i = 0; i < dt.Length; i++)
-                {
-                    for (int j = 0; j < d.Length; j++)
-                    {
-                        if (dt[i] == true)
-                        {
-                            temp = d[j];
-                        }
-                    }
-                    points = temp;
-                }
-                points = temp;
-            }
+            
             if (ParTest(d, dt))
             {                
                 int temp = 0;
@@ -168,24 +161,15 @@ namespace YatzyGrupp2.Gamelogic
             {
                 points = 50;
             }
-
             return points;
+            
         }
         public bool FullHouse(int[] d, bool[] dt)
-        {
-            int[] i = new int[5];
+        {           
+            Array.Sort(d);
 
-            d[0] = d[0];
-            i[1] = d[1];
-            i[2] = d[2];
-            i[3] = d[3];
-            i[4] = d[4];
-
-            Array.Sort(i);
-
-            if ((((i[0] == i[1]) && (i[1] == i[2])) && (i[3] == i[4]) && (i[2] != i[3])) || ((i[0] == i[1]) && ((i[2] == i[3]) && (i[3] == i[4])) && (i[1] != i[2])))
-            {
-                
+            if ((((d[0] == d[1]) && (d[1] == d[2])) && (d[3] == d[4]) && (d[2] != d[3])) || ((d[0] == d[1]) && ((d[2] == d[3]) && (d[3] == d[4])) && (d[1] != d[2])))
+            {              
                 return true;
             }
             return false;

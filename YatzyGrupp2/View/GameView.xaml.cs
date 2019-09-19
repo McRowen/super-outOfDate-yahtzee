@@ -482,5 +482,12 @@ namespace YatzyGrupp2.View
             sumP2 += gamelogic.PointsExtra(dice, diceThrow);
             lblYatzyP1.IsEnabled = false;
         }
+
+        private void LblFullHouseP1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            lblFullHouseP1.Content = gamelogic.FullHouseOnTheTable(dice, diceThrow);
+            sumP1 += gamelogic.FullHouseOnTheTable(dice, diceThrow);
+            lblFullHouseP1.IsEnabled = false;
+        }
     }
 }

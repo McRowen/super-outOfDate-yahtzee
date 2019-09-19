@@ -69,7 +69,7 @@
             <Label x:Name="lblFourofaKindP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lblFourofaKindP1_MouseDown"/>
             <Label x:Name="lblSmallStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblLargeStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblFullHouseP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFullHouseP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblFullHouseP1_MouseDown"/>
             <Label x:Name="lblChansP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblYatzyP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lblYatzyP1_MouseDown"/>
             <Label x:Name="lblTotalP1" Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
