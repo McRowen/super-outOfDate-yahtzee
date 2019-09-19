@@ -177,7 +177,10 @@
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="yatzy.jpg" />
+    <Resource Include="Image\testdice2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\testdice1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
