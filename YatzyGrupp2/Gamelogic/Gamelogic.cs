@@ -163,6 +163,7 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 4;
                 }
             }
+
             return points;
         }
         public bool FullHouse(int[] d, bool[] dt)
@@ -315,6 +316,8 @@ namespace YatzyGrupp2.Gamelogic
             {
                 return true;
             }
+
+
             return false;
         }
     }
