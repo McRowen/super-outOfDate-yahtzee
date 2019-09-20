@@ -349,5 +349,15 @@ namespace YatzyGrupp2.Gamelogic
             }
             return true;
         }
+
+        public string Timer()
+        {
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Interval = 50000;
+            timer.Start();
+
+            return timer.ToString();
+
+        }
     }
 }
