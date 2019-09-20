@@ -157,7 +157,7 @@ namespace YatzyGrupp2.Gamelogic
                 }
             }
 
-            if(yatzy(d, dt))
+            if(Yatzy(d, dt))
             {
                 points = 50;
             }
