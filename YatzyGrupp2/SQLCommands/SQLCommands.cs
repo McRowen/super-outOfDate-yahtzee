@@ -16,8 +16,6 @@ namespace YatzyGrupp2.SQLCommands
 
         public Player.Player AddPlayer(string first, string last, string nick) // Metod som inte fungerade...
         {
-            //int id = 0;
-            //id++;
             string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
                           "VALUES(" /*+ p.Player_id + ","*/ + p.Firstname + "," + p.Lastname + "," + p.Nickname + ")";
 
@@ -31,15 +29,12 @@ namespace YatzyGrupp2.SQLCommands
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        //while (reader.Read())
-                        //{
-                            p = new Player.Player()
-                            {
-                                Firstname = first,
-                                Lastname = last,
-                                Nickname = nick
-                            };
-                        //}
+                        p = new Player.Player()
+                        {
+                             Firstname = first,
+                             Lastname = last,
+                             Nickname = nick
+                        };
                         return p;
                     }
                 }
@@ -67,7 +62,6 @@ namespace YatzyGrupp2.SQLCommands
         }
         public Player.Player GetChosenPlayer(Player.Player player_Id) //Metod för att lägga till spelare i spelet.
         {
-            //List<Player.Player> ChosenPlayers = new List<Player.Player>();
             Player.Player ChosenPlayers = new Player.Player();
             using (var conn = new
                             NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
@@ -138,8 +132,6 @@ namespace YatzyGrupp2.SQLCommands
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    //cmd.CommandText = "SELECT player.player_id, player.nickname, player.firstname, player.lastname," +
-                    //    " game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
                     cmd.CommandText = "WITH rankscoreamount AS(SELECT player.nickname, player.firstname, player.lastname, SUM(game_player.score) FROM game_player " +
                         "JOIN player ON player.player_id = game_player.player_id JOIN game ON game.game_id = game_player.game_id " +
                         "WHERE game.started_at BETWEEN CURRENT_DATE -INTERVAL '7 days' AND CURRENT_DATE +INTERVAL '1 day' " +
