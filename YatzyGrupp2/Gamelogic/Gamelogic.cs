@@ -102,6 +102,16 @@ namespace YatzyGrupp2.Gamelogic
             return points;
         }
 
+        public int SmallLargeStraight(int[] d, bool[] dt)
+        {
+            int points = 0;
+            if (CalcLargeStraight(d, dt))
+            {
+                points = d[0] + d[1] + d[2] + d[3] + d[4];
+            }
+            return points;
+        }
+
         public int Chans(int[] d, bool[] dt)
         {
             int points = 0;
@@ -170,6 +180,16 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
             
+        }
+        public bool CalcLargeStraight(int[] d, bool[] dt)
+        {
+            Array.Sort(d);
+
+            if (((d[0] == 1) && (d[1] == 2) && (d[2] == 3) && (d[3] == 4) && (d[4] == 5)) || ((d[0] == 2) && (d[1] == 3) && (d[2] == 4) && (d[3] == 5) && (d[4] == 6)))
+            {
+                return true;
+            }
+            return false;
         }
         public bool FullHouse(int[] d, bool[] dt)
         {           
