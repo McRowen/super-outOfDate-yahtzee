@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -60,6 +61,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -84,6 +86,12 @@
     <Compile Include="Player\highscoreplayer.cs" />
     <Compile Include="SQLCommands\SQLCommands.cs" />
     <Compile Include="Test\DataTest.cs" />
+    <Compile Include="Test\FormLabelTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FormLabelTest.Designer.cs">
+      <DependentUpon>FormLabelTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test\Listview.xaml.cs">
       <DependentUpon>Listview.xaml</DependentUpon>
     </Compile>
@@ -162,6 +170,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FormLabelTest.resx">
+      <DependentUpon>FormLabelTest.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
