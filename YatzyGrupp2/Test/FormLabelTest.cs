@@ -43,6 +43,7 @@ namespace YatzyGrupp2.Test
                     cellLabel.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
                     cellLabel.Click += new System.EventHandler(ctrlClick);
                     cellLabel.MouseEnter += new System.EventHandler(label_Enter);
+                    cellLabel.MouseLeave += new System.EventHandler(label_Leave);
                     temp++;
                     testList.Add(cellLabel);
                 }
@@ -64,6 +65,11 @@ namespace YatzyGrupp2.Test
         }
 
 
+        public void SetColorLabel()
+        {
+
+        }
+
         private void label_Click(object sender, MouseEventArgs e)
         {
             Control test = (Control)sender;
@@ -79,11 +85,54 @@ namespace YatzyGrupp2.Test
 
         private void label_Enter(object sender, EventArgs e)
         {
-            Control test = (Control)sender;
-            string test2 = Convert.ToString(test.Name);
-            if(test2 == "lbl0")
+            Control ctrl = (Control)sender;
+            for (int i = 0; i < testList.Count; i++)
             {
-                MessageBox.Show("Yes");
+                if(testList[i].Name == ctrl.Name)
+                {
+                    
+                    int temp = int.Parse(testList[i].Name[3].ToString());
+                    if (temp <= 9 && testList[i].Name[4] == null)
+                    {
+                        
+                        for(int o = temp; o <= 4; o++)
+                        {
+                            testList[o].BackColor = Color.Red;
+                        }
+                        for (int o = temp; o >= 0; o--)
+                        {
+                            testList[o].BackColor = Color.Red;
+                        }
+                        testList[i].BackColor = Color.Gray;
+                    }
+                    else
+                    {
+                        string stringTest = Convert.ToString(testList[i].Name[3]) + Convert.ToString(testList[i].Name[4]);
+                        int temp2 = Convert.ToInt32(stringTest);
+                        for (int o = temp2; o/10 < 4; o++)
+                        {
+                            testList[o].BackColor = Color.Red;
+                        }
+                        for (int o = temp2; o/10 > 0; o--)
+                        {
+                            testList[o].BackColor = Color.Red;
+                        }
+                        testList[i].BackColor = Color.Gray;
+                    }
+                }
+            }
+        }
+
+        private void label_Leave(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            for (int i = 0; i < testList.Count; i++)
+            {
+                if (testList[i].Name == ctrl.Name)
+                {
+                    testList[i].BackColor = Color.White;
+                }
+                
             }
         }
     }

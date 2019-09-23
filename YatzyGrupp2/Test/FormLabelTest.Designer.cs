@@ -52,6 +52,7 @@
             this.Text = "FormLabelTest";
             this.Load += new System.EventHandler(this.FormLabelTest_Load);
             this.MouseEnter += new System.EventHandler(this.label_Enter);
+            this.MouseLeave += new System.EventHandler(this.label_Leave);
             this.ResumeLayout(false);
 
         }
