@@ -51,9 +51,10 @@ namespace YatzyGrupp2.View
                 lblPlayer4.Content = gamePlayers[3].Nickname;
             }
 
-            
+             
 
         }
+
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         Gamelogic.Gamelogic gamelogic = new Gamelogic.Gamelogic();
         int[] dice = new int[5];

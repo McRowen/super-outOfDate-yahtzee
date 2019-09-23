@@ -13,11 +13,48 @@ namespace YatzyGrupp2.SQLCommands
     {
         NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString);
         Player.Player p = new Player.Player();
+        Game.Game g = new Game.Game();
+        GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
+
+
+
+        public Game.Game StartNewGame(string name) 
+        {
+            string stmt = "INSERT INTO game(game_id, started_at, gametype_id) VALUES(" + g.Game_id + "," + g.Started_at + "," + g.Gametype_id + ") "+
+                "INSERT INTO game_player(game_id, player_id, score) INNER JOIN game ON game.game_id = game_player.game_id INNER JOIN " +
+                "player ON player.player_id = game_player.player_id VALUES(" + gp.Game_id + ", " + gp.Player_id + ", " + gp.Score + ")";
+            //string stmtTwo = 
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("game_id", g.Game_id);
+                    cmd.Parameters.AddWithValue("started_at", g.Started_at);
+                    cmd.Parameters.AddWithValue("gametype_id", g.Gametype_id);
+                    cmd.Parameters.AddWithValue("game_id", gp.Game_id);
+                    cmd.Parameters.AddWithValue("player_id", gp.Player_id);
+                    cmd.Parameters.AddWithValue("score", gp.Score);
+
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        g = new Game.Game()
+                        {
+                            Game_id = 
+                        }
+                    }
+                }
+               
+            }
+        }
+
+
+
+
 
         public Player.Player AddPlayer(string first, string last, string nick) // Metod som inte fungerade...
         {
-            //int id = 0;
-            //id++;
             string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
                           "VALUES(" /*+ p.Player_id + ","*/ + p.Firstname + "," + p.Lastname + "," + p.Nickname + ")";
 
@@ -31,15 +68,12 @@ namespace YatzyGrupp2.SQLCommands
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        //while (reader.Read())
-                        //{
-                            p = new Player.Player()
-                            {
-                                Firstname = first,
-                                Lastname = last,
-                                Nickname = nick
-                            };
-                        //}
+                        p = new Player.Player()
+                        {
+                             Firstname = first,
+                             Lastname = last,
+                             Nickname = nick
+                        };
                         return p;
                     }
                 }
@@ -67,7 +101,6 @@ namespace YatzyGrupp2.SQLCommands
         }
         public Player.Player GetChosenPlayer(Player.Player player_Id) //Metod för att lägga till spelare i spelet.
         {
-            //List<Player.Player> ChosenPlayers = new List<Player.Player>();
             Player.Player ChosenPlayers = new Player.Player();
             using (var conn = new
                             NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
@@ -138,8 +171,6 @@ namespace YatzyGrupp2.SQLCommands
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    //cmd.CommandText = "SELECT player.player_id, player.nickname, player.firstname, player.lastname," +
-                    //    " game_player.score FROM game_player INNER JOIN player ON player.player_id = game_player.player_id ORDER BY game_player.score DESC";
                     cmd.CommandText = "WITH rankscoreamount AS(SELECT player.nickname, player.firstname, player.lastname, SUM(game_player.score) FROM game_player " +
                         "JOIN player ON player.player_id = game_player.player_id JOIN game ON game.game_id = game_player.game_id " +
                         "WHERE game.started_at BETWEEN CURRENT_DATE -INTERVAL '7 days' AND CURRENT_DATE +INTERVAL '1 day' " +
