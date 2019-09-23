@@ -201,9 +201,6 @@ namespace YatzyGrupp2.Gamelogic
         }
         private bool Triss(int[] d, bool[] dt)
         {
-            int temp = 0;
-            
-
             Array.Sort(d);
             if (d[0] == d[1] && d[1] == d[2])
             {
@@ -217,8 +214,6 @@ namespace YatzyGrupp2.Gamelogic
             {
                 return true;
             }
-
-
             return false;
         }
         public bool Tvapar(int[] d, bool[] dt)
@@ -262,14 +257,6 @@ namespace YatzyGrupp2.Gamelogic
             return true;
         }
 
-        public string Timer()
-        {
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 50000;
-            timer.Start();
-
-            return timer.ToString();
-
-        }
+        
     }
 }

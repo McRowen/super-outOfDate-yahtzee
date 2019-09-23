@@ -80,6 +80,8 @@
     </ApplicationDefinition>
     <Compile Include="Gamelogic\Gamelogic.cs" />
     <Compile Include="GamePlayer\GamePlayer.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\Gametype.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\highscoreplayer.cs" />
     <Compile Include="SQLCommands\SQLCommands.cs" />
