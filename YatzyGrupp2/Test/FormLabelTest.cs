@@ -18,12 +18,12 @@ namespace YatzyGrupp2.Test
             
         }
         List<Label> testList = new List<Label>();
-        int xDif = 50;
+        int xDif = 97;
         int yDif = 30;
         int edgeDif = 20;
         int fontSize = 12;
         string fontType = "Arial";
-        string extraSpace = "     ";
+        string extraSpace = "";
         private void FormLabelTest_Load(object sender, EventArgs e)
         {
             
@@ -49,14 +49,14 @@ namespace YatzyGrupp2.Test
                 {
                     Label cellLabel = new Label();
                     cellLabel.Name = "lbl" + Convert.ToString(temp);
-                    if(o == 0)
-                        cellLabel.Text = "lbl"+ extraSpace + Convert.ToString(temp);
+                    if(i <= 1)
+                        cellLabel.Text = "lbl------"+ extraSpace + "0" + Convert.ToString(temp);
                     else
-                        cellLabel.Text = "lbl" + Convert.ToString(temp);
+                        cellLabel.Text = "lbl------" + Convert.ToString(temp);
                     cellLabel.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
                     cellLabel.BorderStyle = BorderStyle.FixedSingle;
                     cellLabel.Size = new Size(cellLabel.PreferredWidth, cellLabel.PreferredHeight);
-                    if(o == 0)
+                    /*if(o == 0)
                     {
                         int t = extraSpace.Length + fontSize;
 
@@ -66,7 +66,10 @@ namespace YatzyGrupp2.Test
                     {
                         cellLabel.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
                     }
-                    
+                    */
+                    cellLabel.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
+
+                    temp++;
                     testList.Add(cellLabel);
                 }
             }

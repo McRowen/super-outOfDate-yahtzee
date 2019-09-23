@@ -18,7 +18,7 @@ namespace YatzyGrupp2.SQLCommands
 
 
 
-        public Game.Game StartNewGame(string name) 
+        /*public Game.Game StartNewGame(string name) 
         {
             string stmt = "INSERT INTO game(game_id, started_at, gametype_id) VALUES(" + g.Game_id + "," + g.Started_at + "," + g.Gametype_id + ") "+
                 "INSERT INTO game_player(game_id, player_id, score) INNER JOIN game ON game.game_id = game_player.game_id INNER JOIN " +
@@ -47,7 +47,7 @@ namespace YatzyGrupp2.SQLCommands
                 }
                
             }
-        }
+        }*/
 
 
 
