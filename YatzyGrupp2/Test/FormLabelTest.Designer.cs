@@ -40,6 +40,7 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label_Click);
             // 
             // FormLabelTest
             // 
@@ -50,6 +51,7 @@
             this.Name = "FormLabelTest";
             this.Text = "FormLabelTest";
             this.Load += new System.EventHandler(this.FormLabelTest_Load);
+            this.MouseEnter += new System.EventHandler(this.label_Enter);
             this.ResumeLayout(false);
 
         }
