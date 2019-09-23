@@ -103,5 +103,11 @@ namespace YatzyGrupp2.View
             HelpView helpview = new HelpView();
             helpview.ShowDialog(); 
         }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Test.FormLabelTest f = new Test.FormLabelTest();
+            f.Show();
+        }
     }
 }
