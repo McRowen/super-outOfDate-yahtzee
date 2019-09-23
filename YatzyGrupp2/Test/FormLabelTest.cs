@@ -26,22 +26,6 @@ namespace YatzyGrupp2.Test
         string extraSpace = "";
         private void FormLabelTest_Load(object sender, EventArgs e)
         {
-            
-
-            Label testLabel = new Label();
-            testLabel.Name = "lblTest";
-            testLabel.Text = "Label test.";
-            testLabel.BorderStyle = BorderStyle.FixedSingle;
-
-            Label test2 = new Label(); ;
-            test2.Location = new Point(100, 0);
-            test2.Name = "lblTest";
-            test2.Text = "Label test.";
-            test2.BorderStyle = BorderStyle.FixedSingle;
-            //testList.Add(testLabel);
-            //testList.Add(test2);
-            //Controls.Add(testList[0]);
-            //Controls.Add(testList[1]);
             int temp = 0;
             for(int i = 0; i < 19; i++)
             {
@@ -56,19 +40,9 @@ namespace YatzyGrupp2.Test
                     cellLabel.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
                     cellLabel.BorderStyle = BorderStyle.FixedSingle;
                     cellLabel.Size = new Size(cellLabel.PreferredWidth, cellLabel.PreferredHeight);
-                    /*if(o == 0)
-                    {
-                        int t = extraSpace.Length + fontSize;
-
-                        cellLabel.Location = new Point((edgeDif + t) + (o * xDif), edgeDif + (i * yDif));
-                    }
-                    else
-                    {
-                        cellLabel.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
-                    }
-                    */
                     cellLabel.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
-
+                    cellLabel.Click += new System.EventHandler(ctrlClick);
+                    cellLabel.MouseEnter += new System.EventHandler(label_Enter);
                     temp++;
                     testList.Add(cellLabel);
                 }
@@ -82,7 +56,35 @@ namespace YatzyGrupp2.Test
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            testList[1].Text = "Yey";
+            
+            if(testList[1].Name == "lbl1")
+            {
+                testList[1].Text = "Yey";
+            }
+        }
+
+
+        private void label_Click(object sender, MouseEventArgs e)
+        {
+            Control test = (Control)sender;
+            string test2 = Convert.ToString(test);
+            
+        }
+
+        private void ctrlClick(System.Object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            MessageBox.Show("You clicked: " + ctrl.Name);
+        }
+
+        private void label_Enter(object sender, EventArgs e)
+        {
+            Control test = (Control)sender;
+            string test2 = Convert.ToString(test.Name);
+            if(test2 == "lbl0")
+            {
+                MessageBox.Show("Yes");
+            }
         }
     }
 }
