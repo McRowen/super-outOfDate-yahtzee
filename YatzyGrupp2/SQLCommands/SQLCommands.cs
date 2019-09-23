@@ -16,7 +16,7 @@ namespace YatzyGrupp2.SQLCommands
         Game.Game g = new Game.Game();
         GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
 
-        public GamePlayer.GamePlayer StartNewGamePlayer(Game.Game g, Player.Player selectedPlayer)
+        public GamePlayer.GamePlayer StartNewGamePlayer(Game.Game g, List<Player.Player> selectedPlayer)
         {
             string stmt = "INSERT INTO game_player (game_id, player_id) VALUES game_id, player_id";
 
@@ -28,12 +28,14 @@ namespace YatzyGrupp2.SQLCommands
 
                     using (var reader = cmd.ExecuteReader())
                     {
- 
-                        gp = new GamePlayer.GamePlayer()
+                        for (int i = 0; i < selectedPlayer.Count; i++)
                         {
-                            Game_id = g.Game_id,
-                            Player_id = selectedPlayer.Player_id
-                        };
+                            gp = new GamePlayer.GamePlayer()
+                            {
+                                Game_id = g.Game_id,
+                                Player_id = selectedPlayer[i].Player_id
+                            };
+                        }
                         return gp;
                     }
                 }
@@ -41,34 +43,27 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
 
-        public Game.Game StartNewGame()
+        public void StartNewGame()
         {
-            string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1)";
+            //string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1)";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
-                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var cmd = new NpgsqlCommand())
                 {
-
                     using (var reader = cmd.ExecuteReader())
                     {
-                        g = new Game.Game()
-                        {
-                            Gametype_id = 1,
-                            Started_at = DateTime.Now
-                        };
-                        return g;
+                        cmd.Connection = conn;
+                        cmd.CommandText = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1)";
+                        cmd.Parameters.AddWithValue("started_at", g.Started_at);
+                        cmd.Parameters.AddWithValue("gametype_id", g.Gametype_id);
+                        cmd.ExecuteNonQuery();
                     }
+                    conn.Close();
                 }
-
             }
         }
-
-
-
-
-
         public Player.Player AddPlayer(string first, string last, string nick) // Metod som inte fungerade...
         {
             string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
