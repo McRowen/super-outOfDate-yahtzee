@@ -13,6 +13,45 @@ namespace YatzyGrupp2.SQLCommands
     {
         NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString);
         Player.Player p = new Player.Player();
+        Game.Game g = new Game.Game();
+        GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
+
+
+
+        public Game.Game StartNewGame(string name) 
+        {
+            string stmt = "INSERT INTO game(game_id, started_at, gametype_id) VALUES(" + g.Game_id + "," + g.Started_at + "," + g.Gametype_id + ") "+
+                "INSERT INTO game_player(game_id, player_id, score) INNER JOIN game ON game.game_id = game_player.game_id INNER JOIN " +
+                "player ON player.player_id = game_player.player_id VALUES(" + gp.Game_id + ", " + gp.Player_id + ", " + gp.Score + ")";
+            //string stmtTwo = 
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("game_id", g.Game_id);
+                    cmd.Parameters.AddWithValue("started_at", g.Started_at);
+                    cmd.Parameters.AddWithValue("gametype_id", g.Gametype_id);
+                    cmd.Parameters.AddWithValue("game_id", gp.Game_id);
+                    cmd.Parameters.AddWithValue("player_id", gp.Player_id);
+                    cmd.Parameters.AddWithValue("score", gp.Score);
+
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        g = new Game.Game()
+                        {
+                            Game_id = 
+                        }
+                    }
+                }
+               
+            }
+        }
+
+
+
+
 
         public Player.Player AddPlayer(string first, string last, string nick) // Metod som inte fungerade...
         {

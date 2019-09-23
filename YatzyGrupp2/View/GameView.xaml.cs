@@ -51,7 +51,7 @@ namespace YatzyGrupp2.View
                 lblPlayer4.Content = gamePlayers[3].Nickname;
             }
 
-            timer.Content = gamelogic.Timer(); 
+             
 
         }
 
