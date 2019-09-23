@@ -499,5 +499,19 @@ namespace YatzyGrupp2.View
             sumP1 += gamelogic.Chans(dice, diceThrow);
             lblChansP1.IsEnabled = false;
         }
+
+        private void LblSmallStraightP1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            lblSmallStraightP1.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
+            sumP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
+            lblSmallStraightP1.IsEnabled = false;
+        }
+
+        private void LblLargeStraightP1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            lblLargeStraightP1.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
+            sumP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
+            lblLargeStraightP1.IsEnabled = false;
+        }
     }
 }

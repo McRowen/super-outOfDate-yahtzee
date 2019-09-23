@@ -256,7 +256,5 @@ namespace YatzyGrupp2.Gamelogic
             }
             return true;
         }
-
-        
     }
 }

@@ -67,8 +67,8 @@
             <Label x:Name="lbl2ParP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lbl2ParP1_MouseDown"/>
             <Label x:Name="lblTripletP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblTripletP1_MouseDown"/>
             <Label x:Name="lblFourofaKindP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lblFourofaKindP1_MouseDown"/>
-            <Label x:Name="lblSmallStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblLargeStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblSmallStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblSmallStraightP1_MouseDown"/>
+            <Label x:Name="lblLargeStraightP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblLargeStraightP1_MouseDown"/>
             <Label x:Name="lblFullHouseP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblFullHouseP1_MouseDown"/>
             <Label x:Name="lblChansP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblChansP1_MouseDown"/>
             <Label x:Name="lblYatzyP1" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lblYatzyP1_MouseDown"/>
