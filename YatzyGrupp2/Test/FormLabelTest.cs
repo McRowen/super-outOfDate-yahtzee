@@ -18,9 +18,9 @@ namespace YatzyGrupp2.Test
             
         }
         static int players = 4;
-        List<LabelTest>  testList = new List<LabelTest>();
+        List<Label>  testList = new List<Label>();
         LabelTest cellLabelArray = new LabelTest();
-        Label[] cellLabel = new Label[players];
+        int tempPos = 0;
         int xDif = 97;
         int yDif = 30;
         int edgeDif = 20;
@@ -30,38 +30,40 @@ namespace YatzyGrupp2.Test
         private void FormLabelTest_Load(object sender, EventArgs e)
         {
             int temp = 0;
+            
             for(int i = 0; i < 19; i++)
             {
-                for(int o = 0; o < players; o++)
+                
+                for (int o = 0; o < 5; o++)
                 {
-                    Label testsak = new Label();
+                    Label cellLabel = new Label();
 
-
-                    testsak.Name = "lbl" + Convert.ToString(temp);
-                    if(i <= 1)
-                        testsak.Text = "lbl------"+ extraSpace + "0" + Convert.ToString(temp);
+                    if(i < 9)
+                    {
+                        cellLabel.Name = "lblX" + Convert.ToString(o) + "Y0" + Convert.ToString(i);
+                    }
                     else
-                        testsak.Text = "lbl------" + Convert.ToString(temp);
-                    testsak.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
-                    testsak.BorderStyle = BorderStyle.FixedSingle;
-                    testsak.Size = new Size(testsak.PreferredWidth, testsak.PreferredHeight);
-                    testsak.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
-                    testsak.Click += new System.EventHandler(ctrlClick);
-                    testsak.MouseEnter += new System.EventHandler(label_Enter);
-                    testsak.MouseLeave += new System.EventHandler(label_Leave);
-                    temp++;
-                    cellLabel[o] = testsak;
+                    {
+                        cellLabel.Name = "lblX" + Convert.ToString(o) + "Y" + Convert.ToString(i);
+                    }
                     
+                    cellLabel.Text = "lbl------" + Convert.ToString(temp);
+                    cellLabel.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
+                    cellLabel.BorderStyle = BorderStyle.FixedSingle;
+                    cellLabel.Size = new Size(xDif+1, yDif+1);
+                    cellLabel.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
+                    cellLabel.Click += new System.EventHandler(ctrlClick);
+                    cellLabel.MouseEnter += new System.EventHandler(label_Enter);
+                    cellLabel.MouseLeave += new System.EventHandler(label_Leave);
+                    temp++;
+                    testList.Add(cellLabel);
                 }
-                cellLabelArray.CellLabel = cellLabel;
-                testList.Add(cellLabelArray);
+
+                
             }
             for(int q = 0; q < testList.Count; q++)
             {
-                for(int a = 0; a < players; a++)
-                {
-                    Controls.Add(testList[q].CellLabel[a]);
-                }
+               Controls.Add(testList[q]);
             }
             
         }
@@ -74,9 +76,9 @@ namespace YatzyGrupp2.Test
         private void Button1_Click(object sender, EventArgs e)
         {
             
-            if(testList[1].CellLabel[1].Name == "lbl1")
+            if(testList[1].Name == "lbl1")
             {
-                testList[1].CellLabel[1].Text = "Yey";
+                testList[1].Text = "Yey";
             }
         }
 
@@ -106,40 +108,91 @@ namespace YatzyGrupp2.Test
             {
                 for (int a = 0; a < players; a++)
                 {
-                    if (testList[i].CellLabel[a].Name == ctrl.Name)
+                    if (testList[i].Name == ctrl.Name)
                     {
+                        int temp = int.Parse(testList[i].Name[6].ToString());
+                        if (temp == 0)
+                        {
+                            temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+                        }
 
-                        int temp = int.Parse(testList[i].CellLabel[a].Name[3].ToString());
-                        
+                        int temp2 = int.Parse(testList[i].Name[4].ToString());
+                        for (int k = 0; k <= players; k++)
+                        {
+                            string xTemp = Convert.ToString(k);
+                            string yTemp = Convert.ToString(temp);
+                            string nameTemp = "lblX" + xTemp + "Y" + yTemp;
+                            testList[i- temp2 + k].BackColor = Color.Red;
 
-                            for (int o = temp; o <= 4; o++)
-                            {
-                                testList[o].CellLabel[a].BackColor = Color.Red;
-                            }
-                            for (int o = temp; o >= 0; o--)
-                            {
-                                testList[o].CellLabel[a].BackColor = Color.Red;
-                            }
-                            testList[i].CellLabel[a].BackColor = Color.Gray;
-                        
-                        
+                        }
+
+                        testList[i].BackColor = Color.Gray;
+
+
                     }
                 }
-                
+
             }
         }
 
         private void label_Leave(object sender, EventArgs e)
         {
-            //Control ctrl = (Control)sender;
-            //for (int i = 0; i < testList.Count; i++)
-            //{
-            //    if (testList[i].CellLabel[i].Name == ctrl.Name)
-            //    {
-            //        testList[i].CellLabel[i].BackColor = Color.White;
-            //    }
-                
-            //}
+            Control ctrl = (Control)sender;
+            for (int i = 0; i < testList.Count; i++)
+            {
+                for (int a = 0; a < players; a++)
+                {
+                    if (testList[i].Name == ctrl.Name)
+                    {
+                         if(tempPos == i-1 || tempPos == i + 1 || tempPos == i)
+                        {
+                            int temp = int.Parse(testList[i].Name[6].ToString());
+                            if (temp == 0)
+                            {
+                                temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+                            }
+
+                            int temp2 = int.Parse(testList[i].Name[4].ToString());
+                            for (int k = 0; k <= players; k++)
+                            {
+                                string xTemp = Convert.ToString(k);
+                                string yTemp = Convert.ToString(temp);
+                                string nameTemp = "lblX" + xTemp + "Y" + yTemp;
+                                testList[i - temp2 + k].BackColor = Color.Red;
+
+                            }
+
+                            testList[i].BackColor = Color.Gray;
+                            tempPos = i;
+                        }
+                        else
+                        {
+                            int temp = int.Parse(testList[i].Name[6].ToString());
+                            if (temp == 0)
+                            {
+                                temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+                            }
+
+                            int temp2 = int.Parse(testList[i].Name[4].ToString());
+                            for (int k = 0; k <= players; k++)
+                            {
+                                string xTemp = Convert.ToString(k);
+                                string yTemp = Convert.ToString(temp);
+                                string nameTemp = "lblX" + xTemp + "Y" + yTemp;
+                                testList[i - temp2 + k].BackColor = Color.White;
+
+                            }
+                            tempPos = i;
+                        }
+                        
+
+
+
+
+                    }
+                }
+
+            }
         }
     }
 }
