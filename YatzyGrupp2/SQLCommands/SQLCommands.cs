@@ -25,7 +25,6 @@ namespace YatzyGrupp2.SQLCommands
                 conn.Open();
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
-
                     using (var reader = cmd.ExecuteReader())
                     {
                         for (int i = 0; i < selectedPlayer.Count; i++)
@@ -39,11 +38,9 @@ namespace YatzyGrupp2.SQLCommands
                         return gp;
                     }
                 }
-
             }
         }
-
-        public void StartNewGame()
+        public void StartNewGame(DateTime started_at, int gameType_id, int game_id)
         {
             //string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1)";
 
@@ -52,49 +49,20 @@ namespace YatzyGrupp2.SQLCommands
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
                 {
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        cmd.Connection = conn;
-                        cmd.CommandText = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1)";
-                        cmd.Parameters.AddWithValue("started_at", g.Started_at);
-                        cmd.Parameters.AddWithValue("gametype_id", g.Gametype_id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    conn.Close();
+                    cmd.Connection = conn;
+                    cmd.CommandText = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1) RETURNING game_id";
+                    cmd.Parameters.AddWithValue("started_at", started_at);
+                    cmd.Parameters.AddWithValue("gametype_id", gameType_id);
+                    cmd.Parameters.AddWithValue("game_id", game_id);
+                    cmd.ExecuteNonQuery();
                 }
+                conn.Close();
             }
         }
-        public Player.Player AddPlayer(string first, string last, string nick) // Metod som inte fungerade...
-        {
-            string stmt = "INSERT INTO player(firstname, lastname, nickname) " +
-                          "VALUES(" /*+ p.Player_id + ","*/ + p.Firstname + "," + p.Lastname + "," + p.Nickname + ")";
-
-            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-            {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand(stmt, conn))
-                {
-                    cmd.Parameters.AddWithValue("firstname", p.Firstname);
-                    cmd.Parameters.AddWithValue("lastname", p.Lastname);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        p = new Player.Player()
-                        {
-                             Firstname = first,
-                             Lastname = last,
-                             Nickname = nick
-                        };
-                        return p;
-                    }
-                }
-            }
-        } 
-
         public void AddPlayerTest(string first, string last, string nick)
         {
             using (var conn = new
-                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
+                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
@@ -108,7 +76,6 @@ namespace YatzyGrupp2.SQLCommands
                 }
                 conn.Close();
             }
-
         }
         public Player.Player GetChosenPlayer(Player.Player player_Id) //Metod för att lägga till spelare i spelet.
         {
@@ -169,7 +136,6 @@ namespace YatzyGrupp2.SQLCommands
                 return players;
             }
         }
-
         //  Metod för att se highscore
         public List<Player.highscoreplayer> GetHighScore()
         {

@@ -21,6 +21,7 @@ namespace YatzyGrupp2.View
     {
         SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
         GamePlayer.GamePlayer g = new GamePlayer.GamePlayer();
+        Game.Game game = new Game.Game();
         int click = 0;
         public static List<Player.Player> players = new List<Player.Player>();
         public StartView()
@@ -88,7 +89,7 @@ namespace YatzyGrupp2.View
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
-            sql.StartNewGame();
+            sql.StartNewGame(game.Started_at, game.Gametype_id, game.Game_id);
             //sql.StartNewGamePlayer(players,)
             GameView gameView = new GameView();
             gameView.Show();
