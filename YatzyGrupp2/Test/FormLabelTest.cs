@@ -17,7 +17,10 @@ namespace YatzyGrupp2.Test
             InitializeComponent();
             
         }
-        List<Label> testList = new List<Label>();
+        static int players = 4;
+        List<LabelTest>  testList = new List<LabelTest>();
+        LabelTest cellLabelArray = new LabelTest();
+        Label[] cellLabel = new Label[players];
         int xDif = 97;
         int yDif = 30;
         int edgeDif = 20;
@@ -29,38 +32,51 @@ namespace YatzyGrupp2.Test
             int temp = 0;
             for(int i = 0; i < 19; i++)
             {
-                for(int o = 0; o < 5; o++)
+                for(int o = 0; o < players; o++)
                 {
-                    Label cellLabel = new Label();
-                    cellLabel.Name = "lbl" + Convert.ToString(temp);
+                    Label testsak = new Label();
+
+
+                    testsak.Name = "lbl" + Convert.ToString(temp);
                     if(i <= 1)
-                        cellLabel.Text = "lbl------"+ extraSpace + "0" + Convert.ToString(temp);
+                        testsak.Text = "lbl------"+ extraSpace + "0" + Convert.ToString(temp);
                     else
-                        cellLabel.Text = "lbl------" + Convert.ToString(temp);
-                    cellLabel.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
-                    cellLabel.BorderStyle = BorderStyle.FixedSingle;
-                    cellLabel.Size = new Size(cellLabel.PreferredWidth, cellLabel.PreferredHeight);
-                    cellLabel.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
-                    cellLabel.Click += new System.EventHandler(ctrlClick);
-                    cellLabel.MouseEnter += new System.EventHandler(label_Enter);
-                    cellLabel.MouseLeave += new System.EventHandler(label_Leave);
+                        testsak.Text = "lbl------" + Convert.ToString(temp);
+                    testsak.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
+                    testsak.BorderStyle = BorderStyle.FixedSingle;
+                    testsak.Size = new Size(testsak.PreferredWidth, testsak.PreferredHeight);
+                    testsak.Location = new Point(edgeDif + (o * xDif), edgeDif + (i * yDif));
+                    testsak.Click += new System.EventHandler(ctrlClick);
+                    testsak.MouseEnter += new System.EventHandler(label_Enter);
+                    testsak.MouseLeave += new System.EventHandler(label_Leave);
                     temp++;
-                    testList.Add(cellLabel);
+                    cellLabel[o] = testsak;
+                    
+                }
+                cellLabelArray.CellLabel = cellLabel;
+                testList.Add(cellLabelArray);
+            }
+            for(int q = 0; q < testList.Count; q++)
+            {
+                for(int a = 0; a < players; a++)
+                {
+                    Controls.Add(testList[q].CellLabel[a]);
                 }
             }
             
-            for(int q = 0; q < testList.Count; q++)
-            {
-                Controls.Add(testList[q]);
-            }
         }
+
+      
+
+
+
 
         private void Button1_Click(object sender, EventArgs e)
         {
             
-            if(testList[1].Name == "lbl1")
+            if(testList[1].CellLabel[1].Name == "lbl1")
             {
-                testList[1].Text = "Yey";
+                testList[1].CellLabel[1].Text = "Yey";
             }
         }
 
@@ -88,52 +104,42 @@ namespace YatzyGrupp2.Test
             Control ctrl = (Control)sender;
             for (int i = 0; i < testList.Count; i++)
             {
-                if(testList[i].Name == ctrl.Name)
+                for (int a = 0; a < players; a++)
                 {
-                    
-                    int temp = int.Parse(testList[i].Name[3].ToString());
-                    if (temp <= 9 && testList[i].Name[4] == null)
+                    if (testList[i].CellLabel[a].Name == ctrl.Name)
                     {
+
+                        int temp = int.Parse(testList[i].CellLabel[a].Name[3].ToString());
                         
-                        for(int o = temp; o <= 4; o++)
-                        {
-                            testList[o].BackColor = Color.Red;
-                        }
-                        for (int o = temp; o >= 0; o--)
-                        {
-                            testList[o].BackColor = Color.Red;
-                        }
-                        testList[i].BackColor = Color.Gray;
-                    }
-                    else
-                    {
-                        string stringTest = Convert.ToString(testList[i].Name[3]) + Convert.ToString(testList[i].Name[4]);
-                        int temp2 = Convert.ToInt32(stringTest);
-                        for (int o = temp2; o/10 < 4; o++)
-                        {
-                            testList[o].BackColor = Color.Red;
-                        }
-                        for (int o = temp2; o/10 > 0; o--)
-                        {
-                            testList[o].BackColor = Color.Red;
-                        }
-                        testList[i].BackColor = Color.Gray;
+
+                            for (int o = temp; o <= 4; o++)
+                            {
+                                testList[o].CellLabel[a].BackColor = Color.Red;
+                            }
+                            for (int o = temp; o >= 0; o--)
+                            {
+                                testList[o].CellLabel[a].BackColor = Color.Red;
+                            }
+                            testList[i].CellLabel[a].BackColor = Color.Gray;
+                        
+                        
                     }
                 }
+                
             }
         }
 
         private void label_Leave(object sender, EventArgs e)
         {
-            Control ctrl = (Control)sender;
-            for (int i = 0; i < testList.Count; i++)
-            {
-                if (testList[i].Name == ctrl.Name)
-                {
-                    testList[i].BackColor = Color.White;
-                }
+            //Control ctrl = (Control)sender;
+            //for (int i = 0; i < testList.Count; i++)
+            //{
+            //    if (testList[i].CellLabel[i].Name == ctrl.Name)
+            //    {
+            //        testList[i].CellLabel[i].BackColor = Color.White;
+            //    }
                 
-            }
+            //}
         }
     }
 }
