@@ -89,7 +89,7 @@ namespace YatzyGrupp2.View
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
-            sql.StartNewGame(game.Started_at, game.Gametype_id, game.Game_id);
+            sql.StartNewGame();
             //sql.StartNewGamePlayer(players,)
             GameView gameView = new GameView();
             gameView.Show();

@@ -40,23 +40,27 @@ namespace YatzyGrupp2.SQLCommands
                 }
             }
         }
-        public void StartNewGame(DateTime started_at, int gameType_id, int game_id)
+        public Game.Game StartNewGame()
         {
-            //string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1)";
+            string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1)";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
-                using (var cmd = new NpgsqlCommand())
+                using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1) RETURNING game_id";
-                    cmd.Parameters.AddWithValue("started_at", started_at);
-                    cmd.Parameters.AddWithValue("gametype_id", gameType_id);
-                    cmd.Parameters.AddWithValue("game_id", game_id);
-                    cmd.ExecuteNonQuery();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        g = new Game.Game()
+                        {
+                            Gametype_id = 1,
+                            Started_at = DateTime.Now
+                        };
+                        return g;
+                    }
                 }
-                conn.Close();
+
             }
         }
         public void AddPlayerTest(string first, string last, string nick)
