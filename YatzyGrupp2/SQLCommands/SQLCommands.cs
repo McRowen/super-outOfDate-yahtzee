@@ -87,41 +87,41 @@ namespace YatzyGrupp2.SQLCommands
         //}
 
 
-        public DateTime StartNewGame()
-        {
-           // string stmt = "INSERT INTO game (game_id, started_at, gametype_id) VALUES(@game_id, CURRENT_TIMESTAMP, 1)";
-            Game.Game game = new Game.Game();
-            DateTime date = DateTime.Now;
-            int gametyp = 1;
+        //public DateTime StartNewGame()
+        //{
+        //   // string stmt = "INSERT INTO game (game_id, started_at, gametype_id) VALUES(@game_id, CURRENT_TIMESTAMP, 1)";
+        //    Game.Game game = new Game.Game();
+        //    DateTime date = DateTime.Now;
+        //    int gametyp = 1;
 
-            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-            {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand())
-                {
+        //    using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+        //    {
+        //        conn.Open();
+        //        using (var cmd = new NpgsqlCommand())
+        //        {
 
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO game(started_at, gametype_id) VALUES(@started_at, @gametype_id)";
-                   // cmd.Parameters.AddWithValue("game_id", g.Game_id);
-                    cmd.Parameters.AddWithValue("started_at", date);
-                    cmd.Parameters.AddWithValue("gametype_id", gametyp);
-                    cmd.ExecuteNonQuery();
-                    //using (var reader = cmd.ExecuteReader())
-                    //{
-                    //cmd.Parameters.AddWithValue("game_id", g.Game_id);
-                    //    g = new Game.Game()
-                    //    {
-                    //        Game_id = reader.GetInt32(0),
-                    //        Started_at = reader.GetDateTime(1),
-                    //        Gametype_id = reader.GetInt32(2)
-                    //    };
-                    //    return g;
-                    //}
-                }
-                conn.Close();
-            }
-            return date;
-        }
+        //            cmd.Connection = conn;
+        //            cmd.CommandText = "INSERT INTO game(started_at, gametype_id) VALUES(@started_at, @gametype_id)";
+        //           // cmd.Parameters.AddWithValue("game_id", g.Game_id);
+        //            cmd.Parameters.AddWithValue("started_at", date);
+        //            cmd.Parameters.AddWithValue("gametype_id", gametyp);
+        //            cmd.ExecuteNonQuery();
+        //            //using (var reader = cmd.ExecuteReader())
+        //            //{
+        //            //cmd.Parameters.AddWithValue("game_id", g.Game_id);
+        //            //    g = new Game.Game()
+        //            //    {
+        //            //        Game_id = reader.GetInt32(0),
+        //            //        Started_at = reader.GetDateTime(1),
+        //            //        Gametype_id = reader.GetInt32(2)
+        //            //    };
+        //            //    return g;
+        //            //}
+        //        }
+        //        conn.Close();
+        //    }
+        //    return date;
+        //}
         public void AddPlayerTest(string first, string last, string nick)
         {
             using (var conn = new
