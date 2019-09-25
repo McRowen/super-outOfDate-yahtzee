@@ -15,12 +15,16 @@ namespace YatzyGrupp2.Test
         public FormLabelTest()
         {
             InitializeComponent();
-            
+                     
         }
         
         List<Label>  testList = new List<Label>();
         LabelTest cellLabelArray = new LabelTest();
         List<Player.Player> gamePlayers = new List<Player.Player>();
+        Gamelogic.Gamelogic gl = new Gamelogic.Gamelogic();
+
+        int[] dice = new int[5];
+        bool[] diceThrow = new bool[] { false, false, false, false, false };
 
         int players;
         int tempPos = 0;
@@ -62,16 +66,14 @@ namespace YatzyGrupp2.Test
                     cellLabel.MouseLeave += new System.EventHandler(label_Leave);
                     temp++;
                     testList.Add(cellLabel);
-                }
-
-                
+                }               
             }
             for(int q = 0; q < testList.Count; q++)
             {
                Controls.Add(testList[q]);
             }
+            PlayersActive();
 
-            
         }
 
         public void ChangeLabelText(string labelName, string labelText)
@@ -93,7 +95,33 @@ namespace YatzyGrupp2.Test
             }
         }
 
-
+        private void PlayersActive()
+        {
+            SetLabelTextEmpty();
+            ChangeLabelText("lblX0Y00", "Spelare:");
+            ChangeLabelText("lblX0Y01", "Ettor");
+            ChangeLabelText("lblX0Y02", "Tvåor");
+            ChangeLabelText("lblX0Y03", "Treor");
+            ChangeLabelText("lblX0Y04", "Fyror");
+            ChangeLabelText("lblX0Y05", "Femmor");
+            ChangeLabelText("lblX0Y06", "Sexor");
+            ChangeLabelText("lblX0Y07", "Summa");
+            ChangeLabelText("lblX0Y08", "Bonus");
+            ChangeLabelText("lblX0Y09", "Par");
+            ChangeLabelText("lblX0Y10", "Två Par");
+            ChangeLabelText("lblX0Y11", "Tretal");
+            ChangeLabelText("lblX0Y12", "Fyrtal");
+            ChangeLabelText("lblX0Y13", "Liten Stege");
+            ChangeLabelText("lblX0Y14", "Stor Stege");
+            ChangeLabelText("lblX0Y15", "Kåk");
+            ChangeLabelText("lblX0Y16", "Chans");
+            ChangeLabelText("lblX0Y17", "Yatzy");
+            ChangeLabelText("lblX0Y18", "Total");
+            for (int i = 0; i < gamePlayers.Count; i++)
+            {
+                ChangeLabelText("lblX" + Convert.ToString(i + 1) + "Y00", gamePlayers[i].Nickname);
+            }
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
             SetLabelTextEmpty();
@@ -233,7 +261,43 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void ThrowDices_Click(object sender, EventArgs e)
+        {
+            dice = gl.GetRandomDice(diceThrow, dice);
+            if (diceThrow[0] != true)
+            {
+                Dice1.Text = Convert.ToString(dice[0]);
+            }
+            if (diceThrow[1] != true)
+            {
+                Dice2.Text = Convert.ToString(dice[1]);
+            }
+            if (diceThrow[2] != true)
+            {
+                Dice3.Text = Convert.ToString(dice[2]);
+            }
+            if (diceThrow[3] != true)
+            {
+                Dice4.Text = Convert.ToString(dice[3]);
+            }
+            if (diceThrow[4] != true)
+            {
+                Dice5.Text = Convert.ToString(dice[4]);
+            }
+
+            gl.IncrementRound();
+
+            if (gl.TurnOver())
+            {
+                ThrowDices.Enabled = false;
+            }
+            else
+            {
+                ThrowDices.Enabled = true;
+            }
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
         {
 
         }
