@@ -35,6 +35,7 @@ namespace YatzyGrupp2.Test
         int fontSize = 12;
         string fontType = "Arial";
         string extraSpace = "";
+
         private void FormLabelTest_Load(object sender, EventArgs e)
         {
             int temp = 0;
@@ -122,6 +123,7 @@ namespace YatzyGrupp2.Test
                 ChangeLabelText("lblX" + Convert.ToString(i + 1) + "Y00", gamePlayers[i].Nickname);
             }
         }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             SetLabelTextEmpty();
@@ -150,7 +152,6 @@ namespace YatzyGrupp2.Test
             }
         }
         
-
         private void label_Click(object sender, MouseEventArgs e)
         {
             Control test = (Control)sender;
@@ -161,7 +162,27 @@ namespace YatzyGrupp2.Test
         private void ctrlClick(System.Object sender, EventArgs e)
         {
             Control ctrl = (Control)sender;
-            MessageBox.Show("You clicked: " + ctrl.Name);
+            //MessageBox.Show("You clicked: " + ctrl.Name);
+            
+            /*if (ctrl.Name == "lblX1Y01")
+            {
+                ChangeLabelText("lblX1Y01", Convert.ToString(gl.PointsExtra(dice, diceThrow)));
+            }*/
+            for(int i = 0; i < testList.Count; i++)
+            {
+                if(ctrl.Name == testList[i].Name)
+                {
+                    int temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+                    if(temp < 7 && temp > 0)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
+                    }
+                }
+                
+
+            }
+            
+
         }
 
         private void label_Enter(object sender, EventArgs e)
@@ -264,7 +285,7 @@ namespace YatzyGrupp2.Test
             dice = gl.GetRandomDice(diceThrow, dice);
             if (diceThrow[0] != true)
             {
-                Dice1.Text = Convert.ToString(dice[0]);
+                Dice1.Text = Convert.ToString(dice[0]);               
             }
             if (diceThrow[1] != true)
             {
@@ -299,5 +320,85 @@ namespace YatzyGrupp2.Test
         {
             this.Close();
         }
-    }
+
+        private void Dice1_MouseDown(object sender, MouseEventArgs e)
+        {
+            int i = 0;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice1.BackColor = Color.Red;
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice1.BackColor = Color.Red;
+            }
+        }
+
+        private void Dice2_MouseDown(object sender, MouseEventArgs e)
+        {
+            int i = 1;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice2.BackColor = Color.Red;
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice2.BackColor = Color.Red;
+            }
+        }
+
+        private void Dice3_MouseDown(object sender, MouseEventArgs e)
+        {
+            int i = 2;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice3.BackColor = Color.Red;
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice3.BackColor = Color.Red;
+            }
+        }
+
+        private void Dice4_MouseDown(object sender, MouseEventArgs e)
+        {
+            int i = 3;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice4.BackColor = Color.Red;
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice4.BackColor = Color.Red;
+            }
+        }
+
+        private void Dice5_MouseDown(object sender, MouseEventArgs e)
+        {
+            int i = 4;
+
+            if (diceThrow[i] != true)
+            {
+                diceThrow[i] = true;
+                Dice5.BackColor = Color.Red;
+            }
+            else
+            {
+                diceThrow[i] = false;
+                Dice5.BackColor = Color.Red;
+            }
+        }
+    }        
 }

@@ -29,7 +29,6 @@ namespace YatzyGrupp2.Gamelogic
                     int randValue = rnd.Next(1, 7);
                     num[i] = randValue;
                 }
-
             }
             return num;
         }

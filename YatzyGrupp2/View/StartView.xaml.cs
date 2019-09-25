@@ -67,9 +67,7 @@ namespace YatzyGrupp2.View
                 btnStart.IsEnabled = true;
             }
             players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
-            //sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem);
             listViewChosenPlayers.ItemsSource = null;
-            //listViewChosenPlayers.Items.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
             listViewChosenPlayers.ItemsSource = players;
             click++;
 

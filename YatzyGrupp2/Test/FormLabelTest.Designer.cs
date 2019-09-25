@@ -85,6 +85,7 @@
             this.Dice1.TabIndex = 4;
             this.Dice1.Text = "Dice1";
             this.Dice1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Dice1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice1_MouseDown);
             // 
             // Dice2
             // 
@@ -97,6 +98,7 @@
             this.Dice2.TabIndex = 5;
             this.Dice2.Text = "Dice2";
             this.Dice2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Dice2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice2_MouseDown);
             // 
             // Dice3
             // 
@@ -109,6 +111,7 @@
             this.Dice3.TabIndex = 6;
             this.Dice3.Text = "Dice3";
             this.Dice3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Dice3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice3_MouseDown);
             // 
             // Dice4
             // 
@@ -121,6 +124,7 @@
             this.Dice4.TabIndex = 7;
             this.Dice4.Text = "Dice4";
             this.Dice4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Dice4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice4_MouseDown);
             // 
             // Dice5
             // 
@@ -133,6 +137,7 @@
             this.Dice5.TabIndex = 8;
             this.Dice5.Text = "Dice5";
             this.Dice5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Dice5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice5_MouseDown);
             // 
             // label7
             // 
