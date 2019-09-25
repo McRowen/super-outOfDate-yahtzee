@@ -16,65 +16,112 @@ namespace YatzyGrupp2.SQLCommands
         Game.Game g = new Game.Game();
         GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
 
-        public GamePlayer.GamePlayer StartNewGamePlayer(Game.Game g, List<Player.Player> selectedPlayer)
+        public void StartNewGamePlayer(List<Player.Player> selectedPlayer)
         {
-            string stmt = "INSERT INTO game_player (game_id, player_id) VALUES game_id, player_id";
+            //  string stmt = "INSERT INTO game_player (game_id, player_id) VALUES @game_id, @player_id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                int a = GameID();
+                for (int i = 0; i < selectedPlayer.Count; i++)
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+
+                        //cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
+
+
+
+
+
+
+                        int temp = selectedPlayer[i].Player_id;
+
+                        cmd.Parameters.AddWithValue("game_id", a);
+                        cmd.Parameters.AddWithValue("player_id", temp);
+                        cmd.CommandText = "INSERT INTO game_player (game_id, player_id) VALUES (@game_id, @player_id)";
+
+
+                        //gp = new GamePlayer.GamePlayer()
+                        //{
+                        //    Game_id = a,
+                        //    Player_id = temp
+                        //};
+
+                        //cmd.ExecuteNonQuery();
+                        cmd.ExecuteReader();
+
+
+
+                    }
+                    conn.Close();
+                }
+
+            }
+        }
+        public int GameID()
+        {
+            string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1) RETURNING Game_id";
+ 
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
+
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        for (int i = 0; i < selectedPlayer.Count; i++)
-                        {
-                            gp = new GamePlayer.GamePlayer()
-                            {
-                                Game_id = g.Game_id,
-                                Player_id = selectedPlayer[i].Player_id
-                            };
-                        }
-                        return gp;
-                    }
+                    int game_id = (Int32)cmd.ExecuteScalar();
+                    return game_id;
                 }
-            }
-        }
-        public DateTime StartNewGame()
-        {
-           // string stmt = "INSERT INTO game (game_id, started_at, gametype_id) VALUES(@game_id, CURRENT_TIMESTAMP, 1)";
-            Game.Game game = new Game.Game();
-            DateTime date = DateTime.Now;
-            int gametyp = 1;
 
-            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-            {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand())
-                {
-
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO game(started_at, gametype_id) VALUES(@started_at, @gametype_id)";
-                   // cmd.Parameters.AddWithValue("game_id", g.Game_id);
-                    cmd.Parameters.AddWithValue("started_at", date);
-                    cmd.Parameters.AddWithValue("gametype_id", gametyp);
-                    cmd.ExecuteNonQuery();
-                    //using (var reader = cmd.ExecuteReader())
-                    //{
-                    //cmd.Parameters.AddWithValue("game_id", g.Game_id);
-                    //    g = new Game.Game()
-                    //    {
-                    //        Game_id = reader.GetInt32(0),
-                    //        Started_at = reader.GetDateTime(1),
-                    //        Gametype_id = reader.GetInt32(2)
-                    //    };
-                    //    return g;
-                    //}
-                }
-                conn.Close();
             }
-            return date;
+
         }
+        //public int PlayerID(List<Player.Player> SelectedPlayers)
+        //{
+        //    string stmt = "SELECT player_ID FROM player WHERE nickname = " +SelectedPlayers.
+
+
+        //}
+
+
+        //public DateTime StartNewGame()
+        //{
+        //   // string stmt = "INSERT INTO game (game_id, started_at, gametype_id) VALUES(@game_id, CURRENT_TIMESTAMP, 1)";
+        //    Game.Game game = new Game.Game();
+        //    DateTime date = DateTime.Now;
+        //    int gametyp = 1;
+
+        //    using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+        //    {
+        //        conn.Open();
+        //        using (var cmd = new NpgsqlCommand())
+        //        {
+
+        //            cmd.Connection = conn;
+        //            cmd.CommandText = "INSERT INTO game(started_at, gametype_id) VALUES(@started_at, @gametype_id)";
+        //           // cmd.Parameters.AddWithValue("game_id", g.Game_id);
+        //            cmd.Parameters.AddWithValue("started_at", date);
+        //            cmd.Parameters.AddWithValue("gametype_id", gametyp);
+        //            cmd.ExecuteNonQuery();
+        //            //using (var reader = cmd.ExecuteReader())
+        //            //{
+        //            //cmd.Parameters.AddWithValue("game_id", g.Game_id);
+        //            //    g = new Game.Game()
+        //            //    {
+        //            //        Game_id = reader.GetInt32(0),
+        //            //        Started_at = reader.GetDateTime(1),
+        //            //        Gametype_id = reader.GetInt32(2)
+        //            //    };
+        //            //    return g;
+        //            //}
+        //        }
+        //        conn.Close();
+        //    }
+        //    return date;
+        //}
         public void AddPlayerTest(string first, string last, string nick)
         {
             using (var conn = new
@@ -103,7 +150,7 @@ namespace YatzyGrupp2.SQLCommands
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "select nickname from player where player_Id = @player_Id";
+                    cmd.CommandText = "select player_id, nickname from player where player_Id = @player_Id";
                     cmd.Parameters.AddWithValue("player_Id", player_Id.Player_id);
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -111,7 +158,8 @@ namespace YatzyGrupp2.SQLCommands
                         {
                             p = new Player.Player()
                             {
-                                Nickname = reader.GetString(0)
+                                Player_id = reader.GetInt32(0),
+                                Nickname = reader.GetString(1)
                             };
                             ChosenPlayers = p;
                         }
