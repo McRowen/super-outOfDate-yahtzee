@@ -31,7 +31,7 @@ namespace YatzyGrupp2.View
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
             if (players.Count < 2)
             {
-                btnStartGame.IsEnabled = false;
+                btnStart.IsEnabled = false;
             }
         }
         
@@ -64,7 +64,7 @@ namespace YatzyGrupp2.View
         {
             if (players.Count >= 1)
             {
-                btnStartGame.IsEnabled = true;
+                btnStart.IsEnabled = true;
             }
             players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
             //sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem);
@@ -107,9 +107,11 @@ namespace YatzyGrupp2.View
             helpview.ShowDialog(); 
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
             Test.FormLabelTest f = new Test.FormLabelTest();
+            this.Hide();
             f.Show();
         }
     }

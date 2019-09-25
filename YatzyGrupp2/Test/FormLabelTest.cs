@@ -149,8 +149,6 @@ namespace YatzyGrupp2.Test
                 ChangeLabelText("lblX" + Convert.ToString(i + 1) + "Y00", gamePlayers[i].Nickname);
             }
         }
-
-
         
 
         private void label_Click(object sender, MouseEventArgs e)
@@ -297,9 +295,9 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void Label2_Click(object sender, EventArgs e)
+        private void EndGame_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
