@@ -87,14 +87,14 @@
             <Label x:Name="lblSumP2" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblBonusP2" Content="" Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
             <Label x:Name="lblParP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lblParP2_MouseDown"/>
-            <Label x:Name="lbl2ParP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lbl2ParP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="Lbl2ParP2_MouseDown"/>
             <Label x:Name="lblTripletP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="lblTripletP2_MouseDown"/>
-            <Label x:Name="lblFourofaKindP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblSmallStraightP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblLargeStraight" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblFullHouseP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblChanseP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
-            <Label x:Name="lblYatzyP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black"/>
+            <Label x:Name="lblFourofaKindP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblFourofaKindP2_MouseDown"/>
+            <Label x:Name="lblSmallStraightP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblSmallStraightP2_MouseDown"/>
+            <Label x:Name="lblLargeStraightP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblLargeStraightP2_MouseDown"/>
+            <Label x:Name="lblFullHouseP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblFullHouseP2_MouseDown"/>
+            <Label x:Name="lblChansP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblChansP2_MouseDown"/>
+            <Label x:Name="lblYatzyP2" Content=""  FontSize="15" BorderThickness="1" BorderBrush="black" MouseDown="LblYatzyP2_MouseDown"/>
             <Label x:Name="lblTotalP2" Content=""  Background="LightCyan" FontSize="15" BorderThickness="1" BorderBrush="black"/>
         </StackPanel>
 
