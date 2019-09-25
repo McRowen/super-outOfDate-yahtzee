@@ -50,9 +50,6 @@ namespace YatzyGrupp2.View
                 lblPlayer3.Content = gamePlayers[2].Nickname;
                 lblPlayer4.Content = gamePlayers[3].Nickname;
             }
-
-             
-
         }
 
         bool[] diceThrow = new bool[] { false, false, false, false, false };
@@ -191,7 +188,6 @@ namespace YatzyGrupp2.View
             {
                 Dice1.Background = new SolidColorBrush(mouseOnColor);
             }
-
         }
 
         private void Dice1_MouseLeave(object sender, MouseEventArgs e)
@@ -299,7 +295,6 @@ namespace YatzyGrupp2.View
             Dice4.Background = new SolidColorBrush(mouseNotOnColor);
             Dice5.Background = new SolidColorBrush(mouseNotOnColor);
         }
-
         public void ShowBonus()
         {
             if (sumP1 >= 63)

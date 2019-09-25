@@ -221,16 +221,23 @@ namespace YatzyGrupp2.SQLCommands
                         int rank = 1;
                         while (reader.Read())
                         {
-                            pe = new Player.highscoreplayer()
+                            try
                             {
-                                Rank = rank,
-                                Nickname = reader.GetString(0),
-                                Firstname = reader.GetString(1),
-                                Lastname = reader.GetString(2),
-                                Score = reader.GetInt32(3)
-                            };
-                            rank++;
-                            gamers.Add(pe);
+                                pe = new Player.highscoreplayer()
+                                {
+                                    Rank = rank,
+                                    Nickname = reader.GetString(0),
+                                    Firstname = reader.GetString(1),
+                                    Lastname = reader.GetString(2),
+                                    Score = reader.GetInt32(3)
+                                };
+                                rank++;
+                                gamers.Add(pe);
+                            }
+                            catch (PostgresException ex)
+                            {
+                                System.Windows.MessageBox.Show(ex.Message);                              
+                            }
                         }
                     }
                 }
