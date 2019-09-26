@@ -23,19 +23,19 @@ namespace YatzyGrupp2.View
     {
         public HighScoreView()
         {
-            SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
             InitializeComponent();
             try
             {
-                HighScore.ItemsSource = null;
-                HighScore.ItemsSource = db.GetHighScore();
+                SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
+                List<Player.highscoreplayer> players = db.GetHighScore();
+                HighScore.ItemsSource = players;
             }
             catch (PostgresException ex)
             {
                MessageBox.Show(ex.Message);
             }
-            HighScore.ItemsSource = null;
-            HighScore.ItemsSource = db.GetHighScore(); //Denna blir en error när man fösöker gå in på Highscore sidan. Om man kommenterar bort denna plus methoden fungerar knapparna.
+        //   HighScore.ItemsSource = null;
+           // HighScore.ItemsSource = db.GetHighScore(); //Denna blir en error när man fösöker gå in på Highscore sidan. Om man kommenterar bort denna plus methoden fungerar knapparna.
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
