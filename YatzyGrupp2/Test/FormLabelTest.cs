@@ -35,7 +35,7 @@ namespace YatzyGrupp2.Test
         int fontSize = 12;
         string fontType = "Arial";
         string extraSpace = "";
-
+        int round = 0;
         private void FormLabelTest_Load(object sender, EventArgs e)
         {
             int temp = 0;
@@ -74,6 +74,8 @@ namespace YatzyGrupp2.Test
                Controls.Add(testList[q]);
             }
             PlayersActive();
+
+            lblSpelare.Text = "Spelare: " + gamePlayers[round].Nickname;
 
         }
 
