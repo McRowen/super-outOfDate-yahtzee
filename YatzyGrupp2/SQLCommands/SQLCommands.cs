@@ -16,6 +16,8 @@ namespace YatzyGrupp2.SQLCommands
         Game.Game g = new Game.Game();
         GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
 
+
+        //Metod för att få fram game_id och lägga till dom players id och game id i Game_player
         public void StartNewGamePlayer(List<Player.Player> selectedPlayer)
         {
             //  string stmt = "INSERT INTO game_player (game_id, player_id) VALUES @game_id, @player_id";
