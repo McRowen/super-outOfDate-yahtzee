@@ -179,10 +179,42 @@ namespace YatzyGrupp2.Test
                     {
                         ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
                     }
-                    if(GetYValue(ctrl.Name) == 9) //Par
+                  else  if(GetYValue(ctrl.Name) == 9) //Par
                     {
-                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.PointsExtra(dice, diceThrow)));
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
                         
+                    }
+                   else  if (GetYValue(ctrl.Name) == 10)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 11)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 12)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 13)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 14)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 15)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 16)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 17)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
                     }
                 }
                 
