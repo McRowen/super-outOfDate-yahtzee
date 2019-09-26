@@ -177,12 +177,8 @@ namespace YatzyGrupp2.Test
                     {
                         ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
                     }
-                }
-                
-
-            }
-            
-
+                }               
+            }           
         }
 
         private void label_Enter(object sender, EventArgs e)
@@ -212,10 +208,8 @@ namespace YatzyGrupp2.Test
 
                         testList[i].BackColor = Color.Gray;
                         tempPos = i;
-
                     }
                 }
-
             }
         }
 

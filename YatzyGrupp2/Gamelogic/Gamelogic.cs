@@ -11,7 +11,67 @@ namespace YatzyGrupp2.Gamelogic
 
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
-
+        int temp;
+        public int ShowPointsAvailable(int[] d, bool[] dt)
+        {            
+            if (Points(d, dt, 1) > 0 && Points(d, dt, 1) < 6)
+            {
+                temp = Points(d, dt, 1);
+            }
+            else if (Points(d, dt, 2) > 0 && Points(d, dt, 2) < 11)
+            {
+                temp = Points(d, dt, 2);
+            }
+            else if (Points(d, dt, 3) > 0 && Points(d, dt, 3) < 16)
+            {
+                temp = Points(d, dt, 3);
+            }
+            else if (Points(d, dt, 4) > 0 && Points(d, dt, 4) < 21)
+            {
+                temp = Points(d, dt, 4);
+            }
+            else if (Points(d, dt, 5) > 0 && Points(d, dt, 5) < 26)
+            {
+                temp = Points(d, dt, 5);
+            }
+            else if (Points(d, dt, 6) > 0 && Points(d, dt, 6) < 31)
+            {
+                temp = Points(d, dt, 6);
+            }
+            else if (PointsExtra(d, dt) > 4)
+            {
+                temp = PointsExtra(d, dt);
+            }
+            else if (PointsExtra(d, dt ) > 3)
+            {
+                temp = PointsExtra(d, dt);
+            }
+            else if (PointsExtra(d, dt) > 5)
+            {
+                temp = PointsExtra(d, dt);
+            }
+            else if (PointsExtra(d, dt) > 2)
+            {
+                temp = PointsExtra(d, dt);
+            }
+            else if (PointsExtra(d, dt) > 1)
+            {
+                temp = PointsExtra(d, dt);
+            }
+            else if (FullHouseOnTheTable(d, dt) > 6)
+            {
+                temp = FullHouseOnTheTable(d, dt);
+            }
+            else if (SmallLargeStraight(d, dt) > 14)
+            {
+                temp = SmallLargeStraight(d, dt);
+            }
+            else if (SmallLargeStraight(d, dt) > 19)
+            {
+                temp = SmallLargeStraight(d, dt);
+            }
+            return temp;
+        }
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
@@ -103,46 +163,11 @@ namespace YatzyGrupp2.Gamelogic
         public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
         {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
             int points = 0;                        //ska ha fyrtal
-            
-            if (ParTest(d, dt))
-            {                
-                int temp = 0;
-                for(int i = 0; i < dt.Length; i++)
-                {
-                    if(dt[i] == true)
-                    {
-                        temp = d[i];
-                    }
-                }
-                points = temp * 2;
-            }
-            if (Triss(d, dt))
-            {
-                
-                int temp = 0;
-                for (int i = 0; i < dt.Length; i++)
-                {
-                    if (dt[i] != false)
-                    {
-                        temp = d[i];
-                    }
-                }
-                points = temp * 3;
-            }
 
-            if(Tvapar(d, dt))
+            if (Yatzy(d, dt))
             {
-                Array.Sort(d);
-                if (d[0] == d[1] && d[2] == d[3])
-                {
-                    points = d[0] * 2 + d[2] * 2;
-                }
-                else if (d[1] == d[2] && d[3] == d[4])
-                {
-                    points = d[1] * 2 + d[3] * 2;
-                }
+                points = 50;
             }
-
             if (Fyrtal(d, dt))
             {
                 Array.Sort(d);
@@ -155,13 +180,44 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 4;
                 }
             }
-
-            if(Yatzy(d, dt))
+            if (Tvapar(d, dt))
             {
-                points = 50;
+                Array.Sort(d);
+                if (d[0] == d[1] && d[2] == d[3])
+                {
+                    points = d[0] * 2 + d[2] * 2;
+                }
+                else if (d[1] == d[2] && d[3] == d[4])
+                {
+                    points = d[1] * 2 + d[3] * 2;
+                }
             }
+            if (Triss(d, dt))
+            {
+
+                int temp = 0;
+                for (int i = 0; i < dt.Length; i++)
+                {
+                    if (dt[i] != false)
+                    {
+                        temp = d[i];
+                    }
+                }
+                points = temp * 3;
+            }
+            if (ParTest(d, dt))
+            {                
+                int temp = 0;
+                for(int i = 0; i < dt.Length; i++)
+                {
+                    if(dt[i] == true)
+                    {
+                        temp = d[i];
+                    }
+                }
+                points = temp * 2;
+            }             
             return points;
-            
         }
         public bool CalcLargeStraight(int[] d, bool[] dt)
         {
