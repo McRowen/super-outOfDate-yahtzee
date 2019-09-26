@@ -203,10 +203,10 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
         //  Metod för att se highscore
-            Player.highscoreplayer pe = new Player.highscoreplayer();
         public List<Player.highscoreplayer> GetHighScore()
         {
             List<Player.highscoreplayer> gamers = new List<Player.highscoreplayer>();
+            Player.highscoreplayer pe = new Player.highscoreplayer();
             using (var conn = new
                NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -223,25 +223,24 @@ namespace YatzyGrupp2.SQLCommands
                         int rank = 1;
                         while (reader.Read())
                         {
-
-                            pe = new Player.highscoreplayer();
-                            
-                            if ((!reader.IsDBNull(3)) && reader.GetInt32(3) != 0)
+                            try
                             {
-
-                                pe.Rank = rank;
-                                pe.Nickname = reader.GetString(0);
-                                pe.Firstname = reader.GetString(1);
-                                pe.Lastname = reader.GetString(2);
-                                pe.Score = reader.GetInt32(3);
-                                gamers.Add(pe);
+                                pe = new Player.highscoreplayer()
+                                {
+                                    Rank = rank,
+                                    Nickname = reader.GetString(0),
+                                    Firstname = reader.GetString(1),
+                                    Lastname = reader.GetString(2),
+                                    Score = reader.GetInt32(3)
+                                };
                                 rank++;
+                                gamers.Add(pe);
                             }
-                            
-                                
+                            catch (PostgresException ex)
+                            {
+                                System.Windows.MessageBox.Show(ex.Message);                              
                             }
-                          
-                        
+                        }
                     }
                 }
                 conn.Close();
