@@ -114,5 +114,25 @@ namespace YatzyGrupp2.View
             gameView.Show();
             this.Hide();
         }
-    }
+
+        private void ListViewDbPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e) //föresökte göra en dubbelklick men misslyckades.
+        {
+            if (players.Count >= 1)
+            {
+                btnStart.IsEnabled = true;
+            }
+            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            listViewChosenPlayers.ItemsSource = null;
+            listViewChosenPlayers.ItemsSource = players;
+            click++;
+
+            for (int i = 0; i < click; i++)
+            {
+                if (click == 4)
+                {
+                    BtnChoose.IsEnabled = false;
+                }
+            }
+        }
+    }    
 }
