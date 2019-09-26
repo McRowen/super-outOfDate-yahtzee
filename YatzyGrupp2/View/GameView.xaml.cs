@@ -62,11 +62,11 @@ namespace YatzyGrupp2.View
         Color mouseNotOnColor = Colors.White;
         Color mouseOnColor = Colors.Gray;
 
-        private string ShowPointsInLabel(int[] d, bool[] dt)
-        {
-            string labeltext = gamelogic.ShowPointsAvailable(d, dt).ToString();
-            return labeltext;
-        }
+        //private string ShowPointsInLabel(int[] d, bool[] dt)
+        //{
+        //    string labeltext = gamelogic.ShowPointsAvailable(d, dt).ToString();
+        //    return labeltext;
+        //}
         //private void ShowInLabel()
         //{
         //    lblOnes.Content = gamelogic.Points(dice, diceThrow, 1);

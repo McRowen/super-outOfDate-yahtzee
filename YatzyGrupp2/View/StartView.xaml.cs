@@ -32,7 +32,7 @@ namespace YatzyGrupp2.View
             listViewChosenPlayers.ItemsSource = null;
             if (players.Count < 2)
             {
-                btnStartGame.IsEnabled = false;
+                btnStart.IsEnabled = false;
             }
         }
         
@@ -65,7 +65,7 @@ namespace YatzyGrupp2.View
         {
             if (players.Count >= 1)
             {
-                btnStartGame.IsEnabled = true;
+                btnStart.IsEnabled = true;
             }
             players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
             listViewChosenPlayers.ItemsSource = null;
