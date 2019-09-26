@@ -174,10 +174,15 @@ namespace YatzyGrupp2.Test
             {
                 if(ctrl.Name == testList[i].Name)
                 {
-                    int temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+                    int temp = GetYValue(ctrl.Name);
                     if(temp < 7 && temp > 0)
                     {
                         ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
+                    }
+                    if(GetYValue(ctrl.Name) == 9) //Par
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.PointsExtra(dice, diceThrow)));
+                        
                     }
                 }
                 
@@ -186,6 +191,22 @@ namespace YatzyGrupp2.Test
             
 
         }
+
+        public int GetYValue(string name)
+        {
+            int temp = 0;
+            for(int i = 0; i < testList.Count; i++)
+            {
+                if(name == testList[i].Name)
+                {
+                    temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+
+                }
+
+            }
+            return temp;
+        }
+
 
         private void label_Enter(object sender, EventArgs e)
         {
@@ -321,6 +342,8 @@ namespace YatzyGrupp2.Test
         private void EndGame_Click(object sender, EventArgs e)
         {
             this.Close();
+            View.StartView startView = new View.StartView();
+            startView.Show();
         }
 
         private void Dice1_MouseDown(object sender, MouseEventArgs e)
