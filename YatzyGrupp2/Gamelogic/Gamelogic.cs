@@ -252,6 +252,7 @@ namespace YatzyGrupp2.Gamelogic
                 {
                     return false;
                 }
+                temp = d[i];
             }
             return true;
         }
