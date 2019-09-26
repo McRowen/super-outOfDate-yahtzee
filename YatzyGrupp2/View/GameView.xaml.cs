@@ -339,12 +339,14 @@ namespace YatzyGrupp2.View
             lblSumP2.Content = sumP2.ToString();
             ShowBonus();
 
-            lblTotalP1.Content = sumP1;
+            lblTotalP1.Content = totalP1;
+            lblTotalP2.Content = totalP2;
             ShowTotal();
 
 
         }
-
+        int totalP1 = 0;
+        int totalP2 = 0;
         int bonus = 50;
         int sumP1 = 0;
         int sumP2 = 0;
@@ -353,6 +355,7 @@ namespace YatzyGrupp2.View
         {
             lblOnesP1.Content = gamelogic.Points(dice, diceThrow, 1);
             sumP1 += gamelogic.Points(dice, diceThrow, 1);
+            totalP1 += gamelogic.Points(dice, diceThrow, 1);
             lblOnesP1.IsEnabled = false;
         }
 
@@ -360,6 +363,7 @@ namespace YatzyGrupp2.View
         {
             lblTwosP1.Content = gamelogic.Points(dice, diceThrow, 2);
             sumP1 += gamelogic.Points(dice, diceThrow, 2);
+            totalP1 += gamelogic.Points(dice, diceThrow, 2);
             lblTwosP1.IsEnabled = false;
         }
 
@@ -367,6 +371,7 @@ namespace YatzyGrupp2.View
         {
             lblTreesP1.Content = gamelogic.Points(dice, diceThrow, 3);
             sumP1 += gamelogic.Points(dice, diceThrow, 3);
+            totalP1 += gamelogic.Points(dice, diceThrow, 3);
             lblTreesP1.IsEnabled = false; 
         }
 
@@ -374,6 +379,7 @@ namespace YatzyGrupp2.View
         {
             lblFoursP1.Content = gamelogic.Points(dice, diceThrow, 4);
             sumP1 += gamelogic.Points(dice, diceThrow, 4);
+            totalP1 += gamelogic.Points(dice, diceThrow, 4);
             lblFoursP1.IsEnabled = false;
         }
 
@@ -381,6 +387,7 @@ namespace YatzyGrupp2.View
         {
             lblFivesP1.Content = gamelogic.Points(dice, diceThrow, 5);
             sumP1 += gamelogic.Points(dice, diceThrow, 5);
+            totalP1 += gamelogic.Points(dice, diceThrow, 5);
             lblFivesP1.IsEnabled = false; 
         }
 
@@ -388,6 +395,7 @@ namespace YatzyGrupp2.View
         {
             lblSixesP1.Content = gamelogic.Points(dice, diceThrow, 6);
             sumP1 += gamelogic.Points(dice, diceThrow, 6);
+            totalP1 += gamelogic.Points(dice, diceThrow, 6);
             lblSixesP1.IsEnabled = false;
         }
 
@@ -395,6 +403,7 @@ namespace YatzyGrupp2.View
         {
             lblOnesP2.Content = gamelogic.Points(dice, diceThrow, 1);
             sumP2 += gamelogic.Points(dice, diceThrow, 1);
+            totalP2 += gamelogic.Points(dice, diceThrow, 1);
             lblOnesP2.IsEnabled = false;
         }
 
@@ -402,6 +411,7 @@ namespace YatzyGrupp2.View
         {
             lblTwosP2.Content = gamelogic.Points(dice, diceThrow, 2);
             sumP2 += gamelogic.Points(dice, diceThrow, 2);
+            totalP2 += gamelogic.Points(dice, diceThrow, 2);
             lblTwosP2.IsEnabled = false;
         }
 
@@ -409,6 +419,7 @@ namespace YatzyGrupp2.View
         {
             lblTreesP2.Content = gamelogic.Points(dice, diceThrow, 3);
             sumP2 += gamelogic.Points(dice, diceThrow, 3);
+            totalP2 += gamelogic.Points(dice, diceThrow, 3);
             lblTreesP2.IsEnabled = false;
         }
 
@@ -416,6 +427,7 @@ namespace YatzyGrupp2.View
         {
             lblFoursP2.Content = gamelogic.Points(dice, diceThrow, 4);
             sumP2 += gamelogic.Points(dice, diceThrow, 4);
+            totalP2 += gamelogic.Points(dice, diceThrow, 4);
             lblFoursP2.IsEnabled = false;
         }
 
@@ -423,6 +435,7 @@ namespace YatzyGrupp2.View
         {
             lblFivesP2.Content = gamelogic.Points(dice, diceThrow, 5);
             sumP2 += gamelogic.Points(dice, diceThrow, 5);
+            totalP2 += gamelogic.Points(dice, diceThrow, 5);
             lblFivesP2.IsEnabled = false;
         }
 
@@ -430,131 +443,132 @@ namespace YatzyGrupp2.View
         {
             lblSixesP2.Content = gamelogic.Points(dice, diceThrow, 6);
             sumP2 += gamelogic.Points(dice, diceThrow, 6);
+            totalP2 += gamelogic.Points(dice, diceThrow, 6);
             lblSixesP2.IsEnabled = false;
         }
 
         private void LblParP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblParP1.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP1 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP1 += gamelogic.PointsExtra(dice, diceThrow);
             lblParP1.IsEnabled = false;
         }
 
         private void LblTripletP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblTripletP1.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP1 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP1 += gamelogic.PointsExtra(dice, diceThrow);
         }
 
         private void lblParP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblParP2.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP2 += gamelogic.PointsExtra(dice, diceThrow);
             lblParP2.IsEnabled = false;
         }
 
         private void lblTripletP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblTripletP2.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP2 += gamelogic.PointsExtra(dice, diceThrow);
             lblTripletP2.IsEnabled = false;
         }
 
         private void lbl2ParP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lbl2ParP1.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP2 += gamelogic.PointsExtra(dice, diceThrow);
             lbl2ParP1.IsEnabled = false;
         }
 
         private void lblFourofaKindP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblFourofaKindP1.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP1 += gamelogic.PointsExtra(dice, diceThrow);
             lblFourofaKindP1.IsEnabled = false;
         }
 
         private void lblYatzyP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblYatzyP1.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP1 += gamelogic.PointsExtra(dice, diceThrow);
             lblYatzyP1.IsEnabled = false;
         }
 
         private void LblFullHouseP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblFullHouseP1.Content = gamelogic.FullHouseOnTheTable(dice, diceThrow);
-            sumP1 += gamelogic.FullHouseOnTheTable(dice, diceThrow);
+           totalP1 += gamelogic.FullHouseOnTheTable(dice, diceThrow);
             lblFullHouseP1.IsEnabled = false;
         }
 
         private void LblChansP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblChansP1.Content = gamelogic.Chans(dice, diceThrow);
-            sumP1 += gamelogic.Chans(dice, diceThrow);
+            totalP1 += gamelogic.Chans(dice, diceThrow);
             lblChansP1.IsEnabled = false;
         }
 
         private void LblSmallStraightP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblSmallStraightP1.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
-            sumP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
+            totalP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
             lblSmallStraightP1.IsEnabled = false;
         }
 
         private void LblLargeStraightP1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblLargeStraightP1.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
-            sumP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
+            totalP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
             lblLargeStraightP1.IsEnabled = false;
         }
 
         private void LblFourofaKindP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblFourofaKindP2.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP2 += gamelogic.PointsExtra(dice, diceThrow);
             lblFourofaKindP2.IsEnabled = false;
         }
 
         private void LblSmallStraightP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblSmallStraightP2.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
-            sumP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
+            totalP2 += gamelogic.SmallLargeStraight(dice, diceThrow);
             lblSmallStraightP2.IsEnabled = false;
         }
 
         private void LblLargeStraightP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblLargeStraightP2.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
-            sumP1 += gamelogic.SmallLargeStraight(dice, diceThrow);
+            totalP2 += gamelogic.SmallLargeStraight(dice, diceThrow);
             lblLargeStraightP2.IsEnabled = false;
         }
 
         private void LblFullHouseP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblFullHouseP2.Content = gamelogic.FullHouseOnTheTable(dice, diceThrow);
-            sumP1 += gamelogic.FullHouseOnTheTable(dice, diceThrow);
+            totalP2 += gamelogic.FullHouseOnTheTable(dice, diceThrow);
             lblFullHouseP2.IsEnabled = false;
         }
 
         private void LblChansP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblChansP2.Content = gamelogic.Chans(dice, diceThrow);
-            sumP1 += gamelogic.Chans(dice, diceThrow);
+            totalP2 += gamelogic.Chans(dice, diceThrow);
             lblChansP2.IsEnabled = false;
         }
 
         private void LblYatzyP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lblYatzyP2.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP2 += gamelogic.PointsExtra(dice, diceThrow);
             lblYatzyP2.IsEnabled = false;
         }
 
         private void Lbl2ParP2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             lbl2ParP2.Content = gamelogic.PointsExtra(dice, diceThrow);
-            sumP2 += gamelogic.PointsExtra(dice, diceThrow);
+            totalP2 += gamelogic.PointsExtra(dice, diceThrow);
             lbl2ParP2.IsEnabled = false;
         }
     }
