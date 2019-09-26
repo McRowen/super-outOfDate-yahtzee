@@ -11,67 +11,8 @@ namespace YatzyGrupp2.Gamelogic
 
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
-        int temp;
-        public int ShowPointsAvailable(int[] d, bool[] dt)
-        {            
-            if (Points(d, dt, 1) > 0 && Points(d, dt, 1) < 6)
-            {
-                temp = Points(d, dt, 1);
-            }
-            else if (Points(d, dt, 2) > 0 && Points(d, dt, 2) < 11)
-            {
-                temp = Points(d, dt, 2);
-            }
-            else if (Points(d, dt, 3) > 0 && Points(d, dt, 3) < 16)
-            {
-                temp = Points(d, dt, 3);
-            }
-            else if (Points(d, dt, 4) > 0 && Points(d, dt, 4) < 21)
-            {
-                temp = Points(d, dt, 4);
-            }
-            else if (Points(d, dt, 5) > 0 && Points(d, dt, 5) < 26)
-            {
-                temp = Points(d, dt, 5);
-            }
-            else if (Points(d, dt, 6) > 0 && Points(d, dt, 6) < 31)
-            {
-                temp = Points(d, dt, 6);
-            }
-            else if (PointsExtra(d, dt) > 4)
-            {
-                temp = PointsExtra(d, dt);
-            }
-            else if (PointsExtra(d, dt ) > 3)
-            {
-                temp = PointsExtra(d, dt);
-            }
-            else if (PointsExtra(d, dt) > 5)
-            {
-                temp = PointsExtra(d, dt);
-            }
-            else if (PointsExtra(d, dt) > 2)
-            {
-                temp = PointsExtra(d, dt);
-            }
-            else if (PointsExtra(d, dt) > 1)
-            {
-                temp = PointsExtra(d, dt);
-            }
-            else if (FullHouseOnTheTable(d, dt) > 6)
-            {
-                temp = FullHouseOnTheTable(d, dt);
-            }
-            else if (SmallLargeStraight(d, dt) > 14)
-            {
-                temp = SmallLargeStraight(d, dt);
-            }
-            else if (SmallLargeStraight(d, dt) > 19)
-            {
-                temp = SmallLargeStraight(d, dt);
-            }
-            return temp;
-        }
+
+        
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
