@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="StartView" Height="800" Width="1000">
 
-    <Grid ShowGridLines="False" Background="#FFF2FC">
+
+    <Grid ShowGridLines="False">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/casinos.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150*" />
             <ColumnDefinition Width="150*" />
@@ -26,41 +30,135 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Image Source="/Image/testdice1.png" Grid.Row="0" Grid.Column="4" Width="45" Height="45" Margin="80,-35,-7,26" ></Image>
-        <ListView x:Name="listViewDbPlayers" Grid.Column="1" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="74,0,93,109" Grid.RowSpan="2" Grid.Row="1" FontSize="15" MouseDoubleClick="ListViewDbPlayers_MouseDoubleClick_1">
+        <ListView x:Name="listViewDbPlayers" Grid.Column="1" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="74,0,93,109" Grid.RowSpan="2" Grid.Row="1" FontSize="20" MouseDoubleClick="ListViewDbPlayers_MouseDoubleClick_1" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" Foreground="Black">
+            <ListView.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="White"></DropShadowEffect>
+            </ListView.Effect>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Nickname}">Nickname</GridViewColumn>
+                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Nickname}">Nickname</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Skapa nytt konto" FontFamily="Times New Roman" VerticalAlignment="Bottom" FontSize="20" Grid.ColumnSpan="2" Grid.Row="0" Margin="10,0,56.2,2.8"/>
+        <Label Content="Skapa nytt konto" FontFamily="Times New Roman" Foreground="Orange" VerticalAlignment="Bottom" FontSize="25" Grid.ColumnSpan="2" Grid.Row="0" Margin="10,0,56.2,2.8">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Label.Effect>
+        </Label>
 
-        <StackPanel Grid.Column="0" Grid.Row="1">
-            <Label Content="Förnamn" FontFamily="Times New Roman" FontSize="16" ></Label>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="5" >
+            <Label Content="Förnamn" FontFamily="Times New Roman" FontSize="20" Foreground="Orange" >
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
+                </Label.Effect>
+            </Label>
             <TextBox Name="txtFirstName" FontSize="16" FontFamily="Times New Roman" TabIndex="00001"></TextBox>
-            <Label Content="Efternamn" FontFamily="Times New Roman" FontSize="16"></Label>
+            <Label Content="Efternamn" FontFamily="Times New Roman" FontSize="20" Foreground="Orange">
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
+                </Label.Effect>
+            </Label>
             <TextBox Name="txtLastName" FontSize="16" FontFamily="Times New Roman" TabIndex="00002" ></TextBox>
-            <Label Content="Nickname" FontFamily="Times New Roman" FontSize="16" Grid.Column="3" Grid.Row="1"></Label>
+            <Label Content="Nickname" FontFamily="Times New Roman" FontSize="20" Foreground="Orange" Grid.Column="3" Grid.Row="1">
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
+                </Label.Effect>
+            </Label>
             <TextBox Name="txtNickName" FontSize="16" FontFamily="Times New Roman" Grid.Column="3" Grid.Row="2" TabIndex="00003"></TextBox>
-            <Button Content="Registrera spelare"  Height="30" BorderThickness="1" FontFamily="Times New Roman" TabIndex="00004"  BorderBrush="Black"  Background="SkyBlue" FontSize="14" Click="Button_Click_2" Margin="0,0,-0.4,0" />
+            <Button  Content="Registrera spelare"  Height="30" BorderThickness="1,1,0,1" FontFamily="Times New Roman" TabIndex="00004"  BorderBrush="Black" FontSize="14" Click="Button_Click_2" Margin="0,10,1,0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" >
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA84FB7" Offset="0"/>
+                        <GradientStop Color="#FFFFC000" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </StackPanel>
 
-        <Button Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4"/>
-        <Button Content="Checka highscore" TabIndex="7"  Margin="122.2,131.4,141.2,31.4" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Click="Button_Click_1" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"></Button>
-        <Label Grid.ColumnSpan="2" Content="Tillgängliga spelare" HorizontalAlignment="Left" Margin="73.6,153,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1" FontFamily="Times New Roman"/>
-        <ListView x:Name="listViewChosenPlayers" Grid.Column="3" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="96,0,71,109" Grid.RowSpan="2" Grid.Row="1" FontSize="15" MouseDoubleClick="ListViewChosenPlayers_MouseDoubleClick">
+        <Button Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"   FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA84FB7" Offset="0"/>
+                    <GradientStop Color="#FFFFC000" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Checka highscore" TabIndex="7"  Margin="122.2,131.4,141.2,31.4" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"   FontSize="14" Click="Button_Click_1" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Button.Effect>
+            <Button.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFA84FB7" Offset="0"/>
+                <GradientStop Color="#FFFFC000" Offset="1"/>
+            </LinearGradientBrush>
+        </Button.Background>
+        </Button>
+        <Label Grid.ColumnSpan="2" Content="Tillgängliga spelare" Foreground="Orange" HorizontalAlignment="Left" Margin="73.6,153,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1" FontFamily="Times New Roman">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Label.Effect>
+        </Label>
+        <ListView x:Name="listViewChosenPlayers" Grid.Column="3" Foreground="Black" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="96,0,71,109" Grid.RowSpan="2" Grid.Row="1" FontSize="20" MouseDoubleClick="ListViewChosenPlayers_MouseDoubleClick" Background="{x:Null}" FontWeight="Bold">
+            <ListView.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" Color="White"></DropShadowEffect>
+            </ListView.Effect>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Nickname}" Header="Nickname"/>
+                    <GridViewColumn Width="170" DisplayMemberBinding="{Binding Nickname}"  Header="Nickname" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Grid.ColumnSpan="2" Content="Valda spelare" HorizontalAlignment="Left" Margin="95.8,153,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="3" FontFamily="Times New Roman"/>
+        <Label Grid.ColumnSpan="2" Content="Valda spelare" HorizontalAlignment="Left" Margin="95.8,153,0,0" Foreground="Orange" VerticalAlignment="Top" FontSize="20" Grid.Column="3" FontFamily="Times New Roman">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Label.Effect>
+        </Label>
 
-        <Button x:Name="BtnChoose" Content="Välj spelare" Grid.ColumnSpan="2" Grid.Column="1" Margin="74,92,47,62" Grid.Row="2" Click="BtnChoose_Click" FontFamily="Times New Roman"/>
-        <Label Content="Yatzy Klubben" FontSize="60" Grid.ColumnSpan="4" Grid.Column="2" HorizontalAlignment="Center" Margin="0,10,117,65" Width="451"/>
-        <Button x:Name="Help" Content="Hjälp" TabIndex="7"  Margin="142,132,118,31.5" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="4" Click="Help_Click"/>
-        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="2" HorizontalAlignment="Left" Margin="23,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Click="btnStart_Click" Height="34"/>
+        <Button x:Name="BtnChoose" Content="Välj spelare" Grid.ColumnSpan="2" Grid.Column="1" Margin="74,92,47,62" Grid.Row="2" Click="BtnChoose_Click" FontFamily="Times New Roman" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA84FB7" Offset="0"/>
+                    <GradientStop Color="#FFFFC000" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label Content="Yatzy Klubben" FontSize="60" Foreground="Orange" Grid.ColumnSpan="4" Grid.Column="2" HorizontalAlignment="Center" Margin="0,10,117,65" Width="451">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Label.Effect>
+        </Label>
+        <Button x:Name="Help" Content="Hjälp" TabIndex="7"  Margin="142,132,118,31.5" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"   FontSize="14" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="4" Click="Help_Click" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA84FB7" Offset="0"/>
+                    <GradientStop Color="#FFFFC000" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="2" HorizontalAlignment="Left" Margin="23,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Click="btnStart_Click" Height="34" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA84FB7" Offset="0"/>
+                    <GradientStop Color="#FFFFC000" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
         <Button x:Name="btnStartGame" Grid.ColumnSpan="2" Content="Gamla gameview" HorizontalAlignment="Left" Margin="25,126,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Height="36" Click="BtnStartGame_Click"/>
     </Grid>
 </Window>

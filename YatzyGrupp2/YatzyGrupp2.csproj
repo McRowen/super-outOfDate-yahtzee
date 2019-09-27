@@ -196,5 +196,23 @@
   <ItemGroup>
     <Resource Include="Image\testdice1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\CasinoLobby-MustHaves.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\casinocosmo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\casinovegas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\vegas" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\vegassign.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\casinos.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
