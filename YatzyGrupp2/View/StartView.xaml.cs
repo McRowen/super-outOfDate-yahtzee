@@ -99,6 +99,10 @@ namespace YatzyGrupp2.View
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
+
+            //sql.GetGame();
+            //sql.StartNewGamePlayer(players); Dessa två skickar upp all information till databsen och tar ut game_id m.m
+
             Test.FormLabelTest f = new Test.FormLabelTest();
             this.Hide();
             f.Show();
@@ -109,8 +113,8 @@ namespace YatzyGrupp2.View
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
             //sql.StartNewGame();
             //sql.GameID();
-            sql.GetGame();
-            sql.StartNewGamePlayer(players);
+            //sql.GetGame();
+            //sql.StartNewGamePlayer(players);
 
             GameView gameView = new GameView();
             gameView.Show();

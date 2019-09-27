@@ -16,12 +16,15 @@ namespace YatzyGrupp2.Test
         List<Label> testList = new List<Label>();
         LabelTest cellLabelArray = new LabelTest();
         List<Player.Player> gamePlayers = new List<Player.Player>();
+        List<Game.Game> GetGames = new List<Game.Game>();
         Gamelogic.Gamelogic gl = new Gamelogic.Gamelogic();
+        SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
 
         public FormLabelTest()
         {
             InitializeComponent();
             gamePlayers = StartView.players;
+            GetGames = SQLCommands.SQLCommands.GetGames;
             lblSpelare.Text = "Nu spelar " + gamePlayers[0].Nickname;
         }
                 
@@ -394,6 +397,7 @@ namespace YatzyGrupp2.Test
 
         private void EndGame_Click(object sender, EventArgs e)
         {
+            sql.EndTime(GetGames); //borde funka, har testat på gamla gameview men inte denna, får göra det senare.
             this.Close();
             View.StartView startView = new View.StartView();
             startView.Show();
