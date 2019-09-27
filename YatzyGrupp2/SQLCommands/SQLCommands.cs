@@ -229,7 +229,7 @@ namespace YatzyGrupp2.SQLCommands
 
         }
 
-        public void SetScore(List<Player.Player> selectedPlayer)
+        public void GetScore(List<Player.Player> selectedPlayer)
         {
             using (var conn = new
                 NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
@@ -243,7 +243,7 @@ namespace YatzyGrupp2.SQLCommands
                         cmd.CommandText = "UPDATE GAME_PLAYER SET score = @score WHERE game_id = @game_id AND player_ID = @player_id";
                         cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
                         cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
-                        //cmd.Parameters.AddWithValue("score", );
+                        cmd.Parameters.AddWithValue("score", selectedPlayer[i].Score); //vi har inget som lägger in här än.
 
 
                         cmd.ExecuteReader();
