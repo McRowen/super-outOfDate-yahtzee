@@ -12,6 +12,7 @@ namespace YatzyGrupp2.Gamelogic
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
 
+        
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
@@ -100,37 +101,29 @@ namespace YatzyGrupp2.Gamelogic
             points = d[0] + d[1] + d[2] + d[3] + d[4];
             return points;
         }
-        public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
-        {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
-            int points = 0;                        //ska ha fyrtal
-            
+
+            int points = 0;
+        public int Pair(int[] d, bool[] dt)
+        {
             if (ParTest(d, dt))
-            {                
+            {
                 int temp = 0;
-                for(int i = 0; i < dt.Length; i++)
+                for (int i = 0; i < dt.Length; i++)
                 {
-                    if(dt[i] == true)
+                    if (dt[i] == true)
                     {
                         temp = d[i];
                     }
                 }
                 points = temp * 2;
             }
-            if (Triss(d, dt))
-            {
-                
-                int temp = 0;
-                for (int i = 0; i < dt.Length; i++)
-                {
-                    if (dt[i] != false)
-                    {
-                        temp = d[i];
-                    }
-                }
-                points = temp * 3;
-            }
+            return points;
 
-            if(Tvapar(d, dt))
+        }
+
+        public int TwoPair(int[] d, bool[] dt)
+        {
+            if (Tvapar(d, dt))
             {
                 Array.Sort(d);
                 if (d[0] == d[1] && d[2] == d[3])
@@ -142,7 +135,28 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 2 + d[3] * 2;
                 }
             }
+            return points;
+        }
+        public int ThreeOfAKind(int[] d, bool[] dt)
+        {
+            if (Triss(d, dt))
+            {
 
+                int temp = 0;
+                for (int i = 0; i < dt.Length; i++)
+                {
+                    if (dt[i] != false)
+                    {
+                        temp = d[i];
+                    }
+                }
+                points = temp * 3;
+            }
+            return points;
+
+        }
+        public int FourOfAKind(int[] d, bool[] dt)
+        {
             if (Fyrtal(d, dt))
             {
                 Array.Sort(d);
@@ -155,13 +169,74 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 4;
                 }
             }
-
-            if(Yatzy(d, dt))
+            return points;
+        }
+        public int Yatzyz(int[] d, bool[] dt)
+        {
+            if (Yatzy(d, dt))
             {
                 points = 50;
             }
             return points;
-            
+        }
+        public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
+        {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
+            int points = 0;                        //ska ha fyrtal
+
+            if (Yatzy(d, dt))
+            {
+                points = 50;
+            }
+            if (Fyrtal(d, dt))
+            {
+                Array.Sort(d);
+                if (d[0] == d[1] && d[2] == d[3] && d[0] == d[3])
+                {
+                    points = d[0] * 4;
+                }
+                else if (d[1] == d[2] && d[3] == d[4] && d[1] == d[4])
+                {
+                    points = d[1] * 4;
+                }
+            }
+            if (Tvapar(d, dt))
+            {
+                Array.Sort(d);
+                if (d[0] == d[1] && d[2] == d[3])
+                {
+                    points = d[0] * 2 + d[2] * 2;
+                }
+                else if (d[1] == d[2] && d[3] == d[4])
+                {
+                    points = d[1] * 2 + d[3] * 2;
+                }
+            }
+            if (Triss(d, dt))
+            {
+
+                int temp = 0;
+                for (int i = 0; i < dt.Length; i++)
+                {
+                    if (dt[i] != false)
+                    {
+                        temp = d[i];
+                    }
+                }
+                points = temp * 3;
+            }
+            if (ParTest(d, dt))
+            {
+                int temp = 0;
+                for (int i = 0; i < dt.Length; i++)
+                {
+                    if (dt[i] == true)
+                    {
+                        temp = d[i];
+                    }
+                }
+                points = temp * 2;
+            }
+            return points;
         }
         public bool CalcLargeStraight(int[] d, bool[] dt)
         {
@@ -252,7 +327,6 @@ namespace YatzyGrupp2.Gamelogic
                 {
                     return false;
                 }
-                temp = d[i];
             }
             return true;
         }

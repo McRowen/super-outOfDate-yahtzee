@@ -54,6 +54,7 @@ namespace YatzyGrupp2.View
                 lblPlayer3.Content = gamePlayers[2].Nickname;
                 lblPlayer4.Content = gamePlayers[3].Nickname;
             }
+            
         }
 
         bool[] diceThrow = new bool[] { false, false, false, false, false };
@@ -65,6 +66,29 @@ namespace YatzyGrupp2.View
         Color mouseNotOnColor = Colors.White;
         Color mouseOnColor = Colors.Gray;
 
+        //private string ShowPointsInLabel(int[] d, bool[] dt)
+        //{
+        //    string labeltext = gamelogic.ShowPointsAvailable(d, dt).ToString();
+        //    return labeltext;
+        //}
+        //private void ShowInLabel()
+        //{
+        //    lblOnes.Content = gamelogic.Points(dice, diceThrow, 1);
+        //    lblTwos.Content = gamelogic.Points(dice, diceThrow, 2);
+        //    lblThrees.Content = gamelogic.Points(dice, diceThrow, 3);
+        //    lblFours.Content = gamelogic.Points(dice, diceThrow, 4);
+        //    lblFives.Content = gamelogic.Points(dice, diceThrow, 5);
+        //    lblSixes.Content = gamelogic.Points(dice, diceThrow, 6);
+        //    lblPair.Content = gamelogic.PointsExtra(dice, diceThrow);
+        //    lblTwoPairs.Content = gamelogic.PointsExtra(dice, diceThrow);
+        //    lblThreeKind.Content = gamelogic.PointsExtra(dice, diceThrow);
+        //    lblFourKind.Content = gamelogic.PointsExtra(dice, diceThrow);
+        //    lblFullHouse.Content = gamelogic.FullHouseOnTheTable(dice, diceThrow);
+        //    lblSStraight.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
+        //    lblLStraight.Content = gamelogic.SmallLargeStraight(dice, diceThrow);
+        //    lblChance.Content = gamelogic.PointsExtra(dice, diceThrow);
+        //    lblYahtzee.Content = gamelogic.PointsExtra(dice, diceThrow);
+        //}
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -89,7 +113,7 @@ namespace YatzyGrupp2.View
             {
                 Dice5.Content = Convert.ToString(dice[4]);
             }
-
+            //ShowInLabel();
             gamelogic.IncrementRound();
 
             if (gamelogic.TurnOver())

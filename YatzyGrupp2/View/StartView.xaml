@@ -26,7 +26,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Image Source="/Image/testdice1.png" Grid.Row="0" Grid.Column="4" Width="45" Height="45" Margin="80,-35,-7,26" ></Image>
-        <ListView x:Name="listViewDbPlayers" Grid.Column="1" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="74,0,93,109" Grid.RowSpan="2" Grid.Row="1" FontSize="15" >
+        <ListView x:Name="listViewDbPlayers" Grid.Column="1" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="74,0,93,109" Grid.RowSpan="2" Grid.Row="1" FontSize="15">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Nickname}">Nickname</GridViewColumn>
@@ -45,7 +45,7 @@
             <Button Content="Registrera spelare"  Height="30" BorderThickness="1" FontFamily="Times New Roman" TabIndex="00004"  BorderBrush="Black"  Background="SkyBlue" FontSize="14" Click="Button_Click_2" Margin="0,0,-0.4,0" />
         </StackPanel>
 
-        <Button Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,131,20,27" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Click="Button_Click_4"/>
+        <Button Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4"/>
         <Button Content="Checka highscore" TabIndex="7"  Margin="122.2,131.4,141.2,31.4" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Click="Button_Click_1" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"></Button>
         <Label Grid.ColumnSpan="2" Content="Tillgängliga spelare" HorizontalAlignment="Left" Margin="73.6,153,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1" FontFamily="Times New Roman"/>
         <ListView x:Name="listViewChosenPlayers" Grid.Column="3" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="96,0,71,109" Grid.RowSpan="2" Grid.Row="1" FontSize="15">
@@ -57,10 +57,10 @@
         </ListView>
         <Label Grid.ColumnSpan="2" Content="Valda spelare" HorizontalAlignment="Left" Margin="95.8,153,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="3" FontFamily="Times New Roman"/>
 
-        <Button x:Name="BtnChoose" Content="Välj spelare" Grid.ColumnSpan="2" Grid.Column="1" Margin="74,86,47,68" Grid.Row="2" Click="BtnChoose_Click" FontFamily="Times New Roman"/>
+        <Button x:Name="BtnChoose" Content="Välj spelare" Grid.ColumnSpan="2" Grid.Column="1" Margin="74,92,47,62" Grid.Row="2" Click="BtnChoose_Click" FontFamily="Times New Roman"/>
         <Label Content="Yatzy Klubben" FontSize="60" Grid.ColumnSpan="4" Grid.Column="2" HorizontalAlignment="Center" Margin="0,10,117,65" Width="451"/>
         <Button x:Name="Help" Content="Hjälp" TabIndex="7"  Margin="142,132,118,31.5" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="4" Click="Help_Click"/>
-        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="1" HorizontalAlignment="Left" Margin="74,129,0,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Click="btnStart_Click" Height="36"/>
-        <Button x:Name="btnStartGame" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="3" HorizontalAlignment="Left" Margin="96,90,0,0" Grid.Row="2" VerticalAlignment="Top" Width="168" Height="36" Click="BtnStartGame_Click"/>
+        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="2" HorizontalAlignment="Left" Margin="23,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Click="btnStart_Click" Height="34"/>
+        <Button x:Name="btnStartGame" Grid.ColumnSpan="2" Content="Gamla gameview" HorizontalAlignment="Left" Margin="25,126,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Height="36" Click="BtnStartGame_Click"/>
     </Grid>
 </Window>

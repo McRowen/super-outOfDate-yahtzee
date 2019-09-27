@@ -29,9 +29,10 @@ namespace YatzyGrupp2.View
             InitializeComponent();
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
+            listViewChosenPlayers.ItemsSource = null;
             if (players.Count < 2)
             {
-                btnStartGame.IsEnabled = false;
+                btnStart.IsEnabled = false;
             }
         }
         
@@ -64,7 +65,7 @@ namespace YatzyGrupp2.View
         {
             if (players.Count >= 1)
             {
-                btnStartGame.IsEnabled = true;
+                btnStart.IsEnabled = true;
             }
             players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
             listViewChosenPlayers.ItemsSource = null;
@@ -115,5 +116,25 @@ namespace YatzyGrupp2.View
             gameView.Show();
             //this.Hide();
         }
-    }
+
+        private void ListViewDbPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e) //föresökte göra en dubbelklick men misslyckades.
+        {
+            if (players.Count >= 1)
+            {
+                btnStart.IsEnabled = true;
+            }
+            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            listViewChosenPlayers.ItemsSource = null;
+            listViewChosenPlayers.ItemsSource = players;
+            click++;
+
+            for (int i = 0; i < click; i++)
+            {
+                if (click == 4)
+                {
+                    BtnChoose.IsEnabled = false;
+                }
+            }
+        }
+    }    
 }

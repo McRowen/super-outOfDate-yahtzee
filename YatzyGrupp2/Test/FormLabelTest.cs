@@ -7,24 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YatzyGrupp2.View;
 
 namespace YatzyGrupp2.Test
 {
-    public partial class FormLabelTest : Form
+    public partial class FormLabelTest : Form 
     {
-        public FormLabelTest()
-        {
-            InitializeComponent();
-                     
-        }
-        
-        List<Label>  testList = new List<Label>();
+        List<Label> testList = new List<Label>();
         LabelTest cellLabelArray = new LabelTest();
         List<Player.Player> gamePlayers = new List<Player.Player>();
         Gamelogic.Gamelogic gl = new Gamelogic.Gamelogic();
 
+        public FormLabelTest()
+        {
+            InitializeComponent();
+            gamePlayers = StartView.players;
+            lblSpelare.Text = "Nu spelar " + gamePlayers[0].Nickname;
+        }
+                
         int[] dice = new int[5];
         bool[] diceThrow = new bool[] { false, false, false, false, false };
+        int turn = 0;
+        int throws = 0;
 
         int players;
         int tempPos = 0;
@@ -36,6 +40,22 @@ namespace YatzyGrupp2.Test
         string fontType = "Arial";
         string extraSpace = "";
         int round = 0;
+
+        public void ResetDice()
+        {
+            Dice1.Text = "Dice";
+            Dice2.Text = "Dice";
+            Dice3.Text = "Dice";
+            Dice4.Text = "Dice";
+            Dice5.Text = "Dice";
+
+            Dice1.BackColor = Color.White;
+            Dice2.BackColor = Color.White;
+            Dice3.BackColor = Color.White;
+            Dice4.BackColor = Color.White;
+            Dice5.BackColor = Color.White;
+        }
+
         private void FormLabelTest_Load(object sender, EventArgs e)
         {
             int temp = 0;
@@ -101,7 +121,7 @@ namespace YatzyGrupp2.Test
         private void PlayersActive()
         {
             SetLabelTextEmpty();
-            ChangeLabelText("lblX0Y00", "Spelare:");
+            ChangeLabelText("lblX0Y00", "Spelare");
             ChangeLabelText("lblX0Y01", "Ettor");
             ChangeLabelText("lblX0Y02", "Tvåor");
             ChangeLabelText("lblX0Y03", "Treor");
@@ -174,17 +194,64 @@ namespace YatzyGrupp2.Test
             {
                 if(ctrl.Name == testList[i].Name)
                 {
-                    int temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+                    int temp = GetYValue(ctrl.Name);
                     if(temp < 7 && temp > 0)
                     {
                         ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
                     }
-                }
-                
-
+                  else  if(GetYValue(ctrl.Name) == 9) //Par
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
+                        
+                    }
+                   else  if (GetYValue(ctrl.Name) == 10)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 11)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 12)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 13)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 14)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 15)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 16)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
+                    }
+                    else if (GetYValue(ctrl.Name) == 17)
+                    {
+                        ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
+                    }
+                }               
             }
-            
+        }
 
+        public int GetYValue(string name)
+        {
+            int temp = 0;
+            for(int i = 0; i < testList.Count; i++)
+            {
+                if(name == testList[i].Name)
+                {
+                    temp = int.Parse(Convert.ToString(testList[i].Name[6]) + Convert.ToString(testList[i].Name[7]));
+
+                }
+            }
+            return temp;
         }
 
         private void label_Enter(object sender, EventArgs e)
@@ -284,6 +351,13 @@ namespace YatzyGrupp2.Test
 
         private void ThrowDices_Click(object sender, EventArgs e)
         {
+            throws++;
+            if (throws == 4)
+            {
+                throws = 0 + 1 ;
+            }
+            lblThrows.Text = "Kast nr: " + throws;
+            
             dice = gl.GetRandomDice(diceThrow, dice);
             if (diceThrow[0] != true)
             {
@@ -321,6 +395,8 @@ namespace YatzyGrupp2.Test
         private void EndGame_Click(object sender, EventArgs e)
         {
             this.Close();
+            View.StartView startView = new View.StartView();
+            startView.Show();
         }
 
         private void Dice1_MouseDown(object sender, MouseEventArgs e)
@@ -335,7 +411,7 @@ namespace YatzyGrupp2.Test
             else
             {
                 diceThrow[i] = false;
-                Dice1.BackColor = Color.Red;
+                Dice1.BackColor = Color.White;
             }
         }
 
@@ -351,7 +427,7 @@ namespace YatzyGrupp2.Test
             else
             {
                 diceThrow[i] = false;
-                Dice2.BackColor = Color.Red;
+                Dice2.BackColor = Color.White;
             }
         }
 
@@ -367,7 +443,7 @@ namespace YatzyGrupp2.Test
             else
             {
                 diceThrow[i] = false;
-                Dice3.BackColor = Color.Red;
+                Dice3.BackColor = Color.White;
             }
         }
 
@@ -383,7 +459,7 @@ namespace YatzyGrupp2.Test
             else
             {
                 diceThrow[i] = false;
-                Dice4.BackColor = Color.Red;
+                Dice4.BackColor = Color.White;
             }
         }
 
@@ -399,8 +475,28 @@ namespace YatzyGrupp2.Test
             else
             {
                 diceThrow[i] = false;
-                Dice5.BackColor = Color.Red;
+                Dice5.BackColor = Color.White;
             }
+        }
+
+        private void BtnNextPlayer_Click(object sender, EventArgs e)
+        {
+            throws = 0;
+            lblThrows.Text = "";
+
+            if (turn < gamePlayers.Count)
+            {
+                turn++;
+            }
+            if (turn == gamePlayers.Count)
+            {
+                turn = 0;
+            }
+            lblSpelare.Text = "Nu spelar: " + gamePlayers[turn].Nickname;
+            gl.Round = 0; //Den här byter runda inte turn. Kolla i gamelogic för runda.
+            ThrowDices.Enabled = true;
+            diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
+            ResetDice();
         }
     }        
 }
