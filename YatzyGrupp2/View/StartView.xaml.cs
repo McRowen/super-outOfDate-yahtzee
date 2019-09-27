@@ -157,6 +157,7 @@ namespace YatzyGrupp2.View
                 if (click == 4)
                 {
                     BtnChoose.IsEnabled = false;
+                    listViewDbPlayers.IsEnabled = false;
                 }
             }
         }

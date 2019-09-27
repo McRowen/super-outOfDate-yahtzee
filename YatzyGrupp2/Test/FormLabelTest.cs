@@ -397,10 +397,11 @@ namespace YatzyGrupp2.Test
 
         private void EndGame_Click(object sender, EventArgs e)
         {
-            sql.EndTime(GetGames); //borde funka, har testat på gamla gameview men inte denna, får göra det senare.
+            //sql.EndTime(GetGames); //borde funka, har testat på gamla gameview men inte denna, får göra det senare.
             this.Close();
             View.StartView startView = new View.StartView();
             startView.Show();
+
         }
 
         private void Dice1_MouseDown(object sender, MouseEventArgs e)
