@@ -156,5 +156,19 @@ namespace YatzyGrupp2.View
                 }
             }
         }
+
+        private void ListViewChosenPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i] == listViewChosenPlayers.SelectedItem)
+                {
+                    players.Remove(players[i]);
+                }
+            }
+            listViewChosenPlayers.ItemsSource = null;
+            listViewChosenPlayers.ItemsSource = players;
+
+        }
     }    
 }
