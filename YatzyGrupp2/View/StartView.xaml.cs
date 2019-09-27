@@ -136,5 +136,25 @@ namespace YatzyGrupp2.View
                 }
             }
         }
+
+        private void ListViewDbPlayers_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            if (players.Count >= 1)
+            {
+                btnStart.IsEnabled = true;
+            }
+            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            listViewChosenPlayers.ItemsSource = null;
+            listViewChosenPlayers.ItemsSource = players;
+            click++;
+
+            for (int i = 0; i < click; i++)
+            {
+                if (click == 4)
+                {
+                    BtnChoose.IsEnabled = false;
+                }
+            }
+        }
     }    
 }
