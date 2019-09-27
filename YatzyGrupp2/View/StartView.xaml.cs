@@ -108,10 +108,12 @@ namespace YatzyGrupp2.View
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
             //sql.StartNewGame();
             //sql.GameID();
-            //sql.StartNewGamePlayer(players);
+            sql.GetGame();
+            sql.StartNewGamePlayer(players);
+
             GameView gameView = new GameView();
             gameView.Show();
-            this.Hide();
+            //this.Hide();
         }
     }
 }

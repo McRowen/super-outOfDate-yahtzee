@@ -15,6 +15,7 @@ namespace YatzyGrupp2.SQLCommands
         Player.Player p = new Player.Player();
         Game.Game g = new Game.Game();
         GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
+        public static List<Game.Game> GetGames = new List<Game.Game>();
 
 
         //Metod för att få fram game_id och lägga till dom players id och game id i Game_player
@@ -24,7 +25,7 @@ namespace YatzyGrupp2.SQLCommands
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
-                int a = GameID();
+                //int a = GameID();
                 for (int i = 0; i < selectedPlayer.Count; i++)
                 {
                     conn.Open();
@@ -41,7 +42,7 @@ namespace YatzyGrupp2.SQLCommands
 
                         int temp = selectedPlayer[i].Player_id;
 
-                        cmd.Parameters.AddWithValue("game_id", a);
+                        cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
                         cmd.Parameters.AddWithValue("player_id", temp);
                         cmd.CommandText = "INSERT INTO game_player (game_id, player_id) VALUES (@game_id, @player_id)";
 
@@ -74,6 +75,7 @@ namespace YatzyGrupp2.SQLCommands
 
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
+                    cmd.Connection = conn;
                     int game_id = (Int32)cmd.ExecuteScalar();
                     return game_id;
                 }
@@ -171,6 +173,73 @@ namespace YatzyGrupp2.SQLCommands
             }
             return ChosenPlayers;
         }
+        //Metod för att lägga till Game i lista, kan behövas för att hitta game_id senare.
+        public List<Game.Game> GetGame()
+        {
+            
+            Game.Game Ggame = new Game.Game();
+            int a = GameID();
+            DateTime CurrentDate;
+            CurrentDate = DateTime.Now;
+
+            using (var conn = new
+                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
+            {
+                conn.Open();
+
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT game_id, started_at, gametype_id FROM game where game_id = @game_id";
+                    cmd.Parameters.AddWithValue("game_id", a);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Ggame = new Game.Game()
+                            {
+                                Game_id = a,
+                                Started_at = CurrentDate,
+                                Gametype_id = 1,
+                            };
+                            GetGames.Add(Ggame);
+                        }
+                    }
+                }
+                conn.Close();
+
+            }
+            return GetGames;
+
+        }
+
+        public void EndTime(List<Game.Game> GetGames) 
+        {
+            
+            using (var conn = new
+                NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {               
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "UPDATE GAME SET ended_at = CURRENT_TIMESTAMP WHERE game_id = @game_id";
+                    cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
+
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+
+        }
+
+
+
+
+
+
+
         // Metod för att få upp alla spelare
         public List<Player.Player> GetAllPlayers()
         {           

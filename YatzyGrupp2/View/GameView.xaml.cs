@@ -23,11 +23,15 @@ namespace YatzyGrupp2.View
     {
         GamePlayer.GamePlayer gp = new GamePlayer.GamePlayer();
         List<Player.Player> gamePlayers = new List<Player.Player>();
+        List<Game.Game> GetGames = new List<Game.Game>();
+        SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
+        Game.Game g = new Game.Game();
         int turn = 0;
         public GameView()
         {
             InitializeComponent();
             gamePlayers = StartView.players;
+            GetGames = SQLCommands.SQLCommands.GetGames;
             lablePlayer.Content = "Spelare: " + gamePlayers[0].Nickname;
             if (gamePlayers.Count == 2)
             {
@@ -270,9 +274,11 @@ namespace YatzyGrupp2.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            sql.EndTime(GetGames);
             this.Hide();
             StartView startview = new StartView();
             startview.ShowDialog();
+            
         }
 
         private void HelpGame_Click(object sender, RoutedEventArgs e)

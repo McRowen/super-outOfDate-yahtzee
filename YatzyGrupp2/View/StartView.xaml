@@ -60,7 +60,7 @@
         <Button x:Name="BtnChoose" Content="Välj spelare" Grid.ColumnSpan="2" Grid.Column="1" Margin="74,86,47,68" Grid.Row="2" Click="BtnChoose_Click" FontFamily="Times New Roman"/>
         <Label Content="Yatzy Klubben" FontSize="60" Grid.ColumnSpan="4" Grid.Column="2" HorizontalAlignment="Center" Margin="0,10,117,65" Width="451"/>
         <Button x:Name="Help" Content="Hjälp" TabIndex="7"  Margin="142,132,118,31.5" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="4" Click="Help_Click"/>
-        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="1" HorizontalAlignment="Left" Margin="74,129,0,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Click="btnStart_Click" Height="36" Visibility="Hidden"/>
+        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="1" HorizontalAlignment="Left" Margin="74,129,0,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Click="btnStart_Click" Height="36"/>
         <Button x:Name="btnStartGame" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="3" HorizontalAlignment="Left" Margin="96,90,0,0" Grid.Row="2" VerticalAlignment="Top" Width="168" Height="36" Click="BtnStartGame_Click"/>
     </Grid>
 </Window>
