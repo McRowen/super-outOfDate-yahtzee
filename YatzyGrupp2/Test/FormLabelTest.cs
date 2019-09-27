@@ -32,6 +32,7 @@ namespace YatzyGrupp2.Test
         bool[] diceThrow = new bool[] { false, false, false, false, false };
         int turn = 0;
         int throws = 0;
+        int sum = 0;
 
         int players;
         int tempPos = 0;
@@ -184,6 +185,7 @@ namespace YatzyGrupp2.Test
             
         }
 
+        
         private void ctrlClick(System.Object sender, EventArgs e)
         {
             Control ctrl = (Control)sender;
@@ -203,48 +205,56 @@ namespace YatzyGrupp2.Test
                         if (temp < 7 && temp > 0)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
+                            sum += gl.Points(dice, diceThrow, temp);
                         }
                         else if (GetYValue(ctrl.Name) == 9) //Par
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
-
+                            sum += gl.Pair(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 10)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
+                            sum += gl.TwoPair(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 11)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
+                            sum += gl.ThreeOfAKind(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 12)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
+                            sum += gl.FourOfAKind(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 13)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                            sum += gl.SmallLargeStraight(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 14)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                            sum += gl.SmallLargeStraight(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 15)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
+                            sum += gl.FullHouseOnTheTable(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 16)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
+                            sum += gl.Chans(dice, diceThrow);
                         }
                         else if (GetYValue(ctrl.Name) == 17)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
+                            
                         }
                     }
-
-                    
-                }               
+                }
+                
             }
         }
 
