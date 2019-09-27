@@ -48,7 +48,7 @@
         <Button Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4"/>
         <Button Content="Checka highscore" TabIndex="7"  Margin="122.2,131.4,141.2,31.4" Height="30" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14" Click="Button_Click_1" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"></Button>
         <Label Grid.ColumnSpan="2" Content="Tillgängliga spelare" HorizontalAlignment="Left" Margin="73.6,153,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1" FontFamily="Times New Roman"/>
-        <ListView x:Name="listViewChosenPlayers" Grid.Column="3" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="96,0,71,109" Grid.RowSpan="2" Grid.Row="1" FontSize="15">
+        <ListView x:Name="listViewChosenPlayers" Grid.Column="3" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="96,0,71,109" Grid.RowSpan="2" Grid.Row="1" FontSize="15" MouseDoubleClick="ListViewChosenPlayers_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Nickname}" Header="Nickname"/>
