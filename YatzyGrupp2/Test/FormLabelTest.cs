@@ -281,6 +281,39 @@ namespace YatzyGrupp2.Test
             return temp;
         }
 
+        public void SumScore()
+        {
+            int temp;
+            for (int n = 0; n < players; n++)
+            {
+                temp = 0;
+                for (int i = 1; i < 19; i++)
+                {
+                    for (int k = 0; k < testList.Count; k++)
+                    {
+                        if (testList[k].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(i))
+                        {
+                            temp = temp + Convert.ToInt32(testList[k].Text);
+                        }
+                        else if (testList[k].Name == "lblX" + Convert.ToString(turn + 1) + "Y" + Convert.ToString(i))
+                        {
+                            temp = temp + Convert.ToInt32(testList[k].Text);
+                        }
+
+                    }
+                    for (int a = 0; a < testList.Count; a++)
+                    {
+                        if (testList[a].Name == "lblX" + Convert.ToString(turn + 1) + "Y07")
+                        {
+                            testList[a].Text = Convert.ToString(temp);
+                        }
+                    }
+                }
+            }
+
+
+        }
+
         private void label_Enter(object sender, EventArgs e)
         {
             Control ctrl = (Control)sender;
