@@ -18,7 +18,7 @@ namespace YatzyGrupp2.SQLCommands
         public static List<Game.Game> GetGames = new List<Game.Game>();
 
 
-        //Metod för att få fram game_id och lägga till dom players id och game id i Game_player
+        //Metod för att lägga till player_id av dom spelarna som är valda + game_id i game_player i databsen.
         public void StartNewGamePlayer(List<Player.Player> selectedPlayer)
         {
             //  string stmt = "INSERT INTO game_player (game_id, player_id) VALUES @game_id, @player_id";
@@ -34,18 +34,12 @@ namespace YatzyGrupp2.SQLCommands
                         cmd.Connection = conn;
 
                         //cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
-
-
-
-
-
-
+                
                         int temp = selectedPlayer[i].Player_id;
 
                         cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
                         cmd.Parameters.AddWithValue("player_id", temp);
                         cmd.CommandText = "INSERT INTO game_player (game_id, player_id) VALUES (@game_id, @player_id)";
-
 
                         //gp = new GamePlayer.GamePlayer()
                         //{
@@ -64,6 +58,7 @@ namespace YatzyGrupp2.SQLCommands
 
             }
         }
+        //Metod för att lägga till spel i databsen + att returna game_id
         public int GameID()
         {
             string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1) RETURNING Game_id";
@@ -213,7 +208,7 @@ namespace YatzyGrupp2.SQLCommands
             return GetGames;
 
         }
-
+        // Sätter eneded_at på det spelet som är igång.
         public void EndTime(List<Game.Game> GetGames) 
         {
             
@@ -234,11 +229,31 @@ namespace YatzyGrupp2.SQLCommands
 
         }
 
+        public void SetScore(List<Player.Player> selectedPlayer)
+        {
+            using (var conn = new
+                NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                for (int i = 0; i < selectedPlayer.Count; i++)
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UPDATE GAME_PLAYER SET score = @score WHERE game_id = @game_id AND player_ID = @player_id";
+                        cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
+                        cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
+                        //cmd.Parameters.AddWithValue("score", );
 
 
+                        cmd.ExecuteReader();
+                    }
+                    conn.Close();
 
+                }
 
-
+            }
+        }
 
         // Metod för att få upp alla spelare
         public List<Player.Player> GetAllPlayers()
