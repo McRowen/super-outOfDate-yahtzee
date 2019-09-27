@@ -24,6 +24,7 @@ namespace YatzyGrupp2.View
         Game.Game game = new Game.Game();
         int click = 0;
         public static List<Player.Player> players = new List<Player.Player>();
+        
         public StartView()
         {           
             InitializeComponent();
@@ -93,7 +94,7 @@ namespace YatzyGrupp2.View
         private void Help_Click(object sender, RoutedEventArgs e)
         {
             HelpView helpview = new HelpView();
-            helpview.ShowDialog(); 
+            helpview.ShowDialog();
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -121,25 +122,6 @@ namespace YatzyGrupp2.View
             //this.Hide();
         }
 
-        private void ListViewDbPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e) //föresökte göra en dubbelklick men misslyckades.
-        {
-            if (players.Count >= 1)
-            {
-                btnStart.IsEnabled = true;
-            }
-            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
-            listViewChosenPlayers.ItemsSource = null;
-            listViewChosenPlayers.ItemsSource = players;
-            click++;
-
-            for (int i = 0; i < click; i++)
-            {
-                if (click == 4)
-                {
-                    BtnChoose.IsEnabled = false;
-                }
-            }
-        }
 
         private void ListViewDbPlayers_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
@@ -147,9 +129,10 @@ namespace YatzyGrupp2.View
             {
                 btnStart.IsEnabled = true;
             }
-            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));           
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.ItemsSource = players;
+
             click++;
 
             for (int i = 0; i < click; i++)
@@ -159,7 +142,7 @@ namespace YatzyGrupp2.View
                     BtnChoose.IsEnabled = false;
                     listViewDbPlayers.IsEnabled = false;
                 }
-            }
+            }           
         }
 
         private void ListViewChosenPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -173,7 +156,6 @@ namespace YatzyGrupp2.View
             }
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.ItemsSource = players;
-
         }
     }    
 }
