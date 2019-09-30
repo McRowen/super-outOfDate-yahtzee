@@ -104,7 +104,7 @@
             this.Dice3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.75F);
             this.Dice3.Location = new System.Drawing.Point(975, 238);
-            //this.Dice3.Name = "Dice3";
+            this.Dice3.Name = "Dice3";
             this.Dice3.Size = new System.Drawing.Size(77, 71);
             this.Dice3.TabIndex = 6;
             //this.Dice3.Text = "Dice3";
