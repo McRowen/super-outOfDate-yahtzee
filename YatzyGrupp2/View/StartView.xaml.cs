@@ -89,6 +89,8 @@ namespace YatzyGrupp2.View
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
+
+            //sql.GetStyrtGame(); //metod för styrt yatzy.
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)

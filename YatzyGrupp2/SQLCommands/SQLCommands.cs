@@ -208,6 +208,46 @@ namespace YatzyGrupp2.SQLCommands
             return GetGames;
 
         }
+
+        public List<Game.Game> GetStyrtGame()
+        {
+
+            Game.Game Ggame = new Game.Game();
+            int a = GameID();
+            DateTime CurrentDate;
+            CurrentDate = DateTime.Now;
+
+            using (var conn = new
+                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
+            {
+                conn.Open();
+
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT game_id, started_at, gametype_id FROM game where game_id = @game_id";
+                    cmd.Parameters.AddWithValue("game_id", a);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Ggame = new Game.Game()
+                            {
+                                Game_id = a,
+                                Started_at = CurrentDate,
+                                Gametype_id = 2,
+                            };
+                            GetGames.Add(Ggame);
+                        }
+                    }
+                }
+                conn.Close();
+
+            }
+            return GetGames;
+
+        }
         // Sätter eneded_at på det spelet som är igång.
         public void EndTime(List<Game.Game> GetGames)
         {
