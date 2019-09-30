@@ -34,7 +34,7 @@ namespace YatzyGrupp2.SQLCommands
                         cmd.Connection = conn;
 
                         //cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
-                
+
                         int temp = selectedPlayer[i].Player_id;
 
                         cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
@@ -62,7 +62,7 @@ namespace YatzyGrupp2.SQLCommands
         public int GameID()
         {
             string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1) RETURNING Game_id";
- 
+
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -171,7 +171,7 @@ namespace YatzyGrupp2.SQLCommands
         //Metod för att lägga till Game i lista, kan behövas för att hitta game_id senare.
         public List<Game.Game> GetGame()
         {
-            
+
             Game.Game Ggame = new Game.Game();
             int a = GameID();
             DateTime CurrentDate;
@@ -209,12 +209,12 @@ namespace YatzyGrupp2.SQLCommands
 
         }
         // Sätter eneded_at på det spelet som är igång.
-        public void EndTime(List<Game.Game> GetGames) 
+        public void EndTime(List<Game.Game> GetGames)
         {
-            
+
             using (var conn = new
                 NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-            {               
+            {
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
                 {
@@ -257,7 +257,7 @@ namespace YatzyGrupp2.SQLCommands
 
         // Metod för att få upp alla spelare
         public List<Player.Player> GetAllPlayers()
-        {           
+        {
             List<Player.Player> players = new List<Player.Player>();
             using (var conn = new
              NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
@@ -322,7 +322,7 @@ namespace YatzyGrupp2.SQLCommands
                             }
                             catch (PostgresException ex)
                             {
-                                System.Windows.MessageBox.Show(ex.Message);                              
+                                System.Windows.MessageBox.Show(ex.Message);
                             }
                         }
                     }
@@ -331,9 +331,67 @@ namespace YatzyGrupp2.SQLCommands
             }
             return gamers;
         }
+        public List<Player.Player> Getgameplayers(int gameId)
+        {
+            string stmt = "SELECT game_player.game_id, game_player.player_id, player.firstname, player.Nickname, player.Lastname, game_player.score, game.ended_at FROM game_player INNER JOIN player on player.player_id = game_player.player_id JOIN game ON game.game_id = game_player.game_id WHERE game.game_id = @gameId";
+            List<Player.Player> players = new List<Player.Player>();
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("gameId", gameId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(5))
+                            {
+                                Player.Player p = new Player.Player()
+                                {
+                                    Player_id = reader.GetInt32(1),
+                                    Firstname = reader.GetString(2),
+                                    Lastname = reader.GetString(4),
+                                    Nickname = reader.GetString(3),
+                                    Score = reader.GetInt32(5)
+                                };
+                                players.Add(p);
+                            }
+                        }
+                    }
+                }
+
+            }
+            return players;
+        }
+        public List<Player.winstreak> GetWinsCount()
+        {
+            List<Player.winstreak> games = new List<Player.winstreak>();
+            string stmt = "SELECT game_id, ended_at FROM game WHERE ended_at IS NOT NULL";
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Player.winstreak wp = new Player.winstreak();
+                            wp.Gamez = new Game.Game();
+                            wp.Gamez.Ended_at = reader.GetDateTime(1);
+                            wp.Gamez.Game_id = reader.GetInt32(0);
+                            wp.Players = Getgameplayers(wp.Gamez.Game_id);
+                            games.Add(wp);
+                        }
+                    }
+                }
+            }
+            return games;
+        }
         public List<Player.highscoreplayer> GetMostWins()
         {
-                         List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
+            List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
             Player.highscoreplayer pe = new Player.highscoreplayer();
             using (var conn = new
                NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
@@ -360,50 +418,6 @@ namespace YatzyGrupp2.SQLCommands
                                 Firstname = reader.GetString(1),
                                 Lastname = reader.GetString(2),
                                 Count = reader.GetInt32(3)
-                              
-                            };
-                        rank++;
-                            wins.Add(pe);
-                        }
-                    }
-                }
-                conn.Close();
-            }
-            return wins;
-        }
-
-        public List<Player.highscoreplayer> GetWinstreak(List<Player.highscoreplayer> winstreaks)
-        {
-            List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
-            Player.highscoreplayer pe = new Player.highscoreplayer();
-            using (var conn = new
-               NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-            {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand())
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "WITH winstreak AS (SELECT player.nickname, player.firstname, player.lastname, COUNT(game.ended_at) FROM" +
-                        " player JOIN game_player ON player.player_id" +
-                        " = game_player.player_id JOIN game ON game.game_id = game_player.game_id GROUP BY player.nickname, player.firstname," +
-                        " player.lastname ORDER BY COUNT DESC) SELECT * FROM winstreak";
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        int rank = 1;
-
-                        while (reader.Read())
-                        {
-                            for (int i = 0; i <winstreaks.Count; i++)
-                            {
-                                int temp = winstreaks[i].Score;
-                            }
-                            pe = new Player.highscoreplayer()
-                            {
-                                Rank = rank,
-                                Nickname = reader.GetString(0),
-                                Firstname = reader.GetString(1),
-                                Lastname = reader.GetString(2),
-                                Count = reader.GetInt32(3)
 
                             };
                             rank++;
@@ -415,6 +429,41 @@ namespace YatzyGrupp2.SQLCommands
             }
             return wins;
         }
+
+        //    public List<Player.Player> GetWinstreak()
+        //    {
+        //        List<Player.winstreak> winstreaks = new List<Player.winstreak>();
+
+        //        List<Player.Player> PlayerWinner = new List<Player.Player>();
+        //        int rank = 0;
+
+        //        foreach (Player.winstreak item in collection)
+        //        {
+
+        //        }
+
+        //        using (var conn = new
+        //           NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+        //        {
+        //            conn.Open();
+        //            using (var cmd = new NpgsqlCommand())
+        //            {
+        //                cmd.Connection = conn;
+        //                cmd.CommandText = "WITH winstreak AS (SELECT player.nickname, player.firstname, player.lastname, COUNT(game.ended_at) FROM" +
+        //                    " player JOIN game_player ON player.player_id" +
+        //                    " = game_player.player_id JOIN game ON game.game_id = game_player.game_id GROUP BY player.nickname, player.firstname," +
+        //                    " player.lastname ORDER BY COUNT DESC) SELECT * FROM winstreak";
+        //                using (var reader = cmd.ExecuteReader())
+        //                {
+
+        //                    }
+        //                }
+        //            }
+        //            conn.Close();
+        //        }
+
+        //    }
+        //}
     }
 }
 

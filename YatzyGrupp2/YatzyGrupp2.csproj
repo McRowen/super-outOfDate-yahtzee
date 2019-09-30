@@ -89,6 +89,7 @@
     <Compile Include="Game\Gametype.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\highscoreplayer.cs" />
+    <Compile Include="Player\winstreak.cs" />
     <Compile Include="SQLCommands\SQLCommands.cs" />
     <Compile Include="Test\DataTest.cs" />
     <Compile Include="Test\FormLabelTest.cs">
