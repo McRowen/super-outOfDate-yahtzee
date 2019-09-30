@@ -6,9 +6,15 @@
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
         Title="StartView" Height="800" Width="1000">
+    <Window.Resources>
+        <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+    </Window.Resources>
 
-
+     
     <Grid ShowGridLines="False">
+            
         <Grid.Background>
             <ImageBrush ImageSource="/Image/casinos.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
@@ -30,12 +36,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Image Source="/Image/testdice1.png" Grid.Row="0" Grid.Column="4" Width="45" Height="45" Margin="80,-35,-7,26" ></Image>
-        <ListView x:Name="listViewDbPlayers" Grid.Column="1" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="74,0,93,109" Grid.RowSpan="2" Grid.Row="1" FontSize="20" MouseDoubleClick="ListViewDbPlayers_MouseDoubleClick_1" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" Foreground="Black">
+        <ListView x:Name="listViewDbPlayers" Grid.Column="1" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="74,0,93,109" Grid.RowSpan="2" Grid.Row="1" FontSize="20" MouseDoubleClick="ListViewDbPlayers_MouseDoubleClick_1" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" Foreground="Black" ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListView.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="White"></DropShadowEffect>
             </ListView.Effect>
             <ListView.View>
-                <GridView>
+                <GridView ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                    
                     <GridViewColumn Width="200" DisplayMemberBinding="{Binding Nickname}">Nickname</GridViewColumn>
                 </GridView>
             </ListView.View>
@@ -105,12 +112,12 @@
                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"></DropShadowEffect>
             </Label.Effect>
         </Label>
-        <ListView x:Name="listViewChosenPlayers" Grid.Column="3" Foreground="Black" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="96,0,71,109" Grid.RowSpan="2" Grid.Row="1" FontSize="20" MouseDoubleClick="ListViewChosenPlayers_MouseDoubleClick" Background="{x:Null}" FontWeight="Bold">
+        <ListView x:Name="listViewChosenPlayers" Grid.Column="3" Foreground="Black" FontFamily="Times New Roman" Grid.ColumnSpan="3" Margin="96,0,71,109" Grid.RowSpan="2" Grid.Row="1" FontSize="20" MouseDoubleClick="ListViewChosenPlayers_MouseDoubleClick" Background="{x:Null}" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListView.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="1" Color="White"></DropShadowEffect>
             </ListView.Effect>
             <ListView.View>
-                <GridView>
+                <GridView ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
                     <GridViewColumn Width="170" DisplayMemberBinding="{Binding Nickname}"  Header="Nickname" />
                 </GridView>
             </ListView.View>

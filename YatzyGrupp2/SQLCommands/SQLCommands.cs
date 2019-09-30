@@ -371,6 +371,50 @@ namespace YatzyGrupp2.SQLCommands
             }
             return wins;
         }
+
+        public List<Player.highscoreplayer> GetWinstreak(List<Player.highscoreplayer> winstreaks)
+        {
+            List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
+            Player.highscoreplayer pe = new Player.highscoreplayer();
+            using (var conn = new
+               NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "WITH winstreak AS (SELECT player.nickname, player.firstname, player.lastname, COUNT(game.ended_at) FROM" +
+                        " player JOIN game_player ON player.player_id" +
+                        " = game_player.player_id JOIN game ON game.game_id = game_player.game_id GROUP BY player.nickname, player.firstname," +
+                        " player.lastname ORDER BY COUNT DESC) SELECT * FROM winstreak";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        int rank = 1;
+
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i <winstreaks.Count; i++)
+                            {
+                                int temp = winstreaks[i].Score;
+                            }
+                            pe = new Player.highscoreplayer()
+                            {
+                                Rank = rank,
+                                Nickname = reader.GetString(0),
+                                Firstname = reader.GetString(1),
+                                Lastname = reader.GetString(2),
+                                Count = reader.GetInt32(3)
+
+                            };
+                            rank++;
+                            wins.Add(pe);
+                        }
+                    }
+                }
+                conn.Close();
+            }
+            return wins;
+        }
     }
 }
 
