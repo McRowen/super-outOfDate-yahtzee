@@ -14,6 +14,7 @@ namespace YatzyGrupp2.Player
         public string Lastname { get; set; }
         public string Nickname { get; set; }
         public int Ended_At { get; set; }
+        
 
         public Player()
         {
