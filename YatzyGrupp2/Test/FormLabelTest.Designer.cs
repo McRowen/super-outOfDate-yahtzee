@@ -83,7 +83,7 @@
             this.Dice1.Name = "Dice1";
             this.Dice1.Size = new System.Drawing.Size(77, 71);
             this.Dice1.TabIndex = 4;
-            this.Dice1.Text = "Dice1";
+            //this.Dice1.Text = "Dice1";
             this.Dice1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Dice1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice1_MouseDown);
             // 
@@ -95,7 +95,7 @@
             this.Dice2.Name = "Dice2";
             this.Dice2.Size = new System.Drawing.Size(77, 71);
             this.Dice2.TabIndex = 5;
-            this.Dice2.Text = "Dice2";
+            //this.Dice2.Text = "Dice2";
             this.Dice2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Dice2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice2_MouseDown);
             // 
@@ -104,10 +104,10 @@
             this.Dice3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.75F);
             this.Dice3.Location = new System.Drawing.Point(975, 238);
-            this.Dice3.Name = "Dice3";
+            //this.Dice3.Name = "Dice3";
             this.Dice3.Size = new System.Drawing.Size(77, 71);
             this.Dice3.TabIndex = 6;
-            this.Dice3.Text = "Dice3";
+            //this.Dice3.Text = "Dice3";
             this.Dice3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Dice3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice3_MouseDown);
             // 
@@ -119,7 +119,7 @@
             this.Dice4.Name = "Dice4";
             this.Dice4.Size = new System.Drawing.Size(77, 71);
             this.Dice4.TabIndex = 7;
-            this.Dice4.Text = "Dice4";
+            //this.Dice4.Text = "Dice4";
             this.Dice4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Dice4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice4_MouseDown);
             // 
@@ -131,7 +131,7 @@
             this.Dice5.Name = "Dice5";
             this.Dice5.Size = new System.Drawing.Size(77, 71);
             this.Dice5.TabIndex = 8;
-            this.Dice5.Text = "Dice5";
+            //this.Dice5.Text = "Dice5";
             this.Dice5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Dice5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dice5_MouseDown);
             // 
