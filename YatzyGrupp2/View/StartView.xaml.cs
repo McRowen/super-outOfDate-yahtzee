@@ -31,10 +31,10 @@ namespace YatzyGrupp2.View
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
             listViewChosenPlayers.ItemsSource = null;
-            if (players.Count < 2)
-            {
-                btnStart.IsEnabled = false;
-            }
+            //if (players.Count < 2)
+            //{
+            //    btnStart.IsEnabled = false;
+            //}
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
