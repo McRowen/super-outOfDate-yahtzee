@@ -26,6 +26,9 @@ namespace YatzyGrupp2.Test
             gamePlayers = StartView.players;
             GetGames = SQLCommands.SQLCommands.GetGames;
             lblSpelare.Text = "Nu spelar " + gamePlayers[0].Nickname;
+            this.BackgroundImage = Properties.Resources.velourgreen;
+            
+            //this.BackColor = Color.LawnGreen;
         }
                 
         int[] dice = new int[5];
@@ -36,12 +39,12 @@ namespace YatzyGrupp2.Test
 
         int players;
         int tempPos = 0;
-        int xDif = 100;
-        int yDif = 28;
-        int edgexDif = 20;
-        int edgeyDif = 75;
+        int xDif = 210;
+        int yDif = 50;
+        int edgexDif = 50;
+        int edgeyDif = 150;
         int fontSize = 12;
-        string fontType = "Arial";
+        string fontType = "Times New Roman";
         string extraSpace = "";
         int round = 0;
 
@@ -100,7 +103,6 @@ namespace YatzyGrupp2.Test
             PlayersActive();
 
             lblSpelare.Text = "Spelare: " + gamePlayers[round].Nickname;
-
         }
 
         public void ChangeLabelText(string labelName, string labelText)
@@ -503,7 +505,10 @@ namespace YatzyGrupp2.Test
                 throws = 0 + 1 ;
             }
             lblThrows.Text = "Kast nr: " + throws;
-            
+            lblThrows.BackColor = Color.Transparent;
+            lblThrows.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
+
+
             dice = gl.GetRandomDice(diceThrow, dice);
             if (diceThrow[0] != true)
             {
@@ -650,6 +655,11 @@ namespace YatzyGrupp2.Test
             ThrowDices.Enabled = true;
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
             ResetDice();
+        }
+
+        private void Dice1_Click(object sender, EventArgs e)
+        {
+
         }
     }        
 }
