@@ -331,6 +331,8 @@ namespace YatzyGrupp2.Test
 
                     }
                 }
+
+                gamePlayers[n].Score = temp;
             }
 
 
