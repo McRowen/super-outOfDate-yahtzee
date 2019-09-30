@@ -47,11 +47,11 @@ namespace YatzyGrupp2.Test
 
         public void ResetDice()
         {
-            Dice1.Text = "Dice";
-            Dice2.Text = "Dice";
-            Dice3.Text = "Dice";
-            Dice4.Text = "Dice";
-            Dice5.Text = "Dice";
+            Dice1.Text = null;
+            Dice2.Text = null;
+            Dice3.Text = null;
+            Dice4.Text = null;
+            Dice5.Text = null;
 
             Dice1.BackColor = Color.White;
             Dice2.BackColor = Color.White;
