@@ -118,7 +118,7 @@ namespace YatzyGrupp2.Test
         {
             for(int i = 0; i < testList.Count; i++)
             {
-                testList[i].Text = "";
+                testList[i].Text = "0";
             }
         }
 
@@ -287,17 +287,21 @@ namespace YatzyGrupp2.Test
             for (int n = 0; n < players; n++)
             {
                 temp = 0;
-                for (int i = 1; i < 19; i++)
+                for (int i = 1; i < 7; i++)
                 {
                     for (int k = 0; k < testList.Count; k++)
                     {
                         if (testList[k].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(i))
                         {
-                            temp = temp + Convert.ToInt32(testList[k].Text);
+                            temp += Convert.ToInt32(testList[k].Text);
+                            //temp = temp + int.Parse(testList[k].Text);
+
                         }
                         else if (testList[k].Name == "lblX" + Convert.ToString(turn + 1) + "Y" + Convert.ToString(i))
                         {
-                            temp = temp + Convert.ToInt32(testList[k].Text);
+                            temp += Convert.ToInt32(testList[k].Text);
+                            //temp = temp + int.Parse(testList[k].Text);
+
                         }
 
                     }
@@ -306,10 +310,72 @@ namespace YatzyGrupp2.Test
                         if (testList[a].Name == "lblX" + Convert.ToString(turn + 1) + "Y07")
                         {
                             testList[a].Text = Convert.ToString(temp);
+
+
                         }
+
+                    }
+                    for (int a = 0; a < testList.Count; a++)
+                    {
+                        if (testList[a].Name == "lblX" + Convert.ToString(turn + 1) + "Y08")
+                        {
+                            if (temp >= 63)
+                            {
+                                int bonus = 50;
+                                testList[a].Text = Convert.ToString(bonus);
+                            }
+
+
+
+                        }
+
                     }
                 }
             }
+
+
+
+
+        }
+
+        public void TotalScore()
+        {
+            int temp;
+            for (int n = 0; n < players; n++)
+            {
+                temp = 0;
+                for (int i = 7; i < 17; i++)
+                {
+                    for (int k = 0; k < testList.Count; k++)
+                    {
+                        if (testList[k].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(i))
+                        {
+                            temp += Convert.ToInt32(testList[k].Text);
+                            //temp = temp + int.Parse(testList[k].Text);
+
+                        }
+                        else if (testList[k].Name == "lblX" + Convert.ToString(turn + 1) + "Y" + Convert.ToString(i))
+                        {
+                            temp += Convert.ToInt32(testList[k].Text);
+                            //temp = temp + int.Parse(testList[k].Text);
+
+                        }
+
+                    }
+                    for (int a = 0; a < testList.Count; a++)
+                    {
+                        if (testList[a].Name == "lblX" + Convert.ToString(turn + 1) + "Y18")
+                        {
+                            testList[a].Text = Convert.ToString(temp);
+
+
+                        }
+
+                    }
+                }
+            }
+
+
 
 
         }
@@ -543,9 +609,11 @@ namespace YatzyGrupp2.Test
 
         private void BtnNextPlayer_Click(object sender, EventArgs e)
         {
+            
             throws = 0;
             lblThrows.Text = "";
-
+            SumScore();
+            TotalScore();
             if (turn < gamePlayers.Count)
             {
                 turn++;
@@ -554,6 +622,7 @@ namespace YatzyGrupp2.Test
             {
                 turn = 0;
             }
+            
             lblSpelare.Text = "Nu spelar: " + gamePlayers[turn].Nickname;
             gl.Round = 0; //Den här byter runda inte turn. Kolla i gamelogic för runda.
             ThrowDices.Enabled = true;
