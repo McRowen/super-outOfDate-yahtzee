@@ -250,7 +250,7 @@ namespace YatzyGrupp2.Test
                         else if (GetYValue(ctrl.Name) == 17)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
-                            
+                            sum += gl.Yatzyz(dice, diceThrow);
                         }
                     }
                 }
