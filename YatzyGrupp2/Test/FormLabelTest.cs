@@ -332,7 +332,7 @@ namespace YatzyGrupp2.Test
                     }
                 }
 
-                gamePlayers[n].Score = temp;
+                //gamePlayers[n].Score = temp;
             }
 
 
@@ -369,17 +369,35 @@ namespace YatzyGrupp2.Test
                         if (testList[a].Name == "lblX" + Convert.ToString(turn + 1) + "Y18")
                         {
                             testList[a].Text = Convert.ToString(temp);
-
-
                         }
-
+                        SetScore(testList);
                     }
                 }
             }
+        }
 
+        public void SetScore(List<Label> label)
+        {
 
-
-
+            for (int i = 0; i < label.Count; i++)
+            {
+                if (label[i].Name == "lblX" + Convert.ToString(1) + "Y18")
+                {
+                    gamePlayers[0].Score = int.Parse(label[i].Text);
+                }
+                if (label[i].Name == "lblX" + Convert.ToString(2) + "Y18")
+                {
+                    gamePlayers[1].Score = int.Parse(label[i].Text);
+                }
+                if (label[i].Name == "lblX" + Convert.ToString(3) + "Y18")
+                {
+                    gamePlayers[2].Score = int.Parse(label[i].Text);
+                }
+                if (label[i].Name == "lblX" + Convert.ToString(4) + "Y18")
+                {
+                    gamePlayers[3].Score = int.Parse(label[i].Text);
+                }
+            }
         }
 
         private void label_Enter(object sender, EventArgs e)
