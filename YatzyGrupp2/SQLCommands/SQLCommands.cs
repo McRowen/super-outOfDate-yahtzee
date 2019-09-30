@@ -208,6 +208,46 @@ namespace YatzyGrupp2.SQLCommands
             return GetGames;
 
         }
+
+        public List<Game.Game> GetStyrtGame()
+        {
+
+            Game.Game Ggame = new Game.Game();
+            int a = GameID();
+            DateTime CurrentDate;
+            CurrentDate = DateTime.Now;
+
+            using (var conn = new
+                            NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
+            {
+                conn.Open();
+
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT game_id, started_at, gametype_id FROM game where game_id = @game_id";
+                    cmd.Parameters.AddWithValue("game_id", a);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Ggame = new Game.Game()
+                            {
+                                Game_id = a,
+                                Started_at = CurrentDate,
+                                Gametype_id = 2,
+                            };
+                            GetGames.Add(Ggame);
+                        }
+                    }
+                }
+                conn.Close();
+
+            }
+            return GetGames;
+
+        }
         // Sätter eneded_at på det spelet som är igång.
         public void EndTime(List<Game.Game> GetGames)
         {
@@ -301,7 +341,7 @@ namespace YatzyGrupp2.SQLCommands
                     cmd.CommandText = "WITH rankscoreamount AS(SELECT player.nickname, player.firstname, player.lastname, SUM(game_player.score) FROM game_player " +
                         "JOIN player ON player.player_id = game_player.player_id JOIN game ON game.game_id = game_player.game_id " +
                         "WHERE game.started_at BETWEEN CURRENT_DATE -INTERVAL '7 days' AND CURRENT_DATE +INTERVAL '1 day' " +
-                        "GROUP BY player.nickname, player.firstname, player.lastname ORDER BY SUM DESC) SELECT* FROM rankscoreamount";
+                        "GROUP BY player.nickname, player.firstname, player.lastname ORDER BY SUM DESC) SELECT* FROM rankscoreamount WHERE SUM IS NOT NULL";
                     using (var reader = cmd.ExecuteReader())
                     {
                         int rank = 1;
@@ -309,14 +349,20 @@ namespace YatzyGrupp2.SQLCommands
                         {
                             try
                             {
-                                pe = new Player.highscoreplayer()
+                                
+                                pe = new Player.highscoreplayer();
+                                if (rank > 0)
                                 {
-                                    Rank = rank,
-                                    Nickname = reader.GetString(0),
-                                    Firstname = reader.GetString(1),
-                                    Lastname = reader.GetString(2),
-                                    Score = reader.GetInt32(3)
-                                };
+                                pe.Rank = rank;
+
+                                }
+                                pe.Nickname = reader.GetString(0);
+                                pe.Firstname = reader.GetString(1);
+                                pe.Lastname = reader.GetString(2);
+                                if (!reader.IsDBNull(3))
+                                {
+                                    pe.Score = reader.GetInt32(3);
+                                }
                                 rank++;
                                 gamers.Add(pe);
                             }
@@ -403,7 +449,7 @@ namespace YatzyGrupp2.SQLCommands
                     cmd.CommandText = "WITH mostgames AS (SELECT player.nickname, player.firstname, player.lastname, COUNT(game.ended_at) FROM" +
                         " player JOIN game_player ON player.player_id" +
                         " = game_player.player_id JOIN game ON game.game_id = game_player.game_id GROUP BY player.nickname, player.firstname," +
-                        " player.lastname ORDER BY COUNT DESC) SELECT * FROM mostgames";
+                        " player.lastname ORDER BY COUNT DESC) SELECT * FROM mostgames WHERE COUNT > 0";
                     using (var reader = cmd.ExecuteReader())
                     {
                         int rank = 1;
