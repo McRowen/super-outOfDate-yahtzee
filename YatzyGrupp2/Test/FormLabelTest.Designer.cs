@@ -40,6 +40,7 @@
             this.btnNextPlayer = new System.Windows.Forms.Button();
             this.lblThrows = new System.Windows.Forms.Label();
             this.lblRound = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EndGame
@@ -171,6 +172,17 @@
             this.lblThrows.Size = new System.Drawing.Size(0, 13);
             this.lblThrows.TabIndex = 11;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(775, 574);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 29);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Regler";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // lblRound
             // 
             this.lblRound.AutoSize = true;
@@ -223,5 +235,6 @@
         private System.Windows.Forms.Button btnNextPlayer;
         private System.Windows.Forms.Label lblThrows;
         private System.Windows.Forms.Label lblRound;
+        private System.Windows.Forms.Button button1;
     }
 }
