@@ -457,7 +457,7 @@ namespace YatzyGrupp2.Test
             for (int n = 0; n < players; n++)
             {
                 temp = 0;
-                for (int i = 7; i < 17; i++)
+                for (int i = 7; i < 18; i++)
                 {
                     for (int k = 0; k < testList.Count; k++)
                     {
@@ -823,6 +823,13 @@ namespace YatzyGrupp2.Test
 
         private void Dice1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            View.GameViewHelp gameViewHelp = new View.GameViewHelp();
+            gameViewHelp.Show();
 
         }
     }        

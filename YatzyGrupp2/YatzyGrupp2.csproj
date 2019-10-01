@@ -214,5 +214,14 @@
   <ItemGroup>
     <Resource Include="Image\casinohighscore.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\casino2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\DiceBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\RedDice.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
