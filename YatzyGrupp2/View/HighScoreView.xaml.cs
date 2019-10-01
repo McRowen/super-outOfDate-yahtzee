@@ -57,7 +57,7 @@ namespace YatzyGrupp2.View
             MostGames.Visibility = Visibility.Collapsed;
             winsinrow.Visibility = Visibility.Visible;
             winsinrow.ItemsSource = null;
-            //winsinrow.ItemsSource = ();
+            winsinrow.ItemsSource = db.GetMostWinsGames();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

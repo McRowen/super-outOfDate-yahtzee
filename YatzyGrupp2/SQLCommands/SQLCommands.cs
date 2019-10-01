@@ -540,6 +540,48 @@ namespace YatzyGrupp2.SQLCommands
             return wins;
         }
 
+        public List<Player.highscoreplayer> GetMostWinsGames()
+        {
+            List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
+            Player.highscoreplayer pe = new Player.highscoreplayer();
+            using (var conn = new
+               NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT player.firstname, player.lastname, player.nickname, COUNT(player.nickname) as WINS FROM game " +
+                                    "INNER JOIN game_player ON game_player.game_id = game.game_id " +
+                                    "INNER JOIN player on player.player_id = game_player.player_id " +
+                                    "WHERE game.ended_at IS NOT NULL " +
+                                    "GROUP BY player.firstname, player.lastname, player.nickname " +
+                                    "ORDER BY WINS DESC";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        int rank = 1;
+
+                        while (reader.Read())
+                        {
+
+                            pe = new Player.highscoreplayer()
+                            {
+                                Rank = rank,
+                                Firstname = reader.GetString(0),
+                                Lastname = reader.GetString(1),
+                                Nickname = reader.GetString(2),
+                                Count = reader.GetInt32(3)
+
+                            };
+                            rank++;
+                            wins.Add(pe);
+                        }
+                    }
+                }
+                conn.Close();
+            }
+            return wins;
+        }
         //    public List<Player.Player> GetWinstreak()
         //    {
         //        List<Player.winstreak> winstreaks = new List<Player.winstreak>();

@@ -71,7 +71,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button Content="Segrar i rad" Height="50" Width="150" Margin="5,0,0,0"  Click="Button_Click_1">
+            <Button Content="Mest Vinster" Height="50" Width="150" Margin="5,0,0,0"  Click="Button_Click_1">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
                 </Button.Effect>
@@ -125,7 +125,7 @@
                     <GridViewColumn Header="Användarnamn" Width="120" DisplayMemberBinding="{Binding Nickname}"/>
                     <GridViewColumn Header="Förnamn" Width="120" DisplayMemberBinding="{Binding Firstname}"/>
                     <GridViewColumn Header="Efternamn" Width="120" DisplayMemberBinding="{Binding Lastname}"/>
-                    <GridViewColumn Header="Vinster i rad" Width="150" DisplayMemberBinding="{Binding Score}"/>
+                    <GridViewColumn Header="Vinster" Width="150" DisplayMemberBinding="{Binding Count}"/>
                 </GridView>
             </ListView.View>
         </ListView>
