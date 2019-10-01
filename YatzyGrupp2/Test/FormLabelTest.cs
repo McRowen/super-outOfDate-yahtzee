@@ -456,7 +456,7 @@ namespace YatzyGrupp2.Test
             for (int n = 0; n < players; n++)
             {
                 temp = 0;
-                for (int i = 7; i < 17; i++)
+                for (int i = 7; i < 18; i++)
                 {
                     for (int k = 0; k < testList.Count; k++)
                     {
