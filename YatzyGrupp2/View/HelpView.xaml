@@ -1,0 +1,70 @@
+﻿<Window x:Class="YatzyGrupp2.View.HelpView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YatzyGrupp2.View"
+        mc:Ignorable="d"
+        Title="HelpView" Height="515.801" Width="1000">
+    <Grid ShowGridLines="False" Margin="0,0,0,-30" Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Width="300" Grid.ColumnSpan="2" Grid.Column="4" Margin="21,131,0,25" Grid.Row="2" Grid.RowSpan="2">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="/Image/RedDice.png" />
+            </Image.Source>
+        </Image>
+
+        <Label Content="Hjälp" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45" Foreground="#FFFFF9F9" >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <Button x:Name="OK" Content="OK" Grid.Column="3" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black" FontSize="14" Height="50" Click="OK_Click">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA84FB7" Offset="0"/>
+                    <GradientStop Color="#FFFFC000" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label Content="Steg 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" Foreground="#FFFFF9F9">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <Label Content="Steg 2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Grid.Row="1" Grid.Column="3" Margin="0,0,0,5" Foreground="#FFFFF9F9">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <Label Content="Steg 3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" Grid.Row="1" Grid.Column="5" Margin="0,0,0,5" Foreground="#FFFFF9F9">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <TextBlock Grid.Row="2" FontSize="15" Grid.Column="1" TextAlignment="Center" Foreground="#FFFFF9F9"><Run Text="Om det är första gången du spelar spelet"/><LineBreak/><Run Text="behöver du skapa en ny användare."/><LineBreak/><Run Text="Detta gör på på vänster sidan av spelet,"/><LineBreak/><Run Text="Skriv in nickname, förnamn och efternamn"/><LineBreak/><Run Text="och tryck på registrera spelare."/></TextBlock>
+
+        <TextBlock Grid.Row="2" Grid.Column="3" FontSize="15" TextAlignment="Center" Foreground="#FFFFF9F9"><Run Text="Nu när din användare är registrerad borde"/><LineBreak/><Run Text="du finnas i tillgängliga spelare. Tryck"/><LineBreak/><Run Text="på den spelaren du vill välja och klicka"/><LineBreak/><Run Text="på välj spelare. För att spela spelet krävs"/><LineBreak/><Run Text="det 2 till 4 valda spelare"/></TextBlock>
+
+        <TextBlock Grid.Row="2" Grid.Column="5" FontSize="15" TextAlignment="Center" Foreground="#FFFFF9F9"><Run Text="Efter att ni valt 2 till 4 spelare så är det"/><LineBreak/><Run Text="dags att välja vanligt yatzy eller styrt yatzy."/><LineBreak/><Run Text="Välj detta genom att klicka på knapparna"/><LineBreak/><Run Text="Efter detta börjar spelet. Regler finns att"/><LineBreak/><Run Text="hitta på nästa sida. Lycka till!"/></TextBlock>
+    </Grid>
+</Window>
