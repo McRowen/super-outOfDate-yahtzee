@@ -295,7 +295,7 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
 
-        // Metod för att få upp alla spelare
+        // Metod för att få upp alla tillgängliga spelare spelare
         public List<Player.Player> GetAllPlayers()
         {
             List<Player.Player> players = new List<Player.Player>();
@@ -329,6 +329,54 @@ namespace YatzyGrupp2.SQLCommands
 
                             }
                            
+
+                        }
+                    }
+                    catch (PostgresException ex)
+                    {
+
+                        System.Windows.MessageBox.Show(ex.Message);
+                    }
+                    conn.Close();
+                }
+                return players;
+            }
+        }
+
+        //metod för at få ut spelare som är i ett spel.
+        public List<Player.Player> PlayersInGame()
+        {
+            List<Player.Player> players = new List<Player.Player>();
+            using (var conn = new
+             NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    try
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "SELECT player.player_id, player.firstname, player.lastname, player.nickname FROM player " +
+                            "INNER JOIN game_player ON game_player.player_ID = player.player_id " +
+                            "INNER JOIN game ON game.game_id = game_player.game_id " +
+                            "WHERE game.started_at IS NOT NULL AND game.ended_at IS NULL";
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+
+                                p = new Player.Player()
+                                {
+                                    Player_id = reader.GetInt32(0),
+                                    Firstname = reader.GetString(1),
+                                    Lastname = reader.GetString(2),
+                                    Nickname = reader.GetString(3)
+                                };
+                                players.Add(p);
+
+                            }
+
 
                         }
                     }
