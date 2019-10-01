@@ -39,10 +39,10 @@ namespace YatzyGrupp2.Test
 
         int players;
         int tempPos = 0;
-        int xDif = 210;
-        int yDif = 50;
-        int edgexDif = 50;
-        int edgeyDif = 150;
+        int xDif = 100;
+        int yDif = 28;
+        int edgexDif = 20;
+        int edgeyDif = 75;
         int fontSize = 12;
         string fontType = "Times New Roman";
         string extraSpace = "";
@@ -530,6 +530,8 @@ namespace YatzyGrupp2.Test
             {
                 Dice5.Text = Convert.ToString(dice[4]);
             }
+
+            
 
             gl.IncrementRound();
 
