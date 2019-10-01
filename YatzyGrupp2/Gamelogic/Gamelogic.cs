@@ -12,7 +12,7 @@ namespace YatzyGrupp2.Gamelogic
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
 
-        
+         
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
@@ -100,7 +100,7 @@ namespace YatzyGrupp2.Gamelogic
             int points = 0;
             points = d[0] + d[1] + d[2] + d[3] + d[4];
             return points;
-        }
+        } 
 
             int points = 0;
         public int Pair(int[] d, bool[] dt)
@@ -119,8 +119,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
 
-        }
-
+        }  
         public int TwoPair(int[] d, bool[] dt)
         {
             if (Tvapar(d, dt))

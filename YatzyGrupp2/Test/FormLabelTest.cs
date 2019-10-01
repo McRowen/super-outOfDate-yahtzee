@@ -39,10 +39,10 @@ namespace YatzyGrupp2.Test
         int styrdRunda = 1;
         int players;
         int tempPos = 0;
-        int xDif = 210;
-        int yDif = 50;
-        int edgexDif = 50;
-        int edgeyDif = 150;
+        int xDif = 100;
+        int yDif = 23;
+        int edgexDif = 20;
+        int edgeyDif = 100;
         int fontSize = 12;
         string fontType = "Times New Roman";
         int round = 0;
@@ -93,6 +93,7 @@ namespace YatzyGrupp2.Test
                     cellLabel.Size = new Size(xDif, yDif);
                     cellLabel.Location = new Point(edgexDif + (o * xDif), edgeyDif + (i * yDif));
                     cellLabel.Click += new System.EventHandler(ctrlClick);
+                    cellLabel.BackColor = System.Drawing.Color.White;
                     cellLabel.MouseEnter += new System.EventHandler(label_Enter);
                     cellLabel.MouseLeave += new System.EventHandler(label_Leave);
                     temp++;
@@ -117,6 +118,54 @@ namespace YatzyGrupp2.Test
                     testList[i].Text = labelText;
                 }
             }
+        }
+
+        public void ChangeLabelColor()
+        {
+            int[] rows = new int[] { 0, 1, 2, 3, 4 };
+            int[] columnUpper = new int[] { 1, 2, 3, 4, 5, 6, 9 };
+            int[] columnLower = new int[] { 10, 11, 12, 13, 14, 15, 16, 17 };
+
+
+            for (int i = 0; i < testList.Count; i++)
+            {
+                for (int a = 0; a < rows.Length; a++)
+                {
+                    if (testList[i].Name == "lblX" + rows[a] + "Y00")
+                    {
+                        testList[i].BackColor = System.Drawing.Color.Orange;
+                    }
+                    if (testList[i].Name == "lblX" + rows[a] + "Y07") 
+                    {
+                        testList[i].BackColor = System.Drawing.Color.Orange;
+                    }
+                    if (testList[i].Name == "lblX" + rows[a] + "Y08")
+                    {
+                        testList[i].BackColor = System.Drawing.Color.Orange;
+                    }
+                    if (testList[i].Name == "lblX" + rows[a] + "Y18")
+                    {
+                        testList[i].BackColor = System.Drawing.Color.Orange;
+                    }
+                }
+                for (int b = 0; b < columnUpper.Length; b++)
+                {
+                    if (testList[i].Name == "lblX0Y0" + columnUpper[b])
+                    {
+                        testList[i].BackColor = System.Drawing.Color.LightYellow;
+                    }
+                }
+                for (int c = 0; c < columnLower.Length; c++)
+                {
+                    if (testList[i].Name == "lblX0Y" + columnLower[c])
+                    {
+                        testList[i].BackColor = System.Drawing.Color.LightYellow;
+                    }
+                }
+
+            }
+
+            
         }
 
         public void SetLabelTextEmpty()
@@ -153,6 +202,9 @@ namespace YatzyGrupp2.Test
             {
                 ChangeLabelText("lblX" + Convert.ToString(i + 1) + "Y00", gamePlayers[i].Nickname);
             }
+
+            ChangeLabelColor();
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -480,10 +532,12 @@ namespace YatzyGrupp2.Test
                             string yTemp = Convert.ToString(temp);
                             string nameTemp = "lblX" + xTemp + "Y" + yTemp;
                             testList[i- temp2 + k].BackColor = Color.LightGray;
+                            ChangeLabelColor();
 
                         }
 
                         testList[i].BackColor = Color.Gray;
+                        ChangeLabelColor();
                         tempPos = i;
 
                     }
@@ -516,10 +570,12 @@ namespace YatzyGrupp2.Test
                                 string yTemp = Convert.ToString(temp);
                                 string nameTemp = "lblX" + xTemp + "Y" + yTemp;
                                 testList[i - temp2 + k].BackColor = Color.LightGray;
+                                ChangeLabelColor();
 
                             }
 
                             testList[i].BackColor = Color.Gray;
+                            ChangeLabelColor();
                             //tempPos = i;
                         }
                         
@@ -538,6 +594,7 @@ namespace YatzyGrupp2.Test
                                 string yTemp = Convert.ToString(temp);
                                 string nameTemp = "lblX" + xTemp + "Y" + yTemp;
                                 testList[i - temp2 + k].BackColor = Color.White;
+                                ChangeLabelColor();
 
                             }
                             //tempPos = i;
@@ -586,6 +643,8 @@ namespace YatzyGrupp2.Test
             {
                 Dice5.Text = Convert.ToString(dice[4]);
             }
+
+            
 
             gl.IncrementRound();
 
