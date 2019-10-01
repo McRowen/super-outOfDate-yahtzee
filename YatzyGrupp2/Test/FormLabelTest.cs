@@ -71,6 +71,7 @@ namespace YatzyGrupp2.Test
             players = gamePlayers.Count;
             playerRound = new int[players];
             playerRound = Enumerable.Repeat<int>(1, players).ToArray(); //Sätter allt i arrayen till 1
+            lblRound.Text = "";
             for (int i = 0; i < 19; i++)
             {
                 
@@ -758,8 +759,8 @@ namespace YatzyGrupp2.Test
             SumScore();
             TotalScore();
             playerRound[turn]++;
-            /*bool tempTurn = false;
-            for(int i = 0; i < testList.Count; i++)
+            bool tempTurn = false;
+            /*for(int i = 0; i < testList.Count; i++)
             {
                 if(testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(GetYValue(testList[i].Name)))
                 {
@@ -781,6 +782,28 @@ namespace YatzyGrupp2.Test
 
 
             tempTurn = false;*/
+
+            if (playerRound[turn] < 7)
+            {
+                lblRound.Text = "Få " + Convert.ToString(playerRound[turn]) + " dumskalle";
+            }
+            else
+            {
+                for (int i = 0; i < testList.Count; i++)
+                {
+                    if(testList[i].Name == "lblX0Y0" + Convert.ToString(playerRound[turn] + 2))
+                    {
+                        lblRound.Text = "Få " + testList[i].Text + " dumskalle";
+                        tempTurn = true;
+                    }
+                    if(testList[i].Name == "lblX0Y" + Convert.ToString(playerRound[turn] + 2) && testList[i].Text != "Total")
+                    {
+                        lblRound.Text = "Få " + testList[i].Text + " dumskalle";
+                        tempTurn = true;
+                    }
+                }
+            }
+
             if (turn < gamePlayers.Count)
             {
                 turn++;
