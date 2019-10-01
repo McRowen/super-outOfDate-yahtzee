@@ -305,21 +305,37 @@ namespace YatzyGrupp2.SQLCommands
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
                 {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT player.player_id, player.firstname, player.lastname, player.nickname FROM player";
+                    try
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "SELECT player.player_id, player.firstname, player.lastname, player.nickname FROM player " +
+                            "INNER JOIN game_player ON game_player.player_ID = player.player_id " +
+                            "INNER JOIN game ON game.game_id = game_player.game_id " +
+                            "WHERE game.ended_at IS NOT NULL  OR game.started_At IS NULL AND game.ended_At IS NULL";
+
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            p = new Player.Player()
-                            {
-                                Player_id = reader.GetInt32(0),
-                                Firstname = reader.GetString(1),
-                                Lastname = reader.GetString(2),
-                                Nickname = reader.GetString(3)
-                            };
-                            players.Add(p);
+
+                                p = new Player.Player()
+                                {
+                                    Player_id = reader.GetInt32(0),
+                                    Firstname = reader.GetString(1),
+                                    Lastname = reader.GetString(2),
+                                    Nickname = reader.GetString(3)
+                                };
+                                players.Add(p);
+
+                            }
+                           
+
                         }
+                    }
+                    catch (PostgresException ex)
+                    {
+
+                        System.Windows.MessageBox.Show(ex.Message);
                     }
                     conn.Close();
                 }
