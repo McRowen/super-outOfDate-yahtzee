@@ -317,47 +317,47 @@ namespace YatzyGrupp2.Test
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
                             sum += gl.Points(dice, diceThrow, temp);
                         }
-                        else if (GetYValue(ctrl.Name) == 9) //Par
+                        else if (GetYValue(ctrl.Name) == 9 && GetYValue(ctrl.Name) == playerRound[turn] + 2) //Par
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
                             sum += gl.Pair(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 10)
+                        else if (GetYValue(ctrl.Name) == 10 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
                             sum += gl.TwoPair(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 11)
+                        else if (GetYValue(ctrl.Name) == 11 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
                             sum += gl.ThreeOfAKind(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 12)
+                        else if (GetYValue(ctrl.Name) == 12 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
                             sum += gl.FourOfAKind(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 13)
+                        else if (GetYValue(ctrl.Name) == 13 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
                             sum += gl.SmallLargeStraight(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 14)
+                        else if (GetYValue(ctrl.Name) == 14 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
                             sum += gl.SmallLargeStraight(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 15)
+                        else if (GetYValue(ctrl.Name) == 15 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
                             sum += gl.FullHouseOnTheTable(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 16)
+                        else if (GetYValue(ctrl.Name) == 16 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
                             sum += gl.Chans(dice, diceThrow);
                         }
-                        else if (GetYValue(ctrl.Name) == 17)
+                        else if (GetYValue(ctrl.Name) == 17 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
                             sum += gl.Yatzyz(dice, diceThrow);
@@ -757,7 +757,8 @@ namespace YatzyGrupp2.Test
             lblThrows.Text = "";
             SumScore();
             TotalScore();
-            bool tempTurn = false;
+            playerRound[turn]++;
+            /*bool tempTurn = false;
             for(int i = 0; i < testList.Count; i++)
             {
                 if(testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(GetYValue(testList[i].Name)))
@@ -777,7 +778,9 @@ namespace YatzyGrupp2.Test
                     }
                 }
             }
-            tempTurn = false;
+
+
+            tempTurn = false;*/
             if (turn < gamePlayers.Count)
             {
                 turn++;

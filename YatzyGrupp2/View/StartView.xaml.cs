@@ -31,6 +31,10 @@ namespace YatzyGrupp2.View
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
             listViewChosenPlayers.ItemsSource = null;
+            listViewStartedGames.ItemsSource = null;
+            listViewStartedGames.ItemsSource = sql.PlayersInGame();
+
+
             if (players.Count < 2)
             {
                 btnStart.IsEnabled = false;
@@ -89,11 +93,13 @@ namespace YatzyGrupp2.View
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
+
             styrdYatzy = true;
             //sql.GetStyrtGame(); //metod för styrt yatzy.
             Test.FormLabelTest f = new Test.FormLabelTest();
             this.Hide();
             f.Show();
+
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)
