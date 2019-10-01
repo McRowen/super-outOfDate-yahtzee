@@ -92,6 +92,12 @@
     <Compile Include="Player\winstreak.cs" />
     <Compile Include="SQLCommands\SQLCommands.cs" />
     <Compile Include="Test\DataTest.cs" />
+    <Compile Include="Test\ControlYahtzee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\ControlYahtzee.Designer.cs">
+      <DependentUpon>ControlYahtzee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test\FormLabelTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\ControlYahtzee.resx">
+      <DependentUpon>ControlYahtzee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\FormLabelTest.resx">
       <DependentUpon>FormLabelTest.cs</DependentUpon>

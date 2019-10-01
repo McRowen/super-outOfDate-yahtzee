@@ -88,7 +88,11 @@ namespace YatzyGrupp2.View
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
+            Test.ControlYahtzee c = new Test.ControlYahtzee();
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
+
+            this.Hide();
+            c.Show();
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)
