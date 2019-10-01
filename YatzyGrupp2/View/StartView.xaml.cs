@@ -24,7 +24,7 @@ namespace YatzyGrupp2.View
         Game.Game game = new Game.Game();
         int click = 0;
         public static List<Player.Player> players = new List<Player.Player>();
-        
+        public static bool styrdYatzy = false;
         public StartView()
         {           
             InitializeComponent();
@@ -89,8 +89,11 @@ namespace YatzyGrupp2.View
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
-
+            styrdYatzy = true;
             //sql.GetStyrtGame(); //metod för styrt yatzy.
+            Test.FormLabelTest f = new Test.FormLabelTest();
+            this.Hide();
+            f.Show();
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)

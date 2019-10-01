@@ -36,7 +36,7 @@ namespace YatzyGrupp2.Test
         int turn = 0;
         int throws = 0;
         int sum = 0;
-
+        int styrdRunda = 1;
         int players;
         int tempPos = 0;
         int xDif = 210;
@@ -45,9 +45,9 @@ namespace YatzyGrupp2.Test
         int edgeyDif = 150;
         int fontSize = 12;
         string fontType = "Times New Roman";
-        string extraSpace = "";
         int round = 0;
-
+        bool styrdYatzy = false;
+        int[] playerRound;
         public void ResetDice()
         {
             Dice1.Text = null;
@@ -67,7 +67,10 @@ namespace YatzyGrupp2.Test
         {
             int temp = 0;
             gamePlayers = View.StartView.players;
+            styrdYatzy = View.StartView.styrdYatzy;
             players = gamePlayers.Count;
+            playerRound = new int[players];
+            playerRound = Enumerable.Repeat<int>(1, players).ToArray(); //Sätter allt i arrayen till 1
             for (int i = 0; i < 19; i++)
             {
                 
@@ -202,9 +205,62 @@ namespace YatzyGrupp2.Test
                 if(ctrl.Name == testList[i].Name)
                 {
                     int temp = GetYValue(ctrl.Name);
-                    if(GetXValue(ctrl.Name) - 1 == turn)
+                    if(GetXValue(ctrl.Name) - 1 == turn && styrdYatzy == false)
                     {
                         if (temp < 7 && temp > 0)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
+                            sum += gl.Points(dice, diceThrow, temp);
+                        }
+                        else if (GetYValue(ctrl.Name) == 9) //Par
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
+                            sum += gl.Pair(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 10)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
+                            sum += gl.TwoPair(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 11)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
+                            sum += gl.ThreeOfAKind(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 12)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
+                            sum += gl.FourOfAKind(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 13)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                            sum += gl.SmallLargeStraight(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 14)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                            sum += gl.SmallLargeStraight(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 15)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
+                            sum += gl.FullHouseOnTheTable(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 16)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
+                            sum += gl.Chans(dice, diceThrow);
+                        }
+                        else if (GetYValue(ctrl.Name) == 17)
+                        {
+                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
+                            sum += gl.Yatzyz(dice, diceThrow);
+                        }
+                    }
+                    else if (GetXValue(ctrl.Name) - 1 == turn && styrdYatzy == true)
+                    {
+                        if (temp < 7 && temp > 0 && GetYValue(ctrl.Name) == playerRound[turn])
                         {
                             ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
                             sum += gl.Points(dice, diceThrow, temp);
@@ -641,6 +697,27 @@ namespace YatzyGrupp2.Test
             lblThrows.Text = "";
             SumScore();
             TotalScore();
+            bool tempTurn = false;
+            for(int i = 0; i < testList.Count; i++)
+            {
+                if(testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(GetYValue(testList[i].Name)))
+                {
+                    if(testList[i].Text != "0" && testList[i].Text != gamePlayers[turn].Nickname && tempTurn == false)
+                    {
+                        playerRound[turn]++;
+                        tempTurn = true;
+                    }
+                }
+                if (testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y" + Convert.ToString(GetYValue(testList[i].Name)))
+                {
+                    if (testList[i].Text != "0" && testList[i].Text != gamePlayers[turn].Nickname && tempTurn == false)
+                    {
+                        playerRound[turn]++;
+                        tempTurn = true;
+                    }
+                }
+            }
+            tempTurn = false;
             if (turn < gamePlayers.Count)
             {
                 turn++;
@@ -654,6 +731,7 @@ namespace YatzyGrupp2.Test
             gl.Round = 0; //Den här byter runda inte turn. Kolla i gamelogic för runda.
             ThrowDices.Enabled = true;
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
+            
             ResetDice();
         }
 
