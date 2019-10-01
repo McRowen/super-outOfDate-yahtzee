@@ -802,5 +802,12 @@ namespace YatzyGrupp2.Test
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            View.GameViewHelp gameViewHelp = new View.GameViewHelp();
+            gameViewHelp.Show();
+
+        }
     }        
 }

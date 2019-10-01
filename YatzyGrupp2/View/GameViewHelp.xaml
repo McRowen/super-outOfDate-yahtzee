@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
         Title="GameViewHelp" Height="649.427" Width="1141.611">
-    <Grid ShowGridLines="False" Margin="0,0,2,-28" Background="#FFF2FC">
+    <Grid ShowGridLines="False" Margin="0,0,2,-28" Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -24,14 +24,46 @@
             <RowDefinition/>
             <RowDefinition/>
 
+
         </Grid.RowDefinitions>
-        <Button x:Name="btnOK" Content="OK" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Height="50" VerticalAlignment="Bottom" Margin="0,0,10,70" Click="BtnOK_Click" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"  Background="SkyBlue" FontSize="14"/>
-        <Label x:Name="lblGameRules" Content="Spelets gång" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="138" FontFamily="Times New Roman" FontSize="24" Margin="38,97,0,0" Grid.ColumnSpan="2"/>
-        <Label x:Name="lblRules" Content="REGLER" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="36" Grid.ColumnSpan="2" Grid.Column="3" Margin="97.5,10,0,0"/>
-        <TextBlock x:Name="gameRules" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="189" Width="570" Margin="38,141,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.RowSpan="2"/>
-        <Label x:Name="lblGameExample" Content="Ett spelexempel" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="186" FontFamily="Times New Roman" FontSize="24" Margin="30,119,0,0" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <TextBlock x:Name="gameExample" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="138" Width="570" Margin="38,168,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.Row="1" Grid.RowSpan="2"/>
-        <Label x:Name="lblLowerPart" Content="Nedre delen av protokollet" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="339" FontFamily="Times New Roman" FontSize="24" Margin="80,92,0,0" Grid.Column="4" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="lowerPart" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="337" Width="349" Margin="80,141,0,0" Grid.ColumnSpan="3" FontFamily="Times New Roman" FontSize="16" Grid.Column="4" Grid.RowSpan="2"/>
+        <Image Grid.ColumnSpan="6" Grid.Column="2" Margin="60,0,-241,10" Grid.Row="2">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="/Image/RedDice.png" />
+            </Image.Source>
+        </Image>
+        <Button x:Name="btnOK" Content="OK" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Height="50" VerticalAlignment="Bottom" Margin="0,0,10,70" Click="BtnOK_Click" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black" FontSize="14">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA84FB7" Offset="0"/>
+                    <GradientStop Color="#FFFFC000" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="lblGameRules" Foreground="#FFFFF9F9" Content="Spelets gång" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="138" FontFamily="Times New Roman" FontSize="24" Margin="38,97,0,0" Grid.ColumnSpan="2">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <Label x:Name="lblRules" Foreground="#FFFFF9F9" Content="REGLER" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="36" Grid.ColumnSpan="2" Grid.Column="3" Margin="97.5,10,0,0">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <TextBlock x:Name="gameRules" Foreground="#FFFFF9F9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="189" Width="570" Margin="38,141,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.RowSpan="2"/>
+        <Label x:Name="lblGameExample" Foreground="#FFFFF9F9" Content="Ett spelexempel" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="186" FontFamily="Times New Roman" FontSize="24" Margin="30,119,0,0" Grid.ColumnSpan="2" Grid.Row="1">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <TextBlock x:Name="gameExample" Foreground="#FFFFF9F9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="138" Width="570" Margin="38,168,0,0" Grid.ColumnSpan="5" FontFamily="Times New Roman" FontSize="16" Grid.Row="1" Grid.RowSpan="2"/>
+        <Label x:Name="lblLowerPart" Foreground="#FFFFF9F9" Content="Nedre delen av protokollet" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="339" FontFamily="Times New Roman" FontSize="24" Margin="80,92,0,0" Grid.Column="4" Grid.ColumnSpan="3">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
+            </Label.Effect>
+        </Label>
+        <TextBlock x:Name="lowerPart" Foreground="#FFFFF9F9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="337" Width="349" Margin="80,141,0,0" Grid.ColumnSpan="3" FontFamily="Times New Roman" FontSize="16" Grid.Column="4" Grid.RowSpan="2"/>
     </Grid>
 </Window>
