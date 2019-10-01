@@ -31,6 +31,9 @@ namespace YatzyGrupp2.View
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
             listViewChosenPlayers.ItemsSource = null;
+            listViewStartedGames.ItemsSource = null;
+            listViewStartedGames.ItemsSource = sql.PlayersInGame();
+
             if (players.Count < 2)
             {
                 btnStart.IsEnabled = false;
