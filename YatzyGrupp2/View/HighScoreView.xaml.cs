@@ -27,8 +27,8 @@ namespace YatzyGrupp2.View
             try
             {
                 SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
-                List<Player.highscoreplayer> players = db.GetHighScore();
-                HighScore.ItemsSource = players;
+                HighScore.ItemsSource = null; 
+                HighScore.ItemsSource = db.GetHighScore();
             }
             catch (PostgresException ex)
             {
@@ -40,24 +40,42 @@ namespace YatzyGrupp2.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            MostGamesView mostgames = new MostGamesView();
-            mostgames.ShowDialog();
-          
+            HighScore.Visibility = Visibility.Collapsed;
+            MostGames.Visibility = Visibility.Visible;
+            winsinrow.Visibility = Visibility.Collapsed;
+            
+            SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
+            MostGames.ItemsSource = null;
+            MostGames.ItemsSource = db.GetMostWins();
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            WinsInRow winsinrow = new WinsInRow();
-            winsinrow.ShowDialog();
+            SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
+            HighScore.Visibility = Visibility.Collapsed;
+            MostGames.Visibility = Visibility.Collapsed;
+            winsinrow.Visibility = Visibility.Visible;
+            winsinrow.ItemsSource = null;
+            //winsinrow.ItemsSource = ();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
             StartView startview = new StartView();
             startview.ShowDialog();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            SQLCommands.SQLCommands db = new SQLCommands.SQLCommands();
+            HighScore.Visibility = Visibility.Visible;
+            MostGames.Visibility = Visibility.Collapsed;
+            winsinrow.Visibility = Visibility.Collapsed;
+            HighScore.ItemsSource = null;
+            HighScore.ItemsSource = db.GetHighScore();
+
         }
     }
 }
