@@ -140,17 +140,29 @@ namespace YatzyGrupp2.View
 
         private void ListViewDbPlayers_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
+            if (listViewDbPlayers.SelectedItem == null)
+            {
+                MessageBox.Show("Du måste välja en spelare");
+            }
+            else
+            {
+                players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+                listViewChosenPlayers.ItemsSource = null;
+                listViewChosenPlayers.ItemsSource = players;
+            }
+
             if (players.Count >= 1)
             {
                 btnStyrt.IsEnabled = true;
                 btnStart.IsEnabled = true;
             }
-            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));           
-            listViewChosenPlayers.ItemsSource = null;
-            listViewChosenPlayers.ItemsSource = players;
+           
+            if (listViewChosenPlayers.SelectedItem != null)
+            {
+                click++;
+            }
 
-            click++;
-      
+            
 
             for (int i = 0; i < click; i++)
             {
@@ -183,8 +195,10 @@ namespace YatzyGrupp2.View
 
                 }
             }
-
+            if (listViewChosenPlayers.SelectedItem != null)
+            {
             click--;
+            }
             if (click == 1)
             {
                 btnStart.IsEnabled = false;
