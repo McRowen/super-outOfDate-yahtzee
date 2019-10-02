@@ -707,7 +707,9 @@ namespace YatzyGrupp2.Test
 
             this.Close();
             View.StartView startView = new View.StartView();
-            startView.Show();
+            gamePlayers.Clear();
+            startView.listViewChosenPlayers.ItemsSource = null;
+         
 
         }
 
