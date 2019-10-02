@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatzyGrupp2.View"
         mc:Ignorable="d"
-        Title="StartView" Height="800" Width="1000">
+        Title="StartView" Height="800" Width="1000" Closed="Window_Closed">
     <Window.Resources>
         <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
             <Setter Property="Visibility" Value="Collapsed" />
@@ -183,13 +183,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="button" Content="X" Grid.Column="7" HorizontalAlignment="Left" Margin="121.6,0,-0.4,0" VerticalAlignment="Top" Width="18" Height="35" Click="button_Click_3">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FFE54B4B" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
     </Grid>
 </Window>
