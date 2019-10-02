@@ -39,6 +39,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnNextPlayer = new System.Windows.Forms.Button();
             this.lblThrows = new System.Windows.Forms.Label();
+            this.lblRound = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -182,13 +183,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // lblRound
+            // 
+            this.lblRound.AutoSize = true;
+            this.lblRound.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblRound.Location = new System.Drawing.Point(606, 255);
+            this.lblRound.Name = "lblRound";
+            this.lblRound.Size = new System.Drawing.Size(74, 20);
+            this.lblRound.TabIndex = 12;
+            this.lblRound.Text = "lblRound";
+            // 
             // FormLabelTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1113, 615);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1113, 614);
+            this.Controls.Add(this.lblRound);
             this.Controls.Add(this.lblThrows);
             this.Controls.Add(this.btnNextPlayer);
             this.Controls.Add(this.label7);
@@ -223,6 +234,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnNextPlayer;
         private System.Windows.Forms.Label lblThrows;
+        private System.Windows.Forms.Label lblRound;
         private System.Windows.Forms.Button button1;
     }
 }
