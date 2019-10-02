@@ -149,38 +149,35 @@ namespace YatzyGrupp2.View
                 players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
                 listViewChosenPlayers.ItemsSource = null;
                 listViewChosenPlayers.ItemsSource = players;
-            }
 
-            if (players.Count >= 1)
-            {
-                btnStyrt.IsEnabled = true;
-                btnStart.IsEnabled = true;
-            }
-           
-            if (listViewChosenPlayers.SelectedItem != null)
-            {
-                click++;
-            }
-
-            
-
-            for (int i = 0; i < click; i++)
-            {
-                if (click == 4)
+                if (players.Count >= 1)
                 {
-                    BtnChoose.IsEnabled = false;
-                    listViewDbPlayers.IsEnabled = false;
+                    btnStyrt.IsEnabled = true;
+                    btnStart.IsEnabled = true;
                 }
-            }
-            for (int i = 0; i < allPlayers.Count; i++)
-            {
-                if (allPlayers[i] == listViewDbPlayers.SelectedItem)
+
+                
+                    click++;
+               
+
+                for (int i = 0; i < click; i++)
                 {
-                    allPlayers.Remove(allPlayers[i]);
+                    if (click == 4)
+                    {
+                        BtnChoose.IsEnabled = false;
+                        listViewDbPlayers.IsEnabled = false;
+                    }
                 }
-            }
-            listViewDbPlayers.ItemsSource = null;
-            listViewDbPlayers.ItemsSource = allPlayers;
+                for (int i = 0; i < allPlayers.Count; i++)
+                {
+                    if (allPlayers[i] == listViewDbPlayers.SelectedItem)
+                    {
+                        allPlayers.Remove(allPlayers[i]);
+                    }
+                }
+                listViewDbPlayers.ItemsSource = null;
+                listViewDbPlayers.ItemsSource = allPlayers;
+            }     
         }
 
         private void ListViewChosenPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
