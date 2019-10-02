@@ -85,7 +85,7 @@
             </Button>
         </StackPanel>
 
-        <Button Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"   FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4" FontWeight="Bold">
+        <Button x:Name="btnStyrt" Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"   FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4" FontWeight="Bold">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
             </Button.Effect>
@@ -183,5 +183,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="button" Content="X" Grid.Column="7" HorizontalAlignment="Left" Margin="121.6,0,-0.4,0" VerticalAlignment="Top" Width="18" Height="35" Click="button_Click_3">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFE54B4B" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

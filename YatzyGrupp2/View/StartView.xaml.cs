@@ -37,6 +37,7 @@ namespace YatzyGrupp2.View
 
             if (players.Count < 2)
             {
+                btnStyrt.IsEnabled = false;
                 btnStart.IsEnabled = false;
             }
         }
@@ -138,6 +139,7 @@ namespace YatzyGrupp2.View
         {
             if (players.Count >= 1)
             {
+                btnStyrt.IsEnabled = true;
                 btnStart.IsEnabled = true;
             }
             players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));           
@@ -169,12 +171,16 @@ namespace YatzyGrupp2.View
             click--;
             if (click == 1)
             {
+                btnStart.IsEnabled = false;
+                btnStyrt.IsEnabled = false;
                 BtnChoose.IsEnabled = false;
                 listViewDbPlayers.IsEnabled = true;
+               
             }
             if (click >= 2)
                 {
                     BtnChoose.IsEnabled = true;
+                
                     listViewDbPlayers.IsEnabled = true;
                 }
           
@@ -182,5 +188,11 @@ namespace YatzyGrupp2.View
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.ItemsSource = players;
         }
+
+        private void button_Click_3(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }    
+        
 }
