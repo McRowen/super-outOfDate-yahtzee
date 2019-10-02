@@ -85,7 +85,7 @@
             </Button>
         </StackPanel>
 
-        <Button x:Name="btnStyrt" Content="Starta styrtspel funkar inte" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"   FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4" FontWeight="Bold">
+        <Button x:Name="btnStyrt" Content="Starta styrt Yatzy" TabIndex="6" Margin="96,10,20,149" BorderThickness="1" FontFamily="Times New Roman" BorderBrush="Black"   FontSize="14" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Click="Button_Click_4" FontWeight="Bold">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
             </Button.Effect>
@@ -155,7 +155,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta vanligt spel" Grid.Column="2" HorizontalAlignment="Left" Margin="23,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Click="btnStart_Click" Height="34" FontWeight="Bold">
+        <Button x:Name="btnStart" Grid.ColumnSpan="2" Content="Starta valigt Yatzy" Grid.Column="2" HorizontalAlignment="Left" Margin="23,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Click="btnStart_Click" Height="34" FontWeight="Bold">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="1" Color="HotPink"></DropShadowEffect>
             </Button.Effect>

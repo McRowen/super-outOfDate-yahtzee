@@ -224,22 +224,22 @@
     <Resource Include="Image\RedDice.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Webp.net-compress-image %282%29.jpg" />
+    <Resource Include="Resources\Dice1.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Webp.net-compress-image %281%29.jpg" />
+    <Resource Include="Resources\Dice2.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Webp.net-compress-image.jpg" />
+    <Resource Include="Resources\Dice3.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\dicetwo.jpg" />
+    <Resource Include="Resources\Dice4.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\dicethree.jpg" />
+    <Resource Include="Resources\Dice5.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\dice_4_b_svg.jpg" />
+    <Resource Include="Resources\Dice6.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

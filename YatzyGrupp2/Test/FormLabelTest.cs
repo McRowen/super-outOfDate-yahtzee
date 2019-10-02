@@ -27,7 +27,11 @@ namespace YatzyGrupp2.Test
             GetGames = SQLCommands.SQLCommands.GetGames;
             lblSpelare.Text = "Nu spelar " + gamePlayers[0].Nickname;
             this.BackgroundImage = Properties.Resources.velourgreen;
-            
+            Dice1.Image = dice1;
+            Dice2.Image = dice2;
+            Dice3.Image = dice3;
+            Dice4.Image = dice4;
+            Dice5.Image = dice5;
             //this.BackColor = Color.LawnGreen;
         }
         bool valt = false;
@@ -48,6 +52,13 @@ namespace YatzyGrupp2.Test
         int round = 0;
         bool styrdYatzy = false;
         int[] playerRound;
+
+        Image dice1 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice1.bmp");
+        Image dice2 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice2.bmp");
+        Image dice3 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice3.bmp");
+        Image dice4 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice4.bmp");
+        Image dice5 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice5.bmp");
+        Image dice6 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice6.bmp");
 
         public void ThrowTheDices()
         {
@@ -666,26 +677,175 @@ namespace YatzyGrupp2.Test
             dice = gl.GetRandomDice(diceThrow, dice);
             if (diceThrow[0] != true)
             {
-                Dice1.Text = Convert.ToString(dice[0]);               
+                Dice1.Text = Convert.ToString(dice[0]);
+                if (Dice1.Text == "1")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = dice1;
+                }
+                if (Dice1.Text == "2")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = dice2;
+                }
+                if (Dice1.Text == "3")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = dice3;
+                }
+                if (Dice1.Text == "4")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = dice4;
+                }
+                if (Dice1.Text == "5")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = dice5;
+                }
+                if (Dice1.Text == "6")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = dice6;
+                }
             }
             if (diceThrow[1] != true)
             {
                 Dice2.Text = Convert.ToString(dice[1]);
+                if (Dice2.Text == "1")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = dice1;
+                }
+                if (Dice2.Text == "2")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = dice2;
+                }
+                if (Dice2.Text == "3")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = dice3;
+                }
+                if (Dice2.Text == "4")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = dice4;
+                }
+                if (Dice2.Text == "5")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = dice5;
+                }
+                if (Dice2.Text == "6")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = dice6;
+                }
             }
             if (diceThrow[2] != true)
             {
                 Dice3.Text = Convert.ToString(dice[2]);
+                if (Dice3.Text == "1")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = dice1;
+                }
+                if (Dice3.Text == "2")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = dice2;
+                }
+                if (Dice3.Text == "3")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = dice3;
+                }
+                if (Dice3.Text == "4")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = dice4;
+                }
+                if (Dice3.Text == "5")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = dice5;
+                }
+                if (Dice3.Text == "6")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = dice6;
+                }
             }
             if (diceThrow[3] != true)
             {
                 Dice4.Text = Convert.ToString(dice[3]);
+                if (Dice4.Text == "1")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = dice1;
+                }
+                if (Dice4.Text == "2")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = dice2;
+                }
+                if (Dice4.Text == "3")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = dice3;
+                }
+                if (Dice4.Text == "4")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = dice4;
+                }
+                if (Dice4.Text == "5")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = dice5;
+                }
+                if (Dice4.Text == "6")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = dice6;
+                }
             }
             if (diceThrow[4] != true)
             {
                 Dice5.Text = Convert.ToString(dice[4]);
+                if (Dice5.Text == "1")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = dice1;
+                }
+                if (Dice5.Text == "2")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = dice2;
+                }
+                if (Dice5.Text == "3")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = dice3;
+                }
+                if (Dice5.Text == "4")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = dice4;
+                }
+                if (Dice5.Text == "5")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = dice5;
+                }
+                if (Dice5.Text == "6")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = dice6;
+                }
             }
-
-            
+           
 
             gl.IncrementRound();
 
@@ -809,6 +969,12 @@ namespace YatzyGrupp2.Test
             this.Dice3.Location = new Point(917, 522);
             this.Dice4.Location = new Point(979, 522);
             this.Dice5.Location = new Point(1041, 522);
+
+            Dice1.Image = dice1;
+            Dice2.Image = dice2;
+            Dice3.Image = dice3;
+            Dice4.Image = dice4;
+            Dice5.Image = dice5;
 
             throws = 0;
             lblThrows.Text = "";
