@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="HighScoreView" Height="700" Width="800">
    
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="false">
         <Grid.Background>
             <ImageBrush ImageSource="/Image/casinohighscore.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
@@ -84,9 +84,9 @@
             </Button>
         </StackPanel>
 
-        <ListView x:Name="HighScore" FontSize="17" Foreground="Black" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="{x:Null}"  FontFamily="Times New Roman" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListView x:Name="HighScore" FontSize="17" Foreground="Black" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="#66FFFFFF"  FontFamily="Times New Roman" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="1" Color="HotPink"></DropShadowEffect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="1" Color="Black"></DropShadowEffect>
             </ListView.Effect>
             <ListView.View>
                 
@@ -99,9 +99,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="MostGames" FontSize="17" Foreground="Black" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="{x:Null}"  FontFamily="Times New Roman" FontWeight="Bold" Visibility="Collapsed" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListView x:Name="MostGames" FontSize="17" Foreground="Black" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="#66FFFFFF"  FontFamily="Times New Roman" FontWeight="Bold" Visibility="Collapsed" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="1" Color="HotPink"></DropShadowEffect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="1" Color="Black"></DropShadowEffect>
             </ListView.Effect>
             <ListView.View>
 
@@ -114,9 +114,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="winsinrow" FontSize="17" Foreground="Black" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="{x:Null}"  FontFamily="Times New Roman" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Hidden" Visibility="Collapsed" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListView x:Name="winsinrow" FontSize="17" Foreground="Black" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="558" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="#66FFFFFF"  FontFamily="Times New Roman" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Hidden" Visibility="Collapsed" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="1" Color="HotPink"></DropShadowEffect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="1" Color="Black"></DropShadowEffect>
             </ListView.Effect>
             <ListView.View>
 
