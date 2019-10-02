@@ -298,7 +298,8 @@ namespace YatzyGrupp2.SQLCommands
                     try
                     {
                         cmd.Connection = conn;
-                        cmd.CommandText = "SELECT player.player_id, player.firstname, player.lastname, player.nickname FROM player " +
+                        //Fick lägga till DISTINCT i denna SQL fråga då den annars visade flera av samma. Detta kan bero på SQL frågan själv eller databasen.
+                        cmd.CommandText = "SELECT DISTINCT player.nickname, player.player_id, player.firstname, player.lastname FROM player " +
                             "INNER JOIN game_player ON game_player.player_ID = player.player_id " +
                             "INNER JOIN game ON game.game_id = game_player.game_id " +
                             "WHERE game.ended_at IS NOT NULL  OR game.started_At IS NULL AND game.ended_At IS NULL";
@@ -310,10 +311,11 @@ namespace YatzyGrupp2.SQLCommands
 
                                 p = new Player.Player()
                                 {
-                                    Player_id = reader.GetInt32(0),
-                                    Firstname = reader.GetString(1),
-                                    Lastname = reader.GetString(2),
-                                    Nickname = reader.GetString(3)
+                                    Nickname = reader.GetString(0),
+                                    Player_id = reader.GetInt32(1),
+                                    Firstname = reader.GetString(2),
+                                    Lastname = reader.GetString(3)
+                                    
                                 };
                                 players.Add(p);
                             }
