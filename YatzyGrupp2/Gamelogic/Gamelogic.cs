@@ -77,6 +77,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för om det är kåk på bordet.
         public int FullHouseOnTheTable(int[] d, bool[] dt)
         {
             int points = 0;
@@ -86,6 +87,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för om det är liten stege på bordet.
         public int SmallLargeStraight(int[] d, bool[] dt)
         {
             int points = 0;
@@ -95,6 +97,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för chans
         public int Chans(int[] d, bool[] dt)
         {
             int points = 0;
@@ -103,6 +106,7 @@ namespace YatzyGrupp2.Gamelogic
         } 
 
             int points = 0;
+
         public int Pair(int[] d, bool[] dt)
         {
             if (ParTest(d, dt))
