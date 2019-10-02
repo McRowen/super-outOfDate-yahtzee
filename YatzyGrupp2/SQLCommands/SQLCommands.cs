@@ -171,7 +171,6 @@ namespace YatzyGrupp2.SQLCommands
         //Metod för att lägga till Game i lista, kan behövas för att hitta game_id senare.
         public List<Game.Game> GetGame()
         {
-
             Game.Game Ggame = new Game.Game();
             int a = GameID();
             DateTime CurrentDate;
@@ -203,10 +202,8 @@ namespace YatzyGrupp2.SQLCommands
                     }
                 }
                 conn.Close();
-
             }
             return GetGames;
-
         }
 
         public List<Game.Game> GetStyrtGame()
@@ -243,10 +240,8 @@ namespace YatzyGrupp2.SQLCommands
                     }
                 }
                 conn.Close();
-
             }
             return GetGames;
-
         }
         // Sätter eneded_at på det spelet som är igång.
         public void EndTime(List<Game.Game> GetGames)
@@ -266,7 +261,6 @@ namespace YatzyGrupp2.SQLCommands
                 }
                 conn.Close();
             }
-
         }
 
         public void GetScore(List<Player.Player> selectedPlayer)
@@ -284,14 +278,10 @@ namespace YatzyGrupp2.SQLCommands
                         cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
                         cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
                         cmd.Parameters.AddWithValue("score", selectedPlayer[i].Score);
-
-
                         cmd.ExecuteReader();
                     }
                     conn.Close();
-
                 }
-
             }
         }
 
@@ -313,10 +303,10 @@ namespace YatzyGrupp2.SQLCommands
                             "INNER JOIN game ON game.game_id = game_player.game_id " +
                             "WHERE game.ended_at IS NOT NULL  OR game.started_At IS NULL AND game.ended_At IS NULL";
 
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
+                        using (var reader = cmd.ExecuteReader())
                         {
+                            while (reader.Read())
+                            {
 
                                 p = new Player.Player()
                                 {
@@ -326,11 +316,8 @@ namespace YatzyGrupp2.SQLCommands
                                     Nickname = reader.GetString(3)
                                 };
                                 players.Add(p);
-
                             }
-                           
-
-                        }
+                        }                                            
                     }
                     catch (PostgresException ex)
                     {

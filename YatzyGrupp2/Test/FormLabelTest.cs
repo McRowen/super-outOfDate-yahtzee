@@ -48,6 +48,41 @@ namespace YatzyGrupp2.Test
         int round = 0;
         bool styrdYatzy = false;
         int[] playerRound;
+
+        public void ThrowTheDices()
+        {
+            if (Dice1.BackColor != Color.Red)
+            {
+                this.Dice1.Location = new Point(707, 385);
+                this.Dice1.Location = new Point(648, 307);
+                this.Dice1.Location = new Point(626, 236);
+            }
+            if (Dice2.BackColor != Color.Red)
+            {
+                this.Dice2.Location = new Point(847, 387);
+                this.Dice2.Location = new Point(831, 229);
+                this.Dice2.Location = new Point(781, 193);
+            }
+            if (Dice3.BackColor != Color.Red)
+            {
+                this.Dice3.Location = new Point(916, 381);
+                this.Dice3.Location = new Point(838, 298);
+                this.Dice3.Location = new Point(737, 263);
+            }
+            if (Dice4.BackColor != Color.Red)
+            {
+                this.Dice4.Location = new Point(959, 378);
+                this.Dice4.Location = new Point(898, 263);
+                this.Dice4.Location = new Point(845, 202);
+            }
+            if (Dice5.BackColor != Color.Red)
+            {
+                this.Dice5.Location = new Point(898, 364);
+                this.Dice5.Location = new Point(907, 286);
+                this.Dice5.Location = new Point(948, 167);
+            }
+        }
+
         public void ResetDice()
         {
             Dice1.Text = null;
@@ -242,8 +277,7 @@ namespace YatzyGrupp2.Test
             string test2 = Convert.ToString(test);
             
         }
-
-        
+       
         private void ctrlClick(System.Object sender, EventArgs e)
         {
             Control ctrl = (Control)sender;
@@ -622,6 +656,7 @@ namespace YatzyGrupp2.Test
             lblThrows.BackColor = Color.Transparent;
             lblThrows.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
 
+            ThrowTheDices();
 
             dice = gl.GetRandomDice(diceThrow, dice);
             if (diceThrow[0] != true)
@@ -673,6 +708,8 @@ namespace YatzyGrupp2.Test
 
         private void Dice1_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice1.Location = new Point(793, 522);
+
             int i = 0;
 
             if (diceThrow[i] != true)
@@ -689,6 +726,8 @@ namespace YatzyGrupp2.Test
 
         private void Dice2_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice2.Location = new Point(855, 522);
+
             int i = 1;
 
             if (diceThrow[i] != true)
@@ -705,6 +744,7 @@ namespace YatzyGrupp2.Test
 
         private void Dice3_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice3.Location = new Point(917, 522);
             int i = 2;
 
             if (diceThrow[i] != true)
@@ -721,6 +761,8 @@ namespace YatzyGrupp2.Test
 
         private void Dice4_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice4.Location = new Point(979, 522);
+
             int i = 3;
 
             if (diceThrow[i] != true)
@@ -737,6 +779,8 @@ namespace YatzyGrupp2.Test
 
         private void Dice5_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice5.Location = new Point(1041, 522);
+
             int i = 4;
 
             if (diceThrow[i] != true)
@@ -753,7 +797,12 @@ namespace YatzyGrupp2.Test
 
         private void BtnNextPlayer_Click(object sender, EventArgs e)
         {
-            
+            this.Dice1.Location = new Point(793, 522);
+            this.Dice2.Location = new Point(855, 522);
+            this.Dice3.Location = new Point(917, 522);
+            this.Dice4.Location = new Point(979, 522);
+            this.Dice5.Location = new Point(1041, 522);
+
             throws = 0;
             lblThrows.Text = "";
             SumScore();
@@ -803,7 +852,6 @@ namespace YatzyGrupp2.Test
                     }
                 }
             }
-
             if (turn < gamePlayers.Count)
             {
                 turn++;
@@ -819,11 +867,6 @@ namespace YatzyGrupp2.Test
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
             
             ResetDice();
-        }
-
-        private void Dice1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
