@@ -177,7 +177,10 @@ namespace YatzyGrupp2.View
             {
                 if (players[i] == listViewChosenPlayers.SelectedItem)
                 {
-                    players.Remove(players[i]);     
+
+                    players.Remove(players[i]);
+                    allPlayers.Add((Player.Player)listViewChosenPlayers.SelectedItem);
+
                 }
             }
 
@@ -193,10 +196,17 @@ namespace YatzyGrupp2.View
             if (click >= 2)
                 {
                     BtnChoose.IsEnabled = true;
-                
-                    listViewDbPlayers.IsEnabled = true;
+                btnStyrt.IsEnabled = true;
+                BtnChoose.IsEnabled = true;
+                listViewDbPlayers.IsEnabled = true;
                 }
-            
+            if (click > 4)
+            {
+                btnStart.IsEnabled = false;
+                btnStyrt.IsEnabled = false;
+                BtnChoose.IsEnabled = false;
+                listViewDbPlayers.IsEnabled = false;
+            }
 
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.ItemsSource = players;
