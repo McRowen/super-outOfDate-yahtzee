@@ -702,8 +702,8 @@ namespace YatzyGrupp2.Test
         private void EndGame_Click(object sender, EventArgs e)
         {
 
-            sql.EndTime(GetGames);
-            sql.GetScore(gamePlayers);
+            //sql.EndTime(GetGames);
+            //sql.GetScore(gamePlayers);
 
             this.Close();
             View.StartView startView = new View.StartView();
