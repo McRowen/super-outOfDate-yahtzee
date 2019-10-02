@@ -149,6 +149,7 @@ namespace YatzyGrupp2.View
                 players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
                 listViewChosenPlayers.ItemsSource = null;
                 listViewChosenPlayers.ItemsSource = players;
+                    click++;
 
                 if (players.Count >= 1)
                 {
@@ -157,7 +158,6 @@ namespace YatzyGrupp2.View
                 }
 
                 
-                    click++;
                
 
                 for (int i = 0; i < click; i++)
