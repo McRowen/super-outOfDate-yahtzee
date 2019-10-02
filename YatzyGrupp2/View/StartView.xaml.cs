@@ -165,6 +165,7 @@ namespace YatzyGrupp2.View
                     players.Remove(players[i]);
                 }
             }
+            click--;
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.ItemsSource = players;
         }
