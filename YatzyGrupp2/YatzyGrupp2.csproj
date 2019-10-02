@@ -163,6 +163,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\FormLabelTest.resx">
       <DependentUpon>FormLabelTest.cs</DependentUpon>
@@ -178,7 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Resources\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\RedDice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Webp.net-compress-image %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Webp.net-compress-image %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Webp.net-compress-image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dicetwo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dicethree.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dice_4_b_svg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -99,7 +99,9 @@ namespace YatzyGrupp2.View
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
 
             styrdYatzy = true;
-            //sql.GetStyrtGame(); //metod för styrt yatzy.
+
+            sql.GetStyrtGame(); //metod för styrt yatzy.
+            sql.StartNewGamePlayer(players);
             Test.FormLabelTest f = new Test.FormLabelTest();
             this.Hide();
             f.Show();
@@ -116,25 +118,26 @@ namespace YatzyGrupp2.View
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
 
-            //sql.GetGame();
-            //sql.StartNewGamePlayer(players); //Dessa två skickar upp all information till databsen och tar ut game_id m.m
+            sql.GetGame();
+            sql.StartNewGamePlayer(players); //Dessa två skickar upp all information till databsen och tar ut game_id m.m
 
             Test.FormLabelTest f = new Test.FormLabelTest();
-            this.Hide();
             f.Show();
+            this.Hide();
         }
 
+        //knapp för gammla start view? ska vi ta bort?!
         private void BtnStartGame_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
             //sql.StartNewGame();
-            //sql.GameID();
-            //sql.GetGame();
-            //sql.StartNewGamePlayer(players);
+            sql.GameID();
+            sql.GetGame();
+            sql.StartNewGamePlayer(players);
 
             GameView gameView = new GameView();
             gameView.Show();
-            //this.Hide();
+            this.Hide();
         }
 
 
