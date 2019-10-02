@@ -232,6 +232,11 @@ namespace YatzyGrupp2.View
         {
             App.Current.Shutdown();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }    
         
 }
