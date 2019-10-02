@@ -25,11 +25,14 @@ namespace YatzyGrupp2.View
         int click = 0;
         public static List<Player.Player> players = new List<Player.Player>();
         public static bool styrdYatzy = false;
+        public static List<Player.Player> allPlayers = new List<Player.Player>();
+       
         public StartView()
         {           
             InitializeComponent();
             listViewDbPlayers.ItemsSource = null;
-            listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
+            allPlayers = sql.GetAllPlayers();
+            listViewDbPlayers.ItemsSource = allPlayers;
             listViewChosenPlayers.ItemsSource = null;
             listViewStartedGames.ItemsSource = null;
             listViewStartedGames.ItemsSource = sql.PlayersInGame();
@@ -61,7 +64,7 @@ namespace YatzyGrupp2.View
         {
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
             listViewDbPlayers.ItemsSource = null;
-            listViewDbPlayers.ItemsSource = sql.GetAllPlayers();
+            listViewDbPlayers.ItemsSource = allPlayers;
             txtFirstName.Clear();
             txtLastName.Clear();
             txtNickName.Clear();
@@ -137,16 +140,29 @@ namespace YatzyGrupp2.View
 
         private void ListViewDbPlayers_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
+            if (listViewDbPlayers.SelectedItem == null)
+            {
+                MessageBox.Show("Du måste välja en spelare");
+            }
+            else
+            {
+                players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));
+                listViewChosenPlayers.ItemsSource = null;
+                listViewChosenPlayers.ItemsSource = players;
+            }
+
             if (players.Count >= 1)
             {
                 btnStyrt.IsEnabled = true;
                 btnStart.IsEnabled = true;
             }
-            players.Add(sql.GetChosenPlayer((Player.Player)listViewDbPlayers.SelectedItem));           
-            listViewChosenPlayers.ItemsSource = null;
-            listViewChosenPlayers.ItemsSource = players;
+           
+            if (listViewChosenPlayers.SelectedItem != null)
+            {
+                click++;
+            }
 
-            click++;
+            
 
             for (int i = 0; i < click; i++)
             {
@@ -155,7 +171,16 @@ namespace YatzyGrupp2.View
                     BtnChoose.IsEnabled = false;
                     listViewDbPlayers.IsEnabled = false;
                 }
-            }           
+            }
+            for (int i = 0; i < allPlayers.Count; i++)
+            {
+                if (allPlayers[i] == listViewDbPlayers.SelectedItem)
+                {
+                    allPlayers.Remove(allPlayers[i]);
+                }
+            }
+            listViewDbPlayers.ItemsSource = null;
+            listViewDbPlayers.ItemsSource = allPlayers;
         }
 
         private void ListViewChosenPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -164,11 +189,16 @@ namespace YatzyGrupp2.View
             {
                 if (players[i] == listViewChosenPlayers.SelectedItem)
                 {
+
                     players.Remove(players[i]);
+                    allPlayers.Add((Player.Player)listViewChosenPlayers.SelectedItem);
+
                 }
             }
-
+            if (listViewChosenPlayers.SelectedItem != null)
+            {
             click--;
+            }
             if (click == 1)
             {
                 btnStart.IsEnabled = false;
@@ -180,18 +210,32 @@ namespace YatzyGrupp2.View
             if (click >= 2)
                 {
                     BtnChoose.IsEnabled = true;
-                
-                    listViewDbPlayers.IsEnabled = true;
+                btnStyrt.IsEnabled = true;
+                BtnChoose.IsEnabled = true;
+                listViewDbPlayers.IsEnabled = true;
                 }
-          
+            if (click > 4)
+            {
+                btnStart.IsEnabled = false;
+                btnStyrt.IsEnabled = false;
+                BtnChoose.IsEnabled = false;
+                listViewDbPlayers.IsEnabled = false;
+            }
 
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.ItemsSource = players;
+            listViewDbPlayers.ItemsSource = null;
+            listViewDbPlayers.ItemsSource = allPlayers;
         }
 
         private void button_Click_3(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }    
         
