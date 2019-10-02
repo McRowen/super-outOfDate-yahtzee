@@ -165,7 +165,20 @@ namespace YatzyGrupp2.View
                     players.Remove(players[i]);
                 }
             }
+
             click--;
+            if (click == 1)
+            {
+                BtnChoose.IsEnabled = false;
+                listViewDbPlayers.IsEnabled = true;
+            }
+            if (click >= 2)
+                {
+                    BtnChoose.IsEnabled = true;
+                    listViewDbPlayers.IsEnabled = true;
+                }
+          
+
             listViewChosenPlayers.ItemsSource = null;
             listViewChosenPlayers.ItemsSource = players;
         }
