@@ -8,7 +8,7 @@ namespace YatzyGrupp2.Gamelogic
 {
     class Gamelogic
     {
-
+        
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
 

@@ -20,6 +20,8 @@ namespace YatzyGrupp2.Test
         Gamelogic.Gamelogic gl = new Gamelogic.Gamelogic();
         SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
 
+        public Image img1 = Image.FromFile("C:\\Users\\Rasmu\\Source\\Repos\\systemvetenskap\\yatzy19_2\\YatzyGrupp2\\Resources\\Webp.net-compress-image.jpg");
+
         public FormLabelTest()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace YatzyGrupp2.Test
             
             //this.BackColor = Color.LawnGreen;
         }
+      
                 
         int[] dice = new int[5];
         bool[] diceThrow = new bool[] { false, false, false, false, false };
@@ -661,11 +664,16 @@ namespace YatzyGrupp2.Test
             dice = gl.GetRandomDice(diceThrow, dice);
             if (diceThrow[0] != true)
             {
-                Dice1.Text = Convert.ToString(dice[0]);               
+                Dice1.Text = Convert.ToString(dice[0]);
+                if (Dice1.Text == "1")
+                {
+                    Dice1.Image = img1;
+                }
             }
             if (diceThrow[1] != true)
             {
                 Dice2.Text = Convert.ToString(dice[1]);
+
             }
             if (diceThrow[2] != true)
             {
