@@ -90,10 +90,6 @@ namespace YatzyGrupp2.View
             }            
         }
 
-        private void ListViewChosenPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
@@ -125,21 +121,6 @@ namespace YatzyGrupp2.View
             f.Show();
             this.Hide();
         }
-
-        //knapp för gammla start view? ska vi ta bort?!
-        private void BtnStartGame_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
-            //sql.StartNewGame();
-            sql.GameID();
-            sql.GetGame();
-            sql.StartNewGamePlayer(players);
-
-            GameView gameView = new GameView();
-            gameView.Show();
-            this.Hide();
-        }
-
 
         private void ListViewDbPlayers_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {

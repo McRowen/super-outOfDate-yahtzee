@@ -102,9 +102,6 @@
     <Compile Include="Test\Listview.xaml.cs">
       <DependentUpon>Listview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GameView.xaml.cs">
-      <DependentUpon>GameView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\GameViewHelp.xaml.cs">
       <DependentUpon>GameViewHelp.xaml</DependentUpon>
     </Compile>
@@ -122,10 +119,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Test\Listview.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\GameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
