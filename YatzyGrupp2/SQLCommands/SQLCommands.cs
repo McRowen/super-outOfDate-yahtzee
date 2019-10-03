@@ -43,6 +43,49 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
 
+        public void DeleteGameFromDb(List<Player.Player> selectedPlayer)
+        {
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                for (int i = 0; i < selectedPlayer.Count; i++)
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        int temp = selectedPlayer[i].Player_id;
+
+                        cmd.CommandText = "DELETE FROM game_player WHERE game_id = @game_id, player_id = @ player_id";
+                        cmd.Parameters.AddWithValue("game_id", g.Game_id);
+                        cmd.Parameters.AddWithValue("player_id", temp);
+
+                        cmd.ExecuteReader();
+                    }
+                    conn.Close();
+                }
+
+            }
+        }
+    
+        public void DeleteGameIdFromDb()
+        {
+            string stmt = "DELETE FROM game where game_id = @game_id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.AddWithValue("game_id", g.Game_id);
+                    cmd.ExecuteReader();
+                }
+                conn.Close();
+            }
+
+        }
+    
+
         //Metod för att lägga till spel i databsen + att returna game_id
         public int GameID()
         {

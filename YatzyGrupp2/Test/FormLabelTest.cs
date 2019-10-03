@@ -1090,5 +1090,16 @@ namespace YatzyGrupp2.Test
             startView.Show();
             
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            List<Player.Player> selectedPlayer = new List<Player.Player>();
+            sql.DeleteGameFromDb(selectedPlayer);
+            sql.DeleteGameIdFromDb();
+            this.Close();
+            View.StartView startView = new View.StartView();
+            gamePlayers.Clear();
+            startView.listViewChosenPlayers.ItemsSource = null;
+        }
     }        
 }
