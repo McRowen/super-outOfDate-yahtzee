@@ -1029,27 +1029,30 @@ namespace YatzyGrupp2.Test
 
 
             tempTurn = false;*/
-
-            if (playerRound[turn] < 7)
+            if (styrdYatzy == true)
             {
-                lblRound.Text = "Få " + Convert.ToString(playerRound[turn]) + " dumskalle";
-            }
-            else
-            {
-                for (int i = 0; i < testList.Count; i++)
+                if (playerRound[turn] < 7)
                 {
-                    if(testList[i].Name == "lblX0Y0" + Convert.ToString(playerRound[turn] + 2))
+                    lblRound.Text = "Få " + Convert.ToString(playerRound[turn]);
+                }
+                else
+                {
+                    for (int i = 0; i < testList.Count; i++)
                     {
-                        lblRound.Text = "Få " + testList[i].Text + " dumskalle";
-                        tempTurn = true;
-                    }
-                    if(testList[i].Name == "lblX0Y" + Convert.ToString(playerRound[turn] + 2) && testList[i].Text != "Total")
-                    {
-                        lblRound.Text = "Få " + testList[i].Text + " dumskalle";
-                        tempTurn = true;
+                        if (testList[i].Name == "lblX0Y0" + Convert.ToString(playerRound[turn] + 2))
+                        {
+                            lblRound.Text = "Få " + testList[i].Text;
+                            tempTurn = true;
+                        }
+                        if (testList[i].Name == "lblX0Y" + Convert.ToString(playerRound[turn] + 2) && testList[i].Text != "Total")
+                        {
+                            lblRound.Text = "Få " + testList[i].Text;
+                            tempTurn = true;
+                        }
                     }
                 }
             }
+           
             if (turn < gamePlayers.Count)
             {
                 turn++;
