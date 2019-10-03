@@ -166,7 +166,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label Grid.ColumnSpan="2" Content="Pågående spel" Foreground="Orange" HorizontalAlignment="Left" Margin="10,96.4,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Grid.Row="2">
+        <Label Grid.ColumnSpan="2" Content="Upptagna spelare" Foreground="Orange" HorizontalAlignment="Left" Margin="10,96.4,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Grid.Row="2">
             <Label.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
             </Label.Effect>
