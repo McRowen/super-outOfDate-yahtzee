@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,13 +53,24 @@ namespace YatzyGrupp2.Test
         int round = 0;
         bool styrdYatzy = false;
         int[] playerRound;
+        static string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\");
+        static int remove1 = path.IndexOf("\\b");
+        static int remove2 = path.IndexOf("g\\");
+        static string result = PathText(remove1, remove2, path);
+        
+    //Image dice1 = Image.FromFile(path + "Dice1.bmp");
+    //Image dice2 = Image.FromFile(path + "Dice2.bmp");
+    //Image dice3 = Image.FromFile(path + "Dice3.bmp");
+    //Image dice4 = Image.FromFile(path + "Dice4.bmp");
+    //Image dice5 = Image.FromFile(path + "Dice5.bmp");
+    //Image dice6 = Image.FromFile(path + "Dice6.bmp");
 
-        Image side1 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice1.bmp");
-        Image side2 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice2.bmp");
-        Image side3 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice3.bmp");
-        Image side4 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice4.bmp");
-        Image side5 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice5.bmp");
-        Image side6 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice6.bmp");
+        static Image side1 = Image.FromFile(result + "Dice1.bmp");
+        static Image side2 = Image.FromFile(result + "Dice2.bmp");
+        static Image side3 = Image.FromFile(result + "Dice3.bmp");
+        static Image side4 = Image.FromFile(result + "Dice4.bmp");
+        static Image side5 = Image.FromFile(result + "Dice5.bmp");
+        static Image side6 = Image.FromFile(result + "Dice6.bmp");
 
         public void ThrowTheDices()
         {
@@ -92,6 +104,19 @@ namespace YatzyGrupp2.Test
                 this.Dice5.Location = new Point(907, 286);
                 this.Dice5.Location = new Point(948, 167);
             }
+        }
+
+        static public string PathText(int r1, int r2, string path)
+        {
+            string result = "";
+
+            if (r1 != r2 && r1 >= 0)
+            {
+
+                result = path.Remove(r1 + 1, r2 - r1);
+
+            }
+            return result;
         }
 
         public void ResetDice()
