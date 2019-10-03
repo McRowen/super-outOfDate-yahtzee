@@ -875,8 +875,8 @@ namespace YatzyGrupp2.Test
         {
             SumScore();
             TotalScore();
-            //sql.EndTime(GetGames);
-            //sql.GetScore(gamePlayers);
+            sql.EndTime(GetGames);
+            sql.GetScore(gamePlayers);
 
             this.Close();
             View.StartView startView = new View.StartView();
