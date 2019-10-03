@@ -27,11 +27,11 @@ namespace YatzyGrupp2.Test
             GetGames = SQLCommands.SQLCommands.GetGames;
             lblSpelare.Text = "Nu spelar " + gamePlayers[0].Nickname;
             this.BackgroundImage = Properties.Resources.velourgreen;
-            Dice1.Image = dice1;
-            Dice2.Image = dice2;
-            Dice3.Image = dice3;
-            Dice4.Image = dice4;
-            Dice5.Image = dice5;
+            Dice1.Image = side1;
+            Dice2.Image = side2;
+            Dice3.Image = side3;
+            Dice4.Image = side4;
+            Dice5.Image = side5;
             //this.BackColor = Color.LawnGreen;
         }
         bool valt = false;
@@ -53,12 +53,12 @@ namespace YatzyGrupp2.Test
         bool styrdYatzy = false;
         int[] playerRound;
 
-        Image dice1 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice1.bmp");
-        Image dice2 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice2.bmp");
-        Image dice3 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice3.bmp");
-        Image dice4 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice4.bmp");
-        Image dice5 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice5.bmp");
-        Image dice6 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice6.bmp");
+        Image side1 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice1.bmp");
+        Image side2 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice2.bmp");
+        Image side3 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice3.bmp");
+        Image side4 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice4.bmp");
+        Image side5 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice5.bmp");
+        Image side6 = Image.FromFile("C:/Users/Rasmu/Source/Repos/yatzy19_2/YatzyGrupp2/Resources/Dice6.bmp");
 
         public void ThrowTheDices()
         {
@@ -681,32 +681,32 @@ namespace YatzyGrupp2.Test
                 if (Dice1.Text == "1")
                 {
                     Dice1.Text = "";
-                    Dice1.Image = dice1;
+                    Dice1.Image = side1;
                 }
                 if (Dice1.Text == "2")
                 {
                     Dice1.Text = "";
-                    Dice1.Image = dice2;
+                    Dice1.Image = side2;
                 }
                 if (Dice1.Text == "3")
                 {
                     Dice1.Text = "";
-                    Dice1.Image = dice3;
+                    Dice1.Image = side3;
                 }
                 if (Dice1.Text == "4")
                 {
                     Dice1.Text = "";
-                    Dice1.Image = dice4;
+                    Dice1.Image = side4;
                 }
                 if (Dice1.Text == "5")
                 {
                     Dice1.Text = "";
-                    Dice1.Image = dice5;
+                    Dice1.Image = side5;
                 }
                 if (Dice1.Text == "6")
                 {
                     Dice1.Text = "";
-                    Dice1.Image = dice6;
+                    Dice1.Image = side6;
                 }
             }
             if (diceThrow[1] != true)
@@ -715,32 +715,32 @@ namespace YatzyGrupp2.Test
                 if (Dice2.Text == "1")
                 {
                     Dice2.Text = "";
-                    Dice2.Image = dice1;
+                    Dice2.Image = side1;
                 }
                 if (Dice2.Text == "2")
                 {
                     Dice2.Text = "";
-                    Dice2.Image = dice2;
+                    Dice2.Image = side2;
                 }
                 if (Dice2.Text == "3")
                 {
                     Dice2.Text = "";
-                    Dice2.Image = dice3;
+                    Dice2.Image = side3;
                 }
                 if (Dice2.Text == "4")
                 {
                     Dice2.Text = "";
-                    Dice2.Image = dice4;
+                    Dice2.Image = side4;
                 }
                 if (Dice2.Text == "5")
                 {
                     Dice2.Text = "";
-                    Dice2.Image = dice5;
+                    Dice2.Image = side5;
                 }
                 if (Dice2.Text == "6")
                 {
                     Dice2.Text = "";
-                    Dice2.Image = dice6;
+                    Dice2.Image = side6;
                 }
             }
             if (diceThrow[2] != true)
@@ -749,32 +749,32 @@ namespace YatzyGrupp2.Test
                 if (Dice3.Text == "1")
                 {
                     Dice3.Text = "";
-                    Dice3.Image = dice1;
+                    Dice3.Image = side1;
                 }
                 if (Dice3.Text == "2")
                 {
                     Dice3.Text = "";
-                    Dice3.Image = dice2;
+                    Dice3.Image = side2;
                 }
                 if (Dice3.Text == "3")
                 {
                     Dice3.Text = "";
-                    Dice3.Image = dice3;
+                    Dice3.Image = side3;
                 }
                 if (Dice3.Text == "4")
                 {
                     Dice3.Text = "";
-                    Dice3.Image = dice4;
+                    Dice3.Image = side4;
                 }
                 if (Dice3.Text == "5")
                 {
                     Dice3.Text = "";
-                    Dice3.Image = dice5;
+                    Dice3.Image = side5;
                 }
                 if (Dice3.Text == "6")
                 {
                     Dice3.Text = "";
-                    Dice3.Image = dice6;
+                    Dice3.Image = side6;
                 }
             }
             if (diceThrow[3] != true)
@@ -783,32 +783,32 @@ namespace YatzyGrupp2.Test
                 if (Dice4.Text == "1")
                 {
                     Dice4.Text = "";
-                    Dice4.Image = dice1;
+                    Dice4.Image = side1;
                 }
                 if (Dice4.Text == "2")
                 {
                     Dice4.Text = "";
-                    Dice4.Image = dice2;
+                    Dice4.Image = side2;
                 }
                 if (Dice4.Text == "3")
                 {
                     Dice4.Text = "";
-                    Dice4.Image = dice3;
+                    Dice4.Image = side3;
                 }
                 if (Dice4.Text == "4")
                 {
                     Dice4.Text = "";
-                    Dice4.Image = dice4;
+                    Dice4.Image = side4;
                 }
                 if (Dice4.Text == "5")
                 {
                     Dice4.Text = "";
-                    Dice4.Image = dice5;
+                    Dice4.Image = side5;
                 }
                 if (Dice4.Text == "6")
                 {
                     Dice4.Text = "";
-                    Dice4.Image = dice6;
+                    Dice4.Image = side6;
                 }
             }
             if (diceThrow[4] != true)
@@ -817,32 +817,32 @@ namespace YatzyGrupp2.Test
                 if (Dice5.Text == "1")
                 {
                     Dice5.Text = "";
-                    Dice5.Image = dice1;
+                    Dice5.Image = side1;
                 }
                 if (Dice5.Text == "2")
                 {
                     Dice5.Text = "";
-                    Dice5.Image = dice2;
+                    Dice5.Image = side2;
                 }
                 if (Dice5.Text == "3")
                 {
                     Dice5.Text = "";
-                    Dice5.Image = dice3;
+                    Dice5.Image = side3;
                 }
                 if (Dice5.Text == "4")
                 {
                     Dice5.Text = "";
-                    Dice5.Image = dice4;
+                    Dice5.Image = side4;
                 }
                 if (Dice5.Text == "5")
                 {
                     Dice5.Text = "";
-                    Dice5.Image = dice5;
+                    Dice5.Image = side5;
                 }
                 if (Dice5.Text == "6")
                 {
                     Dice5.Text = "";
-                    Dice5.Image = dice6;
+                    Dice5.Image = side6;
                 }
             }
            
@@ -970,11 +970,11 @@ namespace YatzyGrupp2.Test
             this.Dice4.Location = new Point(979, 522);
             this.Dice5.Location = new Point(1041, 522);
 
-            Dice1.Image = dice1;
-            Dice2.Image = dice2;
-            Dice3.Image = dice3;
-            Dice4.Image = dice4;
-            Dice5.Image = dice5;
+            Dice1.Image = side1;
+            Dice2.Image = side2;
+            Dice3.Image = side3;
+            Dice4.Image = side4;
+            Dice5.Image = side5;
 
             throws = 0;
             lblThrows.Text = "";
