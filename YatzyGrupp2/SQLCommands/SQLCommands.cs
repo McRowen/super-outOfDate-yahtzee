@@ -43,6 +43,7 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
 
+        //Metod för att deleta information från game_player när man avslutar ett spel utan att spelat klart.
         public void DeleteGameFromDb(List<Player.Player> selectedPlayer)
         {
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
@@ -66,7 +67,8 @@ namespace YatzyGrupp2.SQLCommands
 
             }
         }
-    
+
+        //Metod för att deleta information från game tabellen när man avslutar ett spel innan man är klar.    
         public void DeleteGameIdFromDb()
         {
             string stmt = "DELETE FROM game where game_id = @game_id";
@@ -83,8 +85,7 @@ namespace YatzyGrupp2.SQLCommands
                 conn.Close();
             }
 
-        }
-    
+        }    
 
         //Metod för att lägga till spel i databsen + att returna game_id
         public int GameID()
@@ -499,7 +500,7 @@ namespace YatzyGrupp2.SQLCommands
             return games;
         }
 
-
+        //Metod för att hitta flest winster i databasen
         public List<Player.highscoreplayer> GetMostWins()
         {
             List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
