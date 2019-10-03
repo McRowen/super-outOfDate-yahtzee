@@ -19,6 +19,8 @@ namespace YatzyGrupp2.View
     /// </summary>
     public partial class StartView : Window
     {
+
+        // inititerar klasser och skapar listor
         SQLCommands.SQLCommands sql = new SQLCommands.SQLCommands();
         GamePlayer.GamePlayer g = new GamePlayer.GamePlayer();
         Game.Game game = new Game.Game();
@@ -27,6 +29,7 @@ namespace YatzyGrupp2.View
         public static bool styrdYatzy = false;
         public static List<Player.Player> allPlayers = new List<Player.Player>();
        
+        // konstruktorn lägger rensar och lägger in information i listviewsen
         public StartView()
         {           
             InitializeComponent();
@@ -37,14 +40,14 @@ namespace YatzyGrupp2.View
             listViewStartedGames.ItemsSource = null;
             listViewStartedGames.ItemsSource = sql.PlayersInGame();
 
-
+            // gör så att start knapparna inte går att trycka på om det är mindre än två spelare
             if (players.Count < 2)
             {
                 btnStyrt.IsEnabled = false;
                 btnStart.IsEnabled = false;
             }
         }
-        
+        // lägger in en ny spelare i databasen
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
@@ -52,14 +55,14 @@ namespace YatzyGrupp2.View
             txtLastName.Clear();
             txtNickName.Clear();
         }
-
+        //öppnar highscore listan
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Hide();
             HighScoreView highScore = new HighScoreView();
             highScore.ShowDialog();
         }
-
+        // lägger också in en spelare i databasen???
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             sql.AddPlayerTest(txtFirstName.Text, txtLastName.Text, txtNickName.Text);
@@ -69,7 +72,7 @@ namespace YatzyGrupp2.View
             txtLastName.Clear();
             txtNickName.Clear();
         }
-
+        // lägger in en spelare från alla spelare listan till spelare som ska spela listen
         private void BtnChoose_Click(object sender, RoutedEventArgs e)
         {
             if (players.Count >= 1)
@@ -103,13 +106,13 @@ namespace YatzyGrupp2.View
             f.Show();
 
         }
-
+        // öppnar helpwindow
         private void Help_Click(object sender, RoutedEventArgs e)
         {
             HelpView helpview = new HelpView();
             helpview.ShowDialog();
         }
-
+        // Startar ett vanligt spel.
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
@@ -122,6 +125,9 @@ namespace YatzyGrupp2.View
             this.Hide();
         }
 
+      
+
+        // Gör så att man kan dubbelklicka på listviewn för att lägga till en spelare till "chosen players"
         private void ListViewDbPlayers_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             if (listViewDbPlayers.SelectedItem == null)
@@ -135,7 +141,8 @@ namespace YatzyGrupp2.View
                 listViewChosenPlayers.ItemsSource = players;
                     click++;
 
-                if (players.Count >= 1)
+                // om det är mer än 1 spelare så går det klicka på starta knapparna
+                if (players.Count > 1)
                 {
                     btnStyrt.IsEnabled = true;
                     btnStart.IsEnabled = true;
@@ -143,7 +150,7 @@ namespace YatzyGrupp2.View
 
                 
                
-
+                // click är en variabel som räknar ut hur många spelare det är i spelet.
                 for (int i = 0; i < click; i++)
                 {
                     if (click == 4)
@@ -163,7 +170,7 @@ namespace YatzyGrupp2.View
                 listViewDbPlayers.ItemsSource = allPlayers;
             }     
         }
-
+        // gör så att man kan ta bort en spelare från spelet
         private void ListViewChosenPlayers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             for (int i = 0; i < players.Count; i++)
@@ -208,12 +215,7 @@ namespace YatzyGrupp2.View
             listViewDbPlayers.ItemsSource = null;
             listViewDbPlayers.ItemsSource = allPlayers;
         }
-
-        private void button_Click_3(object sender, RoutedEventArgs e)
-        {
-            App.Current.Shutdown();
-        }
-
+        // stänger av programmet om man trycker på krysset.
         private void Window_Closed(object sender, EventArgs e)
         {
             Environment.Exit(0);
