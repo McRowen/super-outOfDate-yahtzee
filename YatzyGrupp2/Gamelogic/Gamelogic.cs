@@ -33,6 +33,26 @@ namespace YatzyGrupp2.Gamelogic
             }
             return num;
         }
+
+        public int[] BubbleSort(int[] d) //För att Array.Sort inte funkar som den ska!!!!!!!
+        {
+            int temp = 0;
+            for (int i = 0; i < d.Length; i++)
+            {
+                for(int a = 0; a < d.Length - 1; a++)
+                {
+                    if(d[a] > d[a + 1])
+                    {
+                        temp = d[a + 1];
+                        d[a + 1] = d[a];
+                        d[a] = temp;
+                    }
+                }
+            }
+            return d;
+        }
+
+
         public bool TurnOver()
         {
             if (Round == 3)
@@ -283,8 +303,13 @@ namespace YatzyGrupp2.Gamelogic
         }
         private bool Triss(int[] d, bool[] dt)
         {
-            int[] tempArray = d;
-            Array.Sort(tempArray);
+            int[] tempArray = new int[5];
+            for(int i = 0; i < d.Length; i++)
+            {
+                tempArray[i] = d[i];
+            }
+            tempArray = BubbleSort(tempArray);
+            
             if (tempArray[0] == tempArray[1] && tempArray[1] == tempArray[2])
             {
                 return true;
