@@ -11,7 +11,7 @@ namespace YatzyGrupp2.Gamelogic
         
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
-
+        private bool PointsExtraBool = false;
          
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
@@ -185,13 +185,15 @@ namespace YatzyGrupp2.Gamelogic
         public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
         {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
             int points = 0;                        //ska ha fyrtal
-
-            if (Yatzy(d, dt))
+            PointsExtraBool = false;
+            if (Yatzy(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 points = 50;
             }
-            if (Fyrtal(d, dt))
+            if (Fyrtal(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 Array.Sort(d);
                 if (d[0] == d[1] && d[2] == d[3] && d[0] == d[3])
                 {
@@ -202,8 +204,9 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 4;
                 }
             }
-            if (Tvapar(d, dt))
+            if (Tvapar(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 Array.Sort(d);
                 if (d[0] == d[1] && d[2] == d[3])
                 {
@@ -214,9 +217,9 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 2 + d[3] * 2;
                 }
             }
-            if (Triss(d, dt))
+            if (Triss(d, dt) && PointsExtraBool == false)
             {
-
+                PointsExtraBool = true;
                 int temp = 0;
                 for (int i = 0; i < dt.Length; i++)
                 {
@@ -227,8 +230,9 @@ namespace YatzyGrupp2.Gamelogic
                 }
                 points = temp * 3;
             }
-            if (ParTest(d, dt))
+            if (ParTest(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 int temp = 0;
                 for (int i = 0; i < dt.Length; i++)
                 {
@@ -243,6 +247,7 @@ namespace YatzyGrupp2.Gamelogic
         }
         public bool CalcLargeStraight(int[] d, bool[] dt)
         {
+
             Array.Sort(d);
 
             if (((d[0] == 1) && (d[1] == 2) && (d[2] == 3) && (d[3] == 4) && (d[4] == 5)) || ((d[0] == 2) && (d[1] == 3) && (d[2] == 4) && (d[3] == 5) && (d[4] == 6)))
@@ -278,16 +283,17 @@ namespace YatzyGrupp2.Gamelogic
         }
         private bool Triss(int[] d, bool[] dt)
         {
-            Array.Sort(d);
-            if (d[0] == d[1] && d[1] == d[2])
+            int[] tempArray = d;
+            Array.Sort(tempArray);
+            if (tempArray[0] == tempArray[1] && tempArray[1] == tempArray[2])
             {
                 return true;
             }
-            else if(d[1] == d[2] && d[2] == d[3])
+            else if(tempArray[1] == tempArray[2] && tempArray[2] == tempArray[3])
             {
                 return true;
             }
-            else if (d[2] == d[3] && d[3] == d[4])
+            else if (tempArray[2] == tempArray[3] && tempArray[3] == tempArray[4])
             {
                 return true;
             }
