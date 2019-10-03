@@ -873,7 +873,8 @@ namespace YatzyGrupp2.Test
 
         private void EndGame_Click(object sender, EventArgs e) //Om man trycker på avsluta
         {
-
+            SumScore();
+            TotalScore();
             //sql.EndTime(GetGames);
             //sql.GetScore(gamePlayers);
 
@@ -1055,6 +1056,17 @@ namespace YatzyGrupp2.Test
             View.StartView startView = new View.StartView();
             startView.Show();
             
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            List<Player.Player> selectedPlayer = new List<Player.Player>();
+            sql.DeleteGameFromDb(selectedPlayer);
+            sql.DeleteGameIdFromDb();
+            this.Close();
+            View.StartView startView = new View.StartView();
+            gamePlayers.Clear();
+            startView.listViewChosenPlayers.ItemsSource = null;
         }
     }        
 }

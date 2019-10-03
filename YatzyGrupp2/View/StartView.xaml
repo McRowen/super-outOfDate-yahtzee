@@ -166,7 +166,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="btnStartGame" Grid.ColumnSpan="2" Content="Gamla gameview" HorizontalAlignment="Left" Margin="25,126,0,0" Grid.Row="3" VerticalAlignment="Top" Width="168" Height="36" Click="BtnStartGame_Click"/>
         <Label Grid.ColumnSpan="2" Content="Pågående spel" Foreground="Orange" HorizontalAlignment="Left" Margin="10,96.4,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times New Roman" Grid.Row="2">
             <Label.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="HotPink"/>
