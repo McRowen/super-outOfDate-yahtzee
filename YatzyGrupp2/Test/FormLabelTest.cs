@@ -886,7 +886,8 @@ namespace YatzyGrupp2.Test
 
         private void EndGame_Click(object sender, EventArgs e)
         {
-
+            SumScore();
+            TotalScore();
             //sql.EndTime(GetGames);
             //sql.GetScore(gamePlayers);
 
