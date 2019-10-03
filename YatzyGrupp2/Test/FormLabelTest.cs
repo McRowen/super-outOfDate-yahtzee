@@ -14,6 +14,7 @@ namespace YatzyGrupp2.Test
 {
     public partial class FormLabelTest : Form 
     {
+        //Alla listor som behövs
         List<Label> testList = new List<Label>();
         LabelTest cellLabelArray = new LabelTest();
         List<Player.Player> gamePlayers = new List<Player.Player>();
@@ -23,6 +24,7 @@ namespace YatzyGrupp2.Test
 
         public FormLabelTest()
         {
+            //Lite sql och annat som behöver hända i start
             InitializeComponent();
             gamePlayers = StartView.players;
             GetGames = SQLCommands.SQLCommands.GetGames;
@@ -33,46 +35,36 @@ namespace YatzyGrupp2.Test
             Dice3.Image = side3;
             Dice4.Image = side4;
             Dice5.Image = side5;
-            //this.BackColor = Color.LawnGreen;
         }
-        bool valt = false;
-        int[] dice = new int[5];
-        bool[] diceThrow = new bool[] { false, false, false, false, false };
-        int turn = 0;
-        int throws = 0;
-        int sum = 0;
-        int styrdRunda = 1;
-        int players;
-        int tempPos = 0;
-        int xDif = 100;
-        int yDif = 23;
-        int edgexDif = 20;
-        int edgeyDif = 100;
-        int fontSize = 12;
-        string fontType = "Times New Roman";
-        int round = 0;
-        bool styrdYatzy = false;
-        int[] playerRound;
-        static string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\");
-        static int remove1 = path.IndexOf("\\b");
-        static int remove2 = path.IndexOf("g\\");
-        static string result = PathText(remove1, remove2, path);
-        
-    //Image dice1 = Image.FromFile(path + "Dice1.bmp");
-    //Image dice2 = Image.FromFile(path + "Dice2.bmp");
-    //Image dice3 = Image.FromFile(path + "Dice3.bmp");
-    //Image dice4 = Image.FromFile(path + "Dice4.bmp");
-    //Image dice5 = Image.FromFile(path + "Dice5.bmp");
-    //Image dice6 = Image.FromFile(path + "Dice6.bmp");
+        //Variablar som används för att kontrollera labels och annat samt en del som används för att kolla olika saker i kåden
+        bool valt = false; //Om man har valt ett resultat
+        int[] dice = new int[5]; //Vad blev resultatet av tärningskastet
+        bool[] diceThrow = new bool[] { false, false, false, false, false }; //Vilka tärningar som är vald
+        int turn = 0; //Väms tur är det
+        int throws = 0; //Hur många kast är kvar
+        int sum = 0;  //Hur mycket påäng
+        int players; //Hur många spelare
+        int tempPos = 0; //Håller koll på vad musen var över för label tidigare
+        int xDif = 100; //Bestämmer hur stor labeln är samt vart den ska vara i X
+        int yDif = 23; //Bestämmer hur stor labeln är samt vart den ska vara i X
+        int edgexDif = 20; //Hur långt ifrån kanten alla labels ska vara
+        int edgeyDif = 100; //Hur långt ifrån kanten alla labels ska vara
+        int fontSize = 12; //Hur stort typsnitt i labels
+        string fontType = "Times New Roman"; //Vad för typsnitt
+        bool styrdYatzy = false; //Om det är styrt eller inte
+        int[] playerRound; //Har med vad som ska väljas i styrtyatzy
+        static string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\"); //Används för att hämta bilder
+        static int remove1 = path.IndexOf("\\b"); //Tar bort onödigt i path till bilder
+        static int remove2 = path.IndexOf("g\\"); //Tar bort onödigt i path till bilder
+        static string result = PathText(remove1, remove2, path); //Tar bort onödigt i path till bilder
+        static Image side1 = Image.FromFile(result + "Dice1.bmp");//---------|----------          
+        static Image side2 = Image.FromFile(result + "Dice2.bmp");//---------|---------- 
+        static Image side3 = Image.FromFile(result + "Dice3.bmp");//   Path till bilder 
+        static Image side4 = Image.FromFile(result + "Dice4.bmp");//---------|---------- 
+        static Image side5 = Image.FromFile(result + "Dice5.bmp");//---------|---------- 
+        static Image side6 = Image.FromFile(result + "Dice6.bmp");//---------|---------- 
 
-        static Image side1 = Image.FromFile(result + "Dice1.bmp");
-        static Image side2 = Image.FromFile(result + "Dice2.bmp");
-        static Image side3 = Image.FromFile(result + "Dice3.bmp");
-        static Image side4 = Image.FromFile(result + "Dice4.bmp");
-        static Image side5 = Image.FromFile(result + "Dice5.bmp");
-        static Image side6 = Image.FromFile(result + "Dice6.bmp");
-
-        public void ThrowTheDices()
+        public void ThrowTheDices() //Används för att flytta tärnings bilderna
         {
             if (Dice1.BackColor != Color.Red)
             {
@@ -117,7 +109,7 @@ namespace YatzyGrupp2.Test
 
             }
             return result;
-        }
+        } //Används för att ta bort ondädigt ifrån sökvägen
 
         public void ResetDice()
         {
@@ -132,9 +124,9 @@ namespace YatzyGrupp2.Test
             Dice3.BackColor = Color.White;
             Dice4.BackColor = Color.White;
             Dice5.BackColor = Color.White;
-        }
+        } //Återställer tärningarna
 
-        private void FormLabelTest_Load(object sender, EventArgs e)
+        private void FormLabelTest_Load(object sender, EventArgs e) //Sätter ut och fyller alla labels med data. Ladda också in lite data
         {
             int temp = 0;
             gamePlayers = View.StartView.players;
@@ -178,10 +170,10 @@ namespace YatzyGrupp2.Test
             }
             PlayersActive();
 
-            lblSpelare.Text = "Spelare: " + gamePlayers[round].Nickname;
+            lblSpelare.Text = "Spelare: " + gamePlayers[turn].Nickname;
         }
 
-        public void ChangeLabelText(string labelName, string labelText)
+        public void ChangeLabelText(string labelName, string labelText) //Ändrar texten i en label
         {
             for(int i = 0; i < testList.Count; i++)
             {
@@ -192,7 +184,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        public void ChangeLabelColor()
+        public void ChangeLabelColor() // Ändrar färgen i labels
         {
             int[] rows = new int[] { 0, 1, 2, 3, 4 };
             int[] columnUpper = new int[] { 1, 2, 3, 4, 5, 6, 9 };
@@ -240,7 +232,7 @@ namespace YatzyGrupp2.Test
             
         }
 
-        public void SetLabelTextEmpty()
+        public void SetLabelTextEmpty() //Sätter texten i en label till tom/0
         {
             for(int i = 0; i < testList.Count; i++)
             {
@@ -248,7 +240,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void PlayersActive()
+        private void PlayersActive() //Laddar in all viktigt text
         {
             SetLabelTextEmpty();
             ChangeLabelText("lblX0Y00", "Spelare");
@@ -279,7 +271,7 @@ namespace YatzyGrupp2.Test
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e) //Används inte
         {
             SetLabelTextEmpty();
             ChangeLabelText("lblX0Y00", "Spelare:");
@@ -307,22 +299,17 @@ namespace YatzyGrupp2.Test
             }
         }
         
-        private void label_Click(object sender, MouseEventArgs e)
+        private void label_Click(object sender, MouseEventArgs e) //Används inte
         {
             Control test = (Control)sender;
             string test2 = Convert.ToString(test);
             
         }
        
-        private void ctrlClick(System.Object sender, EventArgs e)
+        private void ctrlClick(System.Object sender, EventArgs e) //Eventhandler för label om man klickar på dem. Den används också för att fixa påäng
         {
             Control ctrl = (Control)sender;
-            //MessageBox.Show("You clicked: " + ctrl.Name);
 
-            /*if (ctrl.Name == "lblX1Y01")
-            {
-                ChangeLabelText("lblX1Y01", Convert.ToString(gl.PointsExtra(dice, diceThrow)));
-            }*/
             if (valt == false)
             {
                 for (int i = 0; i < testList.Count; i++)
@@ -444,7 +431,7 @@ namespace YatzyGrupp2.Test
             
         }
 
-        public int GetYValue(string name)
+        public int GetYValue(string name) //Får Y värdet ifrån en label namn
         {
             int temp = 0;
             for(int i = 0; i < testList.Count; i++)
@@ -458,7 +445,7 @@ namespace YatzyGrupp2.Test
             return temp;
         }
 
-        public int GetXValue(string name)
+        public int GetXValue(string name) //Får X värdet ifrån en label namn
         {
             int temp = 0;
             temp = int.Parse(Convert.ToString(name[4]));
@@ -467,7 +454,7 @@ namespace YatzyGrupp2.Test
             return temp;
         }
 
-        public void SumScore()
+        public void SumScore() //Lägger ut påängen i labels
         {
             int temp;
             for (int n = 0; n < players; n++)
@@ -526,7 +513,7 @@ namespace YatzyGrupp2.Test
 
         }
 
-        public void TotalScore()
+        public void TotalScore() //Lägger ut påängen i labels total
         {
             int temp;
             for (int n = 0; n < players; n++)
@@ -562,7 +549,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        public void SetScore(List<Label> label)
+        public void SetScore(List<Label> label) //Lägger in påängen i databas
         {
 
             for (int i = 0; i < label.Count; i++)
@@ -586,7 +573,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void label_Enter(object sender, EventArgs e)
+        private void label_Enter(object sender, EventArgs e) //Om musen går över en label
         {
             Control ctrl = (Control)sender;
             for (int i = 0; i < testList.Count; i++)
@@ -622,7 +609,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void label_Leave(object sender, EventArgs e)
+        private void label_Leave(object sender, EventArgs e) //Om musen går ut ur en label
         {
             Control ctrl = (Control)sender;
             for (int i = 0; i < testList.Count; i++)
@@ -686,7 +673,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void ThrowDices_Click(object sender, EventArgs e)
+        private void ThrowDices_Click(object sender, EventArgs e) //Om man klickar på kasta tärning
         {
             throws++;
             if (throws == 4)
@@ -884,7 +871,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void EndGame_Click(object sender, EventArgs e)
+        private void EndGame_Click(object sender, EventArgs e) //Om man trycker på avsluta
         {
 
             //sql.EndTime(GetGames);
@@ -898,7 +885,7 @@ namespace YatzyGrupp2.Test
 
         }
 
-        private void Dice1_MouseDown(object sender, MouseEventArgs e)
+        private void Dice1_MouseDown(object sender, MouseEventArgs e) //Om man klickar på tärningar
         {
             this.Dice1.Location = new Point(793, 522);
 
@@ -987,7 +974,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void BtnNextPlayer_Click(object sender, EventArgs e)
+        private void BtnNextPlayer_Click(object sender, EventArgs e) //Klickar på nästa spelare
         {
             this.Dice1.Location = new Point(793, 522);
             this.Dice2.Location = new Point(855, 522);
@@ -1007,28 +994,7 @@ namespace YatzyGrupp2.Test
             TotalScore();
             playerRound[turn]++;
             bool tempTurn = false;
-            /*for(int i = 0; i < testList.Count; i++)
-            {
-                if(testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(GetYValue(testList[i].Name)))
-                {
-                    if(testList[i].Text != "0" && testList[i].Text != gamePlayers[turn].Nickname && tempTurn == false)
-                    {
-                        playerRound[turn]++;
-                        tempTurn = true;
-                    }
-                }
-                if (testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y" + Convert.ToString(GetYValue(testList[i].Name)))
-                {
-                    if (testList[i].Text != "0" && testList[i].Text != gamePlayers[turn].Nickname && tempTurn == false)
-                    {
-                        playerRound[turn]++;
-                        tempTurn = true;
-                    }
-                }
-            }
-
-
-            tempTurn = false;*/
+            
             if (styrdYatzy == true)
             {
                 if (playerRound[turn] < 7)
@@ -1071,7 +1037,7 @@ namespace YatzyGrupp2.Test
             valt = false;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e) //Klickar på hjälp kanppen
         {
             View.GameViewHelp gameViewHelp = new View.GameViewHelp();
             gameViewHelp.Show();
@@ -1084,7 +1050,7 @@ namespace YatzyGrupp2.Test
             
         }
 
-        private void FormLabelTest_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormLabelTest_FormClosing(object sender, FormClosingEventArgs e) //Klickar på stäng av kanppen
         {
             View.StartView startView = new View.StartView();
             startView.Show();
