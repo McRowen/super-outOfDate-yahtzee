@@ -93,6 +93,11 @@ namespace YatzyGrupp2.View
             }            
         }
 
+        private void ListViewChosenPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+        // startar styrt yatzy
+
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Du har nu {click} spelare i ditt spel, då spelar vi.");
@@ -126,7 +131,6 @@ namespace YatzyGrupp2.View
         }
 
       
-
         // Gör så att man kan dubbelklicka på listviewn för att lägga till en spelare till "chosen players"
         private void ListViewDbPlayers_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
@@ -147,9 +151,7 @@ namespace YatzyGrupp2.View
                     btnStyrt.IsEnabled = true;
                     btnStart.IsEnabled = true;
                 }
-
-                
-               
+                              
                 // click är en variabel som räknar ut hur många spelare det är i spelet.
                 for (int i = 0; i < click; i++)
                 {

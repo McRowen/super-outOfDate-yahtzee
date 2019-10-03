@@ -1042,20 +1042,12 @@ namespace YatzyGrupp2.Test
         {
             View.GameViewHelp gameViewHelp = new View.GameViewHelp();
             gameViewHelp.Show();
-
-        }
-
-        private void FormLabelTest_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-            
         }
 
         private void FormLabelTest_FormClosing(object sender, FormClosingEventArgs e) //Klickar på stäng av kanppen
         {
             View.StartView startView = new View.StartView();
-            startView.Show();
-            
+            startView.Show();           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

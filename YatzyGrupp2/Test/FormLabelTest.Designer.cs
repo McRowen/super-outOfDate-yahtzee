@@ -228,7 +228,6 @@
             this.Name = "FormLabelTest";
             this.Text = "FormLabelTest";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLabelTest_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLabelTest_FormClosed);
             this.Load += new System.EventHandler(this.FormLabelTest_Load);
             this.MouseEnter += new System.EventHandler(this.label_Enter);
             this.MouseLeave += new System.EventHandler(this.label_Leave);
