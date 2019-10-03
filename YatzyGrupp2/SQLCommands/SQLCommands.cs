@@ -20,107 +20,110 @@ namespace YatzyGrupp2.SQLCommands
 
         //Metod för att lägga till player_id av dom spelarna som är valda + game_id i game_player i databsen.
         public void StartNewGamePlayer(List<Player.Player> selectedPlayer)
-        {
-            //  string stmt = "INSERT INTO game_player (game_id, player_id) VALUES @game_id, @player_id";
-
+        {            
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-            {
-                //int a = GameID();
+            {                
                 for (int i = 0; i < selectedPlayer.Count; i++)
                 {
                     conn.Open();
                     using (var cmd = new NpgsqlCommand())
                     {
                         cmd.Connection = conn;
-
-                        //cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
-
                         int temp = selectedPlayer[i].Player_id;
 
                         cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
                         cmd.Parameters.AddWithValue("player_id", temp);
                         cmd.CommandText = "INSERT INTO game_player (game_id, player_id) VALUES (@game_id, @player_id)";
 
-                        //gp = new GamePlayer.GamePlayer()
-                        //{
-                        //    Game_id = a,
-                        //    Player_id = temp
-                        //};
-
-                        //cmd.ExecuteNonQuery();
                         cmd.ExecuteReader();
-
-
-
                     }
                     conn.Close();
                 }
 
             }
         }
+
+        //Metod för att deleta information från game_player när man avslutar ett spel utan att spelat klart.
+        public void DeleteGameFromDb(List<Player.Player> selectedPlayer)
+        {
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                for (int i = 0; i < selectedPlayer.Count; i++)
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        int temp = selectedPlayer[i].Player_id;
+
+                        cmd.CommandText = "DELETE FROM game_player WHERE game_id = @game_id, player_id = @ player_id";
+                        cmd.Parameters.AddWithValue("game_id", g.Game_id);
+                        cmd.Parameters.AddWithValue("player_id", temp);
+
+                        cmd.ExecuteReader();
+                    }
+                    conn.Close();
+                }
+
+            }
+        }
+
+        //Metod för att deleta information från game tabellen när man avslutar ett spel innan man är klar.    
+        public void DeleteGameIdFromDb()
+        {
+            string stmt = "DELETE FROM game where game_id = @game_id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Connection = conn;
+                    cmd.Parameters.AddWithValue("game_id", g.Game_id);
+                    cmd.ExecuteReader();
+                }
+                conn.Close();
+            }
+
+        }    
+
         //Metod för att lägga till spel i databsen + att returna game_id
         public int GameID()
         {
             string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 1) RETURNING Game_id";
 
-
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
-
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
                     cmd.Connection = conn;
                     int game_id = (Int32)cmd.ExecuteScalar();
                     return game_id;
                 }
-
             }
 
         }
-        //public int PlayerID(List<Player.Player> SelectedPlayers)
-        //{
-        //    string stmt = "SELECT player_ID FROM player WHERE nickname = " +SelectedPlayers.
+        
+        //Metod för att lägga till styrt spel i databasen + returna game_id
+        public int GameIDStyrt()
+        {
+            string stmt = "INSERT INTO game (started_at, gametype_id) VALUES(CURRENT_TIMESTAMP, 2) RETURNING Game_id";
 
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Connection = conn;
+                    int game_id = (Int32)cmd.ExecuteScalar();
+                    return game_id;
+                }
+            }
 
-        //}
+        }
 
-
-        //public DateTime StartNewGame()
-        //{
-        //   // string stmt = "INSERT INTO game (game_id, started_at, gametype_id) VALUES(@game_id, CURRENT_TIMESTAMP, 1)";
-        //    Game.Game game = new Game.Game();
-        //    DateTime date = DateTime.Now;
-        //    int gametyp = 1;
-
-        //    using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-        //    {
-        //        conn.Open();
-        //        using (var cmd = new NpgsqlCommand())
-        //        {
-
-        //            cmd.Connection = conn;
-        //            cmd.CommandText = "INSERT INTO game(started_at, gametype_id) VALUES(@started_at, @gametype_id)";
-        //           // cmd.Parameters.AddWithValue("game_id", g.Game_id);
-        //            cmd.Parameters.AddWithValue("started_at", date);
-        //            cmd.Parameters.AddWithValue("gametype_id", gametyp);
-        //            cmd.ExecuteNonQuery();
-        //            //using (var reader = cmd.ExecuteReader())
-        //            //{
-        //            //cmd.Parameters.AddWithValue("game_id", g.Game_id);
-        //            //    g = new Game.Game()
-        //            //    {
-        //            //        Game_id = reader.GetInt32(0),
-        //            //        Started_at = reader.GetDateTime(1),
-        //            //        Gametype_id = reader.GetInt32(2)
-        //            //    };
-        //            //    return g;
-        //            //}
-        //        }
-        //        conn.Close();
-        //    }
-        //    return date;
-        //}
+        //Metod för att lägga till spelare i databasen
         public void AddPlayerTest(string first, string last, string nick)
         {
             using (var conn = new
@@ -139,7 +142,9 @@ namespace YatzyGrupp2.SQLCommands
                 conn.Close();
             }
         }
-        public Player.Player GetChosenPlayer(Player.Player player_Id) //Metod för att lägga till spelare i spelet.
+
+        //Metod för att lägga till valda spelare i spelet.
+        public Player.Player GetChosenPlayer(Player.Player player_Id)
         {
             Player.Player ChosenPlayers = new Player.Player();
             using (var conn = new
@@ -168,10 +173,10 @@ namespace YatzyGrupp2.SQLCommands
             }
             return ChosenPlayers;
         }
+
         //Metod för att lägga till Game i lista, kan behövas för att hitta game_id senare.
         public List<Game.Game> GetGame()
         {
-
             Game.Game Ggame = new Game.Game();
             int a = GameID();
             DateTime CurrentDate;
@@ -203,17 +208,15 @@ namespace YatzyGrupp2.SQLCommands
                     }
                 }
                 conn.Close();
-
             }
             return GetGames;
-
         }
 
+        //Samma metod som den över fast för sytrt yatzy. Så skillnad är att gametype_id är 2.
         public List<Game.Game> GetStyrtGame()
         {
-
             Game.Game Ggame = new Game.Game();
-            int a = GameID();
+            int a = GameIDStyrt();
             DateTime CurrentDate;
             CurrentDate = DateTime.Now;
 
@@ -243,12 +246,11 @@ namespace YatzyGrupp2.SQLCommands
                     }
                 }
                 conn.Close();
-
             }
             return GetGames;
-
         }
-        // Sätter eneded_at på det spelet som är igång.
+
+        //Sätter ended_at på spelet som spelas när man avslutar.
         public void EndTime(List<Game.Game> GetGames)
         {
 
@@ -266,9 +268,9 @@ namespace YatzyGrupp2.SQLCommands
                 }
                 conn.Close();
             }
-
         }
 
+        //Sätter poäng på spelarna i spelet när man avslutar.
         public void GetScore(List<Player.Player> selectedPlayer)
         {
             using (var conn = new
@@ -284,18 +286,14 @@ namespace YatzyGrupp2.SQLCommands
                         cmd.Parameters.AddWithValue("game_id", GetGames[0].Game_id);
                         cmd.Parameters.AddWithValue("player_id", selectedPlayer[i].Player_id);
                         cmd.Parameters.AddWithValue("score", selectedPlayer[i].Score);
-
-
                         cmd.ExecuteReader();
                     }
                     conn.Close();
-
                 }
-
             }
         }
 
-        // Metod för att få upp alla tillgängliga spelare spelare
+        //Metod för att få upp alla tillgängliga registrerade användare i startview.
         public List<Player.Player> GetAllPlayers()
         {
             List<Player.Player> players = new List<Player.Player>();
@@ -308,33 +306,31 @@ namespace YatzyGrupp2.SQLCommands
                     try
                     {
                         cmd.Connection = conn;
-                        cmd.CommandText = "SELECT player.player_id, player.firstname, player.lastname, player.nickname FROM player " +
+                        //Fick lägga till DISTINCT i denna SQL fråga då den annars visade flera av samma. Detta kan bero på SQL frågan själv eller databasen.
+                        cmd.CommandText = "SELECT DISTINCT player.nickname, player.player_id, player.firstname, player.lastname FROM player " +
                             "INNER JOIN game_player ON game_player.player_ID = player.player_id " +
                             "INNER JOIN game ON game.game_id = game_player.game_id " +
                             "WHERE game.ended_at IS NOT NULL  OR game.started_At IS NULL AND game.ended_At IS NULL";
 
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
+                        using (var reader = cmd.ExecuteReader())
                         {
+                            while (reader.Read())
+                            {
 
                                 p = new Player.Player()
                                 {
-                                    Player_id = reader.GetInt32(0),
-                                    Firstname = reader.GetString(1),
-                                    Lastname = reader.GetString(2),
-                                    Nickname = reader.GetString(3)
+                                    Nickname = reader.GetString(0),
+                                    Player_id = reader.GetInt32(1),
+                                    Firstname = reader.GetString(2),
+                                    Lastname = reader.GetString(3)
+                                    
                                 };
                                 players.Add(p);
-
                             }
-                           
-
-                        }
+                        }                                            
                     }
                     catch (PostgresException ex)
                     {
-
                         System.Windows.MessageBox.Show(ex.Message);
                     }
                     conn.Close();
@@ -343,7 +339,7 @@ namespace YatzyGrupp2.SQLCommands
             }
         }
 
-        //metod för at få ut spelare som är i ett spel.
+        //Metod för att få upp alla registrerade användare som redan är i ett spel.
         public List<Player.Player> PlayersInGame()
         {
             List<Player.Player> players = new List<Player.Player>();
@@ -382,7 +378,6 @@ namespace YatzyGrupp2.SQLCommands
                     }
                     catch (PostgresException ex)
                     {
-
                         System.Windows.MessageBox.Show(ex.Message);
                     }
                     conn.Close();
@@ -390,7 +385,8 @@ namespace YatzyGrupp2.SQLCommands
                 return players;
             }
         }
-        //  Metod för att se highscore
+
+        //Metod för att få upp highscore
         public List<Player.highscoreplayer> GetHighScore()
         {
             List<Player.highscoreplayer> gamers = new List<Player.highscoreplayer>();
@@ -441,6 +437,8 @@ namespace YatzyGrupp2.SQLCommands
             }
             return gamers;
         }
+
+        //Metod för att få upp vilken spelare som spelat mest matcher.
         public List<Player.Player> Getgameplayers(int gameId)
         {
             string stmt = "SELECT game_player.game_id, game_player.player_id, player.firstname, player.Nickname, player.Lastname, game_player.score, game.ended_at FROM game_player INNER JOIN player on player.player_id = game_player.player_id JOIN game ON game.game_id = game_player.game_id WHERE game.game_id = @gameId";
@@ -474,6 +472,8 @@ namespace YatzyGrupp2.SQLCommands
             }
             return players;
         }
+
+        //Metod för att få upp matcher som är avslutade.
         public List<Player.winstreak> GetWinsCount()
         {
             List<Player.winstreak> games = new List<Player.winstreak>();
@@ -499,6 +499,8 @@ namespace YatzyGrupp2.SQLCommands
             }
             return games;
         }
+
+        //Metod för att hitta flest winster i databasen
         public List<Player.highscoreplayer> GetMostWins()
         {
             List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
@@ -539,7 +541,7 @@ namespace YatzyGrupp2.SQLCommands
             }
             return wins;
         }
-
+        //Metod för att få fram vem som i databasen som vunnit flest matcher.
         public List<Player.highscoreplayer> GetMostWinsGames()
         {
             List<Player.highscoreplayer> wins = new List<Player.highscoreplayer>();
@@ -582,40 +584,6 @@ namespace YatzyGrupp2.SQLCommands
             }
             return wins;
         }
-        //    public List<Player.Player> GetWinstreak()
-        //    {
-        //        List<Player.winstreak> winstreaks = new List<Player.winstreak>();
-
-        //        List<Player.Player> PlayerWinner = new List<Player.Player>();
-        //        int rank = 0;
-
-        //        foreach (Player.winstreak item in collection)
-        //        {
-
-        //        }
-
-        //        using (var conn = new
-        //           NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
-        //        {
-        //            conn.Open();
-        //            using (var cmd = new NpgsqlCommand())
-        //            {
-        //                cmd.Connection = conn;
-        //                cmd.CommandText = "WITH winstreak AS (SELECT player.nickname, player.firstname, player.lastname, COUNT(game.ended_at) FROM" +
-        //                    " player JOIN game_player ON player.player_id" +
-        //                    " = game_player.player_id JOIN game ON game.game_id = game_player.game_id GROUP BY player.nickname, player.firstname," +
-        //                    " player.lastname ORDER BY COUNT DESC) SELECT * FROM winstreak";
-        //                using (var reader = cmd.ExecuteReader())
-        //                {
-
-        //                    }
-        //                }
-        //            }
-        //            conn.Close();
-        //        }
-
-        //    }
-        //}
     }
 }
 

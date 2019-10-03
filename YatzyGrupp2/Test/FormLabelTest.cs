@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace YatzyGrupp2.Test
 {
     public partial class FormLabelTest : Form 
     {
+        //Alla listor som behövs
         List<Label> testList = new List<Label>();
         LabelTest cellLabelArray = new LabelTest();
         List<Player.Player> gamePlayers = new List<Player.Player>();
@@ -22,32 +24,93 @@ namespace YatzyGrupp2.Test
 
         public FormLabelTest()
         {
+            //Lite sql och annat som behöver hända i start
             InitializeComponent();
             gamePlayers = StartView.players;
             GetGames = SQLCommands.SQLCommands.GetGames;
             lblSpelare.Text = "Nu spelar " + gamePlayers[0].Nickname;
             this.BackgroundImage = Properties.Resources.velourgreen;
-            
-            //this.BackColor = Color.LawnGreen;
+            Dice1.Image = side1;
+            Dice2.Image = side2;
+            Dice3.Image = side3;
+            Dice4.Image = side4;
+            Dice5.Image = side5;
         }
-                
-        int[] dice = new int[5];
-        bool[] diceThrow = new bool[] { false, false, false, false, false };
-        int turn = 0;
-        int throws = 0;
-        int sum = 0;
-        int styrdRunda = 1;
-        int players;
-        int tempPos = 0;
-        int xDif = 100;
-        int yDif = 23;
-        int edgexDif = 20;
-        int edgeyDif = 100;
-        int fontSize = 12;
-        string fontType = "Times New Roman";
-        int round = 0;
-        bool styrdYatzy = false;
-        int[] playerRound;
+        //Variablar som används för att kontrollera labels och annat samt en del som används för att kolla olika saker i kåden
+        bool valt = false; //Om man har valt ett resultat
+        int[] dice = new int[5]; //Vad blev resultatet av tärningskastet
+        bool[] diceThrow = new bool[] { false, false, false, false, false }; //Vilka tärningar som är vald
+        int turn = 0; //Väms tur är det
+        int throws = 0; //Hur många kast är kvar
+        int sum = 0;  //Hur mycket påäng
+        int players; //Hur många spelare
+        int tempPos = 0; //Håller koll på vad musen var över för label tidigare
+        int xDif = 100; //Bestämmer hur stor labeln är samt vart den ska vara i X
+        int yDif = 23; //Bestämmer hur stor labeln är samt vart den ska vara i X
+        int edgexDif = 20; //Hur långt ifrån kanten alla labels ska vara
+        int edgeyDif = 100; //Hur långt ifrån kanten alla labels ska vara
+        int fontSize = 12; //Hur stort typsnitt i labels
+        string fontType = "Times New Roman"; //Vad för typsnitt
+        bool styrdYatzy = false; //Om det är styrt eller inte
+        int[] playerRound; //Har med vad som ska väljas i styrtyatzy
+        static string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\"); //Används för att hämta bilder
+        static int remove1 = path.IndexOf("\\b"); //Tar bort onödigt i path till bilder
+        static int remove2 = path.IndexOf("g\\"); //Tar bort onödigt i path till bilder
+        static string result = PathText(remove1, remove2, path); //Tar bort onödigt i path till bilder
+        static Image side1 = Image.FromFile(result + "Dice1.bmp");//---------|----------          
+        static Image side2 = Image.FromFile(result + "Dice2.bmp");//---------|---------- 
+        static Image side3 = Image.FromFile(result + "Dice3.bmp");//   Path till bilder 
+        static Image side4 = Image.FromFile(result + "Dice4.bmp");//---------|---------- 
+        static Image side5 = Image.FromFile(result + "Dice5.bmp");//---------|---------- 
+        static Image side6 = Image.FromFile(result + "Dice6.bmp");//---------|---------- 
+
+        public void ThrowTheDices() //Används för att flytta tärnings bilderna
+        {
+            if (Dice1.BackColor != Color.Red)
+            {
+                this.Dice1.Location = new Point(707, 385);
+                this.Dice1.Location = new Point(648, 307);
+                this.Dice1.Location = new Point(626, 236);
+            }
+            if (Dice2.BackColor != Color.Red)
+            {
+                this.Dice2.Location = new Point(847, 387);
+                this.Dice2.Location = new Point(831, 229);
+                this.Dice2.Location = new Point(781, 193);
+            }
+            if (Dice3.BackColor != Color.Red)
+            {
+                this.Dice3.Location = new Point(916, 381);
+                this.Dice3.Location = new Point(838, 298);
+                this.Dice3.Location = new Point(737, 263);
+            }
+            if (Dice4.BackColor != Color.Red)
+            {
+                this.Dice4.Location = new Point(959, 378);
+                this.Dice4.Location = new Point(898, 263);
+                this.Dice4.Location = new Point(845, 202);
+            }
+            if (Dice5.BackColor != Color.Red)
+            {
+                this.Dice5.Location = new Point(898, 364);
+                this.Dice5.Location = new Point(907, 286);
+                this.Dice5.Location = new Point(948, 167);
+            }
+        }
+
+        static public string PathText(int r1, int r2, string path)
+        {
+            string result = "";
+
+            if (r1 != r2 && r1 >= 0)
+            {
+
+                result = path.Remove(r1 + 1, r2 - r1);
+
+            }
+            return result;
+        } //Används för att ta bort ondädigt ifrån sökvägen
+
         public void ResetDice()
         {
             Dice1.Text = null;
@@ -61,9 +124,9 @@ namespace YatzyGrupp2.Test
             Dice3.BackColor = Color.White;
             Dice4.BackColor = Color.White;
             Dice5.BackColor = Color.White;
-        }
+        } //Återställer tärningarna
 
-        private void FormLabelTest_Load(object sender, EventArgs e)
+        private void FormLabelTest_Load(object sender, EventArgs e) //Sätter ut och fyller alla labels med data. Ladda också in lite data
         {
             int temp = 0;
             gamePlayers = View.StartView.players;
@@ -71,6 +134,7 @@ namespace YatzyGrupp2.Test
             players = gamePlayers.Count;
             playerRound = new int[players];
             playerRound = Enumerable.Repeat<int>(1, players).ToArray(); //Sätter allt i arrayen till 1
+            lblRound.Text = "";
             for (int i = 0; i < 19; i++)
             {
                 
@@ -106,10 +170,10 @@ namespace YatzyGrupp2.Test
             }
             PlayersActive();
 
-            lblSpelare.Text = "Spelare: " + gamePlayers[round].Nickname;
+            lblSpelare.Text = "Spelare: " + gamePlayers[turn].Nickname;
         }
 
-        public void ChangeLabelText(string labelName, string labelText)
+        public void ChangeLabelText(string labelName, string labelText) //Ändrar texten i en label
         {
             for(int i = 0; i < testList.Count; i++)
             {
@@ -120,7 +184,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        public void ChangeLabelColor()
+        public void ChangeLabelColor() // Ändrar färgen i labels
         {
             int[] rows = new int[] { 0, 1, 2, 3, 4 };
             int[] columnUpper = new int[] { 1, 2, 3, 4, 5, 6, 9 };
@@ -168,7 +232,7 @@ namespace YatzyGrupp2.Test
             
         }
 
-        public void SetLabelTextEmpty()
+        public void SetLabelTextEmpty() //Sätter texten i en label till tom/0
         {
             for(int i = 0; i < testList.Count; i++)
             {
@@ -176,7 +240,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void PlayersActive()
+        private void PlayersActive() //Laddar in all viktigt text
         {
             SetLabelTextEmpty();
             ChangeLabelText("lblX0Y00", "Spelare");
@@ -207,7 +271,7 @@ namespace YatzyGrupp2.Test
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e) //Används inte
         {
             SetLabelTextEmpty();
             ChangeLabelText("lblX0Y00", "Spelare:");
@@ -235,140 +299,139 @@ namespace YatzyGrupp2.Test
             }
         }
         
-        private void label_Click(object sender, MouseEventArgs e)
+        private void label_Click(object sender, MouseEventArgs e) //Används inte
         {
             Control test = (Control)sender;
             string test2 = Convert.ToString(test);
             
         }
-
-        
-        private void ctrlClick(System.Object sender, EventArgs e)
+       
+        private void ctrlClick(System.Object sender, EventArgs e) //Eventhandler för label om man klickar på dem. Den används också för att fixa påäng
         {
             Control ctrl = (Control)sender;
-            //MessageBox.Show("You clicked: " + ctrl.Name);
-            
-            /*if (ctrl.Name == "lblX1Y01")
+
+            if (valt == false)
             {
-                ChangeLabelText("lblX1Y01", Convert.ToString(gl.PointsExtra(dice, diceThrow)));
-            }*/
-            for(int i = 0; i < testList.Count; i++)
-            {
-                if(ctrl.Name == testList[i].Name)
+                for (int i = 0; i < testList.Count; i++)
                 {
-                    int temp = GetYValue(ctrl.Name);
-                    if(GetXValue(ctrl.Name) - 1 == turn && styrdYatzy == false)
+                    if (ctrl.Name == testList[i].Name)
                     {
-                        if (temp < 7 && temp > 0)
+                        int temp = GetYValue(ctrl.Name);
+                        if (GetXValue(ctrl.Name) - 1 == turn && styrdYatzy == false)
                         {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
-                            sum += gl.Points(dice, diceThrow, temp);
+                            if (temp < 7 && temp > 0)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
+                                sum += gl.Points(dice, diceThrow, temp);
+                            }
+                            else if (GetYValue(ctrl.Name) == 9) //Par
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
+                                sum += gl.Pair(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 10)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
+                                sum += gl.TwoPair(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 11)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
+                                sum += gl.ThreeOfAKind(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 12)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
+                                sum += gl.FourOfAKind(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 13)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                                sum += gl.SmallLargeStraight(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 14)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                                sum += gl.SmallLargeStraight(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 15)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
+                                sum += gl.FullHouseOnTheTable(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 16)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
+                                sum += gl.Chans(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 17)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
+                                sum += gl.Yatzyz(dice, diceThrow);
+                            }
                         }
-                        else if (GetYValue(ctrl.Name) == 9) //Par
+                        else if (GetXValue(ctrl.Name) - 1 == turn && styrdYatzy == true)
                         {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
-                            sum += gl.Pair(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 10)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
-                            sum += gl.TwoPair(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 11)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
-                            sum += gl.ThreeOfAKind(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 12)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
-                            sum += gl.FourOfAKind(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 13)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
-                            sum += gl.SmallLargeStraight(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 14)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
-                            sum += gl.SmallLargeStraight(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 15)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
-                            sum += gl.FullHouseOnTheTable(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 16)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
-                            sum += gl.Chans(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 17)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
-                            sum += gl.Yatzyz(dice, diceThrow);
+                            if (temp < 7 && temp > 0 && GetYValue(ctrl.Name) == playerRound[turn])
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
+                                sum += gl.Points(dice, diceThrow, temp);
+                            }
+                            else if (GetYValue(ctrl.Name) == 9 && GetYValue(ctrl.Name) == playerRound[turn] + 2) //Par
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
+                                sum += gl.Pair(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 10 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
+                                sum += gl.TwoPair(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 11 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
+                                sum += gl.ThreeOfAKind(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 12 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
+                                sum += gl.FourOfAKind(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 13 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                                sum += gl.SmallLargeStraight(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 14 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
+                                sum += gl.SmallLargeStraight(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 15 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
+                                sum += gl.FullHouseOnTheTable(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 16 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
+                                sum += gl.Chans(dice, diceThrow);
+                            }
+                            else if (GetYValue(ctrl.Name) == 17 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
+                            {
+                                ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
+                                sum += gl.Yatzyz(dice, diceThrow);
+                            }
                         }
                     }
-                    else if (GetXValue(ctrl.Name) - 1 == turn && styrdYatzy == true)
-                    {
-                        if (temp < 7 && temp > 0 && GetYValue(ctrl.Name) == playerRound[turn])
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Points(dice, diceThrow, temp)));
-                            sum += gl.Points(dice, diceThrow, temp);
-                        }
-                        else if (GetYValue(ctrl.Name) == 9 && GetYValue(ctrl.Name) == playerRound[turn] + 2) //Par
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Pair(dice, diceThrow)));
-                            sum += gl.Pair(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 10 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.TwoPair(dice, diceThrow)));
-                            sum += gl.TwoPair(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 11 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.ThreeOfAKind(dice, diceThrow)));
-                            sum += gl.ThreeOfAKind(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 12 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.FourOfAKind(dice, diceThrow)));
-                            sum += gl.FourOfAKind(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 13 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
-                            sum += gl.SmallLargeStraight(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 14 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.SmallLargeStraight(dice, diceThrow)));
-                            sum += gl.SmallLargeStraight(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 15 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.FullHouseOnTheTable(dice, diceThrow)));
-                            sum += gl.FullHouseOnTheTable(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 16 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Chans(dice, diceThrow)));
-                            sum += gl.Chans(dice, diceThrow);
-                        }
-                        else if (GetYValue(ctrl.Name) == 17 && GetYValue(ctrl.Name) == playerRound[turn] + 2)
-                        {
-                            ChangeLabelText(ctrl.Name, Convert.ToString(gl.Yatzyz(dice, diceThrow)));
-                            sum += gl.Yatzyz(dice, diceThrow);
-                        }
-                    }
+
                 }
-                
+                valt = true;
             }
+            
         }
 
-        public int GetYValue(string name)
+        public int GetYValue(string name) //Får Y värdet ifrån en label namn
         {
             int temp = 0;
             for(int i = 0; i < testList.Count; i++)
@@ -382,7 +445,7 @@ namespace YatzyGrupp2.Test
             return temp;
         }
 
-        public int GetXValue(string name)
+        public int GetXValue(string name) //Får X värdet ifrån en label namn
         {
             int temp = 0;
             temp = int.Parse(Convert.ToString(name[4]));
@@ -391,7 +454,7 @@ namespace YatzyGrupp2.Test
             return temp;
         }
 
-        public void SumScore()
+        public void SumScore() //Lägger ut påängen i labels
         {
             int temp;
             for (int n = 0; n < players; n++)
@@ -450,7 +513,7 @@ namespace YatzyGrupp2.Test
 
         }
 
-        public void TotalScore()
+        public void TotalScore() //Lägger ut påängen i labels total
         {
             int temp;
             for (int n = 0; n < players; n++)
@@ -486,7 +549,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        public void SetScore(List<Label> label)
+        public void SetScore(List<Label> label) //Lägger in påängen i databas
         {
 
             for (int i = 0; i < label.Count; i++)
@@ -510,7 +573,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void label_Enter(object sender, EventArgs e)
+        private void label_Enter(object sender, EventArgs e) //Om musen går över en label
         {
             Control ctrl = (Control)sender;
             for (int i = 0; i < testList.Count; i++)
@@ -546,7 +609,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void label_Leave(object sender, EventArgs e)
+        private void label_Leave(object sender, EventArgs e) //Om musen går ut ur en label
         {
             Control ctrl = (Control)sender;
             for (int i = 0; i < testList.Count; i++)
@@ -610,7 +673,7 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void ThrowDices_Click(object sender, EventArgs e)
+        private void ThrowDices_Click(object sender, EventArgs e) //Om man klickar på kasta tärning
         {
             throws++;
             if (throws == 4)
@@ -621,30 +684,180 @@ namespace YatzyGrupp2.Test
             lblThrows.BackColor = Color.Transparent;
             lblThrows.Font = new System.Drawing.Font(fontType, fontSize, FontStyle.Bold);
 
+            ThrowTheDices();
 
             dice = gl.GetRandomDice(diceThrow, dice);
             if (diceThrow[0] != true)
             {
-                Dice1.Text = Convert.ToString(dice[0]);               
+                Dice1.Text = Convert.ToString(dice[0]);
+                if (Dice1.Text == "1")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = side1;
+                }
+                if (Dice1.Text == "2")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = side2;
+                }
+                if (Dice1.Text == "3")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = side3;
+                }
+                if (Dice1.Text == "4")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = side4;
+                }
+                if (Dice1.Text == "5")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = side5;
+                }
+                if (Dice1.Text == "6")
+                {
+                    Dice1.Text = "";
+                    Dice1.Image = side6;
+                }
             }
             if (diceThrow[1] != true)
             {
                 Dice2.Text = Convert.ToString(dice[1]);
+                if (Dice2.Text == "1")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = side1;
+                }
+                if (Dice2.Text == "2")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = side2;
+                }
+                if (Dice2.Text == "3")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = side3;
+                }
+                if (Dice2.Text == "4")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = side4;
+                }
+                if (Dice2.Text == "5")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = side5;
+                }
+                if (Dice2.Text == "6")
+                {
+                    Dice2.Text = "";
+                    Dice2.Image = side6;
+                }
             }
             if (diceThrow[2] != true)
             {
                 Dice3.Text = Convert.ToString(dice[2]);
+                if (Dice3.Text == "1")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = side1;
+                }
+                if (Dice3.Text == "2")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = side2;
+                }
+                if (Dice3.Text == "3")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = side3;
+                }
+                if (Dice3.Text == "4")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = side4;
+                }
+                if (Dice3.Text == "5")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = side5;
+                }
+                if (Dice3.Text == "6")
+                {
+                    Dice3.Text = "";
+                    Dice3.Image = side6;
+                }
             }
             if (diceThrow[3] != true)
             {
                 Dice4.Text = Convert.ToString(dice[3]);
+                if (Dice4.Text == "1")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = side1;
+                }
+                if (Dice4.Text == "2")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = side2;
+                }
+                if (Dice4.Text == "3")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = side3;
+                }
+                if (Dice4.Text == "4")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = side4;
+                }
+                if (Dice4.Text == "5")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = side5;
+                }
+                if (Dice4.Text == "6")
+                {
+                    Dice4.Text = "";
+                    Dice4.Image = side6;
+                }
             }
             if (diceThrow[4] != true)
             {
                 Dice5.Text = Convert.ToString(dice[4]);
+                if (Dice5.Text == "1")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = side1;
+                }
+                if (Dice5.Text == "2")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = side2;
+                }
+                if (Dice5.Text == "3")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = side3;
+                }
+                if (Dice5.Text == "4")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = side4;
+                }
+                if (Dice5.Text == "5")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = side5;
+                }
+                if (Dice5.Text == "6")
+                {
+                    Dice5.Text = "";
+                    Dice5.Image = side6;
+                }
             }
-
-            
+           
 
             gl.IncrementRound();
 
@@ -658,20 +871,25 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void EndGame_Click(object sender, EventArgs e)
+        private void EndGame_Click(object sender, EventArgs e) //Om man trycker på avsluta
         {
-
-            //sql.EndTime(GetGames); //borde funka, har testat på gamla gameview men inte denna, får göra det senare.
-            //sql.GetScore(gamePlayers);
+            SumScore();
+            TotalScore();
+            sql.EndTime(GetGames);
+            sql.GetScore(gamePlayers);
 
             this.Close();
             View.StartView startView = new View.StartView();
-            startView.Show();
+            gamePlayers.Clear();
+            startView.listViewChosenPlayers.ItemsSource = null;
+         
 
         }
 
-        private void Dice1_MouseDown(object sender, MouseEventArgs e)
+        private void Dice1_MouseDown(object sender, MouseEventArgs e) //Om man klickar på tärningar
         {
+            this.Dice1.Location = new Point(793, 522);
+
             int i = 0;
 
             if (diceThrow[i] != true)
@@ -688,6 +906,8 @@ namespace YatzyGrupp2.Test
 
         private void Dice2_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice2.Location = new Point(855, 522);
+
             int i = 1;
 
             if (diceThrow[i] != true)
@@ -704,6 +924,7 @@ namespace YatzyGrupp2.Test
 
         private void Dice3_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice3.Location = new Point(917, 522);
             int i = 2;
 
             if (diceThrow[i] != true)
@@ -720,6 +941,8 @@ namespace YatzyGrupp2.Test
 
         private void Dice4_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice4.Location = new Point(979, 522);
+
             int i = 3;
 
             if (diceThrow[i] != true)
@@ -736,6 +959,8 @@ namespace YatzyGrupp2.Test
 
         private void Dice5_MouseDown(object sender, MouseEventArgs e)
         {
+            this.Dice5.Location = new Point(1041, 522);
+
             int i = 4;
 
             if (diceThrow[i] != true)
@@ -750,37 +975,51 @@ namespace YatzyGrupp2.Test
             }
         }
 
-        private void BtnNextPlayer_Click(object sender, EventArgs e)
+        private void BtnNextPlayer_Click(object sender, EventArgs e) //Klickar på nästa spelare
         {
-            
+            this.Dice1.Location = new Point(793, 522);
+            this.Dice2.Location = new Point(855, 522);
+            this.Dice3.Location = new Point(917, 522);
+            this.Dice4.Location = new Point(979, 522);
+            this.Dice5.Location = new Point(1041, 522);
+
+            Dice1.Image = side1;
+            Dice2.Image = side2;
+            Dice3.Image = side3;
+            Dice4.Image = side4;
+            Dice5.Image = side5;
+
             throws = 0;
             lblThrows.Text = "";
             SumScore();
             TotalScore();
             playerRound[turn]++;
-            /*bool tempTurn = false;
-            for(int i = 0; i < testList.Count; i++)
+            bool tempTurn = false;
+            
+            if (styrdYatzy == true)
             {
-                if(testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y0" + Convert.ToString(GetYValue(testList[i].Name)))
+                if (playerRound[turn] < 7)
                 {
-                    if(testList[i].Text != "0" && testList[i].Text != gamePlayers[turn].Nickname && tempTurn == false)
-                    {
-                        playerRound[turn]++;
-                        tempTurn = true;
-                    }
+                    lblRound.Text = "Få " + Convert.ToString(playerRound[turn]);
                 }
-                if (testList[i].Name == "lblX" + Convert.ToString(turn + 1) + "Y" + Convert.ToString(GetYValue(testList[i].Name)))
+                else
                 {
-                    if (testList[i].Text != "0" && testList[i].Text != gamePlayers[turn].Nickname && tempTurn == false)
+                    for (int i = 0; i < testList.Count; i++)
                     {
-                        playerRound[turn]++;
-                        tempTurn = true;
+                        if (testList[i].Name == "lblX0Y0" + Convert.ToString(playerRound[turn] + 2))
+                        {
+                            lblRound.Text = "Få " + testList[i].Text;
+                            tempTurn = true;
+                        }
+                        if (testList[i].Name == "lblX0Y" + Convert.ToString(playerRound[turn] + 2) && testList[i].Text != "Total")
+                        {
+                            lblRound.Text = "Få " + testList[i].Text;
+                            tempTurn = true;
+                        }
                     }
                 }
             }
-
-
-            tempTurn = false;*/
+           
             if (turn < gamePlayers.Count)
             {
                 turn++;
@@ -796,18 +1035,30 @@ namespace YatzyGrupp2.Test
             diceThrow = Enumerable.Repeat<bool>(false, 5).ToArray(); // Gör alla värden i en array till false
             
             ResetDice();
+            valt = false;
         }
 
-        private void Dice1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e) //Klickar på hjälp kanppen
         {
             View.GameViewHelp gameViewHelp = new View.GameViewHelp();
             gameViewHelp.Show();
+        }
 
+        private void FormLabelTest_FormClosing(object sender, FormClosingEventArgs e) //Klickar på stäng av kanppen
+        {
+            View.StartView startView = new View.StartView();
+            startView.Show();           
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            List<Player.Player> selectedPlayer = new List<Player.Player>();
+            sql.DeleteGameFromDb(selectedPlayer);
+            sql.DeleteGameIdFromDb();
+            this.Close();
+            View.StartView startView = new View.StartView();
+            gamePlayers.Clear();
+            startView.listViewChosenPlayers.ItemsSource = null;
         }
     }        
 }

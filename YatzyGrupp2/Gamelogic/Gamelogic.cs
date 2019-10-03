@@ -8,11 +8,11 @@ namespace YatzyGrupp2.Gamelogic
 {
     class Gamelogic
     {
-
+        
         public int Round { get; set; }
         public List<int> DiceValue { get; set; }
-
-         
+        private bool PointsExtraBool = false;
+         // Gör tärningslagen random
         public int[] GetRandomDice(bool[] randInarray, int[] dice)
         {
             int[] num = new int[5];
@@ -33,6 +33,26 @@ namespace YatzyGrupp2.Gamelogic
             }
             return num;
         }
+        
+        public int[] BubbleSort(int[] d) //För att Array.Sort inte funkar som den ska!!!!!!!
+        {
+            int temp = 0;
+            for (int i = 0; i < d.Length; i++)
+            {
+                for(int a = 0; a < d.Length - 1; a++)
+                {
+                    if(d[a] > d[a + 1])
+                    {
+                        temp = d[a + 1];
+                        d[a + 1] = d[a];
+                        d[a] = temp;
+                    }
+                }
+            }
+            return d;
+        }
+
+        // om spelaren kastat tre gånger så ska de bli nästa spelares tur
         public bool TurnOver()
         {
             if (Round == 3)
@@ -40,6 +60,7 @@ namespace YatzyGrupp2.Gamelogic
             else
                 return false;
         }
+        // räknar rundor
         public void IncrementRound()
         {
             if (Round > 3 || Round < 1)
@@ -51,6 +72,7 @@ namespace YatzyGrupp2.Gamelogic
                 Round++;
             }
         }
+        // räknar in poäng
         public int Points(int[] d, bool[] dt, int number)
         {
             int points = 0;
@@ -77,6 +99,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för om det är kåk på bordet.
         public int FullHouseOnTheTable(int[] d, bool[] dt)
         {
             int points = 0;
@@ -86,6 +109,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för om det är liten stege på bordet.
         public int SmallLargeStraight(int[] d, bool[] dt)
         {
             int points = 0;
@@ -95,6 +119,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för chans
         public int Chans(int[] d, bool[] dt)
         {
             int points = 0;
@@ -103,6 +128,7 @@ namespace YatzyGrupp2.Gamelogic
         } 
 
             int points = 0;
+        //Metod för par
         public int Pair(int[] d, bool[] dt)
         {
             if (ParTest(d, dt))
@@ -120,6 +146,7 @@ namespace YatzyGrupp2.Gamelogic
             return points;
 
         }  
+        //Metod för två par
         public int TwoPair(int[] d, bool[] dt)
         {
             if (Tvapar(d, dt))
@@ -136,6 +163,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för tretal
         public int ThreeOfAKind(int[] d, bool[] dt)
         {
             if (Triss(d, dt))
@@ -154,6 +182,7 @@ namespace YatzyGrupp2.Gamelogic
             return points;
 
         }
+        //Metod för fyrtal
         public int FourOfAKind(int[] d, bool[] dt)
         {
             if (Fyrtal(d, dt))
@@ -170,6 +199,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        //Metod för Yatzy
         public int Yatzyz(int[] d, bool[] dt)
         {
             if (Yatzy(d, dt))
@@ -181,13 +211,15 @@ namespace YatzyGrupp2.Gamelogic
         public int PointsExtra(int[] d, bool[] dt) //Vi kommer nog få ändra ordningen på if statserna så att de med mer poäng kommer först
         {                                          //och inte de med mindre poäng för att det är möjöligt att ett true värde på tex tvåpar när man
             int points = 0;                        //ska ha fyrtal
-
-            if (Yatzy(d, dt))
+            PointsExtraBool = false;
+            if (Yatzy(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 points = 50;
             }
-            if (Fyrtal(d, dt))
+            if (Fyrtal(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 Array.Sort(d);
                 if (d[0] == d[1] && d[2] == d[3] && d[0] == d[3])
                 {
@@ -198,8 +230,9 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 4;
                 }
             }
-            if (Tvapar(d, dt))
+            if (Tvapar(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 Array.Sort(d);
                 if (d[0] == d[1] && d[2] == d[3])
                 {
@@ -210,9 +243,9 @@ namespace YatzyGrupp2.Gamelogic
                     points = d[1] * 2 + d[3] * 2;
                 }
             }
-            if (Triss(d, dt))
+            if (Triss(d, dt) && PointsExtraBool == false)
             {
-
+                PointsExtraBool = true;
                 int temp = 0;
                 for (int i = 0; i < dt.Length; i++)
                 {
@@ -223,8 +256,9 @@ namespace YatzyGrupp2.Gamelogic
                 }
                 points = temp * 3;
             }
-            if (ParTest(d, dt))
+            if (ParTest(d, dt) && PointsExtraBool == false)
             {
+                PointsExtraBool = true;
                 int temp = 0;
                 for (int i = 0; i < dt.Length; i++)
                 {
@@ -237,8 +271,10 @@ namespace YatzyGrupp2.Gamelogic
             }
             return points;
         }
+        // bool metod för stegen
         public bool CalcLargeStraight(int[] d, bool[] dt)
         {
+
             Array.Sort(d);
 
             if (((d[0] == 1) && (d[1] == 2) && (d[2] == 3) && (d[3] == 4) && (d[4] == 5)) || ((d[0] == 2) && (d[1] == 3) && (d[2] == 4) && (d[3] == 5) && (d[4] == 6)))
@@ -247,6 +283,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return false;
         }
+        // bool metod för kåk
         public bool FullHouse(int[] d, bool[] dt)
         {           
             Array.Sort(d);
@@ -257,6 +294,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return false;
         }
+        //Bool metod för par
         public bool ParTest(int[] d, bool[] dt)
         {
             //int temp = 0;
@@ -272,23 +310,31 @@ namespace YatzyGrupp2.Gamelogic
             }
             return false;
         }
+        //bool metod för triss
         private bool Triss(int[] d, bool[] dt)
         {
-            Array.Sort(d);
-            if (d[0] == d[1] && d[1] == d[2])
+            int[] tempArray = new int[5];
+            for(int i = 0; i < d.Length; i++)
+            {
+                tempArray[i] = d[i];
+            }
+            tempArray = BubbleSort(tempArray);
+            
+            if (tempArray[0] == tempArray[1] && tempArray[1] == tempArray[2])
             {
                 return true;
             }
-            else if(d[1] == d[2] && d[2] == d[3])
+            else if(tempArray[1] == tempArray[2] && tempArray[2] == tempArray[3])
             {
                 return true;
             }
-            else if (d[2] == d[3] && d[3] == d[4])
+            else if (tempArray[2] == tempArray[3] && tempArray[3] == tempArray[4])
             {
                 return true;
             }
             return false;
         }
+        //Bool metod för tvåpar
         public bool Tvapar(int[] d, bool[] dt)
         {
             Array.Sort(d);
@@ -302,6 +348,7 @@ namespace YatzyGrupp2.Gamelogic
             }
             return false;
         }
+        //Bool metod för Fyrtal
         public bool Fyrtal(int[] d, bool[] dt)
         {
             Array.Sort(d);
@@ -317,6 +364,7 @@ namespace YatzyGrupp2.Gamelogic
 
             return false;
         }
+        //Bool metod för Yatzy
         public bool Yatzy(int[] d, bool[] dt)
         {
             int temp = d[0];

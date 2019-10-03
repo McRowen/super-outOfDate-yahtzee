@@ -102,9 +102,6 @@
     <Compile Include="Test\Listview.xaml.cs">
       <DependentUpon>Listview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GameView.xaml.cs">
-      <DependentUpon>GameView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\GameViewHelp.xaml.cs">
       <DependentUpon>GameViewHelp.xaml</DependentUpon>
     </Compile>
@@ -122,10 +119,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Test\Listview.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\GameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +156,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\FormLabelTest.resx">
       <DependentUpon>FormLabelTest.cs</DependentUpon>
@@ -176,11 +170,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Resources\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Image\testdice2.png" />
   </ItemGroup>
@@ -222,6 +212,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\RedDice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice5.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice6.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
